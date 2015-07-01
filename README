@@ -1,0 +1,37 @@
+Git Repostory of Cross section and aTGC summary plots
+
+git commands
+
+# Checking out an existing repository to directory SummaryPlots 
+git clone https://github.com/herndon/SummaryPlots.git VV_SummaryPlots
+
+
+# check status of project for modifictions
+git status -s
+git diff
+
+# committing new files.
+# add all
+git add .
+#add by name
+git add filenames
+
+#prep for commit
+git commit -m 'commit text'
+
+
+# committing changes files
+git commit -am 'commit text'
+
+# commit, push to repository
+git push origin master
+
+
+# set repository if necessary
+git remote set-url origin ssh://git@github.com/herndon/VV_analysis.git
+git remote -v
+
+
+# code browser
+/Applications/Doxygen.app/Contents/MacOS/Doxywizard
+

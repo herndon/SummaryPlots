@@ -1,0 +1,20 @@
+Author: Matthew Herndon 
+
+To run the script:
+> root -l plotaTGC.C
+A pdf file is produced, Sigma_v0.pdf
+
+To control which subset of aTGC paramaters to plot
+Change the lines
+ bool catgcg = false;
+ bool catgcz = false;
+ bool natgcg = false;
+ bool natgcz = true;
+
+in Data.C
+to get WWgamma, WWZ, or neutral triple gauge coupling involving Zgamma
+or ZZ final states respectively.
+ 
+To clean-up the directory
+> ./cleanup.sh
+

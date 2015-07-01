@@ -1,0 +1,22 @@
+Author: Matthew Herndon (prev. author Gautier Hamel de Monchenault)
+
+To run the cross section script:
+> root plot.C
+A pdf and png files are produced, Sigma_v0.pdf ... Sigma_v1.pdf,
+depending on the value of "version" (0-5) in plot.C.
+Ranges of the TCanvas must be adjusted for 3 and 4
+See TCanvas* declaration in Plot.C
+
+To run the diboson cross section ratio script:
+> root plotR.C
+A pdf and png files are produced, SigmaR_v0.pdf,
+
+Data points are defined in data.C
+Please include assymetric errors where possible as that is a planed
+upgrade of plot.C and is used in the plotR.C
+Note that data ponts must be set to true in one or more versions.
+
+To clean-up the directory
+> ./cleanup.sh
+
+
