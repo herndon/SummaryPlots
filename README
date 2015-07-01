@@ -1,2 +1,7 @@
 Git Repostory of Cross section and aTGC summary plots
 
+# Checking out this repository to directory SummaryPlots 
+git clone https://github.com/herndon/SummaryPlots.git VV_SummaryPlots
+
+
+
