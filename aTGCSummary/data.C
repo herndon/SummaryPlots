@@ -1,4 +1,4 @@
-enum {  k_atlas_wg_dkg=0, k_cms_wg_dkg,   k_cms_ww_dkg, k_atlas_wv_dkg, k_cms_wv_dkg, k_d0_vv_dkg, k_lep_ww_dkg, k_atlas_wg_lg, k_cms_wg_lg, k_cms_ww_lg, k_atlas_wv_lg, k_cms_wv_lg, k_d0_vv_lg, k_lep_ww_lg, k_atlas_ww_dkz, k_atlas_wv_dkz, k_cms_wv_dkz,  k_lep_ww_dkz, k_atlas_ww_dk, k_d0_vv_dk, k_atlas_ww_lz, k_cms_ww_lz, k_atlas_wz_lz, k_atlas_wv_lz, k_cms_wv_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_cms_ww_dgz, k_atlas_wz_dgz, k_atlas_wv_dgz, k_d0_vv_dgz, k_lep_ww_dgz, k_atlas_zg_h3g,  k_cms_zg_h3g, k_cms_zg8_h3g, k_cdf_zg_h3g, k_atlas_zg_h3z, k_cms_zg_h3z, k_cms_zg8_h3z, k_cdf_zg_h3z, k_atlas_zg_h4g,  k_cms_zg_h4g, k_cms_zg8_h4g, k_atlas_zg_h4z,   k_cms_zg_h4z, k_cms_zg8_h4z, k_atlas_zz_f4g, k_cms_zz_f4g, k_cms_zz2_f4g, k_cms_zzc_f4g, k_atlas_zz_f4z, k_cms_zz_f4z,  k_cms_zz2_f4z, k_cms_zzc_f4z, k_atlas_zz_f5g, k_cms_zz_f5g,  k_cms_zz2_f5g, k_cms_zzc_f5g, k_atlas_zz_f5z, k_cms_zz_f5z, k_cms_zz2_f5z, k_cms_zzc_f5z,  k_nChan };
+enum {  k_atlas_wg_dkg=0, k_cms_wg_dkg,   k_cms_ww_dkg, k_cms_ww8_dkg, k_atlas_wv_dkg, k_cms_wv_dkg, k_d0_vv_dkg, k_lep_ww_dkg, k_atlas_wg_lg, k_cms_wg_lg, k_cms_ww_lg, k_cms_ww8_lg, k_atlas_wv_lg, k_cms_wv_lg, k_d0_vv_lg, k_lep_ww_lg, k_atlas_ww_dkz, k_cms_ww8_dkz, k_atlas_wv_dkz, k_cms_wv_dkz,  k_lep_ww_dkz, k_atlas_ww_dk, k_d0_vv_dk, k_atlas_ww_lz, k_cms_ww_lz, k_cms_ww8_lz, k_atlas_wz_lz, k_atlas_wv_lz, k_cms_wv_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_cms_ww_dgz,  k_cms_ww8_dgz, k_atlas_wz_dgz, k_atlas_wv_dgz, k_d0_vv_dgz, k_lep_ww_dgz, k_atlas_zg_h3g,  k_cms_zg_h3g, k_cms_zg8_h3g, k_cms_zg8_h3g2, k_cdf_zg_h3g, k_atlas_zg_h3z, k_cms_zg_h3z, k_cms_zg8_h3z, k_cms_zg8_h3z2, k_cdf_zg_h3z, k_atlas_zg_h4g,  k_cms_zg_h4g, k_cms_zg8_h4g, k_cms_zg8_h4g2, k_atlas_zg_h4z,   k_cms_zg_h4z, k_cms_zg8_h4z, k_cms_zg8_h4z2, k_atlas_zz_f4g, k_cms_zz_f4g, k_cms_zz2_f4g, k_cms_zzc_f4g, k_atlas_zz_f4z, k_cms_zz_f4z,  k_cms_zz2_f4z, k_cms_zzc_f4z, k_atlas_zz_f5g, k_cms_zz_f5g,  k_cms_zz2_f5g, k_cms_zzc_f5g, k_atlas_zz_f5z, k_cms_zz_f5z, k_cms_zz2_f5z, k_cms_zzc_f5z,  k_nChan };
 
 
 
@@ -18,9 +18,9 @@ enum {  k_atlas_wg_dkg=0, k_cms_wg_dkg,   k_cms_ww_dkg, k_atlas_wv_dkg, k_cms_wv
 
   float scale_;
  bool catgcg = false;
- bool catgcz = false;
+ bool catgcz = true;
  bool natgcg = false;
-bool natgcz = true;
+bool natgcz = false;
 
   
   scale_ = (1);
@@ -74,6 +74,18 @@ if (catgcg) {
   chanaTGCP[k_cms_ww_dkg]  = +0.22 * scale_; 
   plotChan[k_cms_ww_dkg] = true; 
 
+  // http://arxiv.org/abs/1507.03268
+
+  chanName[k_cms_ww8_dkg]            = "#Delta#kappa_{#gamma}";
+  chanMeasurement[k_cms_ww8_dkg]     = "WW";
+  chanLumi[k_cms_ww8_dkg]            = "19.4 fb^{-1}";
+  chanExp[k_cms_ww8_dkg]            = "CMS";
+  chanaTGCC[k_cms_ww8_dkg]  = (-3.6-3.2) * 0.5 * 0.080385 * 0.080385  * scale_; 
+  chanaTGCM[k_cms_ww8_dkg]  = (-11.4 - 29.2) * 0.5 * 0.080385 * 0.080385 * scale_; 
+  chanaTGCP[k_cms_ww8_dkg]  = (5.4 + 23.9) * 0.5 * 0.080385 * 0.080385 * scale_; 
+  plotChan[k_cms_ww8_dkg] = true; 
+
+  
 // Atlas http://arxiv.org/abs/1410.7238 submited to JHEP
 
   chanName[k_atlas_wv_dkg]            = "#Delta#kappa_{#gamma}";
@@ -100,7 +112,7 @@ if (catgcg) {
 // D0 http://arxiv.org/abs/1208.5458 Phys.Lett. B718 (2012) 451-459
 
   chanName[k_d0_vv_dkg]            = "#Delta#kappa_{#gamma}";
-  chanMeasurement[k_d0_vv_dkg]     = "D0 Combination";
+  chanMeasurement[k_d0_vv_dkg]     = "D0 Combined";
   chanLumi[k_d0_vv_dkg]            = "8.6 fb^{-1}";
   chanExp[k_d0_vv_dkg]            = "D0";
   chanaTGCC[k_d0_vv_dkg]  = 0.048   * scale_; 
@@ -156,7 +168,7 @@ if (catgcg) {
 
 
   chanName[k_lep_ww_dkg]            = "#Delta#kappa_{#gamma}";
-  chanMeasurement[k_lep_ww_dkg]     = "LEP Combination";
+  chanMeasurement[k_lep_ww_dkg]     = "LEP Combined";
   chanLumi[k_lep_ww_dkg]            = "0.7 fb^{-1}";
   chanExp[k_lep_ww_dkg]            = "LEP";
   chanaTGCC[k_lep_ww_dkg]  = -0.018   * scale_; 
@@ -210,7 +222,20 @@ if (catgcg) {
   chanaTGCP[k_cms_ww_lg]  = +0.048 * scale_; 
   plotChan[k_cms_ww_lg] = true;
 
+  // http://arxiv.org/abs/1507.03268
 
+ chanName[k_cms_ww8_lg]            = "#lambda_{#gamma}";
+  chanMeasurement[k_cms_ww8_lg]     = "WW";
+  chanLumi[k_cms_ww8_lg]            = "19.4 fb^{-1}";
+  chanExp[k_cms_ww8_lg]            = "CMS";
+  chanaTGCC[k_cms_ww8_lg]  = 0.1  * 1.5 * (8 * 0.70710678118 * 1.16637e-5 * 80.385 * 80.385) *  0.080385 * 0.080385  * scale_; 
+  chanaTGCM[k_cms_ww8_lg]  = -5.7 * 1.5 * (8 * 0.70710678118 * 1.16637e-5 * 80.385 * 80.385) *  0.080385 * 0.080385 * scale_; 
+  chanaTGCP[k_cms_ww8_lg]  = 5.9 * 1.5 * (8 * 0.70710678118 * 1.16637e-5 * 80.385 * 80.385) *  0.080385 * 0.080385 * scale_; 
+  plotChan[k_cms_ww8_lg] = true;
+
+
+
+  
  // Atlas http://arxiv.org/abs/1410.7238 submitted to JHEP
 
 
@@ -238,7 +263,7 @@ if (catgcg) {
 // D0 http://arxiv.org/abs/1208.5458 Phys.Lett. B718 (2012) 451-459
 
   chanName[k_d0_vv_lg]            = "#lambda_{#gamma}";
-  chanMeasurement[k_d0_vv_lg]     = "D0 Combination";
+  chanMeasurement[k_d0_vv_lg]     = "D0 Combined";
   chanLumi[k_d0_vv_lg]            = "8.6 fb^{-1}";
   chanExp[k_d0_vv_lg]            = "D0";
   chanaTGCC[k_d0_vv_lg]  = 0.007   * scale_; 
@@ -281,7 +306,7 @@ if (catgcg) {
 
 
   chanName[k_lep_ww_lg]            = "#lambda_{#gamma}";
-  chanMeasurement[k_lep_ww_lg]     = "LEP Combination";
+  chanMeasurement[k_lep_ww_lg]     = "LEP Combined";
   chanLumi[k_lep_ww_lg]            = "0.7 fb^{-1}";
   chanExp[k_lep_ww_lg]            = "LEP";
   chanaTGCC[k_lep_ww_lg]  = -0.022   * scale_; 
@@ -306,6 +331,18 @@ if (catgcz)
   plotChan[k_atlas_ww_dkz] = true;
 
 
+  // // http://arxiv.org/abs/1507.03268
+
+  chanName[k_cms_ww8_dkz]            = "#Delta#kappa_{Z}";
+  chanMeasurement[k_cms_ww8_dkz]     = "WW";
+  chanLumi[k_cms_ww8_dkz]            = "19.4 fb^{-1}";
+  chanExp[k_cms_ww8_dkz]            = "CMS";
+  chanaTGCC[k_cms_ww8_dkz]  =     (-3.6 + 3.2*0.30082992949) * 0.5 * 0.080385 * 0.080385 * scale_; 
+  chanaTGCM[k_cms_ww8_dkz]  = (-11.4 - 23.9*0.30082992949) * 0.5 * 0.080385 * 0.080385 * scale_; 
+  chanaTGCP[k_cms_ww8_dkz]  = (5.4 + 29.2*0.30082992949) * 0.5 * 0.080385 * 0.080385 * scale_; 
+  plotChan[k_cms_ww8_dkz] = true; 
+
+  
 
   // ATALS http://arxiv.org/abs/1208.1390 Eur.Phys.J. C72 (2012) 2173
   // Not competative
@@ -346,7 +383,7 @@ if (catgcz)
 // LEP  hep-ex/0212036 and hep-ex/0307056, http://arxiv.org/abs/1302.3415
 
   chanName[k_lep_ww_dkz]            = "#Delta#kappa_{Z}";
-  chanMeasurement[k_lep_ww_dkz]     = "LEP Combination";
+  chanMeasurement[k_lep_ww_dkz]     = "LEP Combined";
   chanLumi[k_lep_ww_dkz]            = "0.7 fb^{-1}";
   chanExp[k_lep_ww_dkz]            = "LEP";
   chanaTGCC[k_lep_ww_dkz]  = -0.011   * scale_; 
@@ -411,6 +448,17 @@ if (catgcz)
   chanaTGCM[k_cms_ww_lz]  = -0.048 * scale_; 
   chanaTGCP[k_cms_ww_lz]  = +0.048 * scale_; 
   plotChan[k_cms_ww_lz] = true;
+
+  // http://arxiv.org/abs/1507.03268
+
+ chanName[k_cms_ww8_lz]            = "#lambda_{Z}";
+  chanMeasurement[k_cms_ww8_lz]     = "WW";
+  chanLumi[k_cms_ww8_lz]            = "19.4 fb^{-1}";
+  chanExp[k_cms_ww8_lz]            = "CMS";
+  chanaTGCC[k_cms_ww8_lz]  = 0.1 * 1.5 * (8 * 0.70710678118 * 1.16637e-5 * 80.385 * 80.385) *  0.080385 * 0.080385  * scale_; 
+  chanaTGCM[k_cms_ww8_lz]  = -5.7 * 1.5 * (8 * 0.70710678118 * 1.16637e-5 * 80.385 * 80.385) *  0.080385 * 0.080385 * scale_; 
+  chanaTGCP[k_cms_ww8_lz]  = 5.9 * 1.5 * (8 * 0.70710678118 * 1.16637e-5 * 80.385 * 80.385) *  0.080385 * 0.080385 * scale_; 
+  plotChan[k_cms_ww8_lz] = true;
 
 
 
@@ -483,7 +531,7 @@ if (catgcz)
 // D0 http://arxiv.org/abs/1208.5458 Phys.Lett. B718 (2012) 451-459
 
   chanName[k_d0_vv_lz]            = "#lambda_{Z}";
-  chanMeasurement[k_d0_vv_lz]     = "D0 Combination";
+  chanMeasurement[k_d0_vv_lz]     = "D0 Combined";
   chanLumi[k_d0_vv_lz]            = "8.6 fb^{-1}";
   chanExp[k_d0_vv_lz]            = "D0";
   chanaTGCC[k_d0_vv_lz]  = 0.007   * scale_; 
@@ -495,7 +543,7 @@ if (catgcz)
 // LEP  hep-ex/0212036 and hep-ex/0307056,  http://arxiv.org/abs/1302.3415
 
   chanName[k_lep_ww_lz]            = "#lambda_{Z}";
-  chanMeasurement[k_lep_ww_lz]     = "LEP Combination";
+  chanMeasurement[k_lep_ww_lz]     = "LEP Combined";
   chanLumi[k_lep_ww_lz]            = "0.7 fb^{-1}";
   chanExp[k_lep_ww_lz]            = "LEP";
   chanaTGCC[k_lep_ww_lz]  = -0.022   * scale_; 
@@ -528,6 +576,17 @@ if (catgcz)
   chanaTGCP[k_cms_ww_dgz]  = +0.095 * scale_; 
   plotChan[k_cms_ww_dgz] = true;
 
+  // http://arxiv.org/abs/1507.03268
+
+  chanName[k_cms_ww8_dgz]            = "#Deltag^{Z}_{1}";
+  chanMeasurement[k_cms_ww8_dgz]     = "WW";
+  chanLumi[k_cms_ww8_dgz]            = "19.4 fb^{-1}";
+  chanExp[k_cms_ww8_dgz]            = "CMS";
+  chanaTGCC[k_cms_ww8_dgz]  = -3.6 *  0.5 * 0.0911876 * 0.0911876   * scale_; 
+  chanaTGCM[k_cms_ww8_dgz]  =  -11.4 * 0.5 * 0.0911876 * 0.0911876 * scale_;  
+  chanaTGCP[k_cms_ww8_dgz]  =  +5.4 * 0.5 * 0.0911876 * 0.0911876 * scale_; 
+  plotChan[k_cms_ww8_dgz] = true;
+
 
 
   // ATALS http://arxiv.org/abs/1208.1390 Eur.Phys.J. C72 (2012) 2173
@@ -537,8 +596,8 @@ if (catgcz)
   chanLumi[k_atlas_wz_dgz]            = "4.6 fb^{-1}";
   chanExp[k_atlas_wz_dgz]            = "ATLAS";
   chanaTGCC[k_atlas_wz_dgz]  = 0.0   * scale_; 
-  chanaTGCM[k_atlas_wz_dgz]  = -0.057 * scale_; 
-  chanaTGCP[k_atlas_wz_dgz]  = +0.093 * scale_; 
+  chanaTGCM[k_atlas_wz_dgz]  =  -0.057 * scale_; 
+  chanaTGCP[k_atlas_wz_dgz]  =  +0.093 * scale_; 
   plotChan[k_atlas_wz_dgz] = true;
 
 // Atlas http://arxiv.org/abs/1410.7238 submitted to JHEP
@@ -586,7 +645,7 @@ if (catgcz)
 // D0 http://arxiv.org/abs/1208.5458 Phys.Lett. B718 (2012) 451-459
 
   chanName[k_d0_vv_dgz]            = "#Deltag^{Z}_{1}";
-  chanMeasurement[k_d0_vv_dgz]     = "D0 Combination";
+  chanMeasurement[k_d0_vv_dgz]     = "D0 Combined";
   chanLumi[k_d0_vv_dgz]            = "8.6 fb^{-1}";
   chanExp[k_d0_vv_dgz]            = "D0";
   chanaTGCC[k_d0_vv_dgz]  = 0.022   * scale_; 
@@ -597,7 +656,7 @@ if (catgcz)
 // LEP  hep-ex/0212036 and hep-ex/0307056 http://arxiv.org/abs/1302.3415
 
   chanName[k_lep_ww_dgz]            = "#Deltag^{Z}_{1}";
-  chanMeasurement[k_lep_ww_dgz]     = "LEP Combination";
+  chanMeasurement[k_lep_ww_dgz]     = "LEP Combined";
   chanLumi[k_lep_ww_dgz]            = "0.7 fb^{-1}";
   chanExp[k_lep_ww_dgz]            = "LEP";
   chanaTGCC[k_lep_ww_dgz]  = -0.016   * scale_; 
@@ -610,18 +669,19 @@ if (catgcz)
 if (natgcg)
   {
 
-  // h3 parameters times 10-1  
+  // h3 parameters scale to 100 for graphing 
   // http://arxiv.org/abs/1302.1283 submitted to PRD
 
+    scale_ = 100.0;  
 
-  chanName[k_atlas_zg_h3g]            = "h^{#gamma}_{3}";
-  chanMeasurement[k_atlas_zg_h3g]     = "Z#gamma";
-  chanLumi[k_atlas_zg_h3g]            = "4.6 fb^{-1}";
-  chanExp[k_atlas_zg_h3g]            = "ATLAS";
-  chanaTGCC[k_atlas_zg_h3g]  = 0.0   * scale_; 
-  chanaTGCM[k_atlas_zg_h3g]  = -0.15 * scale_; 
-  chanaTGCP[k_atlas_zg_h3g]  = +0.16 * scale_; 
-  plotChan[k_atlas_zg_h3g] = true;
+  // chanName[k_atlas_zg_h3g]            = "h^{#gamma}_{3}";
+  // chanMeasurement[k_atlas_zg_h3g]     = "Z#gamma";
+  // chanLumi[k_atlas_zg_h3g]            = "4.6 fb^{-1}";
+  // chanExp[k_atlas_zg_h3g]            = "ATLAS";
+  // chanaTGCC[k_atlas_zg_h3g]  = 0.0   * scale_; 
+  // chanaTGCM[k_atlas_zg_h3g]  = -0.015 * scale_; 
+  // chanaTGCP[k_atlas_zg_h3g]  = +0.016 * scale_; 
+  // plotChan[k_atlas_zg_h3g] = false;
 
 
   // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
@@ -632,8 +692,8 @@ if (natgcg)
 //   chanLumi[k_atlas_zg_h3g]            = "1.0 fb^{-1}";
 //   chanExp[k_atlas_zg_h3g]            = "ATLAS";
 //   chanaTGCC[k_atlas_zg_h3g]  = 0.0   * scale_; 
-//   chanaTGCM[k_atlas_zg_h3g]  = -0.28 * scale_; 
-//   chanaTGCP[k_atlas_zg_h3g]  = +0.27 * scale_; 
+//   chanaTGCM[k_atlas_zg_h3g]  = -0.028 * scale_; 
+//   chanaTGCP[k_atlas_zg_h3g]  = +0.027 * scale_; 
 //   plotChan[k_atlas_zg_h3g] = true;
 
 // CMS Prel EWK-11-009 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsEWK11009
@@ -641,41 +701,55 @@ if (natgcg)
 // http://arxiv.org/abs/1309.1117 HEP 10 (2013) 164
 
   chanName[k_cms_zg_h3g]            = "h^{#gamma}_{3}";
-  chanMeasurement[k_cms_zg_h3g]     = "Z#gamma";
+  chanMeasurement[k_cms_zg_h3g]     = "Z#gamma(ll#gamma,#nu#nu#gamma 7TeV)";
   chanLumi[k_cms_zg_h3g]            = "5.0 fb^{-1}";
   chanExp[k_cms_zg_h3g]            = "CMS";
   chanaTGCC[k_cms_zg_h3g]  = 0.0   * scale_; 
   //  chanaTGCM[k_cms_zg_h3g]  = -0.10 * scale_; 
   //  chanaTGCP[k_cms_zg_h3g]  = +0.10 * scale_; 
-  chanaTGCM[k_cms_zg_h3g]  = -0.029 * scale_; 
-  chanaTGCP[k_cms_zg_h3g]  = +0.029 * scale_; 
+  chanaTGCM[k_cms_zg_h3g]  = -0.0029 * scale_; 
+  chanaTGCP[k_cms_zg_h3g]  = +0.0029 * scale_; 
   plotChan[k_cms_zg_h3g] = true;
 
 // CMS Prel SMP-13-014 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsSMP13014
 // http://arxiv.org/abs/1502.05664
 
   chanName[k_cms_zg8_h3g]            = "h^{#gamma}_{3}";
-  chanMeasurement[k_cms_zg8_h3g]     = "Z#gamma";
+  chanMeasurement[k_cms_zg8_h3g]     = "Z#gamma(ll#gamma)";
   chanLumi[k_cms_zg8_h3g]            = "19.5 fb^{-1}";
   chanExp[k_cms_zg8_h3g]            = "CMS";
   chanaTGCC[k_cms_zg8_h3g]  = 0.0   * scale_; 
   //  chanaTGCM[k_cms_zg_h3g]  = -0.10 * scale_; 
   //  chanaTGCP[k_cms_zg_h3g]  = +0.10 * scale_; 
-  chanaTGCM[k_cms_zg8_h3g]  = -0.046 * scale_; 
-  chanaTGCP[k_cms_zg8_h3g]  = +0.046 * scale_; 
+  chanaTGCM[k_cms_zg8_h3g]  = -0.0046 * scale_; 
+  chanaTGCP[k_cms_zg8_h3g]  = +0.0046 * scale_; 
   plotChan[k_cms_zg8_h3g] = true;
 
 
-  // CDF http://arxiv.org/abs/1103.2990 Phys.Rev.Lett.107:051802,2011
+// CMS Prel SMP-14-019
 
-  chanName[k_cdf_zg_h3g]            = "h^{#gamma}_{3}";
-  chanMeasurement[k_cdf_zg_h3g]     = "Z#gamma";
-  chanLumi[k_cdf_zg_h3g]            = "5.1 fb^{-1}";
-  chanExp[k_cdf_zg_h3g]            = "CDF";
-  chanaTGCC[k_cdf_zg_h3g]  = 0.0   * scale_; 
-  chanaTGCM[k_cdf_zg_h3g]  = -0.22 * scale_; 
-  chanaTGCP[k_cdf_zg_h3g]  = +0.20 * scale_; 
-  plotChan[k_cdf_zg_h3g] = true;
+  chanName[k_cms_zg8_h3g2]            = "h^{#gamma}_{3}";
+  chanMeasurement[k_cms_zg8_h3g2]     = "Z#gamma(#nu#nu#gamma)";
+  chanLumi[k_cms_zg8_h3g2]            = "19.6 fb^{-1}";
+  chanExp[k_cms_zg8_h3g2]            = "CMS";
+  chanaTGCC[k_cms_zg8_h3g2]  = 0.0   * scale_; 
+  chanaTGCM[k_cms_zg8_h3g2]  = -0.00112 * scale_; 
+  chanaTGCP[k_cms_zg8_h3g2]  = +0.00095 * scale_; 
+  plotChan[k_cms_zg8_h3g2] = true;
+
+  
+  
+  // CDF http://arxiv.org/abs/1103.2990 Phys.Rev.Lett.107:051802,2011
+  // not competative
+  
+  // chanName[k_cdf_zg_h3g]            = "h^{#gamma}_{3}";
+  // chanMeasurement[k_cdf_zg_h3g]     = "Z#gamma";
+  // chanLumi[k_cdf_zg_h3g]            = "5.1 fb^{-1}";
+  // chanExp[k_cdf_zg_h3g]            = "CDF";
+  // chanaTGCC[k_cdf_zg_h3g]  = 0.0   * scale_; 
+  // chanaTGCM[k_cdf_zg_h3g]  = -0.022 * scale_; 
+  // chanaTGCP[k_cdf_zg_h3g]  = +0.020 * scale_; 
+  // plotChan[k_cdf_zg_h3g] = false;
 
   // D0 http://arxiv.org/abs/1111.3684 Phys. Rev. D 85, 052001 (2012)
   // Not competative
@@ -686,22 +760,22 @@ if (natgcg)
 //   chanLumi[k_d0_zg_h3g]            = "7.2 fb^{-1}";
 //   chanExp[k_d0_zg_h3g]            = "D0";
 //   chanaTGCC[k_d0_zg_h3g]  = 0.0   * scale_; 
-//   chanaTGCM[k_d0_zg_h3g]  = -0.29 * scale_; 
-//   chanaTGCP[k_d0_zg_h3g]  = +0.29 * scale_; 
+//   chanaTGCM[k_d0_zg_h3g]  = -0.029 * scale_; 
+//   chanaTGCP[k_d0_zg_h3g]  = +0.029 * scale_; 
 //   plotChan[k_d0_zg_h3g] = true;
 
   // LEP not competative -0.049  -0.008 
 
 
   // http://arxiv.org/abs/1302.1283 submitted to PRD
-  chanName[k_atlas_zg_h3z]            = "h^{Z}_{3}";
-  chanMeasurement[k_atlas_zg_h3z]     = "Z#gamma";
-  chanLumi[k_atlas_zg_h3z]            = "4.6 fb^{-1}";
-  chanExp[k_atlas_zg_h3z]            = "ATLAS";
-  chanaTGCC[k_atlas_zg_h3z]  = 0.0   * scale_; 
-  chanaTGCM[k_atlas_zg_h3z]  = -0.13 * scale_; 
-  chanaTGCP[k_atlas_zg_h3z]  = +0.14 * scale_; 
-  plotChan[k_atlas_zg_h3z] = true;
+  // chanName[k_atlas_zg_h3z]            = "h^{Z}_{3}";
+  // chanMeasurement[k_atlas_zg_h3z]     = "Z#gamma";
+  // chanLumi[k_atlas_zg_h3z]            = "4.6 fb^{-1}";
+  // chanExp[k_atlas_zg_h3z]            = "ATLAS";
+  // chanaTGCC[k_atlas_zg_h3z]  = 0.0   * scale_; 
+  // chanaTGCM[k_atlas_zg_h3z]  = -0.013 * scale_; 
+  // chanaTGCP[k_atlas_zg_h3z]  = +0.014 * scale_; 
+  // plotChan[k_atlas_zg_h3z] = false;
  
 
 
@@ -713,8 +787,8 @@ if (natgcg)
 //   chanLumi[k_atlas_zg_h3z]            = "1.0 fb^{-1}";
 //   chanExp[k_atlas_zg_h3z]            = "ATLAS";
 //   chanaTGCC[k_atlas_zg_h3z]  = 0.0   * scale_; 
-//   chanaTGCM[k_atlas_zg_h3z]  = -0.22 * scale_; 
-//   chanaTGCP[k_atlas_zg_h3z]  = +0.26 * scale_; 
+//   chanaTGCM[k_atlas_zg_h3z]  = -0.022 * scale_; 
+//   chanaTGCP[k_atlas_zg_h3z]  = +0.026 * scale_; 
 //   plotChan[k_atlas_zg_h3z] = true;
 
 // CMS Prel EWK-11-009 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsEWK11009
@@ -723,14 +797,14 @@ if (natgcg)
 
 
   chanName[k_cms_zg_h3z]            = "h^{Z}_{3}";
-  chanMeasurement[k_cms_zg_h3z]     = "Z#gamma";
+  chanMeasurement[k_cms_zg_h3z]     = "Z#gamma(ll#gamma,#nu#nu#gamma 7TeV)";
   chanLumi[k_cms_zg_h3z]            = "5.0 fb^{-1}";
   chanExp[k_cms_zg_h3z]            = "CMS";
   chanaTGCC[k_cms_zg_h3z]  = 0.0   * scale_; 
-  //chanaTGCM[k_cms_zg_h3z]  = -0.086 * scale_; 
-  //chanaTGCP[k_cms_zg_h3z]  = +0.084 * scale_; 
-  chanaTGCM[k_cms_zg_h3z]  = -0.027 * scale_; 
-  chanaTGCP[k_cms_zg_h3z]  = +0.027 * scale_; 
+  //chanaTGCM[k_cms_zg_h3z]  = -0.0086 * scale_; 
+  //chanaTGCP[k_cms_zg_h3z]  = +0.0084 * scale_; 
+  chanaTGCM[k_cms_zg_h3z]  = -0.0027 * scale_; 
+  chanaTGCP[k_cms_zg_h3z]  = +0.0027 * scale_; 
   plotChan[k_cms_zg_h3z] = true;
 
 
@@ -738,27 +812,39 @@ if (natgcg)
 // http://arxiv.org/abs/1502.05664
 
   chanName[k_cms_zg8_h3z]            = "h^{Z}_{3}";
-  chanMeasurement[k_cms_zg8_h3z]     = "Z#gamma";
+  chanMeasurement[k_cms_zg8_h3z]     = "Z#gamma(ll#gamma)";
   chanLumi[k_cms_zg8_h3z]            = "19.5 fb^{-1}";
   chanExp[k_cms_zg8_h3z]            = "CMS";
   chanaTGCC[k_cms_zg8_h3z]  = 0.0   * scale_; 
-  //chanaTGCM[k_cms_zg_h3z]  = -0.086 * scale_; 
-  //chanaTGCP[k_cms_zg_h3z]  = +0.084 * scale_; 
-  chanaTGCM[k_cms_zg8_h3z]  = -0.038 * scale_; 
-  chanaTGCP[k_cms_zg8_h3z]  = +0.037 * scale_; 
+  //chanaTGCM[k_cms_zg_h3z]  = -0.0086 * scale_; 
+  //chanaTGCP[k_cms_zg_h3z]  = +0.0084 * scale_; 
+  chanaTGCM[k_cms_zg8_h3z]  = -0.0038 * scale_; 
+  chanaTGCP[k_cms_zg8_h3z]  = +0.0037 * scale_; 
   plotChan[k_cms_zg8_h3z] = true;
 
 
-  // CDF http://arxiv.org/abs/1103.2990 Phys.Rev.Lett.107:051802,2011
+// CMS Prel SMP-14-019
 
-  chanName[k_cdf_zg_h3z]            = "h^{Z}_{3}";
-  chanMeasurement[k_cdf_zg_h3z]     = "Z#gamma";
-  chanLumi[k_cdf_zg_h3z]            = "5.1 fb^{-1}";
-  chanExp[k_cdf_zg_h3z]            = "CDF";
-  chanaTGCC[k_cdf_zg_h3z]  = 0.0   * scale_; 
-  chanaTGCM[k_cdf_zg_h3z]  = -0.20 * scale_; 
-  chanaTGCP[k_cdf_zg_h3z]  = +0.21 * scale_; 
-  plotChan[k_cdf_zg_h3z] = true;
+  chanName[k_cms_zg8_h3z2]            = "h^{Z}_{3}";
+  chanMeasurement[k_cms_zg8_h3z2]     = "Z#gamma(#nu#nu#gamma)";
+  chanLumi[k_cms_zg8_h3z2]            = "19.6 fb^{-1}";
+  chanExp[k_cms_zg8_h3z2]            = "CMS";
+  chanaTGCC[k_cms_zg8_h3z2]  = 0.0   * scale_; 
+  chanaTGCM[k_cms_zg8_h3z2]  = -0.00150 * scale_; 
+  chanaTGCP[k_cms_zg8_h3z2]  = +0.00164 * scale_; 
+  plotChan[k_cms_zg8_h3z2] = true;
+
+  // CDF http://arxiv.org/abs/1103.2990 Phys.Rev.Lett.107:051802,2011
+  // not competative
+  
+  // chanName[k_cdf_zg_h3z]            = "h^{Z}_{3}";
+  // chanMeasurement[k_cdf_zg_h3z]     = "Z#gamma";
+  // chanLumi[k_cdf_zg_h3z]            = "5.1 fb^{-1}";
+  // chanExp[k_cdf_zg_h3z]            = "CDF";
+  // chanaTGCC[k_cdf_zg_h3z]  = 0.0   * scale_; 
+  // chanaTGCM[k_cdf_zg_h3z]  = -0.020 * scale_; 
+  // chanaTGCP[k_cdf_zg_h3z]  = +0.021 * scale_; 
+  // plotChan[k_cdf_zg_h3z] = false;
 
   // D0 http://arxiv.org/abs/1111.3684 Phys. Rev. D 85, 052001 (2012)
   // not competative
@@ -768,38 +854,43 @@ if (natgcg)
 //   chanLumi[k_d0_zg_h3z]            = "7.2 fb^{-1}";
 //   chanExp[k_d0_zg_h3z]            = "D0";
 //   chanaTGCC[k_d0_zg_h3z]  = 0.0   * scale_; 
-//   chanaTGCM[k_d0_zg_h3z]  = -0.26 * scale_; 
-//   chanaTGCP[k_d0_zg_h3z]  = +0.26 * scale_; 
+//   chanaTGCM[k_d0_zg_h3z]  = -0.026 * scale_; 
+//   chanaTGCP[k_d0_zg_h3z]  = +0.026 * scale_; 
 //   plotChan[k_d0_zg_h3z] = true;
 
   // LEP not competative -020 0.07
 
 
 
-  // h4 parameters times 10-3
+  // h4 parameters
+  // scale by 10000 for graphing
 
+  scale_ = 10000.0;
+  
   // ATLAS http://arxiv.org/abs/1302.1283 submitted to PRD
-  chanName[k_atlas_zg_h4g]            = "h^{#gamma}_{4}x100";
-  chanMeasurement[k_atlas_zg_h4g]     = "Z#gamma";
-  chanLumi[k_atlas_zg_h4g]            = "4.6 fb^{-1}";
-  chanExp[k_atlas_zg_h4g]            = "ATLAS";
-  chanaTGCC[k_atlas_zg_h4g]  = 0.0   * scale_; 
-  chanaTGCM[k_atlas_zg_h4g]  = -0.094 * scale_; 
-  chanaTGCP[k_atlas_zg_h4g]  = +0.092 * scale_; 
-  plotChan[k_atlas_zg_h4g] = true;
+  // not competative
+
+  // chanName[k_atlas_zg_h4g]            = "h^{#gamma}_{4}";
+  // chanMeasurement[k_atlas_zg_h4g]     = "Z#gamma";
+  // chanLumi[k_atlas_zg_h4g]            = "4.6 fb^{-1}";
+  // chanExp[k_atlas_zg_h4g]            = "ATLAS";
+  // chanaTGCC[k_atlas_zg_h4g]  = 0.0   * scale_; 
+  // chanaTGCM[k_atlas_zg_h4g]  = -0.000094 * scale_; 
+  // chanaTGCP[k_atlas_zg_h4g]  = +0.000092 * scale_; 
+  // plotChan[k_atlas_zg_h4g] = false;
 
 
 
   // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
   // superseeded
 
-//   chanName[k_atlas_zg_h4g]            = "h^{#gamma}_{4}x100";
+//   chanName[k_atlas_zg_h4g]            = "h^{#gamma}_{4}";
 //   chanMeasurement[k_atlas_zg_h4g]     = "Z#gamma";
 //   chanLumi[k_atlas_zg_h4g]            = "1.0 fb^{-1}";
 //   chanExp[k_atlas_zg_h4g]            = "ATLAS";
 //   chanaTGCC[k_atlas_zg_h4g]  = 0.0   * scale_; 
-//   chanaTGCM[k_atlas_zg_h4g]  = -0.21 * scale_; 
-//   chanaTGCP[k_atlas_zg_h4g]  = +0.21 * scale_; 
+//   chanaTGCM[k_atlas_zg_h4g]  = -0.00021 * scale_; 
+//   chanaTGCP[k_atlas_zg_h4g]  = +0.00021 * scale_; 
 //   plotChan[k_atlas_zg_h4g] = true;
 
 
@@ -808,42 +899,54 @@ if (natgcg)
 // http://arxiv.org/abs/1309.1117 HEP 10 (2013) 164
 
 
-  chanName[k_cms_zg_h4g]            = "h^{#gamma}_{4}x100";
-  chanMeasurement[k_cms_zg_h4g]     = "Z#gamma";
+  chanName[k_cms_zg_h4g]            = "h^{#gamma}_{4}";
+  chanMeasurement[k_cms_zg_h4g]     = "Z#gamma(ll#gamma,#nu#nu#gamma 7TeV)";
   chanLumi[k_cms_zg_h4g]            = "5.0 fb^{-1}";
   chanExp[k_cms_zg_h4g]            = "CMS";
   chanaTGCC[k_cms_zg_h4g]  = 0.0   * scale_; 
-  //chanaTGCM[k_cms_zg_h4g]  = -0.088 * scale_; 
-  //chanaTGCP[k_cms_zg_h4g]  = +0.088 * scale_; 
-  chanaTGCM[k_cms_zg_h4g]  = -0.015 * scale_; 
-  chanaTGCP[k_cms_zg_h4g]  = +0.015 * scale_; 
+  //chanaTGCM[k_cms_zg_h4g]  = -0.000088 * scale_; 
+  //chanaTGCP[k_cms_zg_h4g]  = +0.000088 * scale_; 
+  chanaTGCM[k_cms_zg_h4g]  = -0.000015 * scale_; 
+  chanaTGCP[k_cms_zg_h4g]  = +0.000015 * scale_; 
   plotChan[k_cms_zg_h4g] = true;
 
 // CMS Prel SMP-13-014 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsSMP13014
 // http://arxiv.org/abs/1502.05664
 
-  chanName[k_cms_zg8_h4g]            = "h^{#gamma}_{4}x100";
-  chanMeasurement[k_cms_zg8_h4g]     = "Z#gamma";
+  chanName[k_cms_zg8_h4g]            = "h^{#gamma}_{4}";
+  chanMeasurement[k_cms_zg8_h4g]     = "Z#gamma(ll#gamma)";
   chanLumi[k_cms_zg8_h4g]            = "19.5 fb^{-1}";
   chanExp[k_cms_zg8_h4g]            = "CMS";
   chanaTGCC[k_cms_zg8_h4g]  = 0.0   * scale_; 
-  //chanaTGCM[k_cms_zg_h4g]  = -0.088 * scale_; 
-  //chanaTGCP[k_cms_zg_h4g]  = +0.088 * scale_; 
-  chanaTGCM[k_cms_zg8_h4g]  = -0.036 * scale_; 
-  chanaTGCP[k_cms_zg8_h4g]  = +0.035 * scale_; 
+  //chanaTGCM[k_cms_zg_h4g]  = -0.000088 * scale_; 
+  //chanaTGCP[k_cms_zg_h4g]  = +0.000088 * scale_; 
+  chanaTGCM[k_cms_zg8_h4g]  = -0.000036 * scale_; 
+  chanaTGCP[k_cms_zg8_h4g]  = +0.000035 * scale_; 
   plotChan[k_cms_zg8_h4g] = true;
 
+// CMS Prel SMP-14-019
+
+  chanName[k_cms_zg8_h4g2]            = "h^{#gamma}_{4}";
+  chanMeasurement[k_cms_zg8_h4g2]     = "Z#gamma(#nu#nu#gamma)";
+  chanLumi[k_cms_zg8_h4g2]            = "19.6 fb^{-1}";
+  chanExp[k_cms_zg8_h4g2]            = "CMS";
+  chanaTGCC[k_cms_zg8_h4g2]  = 0.0   * scale_; 
+  chanaTGCM[k_cms_zg8_h4g2]  = -0.00000380 * scale_; 
+  chanaTGCP[k_cms_zg8_h4g2]  = +0.00000435 * scale_; 
+  plotChan[k_cms_zg8_h4g2] = true;
+
+  
 
   // CDF http://arxiv.org/abs/1103.2990 Phys.Rev.Lett.107:051802,2011
   // not competative
 
-//   chanName[k_cdf_zg_h4g]            = "h^{#gamma}_{4}x100";
+//   chanName[k_cdf_zg_h4g]            = "h^{#gamma}_{4}";
 //   chanMeasurement[k_cdf_zg_h4g]     = "Z#gamma";
 //   chanLumi[k_cdf_zg_h4g]            = "5.1 fb^{-1}";
 //   chanExp[k_cdf_zg_h4g]            = "CDF";
 //   chanaTGCC[k_cdf_zg_h4g]  = 0.0   * scale_; 
-//   chanaTGCM[k_cdf_zg_h4g]  = -0.8 * scale_; 
-//   chanaTGCP[k_cdf_zg_h4g]  = +0.8 * scale_; 
+//   chanaTGCM[k_cdf_zg_h4g]  = -0.0008 * scale_; 
+//   chanaTGCP[k_cdf_zg_h4g]  = +0.0008 * scale_; 
 //   plotChan[k_cdf_zg_h4g] = true;
 
   // D0 http://arxiv.org/abs/1111.3684 Phys. Rev. D 85, 052001 (2012)
@@ -854,70 +957,82 @@ if (natgcg)
 
 
   // ATLAS http://arxiv.org/abs/1302.1283 submitted to PRD
+  // not competative
 
-  chanName[k_atlas_zg_h4z]            = "h^{Z}_{4}x100";
-  chanMeasurement[k_atlas_zg_h4z]     = "Z#gamma";
-  chanLumi[k_atlas_zg_h4z]            = "4.6 fb^{-1}";
-  chanExp[k_atlas_zg_h4z]            = "ATLAS";
-  chanaTGCC[k_atlas_zg_h4z]  = 0.0   * scale_; 
-  chanaTGCM[k_atlas_zg_h4z]  = -0.087 * scale_; 
-  chanaTGCP[k_atlas_zg_h4z]  = +0.087 * scale_; 
-  plotChan[k_atlas_zg_h4z] = true;
+  // chanName[k_atlas_zg_h4z]            = "h^{Z}_{4}";
+  // chanMeasurement[k_atlas_zg_h4z]     = "Z#gamma";
+  // chanLumi[k_atlas_zg_h4z]            = "4.6 fb^{-1}";
+  // chanExp[k_atlas_zg_h4z]            = "ATLAS";
+  // chanaTGCC[k_atlas_zg_h4z]  = 0.0   * scale_; 
+  // chanaTGCM[k_atlas_zg_h4z]  = -0.000087 * scale_; 
+  // chanaTGCP[k_atlas_zg_h4z]  = +0.000087 * scale_; 
+  // plotChan[k_atlas_zg_h4z] = false;
  
 
  // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
   // superceeded
 
-//   chanName[k_atlas_zg_h4z]            = "h^{Z}_{4}x100";
+//   chanName[k_atlas_zg_h4z]            = "h^{Z}_{4}";
 //   chanMeasurement[k_atlas_zg_h4z]     = "Z#gamma";
 //   chanLumi[k_atlas_zg_h4z]            = "1.0 fb^{-1}";
 //   chanExp[k_atlas_zg_h4z]            = "ATLAS";
 //   chanaTGCC[k_atlas_zg_h4z]  = 0.0   * scale_; 
-//   chanaTGCM[k_atlas_zg_h4z]  = -0.22 * scale_; 
-//   chanaTGCP[k_atlas_zg_h4z]  = +0.21 * scale_; 
+//   chanaTGCM[k_atlas_zg_h4z]  = -0.00022 * scale_; 
+//   chanaTGCP[k_atlas_zg_h4z]  = +0.00021 * scale_; 
 //   plotChan[k_atlas_zg_h4z] = true;
 
 // CMS Prel EWK-11-009 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsEWK11009
 // CMS Prel SMP-12-020 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsSMP12020
 // http://arxiv.org/abs/1309.1117 HEP 10 (2013) 164
 
-  chanName[k_cms_zg_h4z]            = "h^{Z}_{4}x100";
-  chanMeasurement[k_cms_zg_h4z]     = "Z#gamma";
+  chanName[k_cms_zg_h4z]            = "h^{Z}_{4}";
+  chanMeasurement[k_cms_zg_h4z]     = "Z#gamma(ll#gamma,#nu#nu#gamma 7TeV)";
   chanLumi[k_cms_zg_h4z]            = "5.0 fb^{-1}";
   chanExp[k_cms_zg_h4z]            = "CMS";
   chanaTGCC[k_cms_zg_h4z]  = 0.0   * scale_; 
-  //  chanaTGCM[k_cms_zg_h4z]  = -0.080 * scale_; 
-  //  chanaTGCP[k_cms_zg_h4z]  = +0.079 * scale_; 
-  chanaTGCM[k_cms_zg_h4z]  = -0.013 * scale_; 
-  chanaTGCP[k_cms_zg_h4z]  = +0.013 * scale_; 
+  //  chanaTGCM[k_cms_zg_h4z]  = -0.000080 * scale_; 
+  //  chanaTGCP[k_cms_zg_h4z]  = +0.000079 * scale_; 
+  chanaTGCM[k_cms_zg_h4z]  = -0.000013 * scale_; 
+  chanaTGCP[k_cms_zg_h4z]  = +0.000013 * scale_; 
   plotChan[k_cms_zg_h4z] = true;
 
 // CMS Prel SMP-13-014 https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsSMP13014
 // http://arxiv.org/abs/1502.05664
 
-  chanName[k_cms_zg8_h4z]            = "h^{Z}_{4}x100";
-  chanMeasurement[k_cms_zg8_h4z]     = "Z#gamma";
+  chanName[k_cms_zg8_h4z]            = "h^{Z}_{4}";
+  chanMeasurement[k_cms_zg8_h4z]     = "Z#gamma(ll#gamma)";
   chanLumi[k_cms_zg8_h4z]            = "19.5 fb^{-1}";
   chanExp[k_cms_zg8_h4z]            = "CMS";
   chanaTGCC[k_cms_zg8_h4z]  = 0.0   * scale_; 
-  //  chanaTGCM[k_cms_zg_h4z]  = -0.080 * scale_; 
-  //  chanaTGCP[k_cms_zg_h4z]  = +0.079 * scale_; 
-  chanaTGCM[k_cms_zg8_h4z]  = -0.031 * scale_; 
-  chanaTGCP[k_cms_zg8_h4z]  = +0.030 * scale_; 
+  //  chanaTGCM[k_cms_zg_h4z]  = -0.000080 * scale_; 
+  //  chanaTGCP[k_cms_zg_h4z]  = +0.000079 * scale_; 
+  chanaTGCM[k_cms_zg8_h4z]  = -0.000031 * scale_; 
+  chanaTGCP[k_cms_zg8_h4z]  = +0.000030 * scale_; 
   plotChan[k_cms_zg8_h4z] = true;
 
 
+// CMS Prel SMP-14-019
+
+  chanName[k_cms_zg8_h4z2]            = "h^{Z}_{4}";
+  chanMeasurement[k_cms_zg8_h4z2]     = "Z#gamma(#nu#nu#gamma)";
+  chanLumi[k_cms_zg8_h4z2]            = "19.6 fb^{-1}";
+  chanExp[k_cms_zg8_h4z2]            = "CMS";
+  chanaTGCC[k_cms_zg8_h4z2]  = 0.0   * scale_; 
+  chanaTGCM[k_cms_zg8_h4z2]  = -0.00000396 * scale_; 
+  chanaTGCP[k_cms_zg8_h4z2]  = +0.00000459 * scale_; 
+  plotChan[k_cms_zg8_h4z2] = true;
+  
 
   // CDF http://arxiv.org/abs/1103.2990 Phys.Rev.Lett.107:051802,2011
   // not competative
 
-//   chanName[k_cdf_zg_h4z]            = "h^{Z}_{4}x100";
+//   chanName[k_cdf_zg_h4z]            = "h^{Z}_{4}";
 //   chanMeasurement[k_cdf_zg_h4z]     = "Z#gamma";
 //   chanLumi[k_cdf_zg_h4z]            = "5.` fb^{-1}";
 //   chanExp[k_cdf_zg_h4z]            = "CDF";
 //   chanaTGCC[k_cdf_zg_h4z]  = 0.0   * scale_; 
-//   chanaTGCM[k_cdf_zg_h4z]  = -0.9 * scale_; 
-//   chanaTGCP[k_cdf_zg_h4z]  = +0.9 * scale_; 
+//   chanaTGCM[k_cdf_zg_h4z]  = -0.09 * scale_; 
+//   chanaTGCP[k_cdf_zg_h4z]  = +0.09 * scale_; 
 //   plotChan[k_cdf_zg_h4z] = true;
 
 
@@ -926,12 +1041,12 @@ if (natgcg)
 
   // LEP not competative -0.05  -0.12 
 
-
   }
 
 if (natgcz)
   {
 
+    
   // f3 parameters times 10-1  
   // ATLAS http://arxiv.org/abs/1211.6096 submitted to jhep
   //http://arxiv.org/abs/1211.6096 submitted to jhep
@@ -1203,23 +1318,28 @@ for( size_t ii=0; ii<k_nChan; ii++ )
      for( size_t ii=0; ii<k_nChan; ii++ )
 	{
 ostringstream stream1, stream2, stream3;
-stream1.precision(3);
-stream2.precision(3);
-stream3.precision(3);
- stream1 << fixed;
- stream2 << fixed;
- stream3 << fixed;
+stream1.precision(1);
+stream2.precision(1);
+stream3.precision(1);
+ stream1 << scientific;
+ stream2 << scientific;
+ stream3 << scientific;
  if (catgcz || catgcg) {
 stream1<< (chanaTGCC[ii]);    // for fixed point notation
 stream2<<(chanaTGCM[ii]);    // for fixed point notation
 stream3<<(chanaTGCP[ii]);    // for fixed point notation
 chanResult[ii] = stream2.str() + " - " + stream3.str();
- } else {
-stream1<< (chanaTGCC[ii]*0.1);    // for fixed point notation
- stream2<<(chanaTGCM[ii]*0.1);    // for fixed point notation
-stream3<<(chanaTGCP[ii]*0.1);    // for fixed point notation
+ } else if ( chanName[ii] == "h^{#gamma}_{3}" ||chanName[ii] == "h^{Z}_{3}")  {
+stream1<< (chanaTGCC[ii]/100.0);    // for fixed point notation
+ stream2<<(chanaTGCM[ii]/100.0);    // for fixed point notation
+ stream3<<(chanaTGCP[ii]/100.0);    // for fixed point notation
 chanResult[ii] = stream2.str() + " - " + stream3.str();
 
+ } else if ( chanName[ii] == "h^{#gamma}_{4}" ||chanName[ii] == "h^{Z}_{4}")  {
+stream1<< (chanaTGCC[ii]/10000.0);    // for fixed point notation
+ stream2<<(chanaTGCM[ii]/10000.0);    // for fixed point notation
+ stream3<<(chanaTGCP[ii]/10000.0);    // for fixed point notation
+chanResult[ii] = stream2.str() + " - " + stream3.str();
 
  }
 

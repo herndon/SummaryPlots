@@ -138,7 +138,7 @@ public:
 	_dataExpPoint.SetMarkerSize(0);
 	_dataExpPoint.DrawClone("e");	
 
-	if (_type != 2 && _type != 1 && _type != 3)
+	if (_atgcc !=0)
 	  {
  	TMarker _dataPoint( _atgcc, _ypos, kFullCircle );
  	_dataPoint.SetMarkerSize(markerSize);
@@ -177,7 +177,7 @@ public:
 	//_dataPoint.DrawClone();
 
 	txt[ntxt] = "ATLAS Limits";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.023;
 	txtX[ntxt] = _ypos - 0.65;
 	txtY[ntxt] = _atgcc-dy_*exps;
  	txtAlign[ntxt] = 12;
@@ -207,7 +207,7 @@ public:
         //_dataPointCMS.DrawClone();
 
 	txt[ntxt] = "CMS Prel. Limits";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.023;
 	txtX[ntxt] = _ypos - 0.65;
 	txtY[ntxt] = _atgcc-dy_*exps;
  	txtAlign[ntxt] = 12;
@@ -238,7 +238,7 @@ public:
 //         _dataPointCDF.DrawClone();
  
 	txt[ntxt] = "CDF Limit";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.023;
 	txtX[ntxt] = _ypos - 0.65;
 	txtY[ntxt] = _atgcc-dy_*exps;
  	txtAlign[ntxt] = 12;
@@ -269,7 +269,7 @@ public:
         _dataPointD0.DrawClone();
 
 	txt[ntxt] = "D0 Limit";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.023;
 	txtX[ntxt] = _ypos - 0.65;
 	txtY[ntxt] = _atgcc-dy_*exps;
  	txtAlign[ntxt] = 12;
@@ -300,7 +300,7 @@ public:
         _dataPointLEP.DrawClone();
 
 	txt[ntxt] = "LEP Limit";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _ypos - 0.65;
 	txtY[ntxt] = _atgcc-dy_*exps;
  	txtAlign[ntxt] = 12;
@@ -422,23 +422,23 @@ aTGC(float ymin=-2.0, float ymax=900000 )
 	currentName = chanName[ii];
 
 	txt[ntxt] = chanMeasurement[ii];
-	txtSize[ntxt] = size_;
+	txtSize[ntxt] = size_-0.005;
 	txtX[ntxt] = 0.50;
-	txtY[ntxt] = nPlotChan - (nBin_) +1.55*DY_;
+	txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
 
 	txt[ntxt] = chanResult[ii];
-	txtSize[ntxt] = size_;
-	txtX[ntxt] = 1.15;
+	txtSize[ntxt] = size_-0.005;
+	txtX[ntxt] = 1.00;
 	txtY[ntxt] = nPlotChan - (nBin_) +1.52*DY_;
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
 
 	txt[ntxt] = chanLumi[ii];
-	txtSize[ntxt] = size_;
+	txtSize[ntxt] = size_-0.005;
 	txtX[ntxt] = 1.65;
 	txtY[ntxt] = nPlotChan - (nBin_) +1.55*DY_;
 	txtAlign[ntxt] = 12;
@@ -598,7 +598,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "Mar 2015";
+  txt[1] = "July 2015";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.97;
@@ -607,10 +607,10 @@ void text_init()
   txtFont[1] = 42;
  
   if (_natgcz||_natgcg) {
-  txt[ntxt] = "x10^{-1}";
-  txtSize[ntxt] = 0.04;
-  txtX[ntxt] = 0.95;
-  txtY[ntxt] = 0.055;
+  txt[ntxt] = "x10^{-2}(h_{3}),x10^{-4}(h_{4})";
+  txtSize[ntxt] = 0.03;
+  txtX[ntxt] = 0.98;
+  txtY[ntxt] = 0.06;
   txtAlign[ntxt] = 31;
   txtNDC[ntxt]=true;
   txtFont[ntxt] = 42;

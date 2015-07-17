@@ -180,7 +180,7 @@ public:
     else
       {
 	float dy_ = 1/2.5;
-        if (version <= 2) _dx = _dx*2.0;
+        if (version <= 2 || version == 6) _dx = _dx*2.0;
 
 	if (version !=3 && version != 4) {
        
@@ -317,7 +317,8 @@ TCanvas*
 // version 0-2 ymin 0.02, ymax 600000
 // version 3  ymin 0.02 ymax 30000, 
 // version 4 ymin=0.005, float ymax=  50000000
-Sigma(float ymin=0.02, float ymax=600000 )
+// version 6 ymin 0.001, ymax 100
+Sigma(float ymin=0.001, float ymax=100 )
 {
 
 #include "data.C"
@@ -363,7 +364,10 @@ Sigma(float ymin=0.02, float ymax=600000 )
       for( size_t ii=0; ii<k_nChan; ii++ )
 	{
 	  if (plotChan[ii]) {
-            if (ledgendY == 0) ledgendY = chanSigma[ii];
+            if (ledgendY == 0 && chanSigma[ii] > 0.0) {
+	      ledgendY = chanSigma[ii];
+               if (version == 6) ledgendY*=40.0;
+	    }
 	    DX_=stdDX_;
 
 	    // Detect channels with 7 and 8 TeV Measurements
@@ -401,7 +405,7 @@ Sigma(float ymin=0.02, float ymax=600000 )
             if ((version<3&&ii==k_ggH)||(version==4&&ii==k_Hgg)){
 	      txt[ntxt] = "Th. #Delta#sigma_{H} in exp. #Delta#sigma" ;
               txtSize[ntxt] = size_;
-	      txtY[ntxt] = ymin*0.28;
+	      txtY[ntxt] = ymin*0.25;
 	      txtX[ntxt] = nBin_-0.5*DX_;
               if (version==4&&ii==k_Hgg) txtX[ntxt] += 4;
 	      txtAlign[ntxt] = 21;
@@ -409,7 +413,20 @@ Sigma(float ymin=0.02, float ymax=600000 )
 	      txtFont[ntxt] = 42;
 	      ntxt++;
 	    }
-            if (version==3&&ii==k_Z){
+            if ((version<3&&ii==k_VBFW8)||(version==4&&ii==k_VBFW8)){
+	      txt[ntxt] = "W#rightarrowl#nu, Z#rightarrowll, l=e,#mu" ;
+              txtSize[ntxt] = 0.015;
+	      txtY[ntxt] = ymin*0.25;
+	      txtX[ntxt] = nBin_-0.0*DX_;
+              if (version==4&&ii==k_VBFW8) txtX[ntxt] += 4;
+	      txtAlign[ntxt] = 21;
+	      txtAlign[ntxt] = 11;
+	      txtFont[ntxt] = 42;
+	      ntxt++;
+	    }
+
+
+	    if (version==3&&ii==k_Z){
 	      txt[ntxt] = "Fiducial  W and Z #sigmas with W#rightarrowl#nu, Z#rightarrowll and kinematic selection" ;
              txtSize[ntxt] = size_;
 	      txtY[ntxt] = ymin*0.34;
@@ -422,7 +439,8 @@ Sigma(float ymin=0.02, float ymax=600000 )
 
 	    if (DX_==stdDX_ || ((DX_==(stdDX_/2)) && (nSubChan_==1))) {
 	      txt[ntxt] = chanMeasurement[ii];
-	      txtSize[ntxt] = size_;
+	      txtSize[ntxt] = 0.015;
+	      if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
 	      if (version==4) txtSize[ntxt] = 0.03;
               txtY[ntxt] = ymin*0.5;
 	      if (DX_==stdDX_) txtX[ntxt] = nBin_;
@@ -441,6 +459,8 @@ Sigma(float ymin=0.02, float ymax=600000 )
 	      if (version==3 && nBin_ > 200 ) vmax_.push_back( 100.0 );
 	      if (version==4 && nBin_ < 30 ) vmax_.push_back( 1. );
 	      if (version==4 && nBin_ > 30 ) vmax_.push_back( 200.0 );
+	      if (version==6 && nBin_ < 30 ) vmax_.push_back( 1. );
+	      if (version==6 && nBin_ > 30 ) vmax_.push_back( 200.0 );
 	      vstyle_.push_back(3);
 	    } 
 	    if ( version==0 && ii != k_tt1jet8 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
@@ -563,7 +583,10 @@ Sigma(float ymin=0.02, float ymax=600000 )
   float yy_ = ledgendY/2.0; 
   //if (version==4)
   float xx_ = nBin_-(0.48*nBin_);
+  if (version == 6) xx_ = nBin_-(0.65*nBin_);
   float dxx_ = DX_/2.0;
+ if (version == 6) dxx_ = DX_/4.0;
+ 
   DataPoint p_( 0, 0, 0.3*yy_, 
 		yy_, 0,
 		xx_, dxx_, type ) ;
@@ -581,6 +604,7 @@ Sigma(float ymin=0.02, float ymax=600000 )
       type = 7;
       if  (iChan  == k_W8) type = 8;
       if  (iChan  == k_Z8) type = 8;
+      if  (iChan  == k_VBFW8) type = 8;
       if  (iChan  == k_VBFZ8) type = 8;
       if  (iChan  == k_Zg8) type = 8;
       if  (iChan  == k_WW8) type = 8;
@@ -591,6 +615,9 @@ Sigma(float ymin=0.02, float ymax=600000 )
       if  (iChan  == k_VH8) type = 8;
       if  (iChan  == k_ttH8) type = 8;
       if  (iChan  == k_WVg) type = 8;
+      if  (iChan  == k_exWW8) type = 8;
+      if  (iChan  == k_exWW8) type = 8;
+      if  (iChan  == k_SSWW8) type = 8;
       if  (iChan == k_tt8) type = 8;
       if  (iChan == k_tt1jet8) type = 8;
       if  (iChan == k_tt2jet8) type = 8;
@@ -673,7 +700,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "June 2015";
+  txt[1] = "July 2015";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.93;
@@ -681,14 +708,16 @@ void text_init()
   txtNDC[1]=true;
   txtFont[1] = 42;
 
+  if (version != 6) {
   txt[2] = "All results at: http://cern.ch/go/pNj7";
   txtSize[2] = 0.03;
-  txtX[2] = 0.14;
+  txtX[2] = 0.07;
+  if (version ==0) txtX[2] = 0.07;
   txtY[2] = 0.01;
   txtAlign[2] = 11;
   txtNDC[2]=true;
   txtFont[2] = 42;
-
+  }
 
   
 }
