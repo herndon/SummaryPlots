@@ -506,7 +506,8 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 
 	    if (DX_==stdDX_ || ((DX_==(stdDX_/2)|| (DX_==(stdDX_/3))) && (nSubChan_==1))) {
 	      txt[ntxt] = chanMeasurement[ii];
-	      txtSize[ntxt] = 0.015;
+               txtSize[ntxt] = 0.015;
+	      if (version==0) txtSize[ntxt] = 0.02;
 	      //if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
 	      if (version==4) txtSize[ntxt] = 0.03;
               txtY[ntxt] = ymin*0.5;
@@ -546,8 +547,8 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 	      if (chanMeasurement[ii] == "1j") txt[ntxt] = "=n jet(s)";
 	      txtSize[ntxt] = size_;
 	      if (chanMeasurement[ii] == "#geq1j") txtY[ntxt] = chanSigma[ii]*1.4;
-	      if (chanMeasurement[ii] == "1j") txtY[ntxt] = chanSigma[ii]*2.1;
-	      txtX[ntxt] = nBin_;
+	      if (chanMeasurement[ii] == "1j") txtY[ntxt] = chanSigma[ii]*2.0;
+	      txtX[ntxt] = nBin_-3;
 	      txtAlign[ntxt] = 11;
 	      txtFont[ntxt] = 42;
 	      ntxt++;
@@ -803,9 +804,9 @@ void text_init()
 
   if (version != 6) {
   txt[2] = "All results at: http://cern.ch/go/pNj7";
-  txtSize[2] = 0.03;
+  txtSize[2] = 0.025;
   txtX[2] = 0.07;
-  if (version ==0) txtX[2] = 0.07;
+  if (version ==0) txtX[2] = 0.05;
   txtY[2] = 0.01;
   txtAlign[2] = 11;
   txtNDC[2]=true;
