@@ -2,7 +2,7 @@
 
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
-enum { k_W=0,  k_W8, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W2jetn, k_W3jetn, k_W4jetn, k_W5jetn, k_W6jetn, k_W1cjet, k_W2bjet, k_Z,  k_Z8,  k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8,k_Z2jetn,  k_Z2jet8,k_Z3jetn, k_Z3jet8, k_Z4jetn,  k_Z4jet8, k_Z5jet8, k_Z6jet8, k_Z7jet8, k_Z1bjet, k_Z2bjet, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW1jet, k_WZ, k_WZ8,   k_ZZ, k_ZZ8,  k_VBFW8, k_VBFZ, k_VBFZ8, k_exWW,  k_exWW8,  k_SSWW8, k_WVg,  k_tt,  k_tt8, k_tt1jet, k_tt1jet8, k_tt2jet, k_tt2jet8, k_tt3jet, k_tt3jet8, k_t, k_t8, k_tW, k_tW8, k_tschan, k_ttg, k_ttW8, k_ttZ, k_ttZ8, k_HZZ,  k_ggH, k_ggH8, k_VBFH, k_VBFH8, k_VH, k_VH8,  k_ttH, k_ttH8, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
+enum { k_W=0,  k_W8, k_W13, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W2jetn, k_W3jetn, k_W4jetn, k_W5jetn, k_W6jetn, k_W1cjet, k_W2bjet, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8,k_Z2jetn,  k_Z2jet8,k_Z3jetn, k_Z3jet8, k_Z4jetn,  k_Z4jet8, k_Z5jet8, k_Z6jet8, k_Z7jet8, k_Z1bjet, k_Z2bjet, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW1jet, k_WZ, k_WZ8, k_WZ13, k_WZ13fid,  k_ZZ, k_ZZ8,  k_ZZ13,  k_VBFW8, k_VBFZ, k_VBFZ8, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_EWKZg8, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8, k_tt2jet, k_tt2jet8, k_tt3jet, k_tt3jet8, k_t, k_t8, k_t13, k_tW, k_tW8, k_tschan, k_tschan8, k_ttg, k_ttW8, k_ttZ, k_ttZ8, k_ttZ13, k_HZZ,  k_ggH, k_ggH8, k_VBFH, k_VBFH8, k_VH, k_VH8,  k_ttH, k_ttH8, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
 
 
 
@@ -11,11 +11,14 @@ enum { k_W=0,  k_W8, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W2jetn, k_
 // 7 and 8 TeV measurements are grouped if the ChanMeasurement short name is the same for both
 // To add +jets measurements under the main measurement you need to set subChan to a number greater than 1.
 
+bool big13TeV = false;
+bool use13TeV = true;
 
   float nPlotBins = 0;
   int nPlotChan = 0;
   vector<bool> plotChan( k_nChan, false );
   vector<int>  subChan(k_nChan, 1);
+  vector<int>  energy(k_nChan, 8);
   vector<string> 
     chanMeasurement( k_nChan ),
     chanResult (     k_nChan ),
@@ -40,6 +43,8 @@ if (version==0||version==1) {
 
   plotChan[k_W] = true;
   plotChan[k_W8] = true;
+  if (use13TeV) plotChan[k_W13] = true;
+  if (use13TeV) plotChan[k_Z13] = true;
 
   plotChan[k_Wp] = false;
   plotChan[k_Wm] = false;
@@ -55,6 +60,8 @@ if (version==0||version==1) {
   plotChan[k_Z3jet] = true;
   plotChan[k_Z4jet] = true;
 
+
+
   plotChan[k_gg]=false;
   plotChan[k_Wg]=true;
   plotChan[k_Zg]=true;
@@ -64,14 +71,21 @@ if (version==0||version==1) {
   plotChan[k_WW8]=true;
   plotChan[k_WZ]=true;
   plotChan[k_WZ8]=true;
+  if (use13TeV) plotChan[k_WZ13]=true;
   plotChan[k_ZZ]=true;
   plotChan[k_ZZ8]=true;
+  if (use13TeV) plotChan[k_ZZ13]=true;
 
   plotChan[k_WVg]=true;
+  plotChan[k_Wgg8]=true;
+  plotChan[k_Zgg8]=true;
+
   plotChan[k_exWW]=true;
   plotChan[k_exWW8]=true;
 
   plotChan[k_SSWW8]=true;
+  plotChan[k_EWKWg8]=true;
+  plotChan[k_EWKZg8]=true;
 
   
 
@@ -83,6 +97,7 @@ if (version==0||version==1) {
   
   plotChan[k_tt]=true;
   plotChan[k_tt8]=true;
+  if (use13TeV) plotChan[k_tt13]=true;
   plotChan[k_tt1jet] = true;
   plotChan[k_tt2jet] = true;
   plotChan[k_tt3jet] = true;
@@ -92,13 +107,16 @@ if (version==0||version==1) {
 
   plotChan[k_t]=true;
   plotChan[k_t8]=true;
+  if (use13TeV) plotChan[k_t13]=true;
   plotChan[k_tschan]=true;
+  plotChan[k_tschan8]=true;
   plotChan[k_tW]=true;
   plotChan[k_tW8]=true;
   plotChan[k_ttg]=true;
   plotChan[k_ttW8]=true;
   plotChan[k_ttZ]=true;
   plotChan[k_ttZ8]=true;
+  if (use13TeV)  plotChan[k_ttZ13]=true;
   plotChan[k_ttg]=true;
 
 
@@ -120,6 +138,8 @@ if (version==2) {
 
   plotChan[k_W] = true;
   plotChan[k_W8] = true;
+  if (use13TeV) plotChan[k_W13] = true;
+  if (use13TeV) plotChan[k_Z13] = true;
 
   plotChan[k_Wp] = false;
   plotChan[k_Wm] = false;
@@ -136,14 +156,21 @@ if (version==2) {
   plotChan[k_WW8]=true;
   plotChan[k_WZ]=true;
   plotChan[k_WZ8]=true;
+  if (use13TeV) plotChan[k_WZ13]=true;
   plotChan[k_ZZ]=true;
   plotChan[k_ZZ8]=true;
+  if (use13TeV) plotChan[k_ZZ13]=true;
 
   plotChan[k_WVg]=true;
+  plotChan[k_Wgg8]=true;
+  plotChan[k_Zgg8]=true;
+
   plotChan[k_exWW]=true;
   plotChan[k_exWW8]=true;
 
   plotChan[k_SSWW8]=true;
+  plotChan[k_EWKWg8]=true;
+  plotChan[k_EWKZg8]=true;
 
 
   plotChan[k_VBFZ]=true;
@@ -152,6 +179,7 @@ if (version==2) {
 
   plotChan[k_tt]=true;
   plotChan[k_tt8]=true;
+  if (use13TeV) plotChan[k_tt13]=true;
   //plotChan[k_tt1jet] = true;
   //plotChan[k_tt2jet] = true;
   //plotChan[k_tt3jet] = true;
@@ -161,13 +189,16 @@ if (version==2) {
 
   plotChan[k_t]=true;
   plotChan[k_t8]=true;
+  if (use13TeV) plotChan[k_t13]=true;
   plotChan[k_tschan]=true;
+  plotChan[k_tschan8]=true;
   plotChan[k_tW]=true;
   plotChan[k_tW8]=true;
   plotChan[k_ttg]=true;
   plotChan[k_ttW8]=true;
   plotChan[k_ttZ]=true;
   plotChan[k_ttZ8]=true;
+  if (use13TeV)  plotChan[k_ttZ13]=true;
   plotChan[k_ttg]=true;
 
   plotChan[k_ggH]=true;
@@ -187,6 +218,8 @@ if (version==3) {
 
   plotChan[k_W] = true;
   plotChan[k_W8] = true;
+  if (use13TeV) plotChan[k_W13] = true;
+  if (use13TeV) plotChan[k_Z13] = true;
 
   plotChan[k_Wp] = false;
   plotChan[k_Wm] = false;
@@ -231,22 +264,31 @@ if (version==3) {
   plotChan[k_WW8]=false;
   plotChan[k_WZ]=false;
   plotChan[k_WZ8]=false;
+  if (use13TeV) plotChan[k_WZ13]=false;
   plotChan[k_ZZ]=false;
   plotChan[k_ZZ8]=false;
+  if (use13TeV) plotChan[k_ZZ13]=false;
 
   plotChan[k_WVg]=false;
+  plotChan[k_Wgg8]=false;
+  plotChan[k_Zgg8]=false;
+
+
   plotChan[k_exWW]=false;
-  plotChan[k_exWW8]=true;
+  plotChan[k_exWW8]=false;
 
   plotChan[k_SSWW8]=true;
+  plotChan[k_EWKWg8]=true;
+  plotChan[k_EWKZg8]=true;
 
   
   plotChan[k_VBFZ]=false;
   plotChan[k_VBFZ8]=false;
-  plotChan[k_VBFW8]=true;
+  plotChan[k_VBFW8]=false;
 
   plotChan[k_tt]=true;
   plotChan[k_tt8]=true;
+  if (use13TeV) plotChan[k_tt13]=true;
   plotChan[k_tt1jet] = true;
   plotChan[k_tt2jet] = true;
   plotChan[k_tt3jet] = true;
@@ -256,13 +298,16 @@ if (version==3) {
 
   plotChan[k_t]=false;
   plotChan[k_t8]=false;
+  if (use13TeV) plotChan[k_t13]=true;
   plotChan[k_tschan]=false;
+  plotChan[k_tschan8]=false;
   plotChan[k_tW]=false;
   plotChan[k_tW8]=false;
   plotChan[k_ttg]=true;
   plotChan[k_ttW8]=true;
   plotChan[k_ttZ]=false;
   plotChan[k_ttZ8]=false;
+  if (use13TeV)  plotChan[k_ttZ13]=true;
 
   plotChan[k_ggH]=false;
   plotChan[k_VBFH]=false;
@@ -327,8 +372,11 @@ if (version==5) {
   plotChan[k_WW8]=true;
   plotChan[k_WZ]=true;
   plotChan[k_WZ8]=true;
+  if (use13TeV) plotChan[k_WZ13]=true;
+  if (use13TeV) plotChan[k_WZ13fid]=true;
   plotChan[k_ZZ]=true;
   plotChan[k_ZZ8]=true;
+ if (use13TeV)  plotChan[k_ZZ13]=true;
 
  }
 
@@ -341,7 +389,22 @@ if (version==6) {
   plotChan[k_exWW]=true;
   plotChan[k_exWW8]=true;
   plotChan[k_SSWW8]=true;
- }
+  plotChan[k_EWKWg8]=true;
+  plotChan[k_EWKZg8]=true;
+}
+
+// EWK scattering measurements
+if (version==7) {
+
+  plotChan[k_W13]=true;
+  plotChan[k_Z13]=true;
+  plotChan[k_WZ13]=true;
+  plotChan[k_ZZ13]=true;
+  plotChan[k_tt13]=true;
+  plotChan[k_t13]=true;
+  plotChan[k_ttZ13]=true;
+}
+
 
 
   float scale_;
@@ -430,6 +493,25 @@ if (version == 3) scale_ = 1000.*0.4595;
   chanETheo[k_W8] = 0.32 * scale_;
 
 
+// W 13 http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-004/index.html
+  if (use13TeV) chanMeasurement[k_W13]    =  "W";
+if (big13TeV) chanMeasurement[k_W13]    =  "#splitline{   W}{13Tev}";
+
+if (version == 3) scale_ = 1000.*0.4595;
+
+
+  chanSigma[k_W13]  = 19.950 * scale_; 
+  chanEStat[k_W13]  =  0.120 * scale_;
+chanESyst[k_W13]  =  sqrt(.360*.360+.960*.960) * scale_;
+  chanETot[k_W13]   =  sqrt( 
+			  chanEStat[k_W13]*chanEStat[k_W13]
+			  +
+			  chanESyst[k_W13]*chanESyst[k_W13]
+			   );
+  chanTheo[k_W13] = 19.700 * scale_;
+  chanETheo[k_W13] = 0.515 * scale_;
+// +560-470
+
 // Z production
   chanMeasurement[k_Z]     = "Z";
   scale_ = (1000.0/Z0_br_ll);
@@ -504,6 +586,43 @@ if (version == 3) scale_ = 1000.*0.3876;
 //   chanTheo[k_Z8] =  1.1372 * scale_;
 //   chanETheo[k_Z8] = 0.0361 * scale_;
  
+// Z 13 http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-004/index.html
+//   if (use13TeV) chanMeasurement[k_Z13]    =  "Z";
+// if (big13TeV) chanMeasurement[k_Z13]    =  "#splitline{   Z}{13Tev}";
+
+// if (version == 3) scale_ = 1000.*0.4595;
+
+
+//   chanSigma[k_Z13]  = 1.910 * scale_; 
+//   chanEStat[k_Z13]  =  0.010 * scale_;
+// chanESyst[k_Z13]  =  sqrt(.040*.040+.090*.090) * scale_;
+//   chanETot[k_Z13]   =  sqrt( 
+// 			  chanEStat[k_Z13]*chanEStat[k_Z13]
+// 			  +
+// 			  chanESyst[k_Z13]*chanESyst[k_Z13]
+// 			   );
+//   chanTheo[k_Z13] = 1.870 * scale_;
+//   chanETheo[k_Z13] = 0.045 * scale_;
+// +50-40
+
+// new Z 13 http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-011/index.html
+  if (use13TeV) chanMeasurement[k_Z13]    =  "Z";
+if (big13TeV) chanMeasurement[k_Z13]    =  "#splitline{   Z}{13Tev}";
+
+if (version == 3) scale_ = 1000.*0.4595;
+
+
+  chanSigma[k_Z13]  = 1.870 * scale_; 
+  chanEStat[k_Z13]  =  0.002 * scale_;
+chanESyst[k_Z13]  =  sqrt(.035*.035+.051*.051) * scale_;
+  chanETot[k_Z13]   =  sqrt( 
+			  chanEStat[k_Z13]*chanEStat[k_Z13]
+			  +
+			  chanESyst[k_Z13]*chanESyst[k_Z13]
+			   );
+  chanTheo[k_Z13] = 1.870 * scale_;
+  chanETheo[k_Z13] = 0.045 * scale_;
+// +50-40
 
 
 // W+ jets 1 jet
@@ -807,7 +926,6 @@ chanETheo[k_Z4jetn] = sqrt( 0.145*0.145 + 0.03*0.03) * scale_;
 
 // 1 jet exclusive
   chanMeasurement[k_Z1jet8] = "#geq1j";
-  scale_ = 1.0;
 
   chanSigma[k_Z1jet8]  = 59.7 * scale_;
   chanEStat[k_Z1jet8]  =   0.0011 * chanSigma[k_Z1jet8] * scale_;
@@ -904,6 +1022,7 @@ chanETheo[k_Z4jetn] = sqrt( 0.145*0.145 + 0.03*0.03) * scale_;
 			       );
   chanTheo[k_Z7jet8]  = 0.00234 * scale_;
   chanETheo[k_Z7jet8] =  sqrt(0.0001 )* scale_;
+
 
 
 
@@ -1226,6 +1345,7 @@ scale_ = 1.0;
 
 // Top results
 // ttbar
+
   chanMeasurement[k_tt] = "tt";
   chanLumi[k_tt] = "";
 
@@ -1287,6 +1407,40 @@ scale_ = 1.0;
   chanETheop[k_tt8] =  9.0 * scale_;
   chanETheom[k_tt8] =  10.3 * scale_;
   chanETheo[k_tt8] = (chanETheop[k_tt8] +chanETheom[k_tt8])/2.0;
+
+// ttbar 13 TeV
+// !!!!! http://arxiv.org/abs/1510.05302 ????? to be replaced with prel results?
+  if (use13TeV) chanMeasurement[k_tt13] = "tt";
+if (big13TeV) chanMeasurement[k_tt13]    =  "#splitline{   tt}{13Tev}";
+  chanLumi[k_tt13] = "";
+
+  chanSigma[k_tt13]  =   769.0 * scale_; 
+  chanEStatp[k_tt13]  =   55.0 * scale_;
+chanESystp[k_tt13]  =   sqrt(60.0*60.0 + 92.0*92.0) * scale_;
+  chanETotp[k_tt13]   =  sqrt( 
+			   chanEStatp[k_tt13]*chanEStatp[k_tt13]
+			   +
+			   chanESystp[k_tt13]*chanESystp[k_tt13]
+			    );
+
+  chanEStatm[k_tt13]  =   55.0 * scale_;
+  chanESystm[k_tt13]  =    sqrt(60.0*60.0 + 92.0*92.0) * scale_;
+  chanETotm[k_tt13]   =  sqrt( 
+			   chanEStatm[k_tt13]*chanEStatm[k_tt13]
+			   +
+			   chanESystm[k_tt13]*chanESystm[k_tt13]
+			    );
+  chanEStat[k_tt13] = (chanEStatp[k_tt13] +chanEStatm[k_tt13])/2.0;
+  chanESyst[k_tt13] = (chanESystp[k_tt13] +chanESystm[k_tt13])/2.0;
+  chanETot[k_tt13] = (chanETotp[k_tt13] +chanETotm[k_tt13])/2.0;
+ 
+
+
+  chanTheo[k_tt13] =   832.0 * scale_;
+chanETheop[k_tt13] =  sqrt(20.0*20.0+35.0*35.0) * scale_;
+  chanETheom[k_tt13] = sqrt(29.0*29.0+35.0*35.0) * scale_;
+  chanETheo[k_tt13] = (chanETheop[k_tt13] +chanETheom[k_tt13])/2.0;
+
 
 // top with jets
 // !!!!!????? to be replaced http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-12-018/index.html
@@ -1570,15 +1724,52 @@ chanETheom[k_t8] =  sqrt(1.0*1.0 + 2.2*2.2) * scale_;
   // chanETheom[k_t8] =  2.4 * scale_;
   // chanETheo[k_t8] = (chanETheop[k_t8] +chanETheom[k_t8])/2.0;
 
+
+// single top http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-15-004/index.html
+  if (use13TeV) chanMeasurement[k_t13] = "t_{t-ch}";
+if (big13TeV) chanMeasurement[k_t13]    =  "#splitline{  t_{t-ch}}{13Tev}";
+  chanLumi[k_t13] = "";
+
+  chanSigma[k_t13]  =   274. * scale_; 
+  chanEStatp[k_t13]  =   98. * scale_;
+chanESystp[k_t13]  =   sqrt(52.*52.+33.*33.) * scale_;
+  chanETotp[k_t13]   =  sqrt( 
+			   chanEStatp[k_t13]*chanEStatp[k_t13]
+			   +
+			   chanESystp[k_t13]*chanESystp[k_t13]
+			    );
+
+  chanEStatm[k_t13]  =   98. * scale_;
+  chanESystm[k_t13]  =   sqrt(52.*52.+33.*33.) * scale_;
+  chanETotm[k_t13]   =  sqrt( 
+			   chanEStatm[k_t13]*chanEStatm[k_t13]
+			   +
+			   chanESystm[k_t13]*chanESystm[k_t13]
+			    );
+  chanEStat[k_t13] = (chanEStatp[k_t13] +chanEStatm[k_t13])/2.0;
+  chanESyst[k_t13] = (chanESystp[k_t13] +chanESystm[k_t13])/2.0;
+  chanETot[k_t13] = (chanETotp[k_t13] +chanETotm[k_t13])/2.0;
+ 
+
+
+  chanTheo[k_t13] =   214.5 * scale_;
+chanETheop[k_t13] =  sqrt(0.7*0.7 + 0.3*0.3) * scale_;
+chanETheom[k_t13] =  sqrt(0.6*0.6 +0.6*0.6) * scale_;
+  chanETheo[k_t13] = (chanETheop[k_t13] +chanETheom[k_t13])/2.0;
+
+
+
 // single top s chan only, 8 TeV
 // https://cds.cern.ch/record/1633190/ CMS-PAS-TOP-13-009
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-13-009/index.html
+// http://arxiv.org/abs/1603.02555 Submitted to J. High Energy Phys. 
 
   chanLumi[k_tschan] = "";
   chanMeasurement[k_tschan] = "t_{s-ch}";
 
-  chanSigma[k_tschan]  =   -11.5 * scale_; 
+  chanSigma[k_tschan]  =  -31.4; 
   chanEStatp[k_tschan]  =   0.0 * scale_;
-  chanESystp[k_tschan]  =   0.0 * scale_;
+ chanESystp[k_tschan]  =    0.0 * scale_;
   chanETotp[k_tschan]   =  sqrt( 
 			   chanEStatp[k_tschan]*chanEStatp[k_tschan]
 			   +
@@ -1598,10 +1789,43 @@ chanETheom[k_t8] =  sqrt(1.0*1.0 + 2.2*2.2) * scale_;
  
 
 
-  chanTheo[k_tschan] =   5.55 * scale_;
-  chanETheop[k_tschan] =  0.22 * scale_;
-  chanETheom[k_tschan] =  0.22 * scale_;
+  chanTheo[k_tschan] =   4.56 * scale_;
+  chanETheop[k_tschan] =  sqrt(0.07*0.07 + 0.17*0.17) * scale_;
+  chanETheom[k_tschan] =  sqrt(0.07*0.07 + 0.17*0.17) * scale_;
   chanETheo[k_tschan] = (chanETheop[k_tschan] +chanETheom[k_tschan])/2.0;
+
+
+
+  chanLumi[k_tschan8] = "";
+  chanMeasurement[k_tschan8] = "t_{s-ch}";
+
+  chanSigma[k_tschan8]  =  13.4;
+  chanEStatp[k_tschan8]  =   7.3 * scale_;
+  chanESystp[k_tschan8]  =   7.3 * scale_;
+  chanETotp[k_tschan8]   =  sqrt(
+                           chanEStatp[k_tschan8]*chanEStatp[k_tschan8]
+                           +
+                           chanESystp[k_tschan8]*chanESystp[k_tschan8]
+                            );
+
+  chanEStatm[k_tschan8]  =   0.0 * scale_;
+  chanESystm[k_tschan8]  =   0.0 * scale_;
+  chanETotm[k_tschan8]   =  sqrt(
+                           chanEStatm[k_tschan8]*chanEStatm[k_tschan8]
+                           +
+                           chanESystm[k_tschan8]*chanESystm[k_tschan8]
+                            );
+  chanEStat[k_tschan8] = (chanEStatp[k_tschan8] +chanEStatm[k_tschan8])/2.0;
+  chanESyst[k_tschan8] = (chanESystp[k_tschan8] +chanESystm[k_tschan8])/2.0;
+  chanETot[k_tschan8] = (chanETotp[k_tschan8] +chanETotm[k_tschan8])/2.0;
+
+
+
+  chanTheo[k_tschan8] =   5.55 * scale_;
+  chanETheop[k_tschan8] =  sqrt(0.08*0.08 + 0.21*0.21) * scale_;
+  chanETheom[k_tschan8] =  sqrt(0.08*0.08 + 0.21*0.21) * scale_;
+  chanETheo[k_tschan8] = (chanETheop[k_tschan8] +chanETheom[k_tschan8])/2.0;
+
 
 
 // tW
@@ -1833,6 +2057,39 @@ chanMeasurement[k_ttZ8] = "ttZ";
   chanETheo[k_ttZ8] = (chanETheop[k_ttZ8] +chanETheom[k_ttZ8])/2.0;
 
 
+// ttZ 13 TeV
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-16-009/index.html
+chanMeasurement[k_ttZ13] = "ttZ";
+   chanLumi[k_ttZ13] = "2.7";
+
+
+  chanSigma[k_ttZ13]  =   1.065 * scale_; 
+  chanEStatp[k_ttZ13]  =   0.352 * scale_;
+  chanESystp[k_ttZ13]  =   0.313 * scale_;
+  chanETotp[k_ttZ13]   =  sqrt( 
+			   chanEStatp[k_ttZ13]*chanEStatp[k_ttZ13]
+			   +
+			   chanESystp[k_ttZ13]*chanESystp[k_ttZ13]
+			    );
+
+  chanEStatm[k_ttZ13]  =   0.168 * scale_;
+  chanESystm[k_ttZ13]  =   0.142 * scale_;
+  chanETotm[k_ttZ13]   =  sqrt( 
+			   chanEStatm[k_ttZ13]*chanEStatm[k_ttZ13]
+			   +
+			   chanESystm[k_ttZ13]*chanESystm[k_ttZ13]
+			    );
+  chanEStat[k_ttZ13] = (chanEStatp[k_ttZ13] +chanEStatm[k_ttZ13])/2.0;
+  chanESyst[k_ttZ13] = (chanESystp[k_ttZ13] +chanESystm[k_ttZ13])/2.0;
+  chanETot[k_ttZ13] = (chanETotp[k_ttZ13] +chanETotm[k_ttZ13])/2.0;
+ 
+
+
+  chanTheo[k_ttZ13] =   0.839 * scale_;
+chanETheop[k_ttZ13] = sqrt(0.080*0.080+0.025*0.025+0.025*0.025) * scale_;
+  chanETheom[k_ttZ13] =  sqrt(0.092*0.092+0.025*0.025+0.025*0.025) * scale_;
+  chanETheo[k_ttZ13] = (chanETheop[k_ttZ13] +chanETheom[k_ttZ13])/2.0;
+
 
 
 
@@ -1999,6 +2256,56 @@ chanESyst[k_WW8]  =   sqrt(3.2*3.2 + 3.1*3.1 + 1.6*1.6) * scale_;
   chanTheo[k_WZ8] =  21.91 * scale_;
   chanETheo[k_WZ8] =  1.025 * scale_;
 
+// WZ 13 TeV
+  if (use13TeV) chanMeasurement[k_WZ13] = "WZ";
+if (big13TeV) chanMeasurement[k_WZ13]    =  "#splitline{  WZ}{13Tev}";
+  chanLumi[k_WZ13] = "2.3 fb^{-1}";
+
+  chanSigma[k_WZ13]  =  40.9 * scale_; 
+  chanEStatp[k_WZ13]  =   3.4 * scale_;
+  chanEStatm[k_WZ13]  =   3.4 * scale_;
+chanEStat[k_WZ13]  = ( chanEStatp[k_WZ13] + chanEStatm[k_WZ13])/2.0;
+
+
+  chanESystp[k_WZ13]  =    sqrt( 3.1*3.1+0.4*0.4+1.3*1.3)* scale_;
+  chanESystm[k_WZ13]  =    sqrt( 3.3*3.3+0.4*0.4+1.3*1.3)* scale_;
+  chanESyst[k_WZ13]  = ( chanESystp[k_WZ13] + chanESystm[k_WZ13])/2.0;
+ 
+
+  chanETot[k_WZ13]   =  sqrt( 
+			   chanEStat[k_WZ13]*chanEStat[k_WZ13]
+			   +
+			   chanESyst[k_WZ13]*chanESyst[k_WZ13]
+			    );
+  chanTheo[k_WZ13] =  42.6 * scale_;
+  chanETheo[k_WZ13] =  1.2 * scale_;
+// +1.6-0.8
+
+// WZ 13 TeV fiducial
+  if (use13TeV) chanMeasurement[k_WZ13fid] = "WZ";
+if (big13TeV) chanMeasurement[k_WZ13fid]    =  "#splitline{  WZ}{13Tev}";
+  chanLumi[k_WZ13fid] = "2.3 fb^{-1}";
+
+  chanSigma[k_WZ13fid]  =  0.265 * scale_; 
+  chanEStatp[k_WZ13fid]  =   0.022 * scale_;
+  chanEStatm[k_WZ13fid]  =   0.022 * scale_;
+chanEStat[k_WZ13fid]  = ( chanEStatp[k_WZ13fid] + chanEStatm[k_WZ13fid])/2.0;
+
+
+  chanESystp[k_WZ13fid]  =    sqrt( 0.020*0.020+0.009*0.009)* scale_;
+  chanESystm[k_WZ13fid]  =    sqrt( 0.022*0.022+0.009*0.009 )* scale_;
+  chanESyst[k_WZ13fid]  = ( chanESystp[k_WZ13fid] + chanESystm[k_WZ13fid])/2.0;
+ 
+
+  chanETot[k_WZ13fid]   =  sqrt( 
+			   chanEStat[k_WZ13fid]*chanEStat[k_WZ13fid]
+			   +
+			   chanESyst[k_WZ13fid]*chanESyst[k_WZ13fid]
+			    );
+  chanTheo[k_WZ13fid] =  0.274 * scale_;
+  chanETheo[k_WZ13fid] =  0.0105 * scale_;
+// +1.6-0.8
+
 // ZZ
   chanMeasurement[k_ZZ] = "ZZ";
   chanLumi[k_ZZ] = "4.9 fb^{-1}";
@@ -2039,7 +2346,37 @@ chanESyst[k_WW8]  =   sqrt(3.2*3.2 + 3.1*3.1 + 1.6*1.6) * scale_;
   chanTheo[k_ZZ8] =   7.7 * scale_;
   chanETheo[k_ZZ8] =  0.6 * scale_;
 
+// ZZ 13 TeV
+  if (use13TeV) chanMeasurement[k_ZZ13] = "ZZ";
+if (big13TeV) chanMeasurement[k_ZZ13]    =  "#splitline{  ZZ}{13Tev}";
+  chanLumi[k_ZZ13] = "1.34 fb^{-1}";
 
+  chanSigma[k_ZZ13]  =  16.7 * scale_; 
+  chanEStatp[k_ZZ13]  =   2.9 * scale_;
+  chanEStatm[k_ZZ13]  =   2.6 * scale_;
+  chanEStat[k_ZZ13]  = ( chanEStatp[k_ZZ13] + chanEStatm[k_ZZ13])/2.0;
+
+
+  chanESystp[k_ZZ13]  =    sqrt( 0.7*0.7+0.3*0.3+0.8*0.8)* scale_;
+  chanESystm[k_ZZ13]  =    sqrt( 0.5*0.5+0.3*0.3+0.8*0.8)* scale_;
+  chanESyst[k_ZZ13]  = ( chanESystp[k_ZZ13] + chanESystm[k_ZZ13])/2.0;
+
+
+
+
+  chanETot[k_ZZ13]   =  sqrt( 
+			   chanEStat[k_ZZ13]*chanEStat[k_ZZ13]
+			   +
+			   chanESyst[k_ZZ13]*chanESyst[k_ZZ13]
+			    );
+  chanTheo[k_ZZ13] =  16.7 * scale_;
+  chanETheop[k_ZZ13] =  0.7 * scale_;
+  chanETheom[k_ZZ13] =  0.5 * scale_;
+  chanETheo[k_ZZ13]   =  sqrt( 
+			   chanETheop[k_ZZ13]*chanETheop[k_ZZ13]
+			   +
+			   chanETheom[k_ZZ13]*chanETheom[k_ZZ13]
+			    );
 
   scale_ = 1.;
 
@@ -2067,6 +2404,64 @@ float ZZsigBR_ = ((15.32+1.211)*5.1+(19.52+1.559)*19.6) * (1/(5.1+19.6)) * 0.026
 
   scale_ = 1.;
 
+
+// EWK Zg http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-14-018/index.html
+
+  scale_=1/1000.0;
+
+  chanMeasurement[k_EWKZg8] = "#splitline{EW}{Z#gammajj}";
+
+  chanLumi[k_EWKZg8] = "19.7 fb^{-1}";
+
+  chanSigma[k_EWKZg8]  =  1.86 * scale_; 
+  chanEStatp[k_EWKZg8]  =   0.89 * scale_;
+  chanEStatm[k_EWKZg8]  =   0.75 * scale_;
+  chanEStat[k_EWKZg8]  = ( chanEStatp[k_EWKZg8] + chanEStatm[k_EWKZg8])/2.0;
+
+  chanESystp[k_EWKZg8]  =    sqrt( 0.41*0.41+0.5*0.5)* scale_;
+  chanESystm[k_EWKZg8]  =    sqrt( 0.27*0.27+0.5*0.5)* scale_;
+  chanESyst[k_EWKZg8]  = ( chanESyst[k_EWKZg8] + chanESyst[k_EWKZg8])/2.0;
+
+
+  chanETot[k_EWKZg8]   =  sqrt( 
+			   chanEStat[k_EWKZg8]*chanEStat[k_EWKZg8]
+			   +
+			   chanESyst[k_EWKZg8]*chanESyst[k_EWKZg8]
+			    );
+  chanTheo[k_EWKZg8] =  1.26 * scale_;
+chanETheo[k_EWKZg8] =  sqrt(0.11*0.11 + 0.05*0.05) * scale_;
+
+  scale_ = 1.;
+
+// EWK Wg http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-14-011/index.html
+
+  scale_=1/1000.0;
+
+  chanMeasurement[k_EWKWg8] = "#splitline{EW}{W#gammajj}";
+
+  chanLumi[k_EWKWg8] = "19.7 fb^{-1}";
+
+  chanSigma[k_EWKWg8]  =  10.8 * scale_; 
+  chanEStatp[k_EWKWg8]  =   4.1 * scale_;
+  chanEStatm[k_EWKWg8]  =   4.1 * scale_;
+  chanEStat[k_EWKWg8]  = ( chanEStatp[k_EWKWg8] + chanEStatm[k_EWKWg8])/2.0;
+
+  chanESystp[k_EWKWg8]  =    sqrt( 3.4*3.4+0.3*0.3)* scale_;
+  chanESystm[k_EWKWg8]  =    sqrt( 3.4*3.4+0.3*0.3)* scale_;
+  chanESyst[k_EWKWg8]  = ( chanESyst[k_EWKWg8] + chanESyst[k_EWKWg8])/2.0;
+
+
+  chanETot[k_EWKWg8]   =  sqrt( 
+			   chanEStat[k_EWKWg8]*chanEStat[k_EWKWg8]
+			   +
+			   chanESyst[k_EWKWg8]*chanESyst[k_EWKWg8]
+			    );
+  chanTheo[k_EWKWg8] =  6.1 * scale_;
+chanETheo[k_EWKWg8] =  sqrt(1.2*1.2 + 0.2*0.2) * scale_;
+
+  scale_ = 1.;
+
+
 // WVgamma
 // !!!!! replace with reference http://arxiv.org/abs/1404.4619
   chanMeasurement[k_WVg] = "WV#gamma";
@@ -2084,6 +2479,80 @@ float ZZsigBR_ = ((15.32+1.211)*5.1+(19.52+1.559)*19.6) * (1/(5.1+19.6)) * 0.026
   chanETheo[k_WVg] =  0.0217 * scale_;
 
  scale_ = 1.;
+
+
+// Wgg 8 TeV
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-008/index.html
+// fb scale
+scale_ = 0.001;
+  chanMeasurement[k_Wgg8] = "W#gamma#gamma";
+  chanLumi[k_Wgg8] = "19.4 fb^{-1}";
+
+  chanSigma[k_Wgg8]  =  6.0 * scale_; 
+  chanEStatp[k_Wgg8]  =   1.8 * scale_;
+  chanEStatm[k_Wgg8]  =   1.8 * scale_;
+  chanEStat[k_Wgg8]  = ( chanEStatp[k_Wgg8] + chanEStatm[k_Wgg8])/2.0;
+
+
+  chanESystp[k_Wgg8]  =    sqrt( 2.3*2.3+0.2*0.2)* scale_;
+  chanESystm[k_Wgg8]  =    sqrt( 2.3*2.3+0.2*0.2)* scale_;
+  chanESyst[k_Wgg8]  = ( chanESystp[k_Wgg8] + chanESystm[k_Wgg8])/2.0;
+
+
+
+
+  chanETot[k_Wgg8]   =  sqrt( 
+			   chanEStat[k_Wgg8]*chanEStat[k_Wgg8]
+			   +
+			   chanESyst[k_Wgg8]*chanESyst[k_Wgg8]
+			    );
+  chanTheo[k_Wgg8] =  4.76 * scale_;
+  chanETheop[k_Wgg8] =  0.53 * scale_;
+  chanETheom[k_Wgg8] =  0.53 * scale_;
+  chanETheo[k_Wgg8]   =  sqrt( 
+			   chanETheop[k_Wgg8]*chanETheop[k_Wgg8]
+			   +
+			   chanETheom[k_Wgg8]*chanETheom[k_Wgg8]
+			    );
+
+  scale_ = 1.;
+
+// Zgg 8 TeV
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-008/index.html
+// fb scale
+scale_ = 0.001;
+  chanMeasurement[k_Zgg8] = "Z#gamma#gamma";
+  chanLumi[k_Zgg8] = "19.4 fb^{-1}";
+
+  chanSigma[k_Zgg8]  =  12.7 * scale_; 
+  chanEStatp[k_Zgg8]  =   1.4 * scale_;
+  chanEStatm[k_Zgg8]  =   1.4 * scale_;
+  chanEStat[k_Zgg8]  = ( chanEStatp[k_Zgg8] + chanEStatm[k_Zgg8])/2.0;
+
+
+  chanESystp[k_Zgg8]  =    sqrt( 1.8*1.8+0.3*0.3)* scale_;
+  chanESystm[k_Zgg8]  =    sqrt( 1.8*1.8+0.3*0.3)* scale_;
+  chanESyst[k_Zgg8]  = ( chanESystp[k_Zgg8] + chanESystm[k_Zgg8])/2.0;
+
+
+
+
+  chanETot[k_Zgg8]   =  sqrt( 
+			   chanEStat[k_Zgg8]*chanEStat[k_Zgg8]
+			   +
+			   chanESyst[k_Zgg8]*chanESyst[k_Zgg8]
+			    );
+  chanTheo[k_Zgg8] =  12.95 * scale_;
+  chanETheop[k_Zgg8] =  1.47 * scale_;
+  chanETheom[k_Zgg8] =  1.47 * scale_;
+  chanETheo[k_Zgg8]   =  sqrt( 
+			   chanETheop[k_Zgg8]*chanETheop[k_Zgg8]
+			   +
+			   chanETheom[k_Zgg8]*chanETheom[k_Zgg8]
+			    );
+
+  scale_ = 1.;
+
 
 
 // Exclusive gg -> WW production

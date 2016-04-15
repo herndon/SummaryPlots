@@ -24,7 +24,7 @@ using namespace std;
 // titles and axis, marker size, etc.
 float markerSize = 1.0;
 float titleOffsetX = 1.0;
-float titleOffsetY = 1.0;
+float titleOffsetY = 0.8;
 float titleSizeX = 0.03;
 float titleSizeY = 0.05;
 float labelSizeX = 0.05;
@@ -80,18 +80,32 @@ public:
 
   void draw()
   {
+    int _theoColorG= 15;
+    int _expColor7 = kRed;
+    int _expColor8 = kBlue;
+    int	_expColor13 = 209;
+
     if (_type==8) 
       {
 	_theoColor = 209;
-        _expFillColor = kRed;
+	_theoColor = _theoColorG;
+        _expLineColor = _expColor8;
+        _expFillColor = _expColor8;
       } else if (_type == 7)
       {
 	_theoColor = kBlue;
-        _expFillColor = kWhite;
+	_theoColor = _theoColorG;
+        _expLineColor = _expColor7;
+        _expFillColor = _expColor7;
+      }  else if (_type == 13)
+      {
+	//_theoColor = 221;
+	_theoColor = kBlack;
+	_theoColor = _theoColorG;
+        _expLineColor = _expColor13;
+        _expFillColor = _expColor13;
       } else
       {
-	_theoColor = kBlue;
-        _expFillColor = kWhite;
       }
    
    
@@ -117,19 +131,23 @@ public:
 	_dataExpPoint.SetPoint(1, _xpos, _sigma );
 	_dataExpPoint.SetPointError( 1, 0,_e_tot );
 	_dataExpPoint.SetLineWidth(1);
-	_dataExpPoint.SetLineColor(kRed);
+	_dataExpPoint.SetLineColor(_expLineColor);
 	_dataExpPoint.SetMarkerSize(0);
 	_dataExpPoint.DrawClone("e");	
 
  
 
-	TMarker _dataPoint( _xpos, _sigma, kFullCircle );
- 	_dataPoint.SetMarkerSize(markerSize);
-	_dataPoint.SetMarkerColor(_expFillColor);
-	_dataPoint.DrawClone();
-	_dataPoint.SetMarkerStyle(kOpenCircle);
- 	_dataPoint.SetMarkerColor(kRed);
-	_dataPoint.DrawClone();
+	  TMarker _dataPoint( _xpos, _sigma, kOpenSquare );
+	  _dataPoint.SetMarkerStyle(kOpenSquare);
+	  _dataPoint.SetMarkerSize(markerSize);
+	  _dataPoint.SetMarkerColor(_expLineColor);
+	  _dataPoint.DrawClone();
+	  _dataPoint.SetMarkerSize(markerSize*0.9);
+	  _dataPoint.DrawClone();
+	  _dataPoint.SetMarkerSize(markerSize*0.8);
+	  _dataPoint.DrawClone();
+
+
 
 
 
@@ -179,19 +197,19 @@ public:
      }
     else
       {
-	float dy_ = 1/2.5;
-        if (version <= 2 || version == 6) _dx = _dx*2.0;
+	float dy_ = 1/2.0;
+        if (version <= 2 || version == 6 || version == 7) _dx = _dx*2.0;
 
-	if (version !=3 && version != 4) {
+	if (version !=3 && version != 4 && version != 6 && version != 7) {
        
- 	TBox _limit(_xpos-_dx/3., _sigma_theo*dy_*dy_, 
-		    _xpos+_dx/3., 1.5*_sigma_theo*dy_*dy_ );
+ 	TBox _limit(_xpos-_dx/3., _sigma_theo*dy_, 
+		    _xpos+_dx/3., 1.5*_sigma_theo*dy_);
  	_limit.SetFillStyle(3254);
  	_limit.SetFillColor( kRed );
 	_limit.DrawClone();
 
  	TGraphErrors _limitLine(1);
- 	_limitLine.SetPoint(1, _xpos, _sigma_theo*dy_*dy_ );
+ 	_limitLine.SetPoint(1, _xpos, _sigma_theo*dy_ );
  	_limitLine.SetPointError( 1, _dx/2., 0 );
  	_limitLine.SetLineWidth(2);
  	_limitLine.SetLineColor(kRed);
@@ -201,104 +219,127 @@ public:
 	}
 
 	//_sigma_theo = 5.169*1000.*1000.;
+        _e_tot = _e_tot/1.5;
 
+	if (version !=7) {
 	TGraphErrors _dataTotPoint(1);
-	_dataTotPoint.SetPoint(1, _xpos, _sigma_theo/(dy_*dy_) );
-	_dataTotPoint.SetPointError( 1, 0, _e_tot/(dy_*dy_) );
+	_dataTotPoint.SetPoint(1, _xpos, _sigma_theo/(dy_*dy_*dy_) );
+	_dataTotPoint.SetPointError( 1, 0, _e_tot/(dy_*dy_*dy_) );
 	_dataTotPoint.SetLineWidth(1);
-	_dataTotPoint.SetLineColor(kRed);
+	_dataTotPoint.SetLineColor(_expColor7);
 	_dataTotPoint.SetMarkerSize(0);
 	_dataTotPoint.DrawClone("e");	
 
- 	TMarker _dataPoint( _xpos, _sigma_theo/(dy_*dy_), kFullCircle );
+ 	TMarker _dataPoint( _xpos, _sigma_theo/(dy_*dy_*dy_), kOpenSquare );
  	_dataPoint.SetMarkerSize(markerSize);
-	_dataPoint.SetMarkerColor(kWhite);
+	_dataPoint.SetMarkerColor(_expColor7);
 	_dataPoint.DrawClone();
-	_dataPoint.SetMarkerStyle(kOpenCircle);
- 	_dataPoint.SetMarkerColor(kRed);
+       	_dataPoint.SetMarkerSize(markerSize*0.9);
 	_dataPoint.DrawClone();
-	
+ 	_dataPoint.SetMarkerSize(markerSize*0.8);
+	_dataPoint.DrawClone();
+ 
+
 
 	TGraphErrors _dataTotPoint8(1);
-	_dataTotPoint8.SetPoint(1, _xpos, _sigma_theo/dy_ );
-	_dataTotPoint8.SetPointError( 1, 0, _e_tot/dy_ );
+	_dataTotPoint8.SetPoint(1, _xpos, _sigma_theo/(dy_*dy_) );
+	_dataTotPoint8.SetPointError( 1, 0, _e_tot/(dy_*dy_) );
 	_dataTotPoint8.SetLineWidth(1);
-	_dataTotPoint8.SetLineColor(kRed);
+	_dataTotPoint8.SetLineColor(_expColor8);
 	_dataTotPoint8.SetMarkerSize(0);
 	_dataTotPoint8.DrawClone("e");	
 
- 	TMarker _dataPoint8( _xpos, _sigma_theo/dy_, kFullCircle );
+ 	TMarker _dataPoint8( _xpos, _sigma_theo/(dy_*dy_), kOpenSquare );
  	_dataPoint8.SetMarkerSize(markerSize);
-	_dataPoint8.SetMarkerColor(kRed);
+	_dataPoint8.SetMarkerColor(_expColor8);
 	_dataPoint8.DrawClone();
-	_dataPoint8.SetMarkerStyle(kOpenCircle);
- 	_dataPoint8.SetMarkerColor(kRed);
+ 	_dataPoint8.SetMarkerSize(markerSize*0.9);
+	_dataPoint8.DrawClone();
+ 	_dataPoint8.SetMarkerSize(markerSize*0.8);
 	_dataPoint8.DrawClone();
 
+	}
 
-	TGraphErrors _theoPoint(1);
-	_theoPoint.SetMarkerSize(0);
-	_theoPoint.SetLineColor(kBlue);
-	_theoPoint.SetLineWidth(2);
-	_theoPoint.SetPoint(1, _xpos, _sigma_theo );
-	_theoPoint.SetPointError( 1, _dx/2., 0 );
-	_theoPoint.DrawClone("ez");
+ if (version != 6) {
+	TGraphErrors _dataTotPoint13(1);
+	_dataTotPoint13.SetPoint(1, _xpos, _sigma_theo/(dy_) );
+	_dataTotPoint13.SetPointError( 1, 0, _e_tot/(dy_) );
+	_dataTotPoint13.SetLineWidth(1);
+	_dataTotPoint13.SetLineColor(_expColor13);
+	_dataTotPoint13.SetMarkerSize(0);
+	_dataTotPoint13.DrawClone("e");	
 
-	TGraphErrors _theoPoint8(1);
-	_theoPoint8.SetMarkerSize(0);
-	_theoPoint8.SetLineColor(209);
-	_theoPoint8.SetLineWidth(2);
-	_theoPoint8.SetPoint(1, _xpos, _sigma_theo*dy_ );
-	_theoPoint8.SetPointError( 1, _dx/2., 0 );
-	_theoPoint8.DrawClone("ez");
+ 	TMarker _dataPoint13( _xpos, _sigma_theo/(dy_), kOpenSquare );
+ 	_dataPoint13.SetMarkerSize(markerSize);
+	_dataPoint13.SetMarkerColor(_expColor13);
+	_dataPoint13.DrawClone();
+	_dataPoint13.SetMarkerSize(markerSize*0.9);
+	_dataPoint13.DrawClone();
+ 	_dataPoint13.SetMarkerSize(markerSize*0.8);
+	_dataPoint13.DrawClone();
+ 
+}
+	TGraphErrors _theoPoint13(1);
+	_theoPoint13.SetMarkerSize(0);
+	_theoPoint13.SetLineColor(_theoColorG);
+	_theoPoint13.SetLineWidth(2);
+	_theoPoint13.SetPoint(1, _xpos, _sigma_theo );
+	_theoPoint13.SetPointError( 1, _dx/2., 0 );
+	_theoPoint13.DrawClone("ez");
 
-	if (version != 3 && version != 4) {
+
+
+	if (version != 3 && version != 4 && version !=6 && version !=7) {
 	txt[ntxt] = "CMS 95%CL limit";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
-	txtY[ntxt] = _sigma_theo*dy_*dy_;
+	txtY[ntxt] = _sigma_theo*dy_;
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
 	}
 
+  if (version !=7){
 	//cout << "_sigma_theo="<<_sigma_theo << endl;
 	txt[ntxt] = "7 TeV CMS measurement (L #leq 5.0 fb^{-1})";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
-	txtY[ntxt] = _sigma_theo/(dy_*dy_);
+	txtY[ntxt] = _sigma_theo/(dy_*dy_*dy_);
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
 
 
 	txt[ntxt] = "8 TeV CMS measurement (L #leq 19.6 fb^{-1})";
-	txtSize[ntxt] = 0.03;
+	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
-	txtY[ntxt] = _sigma_theo/dy_;
+	txtY[ntxt] = _sigma_theo/(dy_*dy_);
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
+  }
+if (version !=6){
+	txt[ntxt] = "13 TeV CMS measurement (L #leq 1.3 fb^{-1})";
+	txtSize[ntxt] = 0.025;
+	txtX[ntxt] = _xpos + _dx;
+	txtY[ntxt] = _sigma_theo/(dy_);
+ 	txtAlign[ntxt] = 12;
+	txtFont[ntxt] = 42;
+	ntxt++;
+}
 
-
-	txt[ntxt] = "7 TeV Theory prediction";
-	txtSize[ntxt] = 0.03;
+	txt[ntxt] = "Theory prediction";
+	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
 	txtY[ntxt] = _sigma_theo;
- 	txtAlign[ntxt] = 12;
+	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
-	ntxt++;
 
-	txt[ntxt] = "8 TeV Theory prediction";
-	txtSize[ntxt] = 0.03;
-	txtX[ntxt] = _xpos + _dx;
-	txtY[ntxt] = _sigma_theo*dy_;
- 	txtAlign[ntxt] = 12;
-	txtFont[ntxt] = 42;
 	ntxt++;
 
       }
   }
+
 
 private:
   float _sigma;
@@ -310,15 +351,17 @@ private:
   float _dx;
   int _theoColor;
   int _expFillColor;
+  int _expLineColor;
   int _type;
 };
 
 TCanvas*
-// version 0-2 ymin 0.02, ymax 600000
-// version 3  ymin 0.02 ymax 30000, 
+// version 0-2 ymin 0.0005, ymax 600000
+// version 3  ymin 0.0005 ymax 30000, 
 // version 4 ymin=0.005, float ymax=  50000000
-// version 6 ymin 0.001, ymax 100
-Sigma(float ymin=0.001, float ymax=100 )
+// version 6 ymin 0.0005, ymax 100
+// version 7 ymin 5.0, ymax 600000
+Sigma(float ymin=0.0005, float ymax=600000 )
 {
 
 #include "data.C"
@@ -366,25 +409,49 @@ Sigma(float ymin=0.001, float ymax=100 )
 	  if (plotChan[ii]) {
             if (ledgendY == 0 && chanSigma[ii] > 0.0) {
 	      ledgendY = chanSigma[ii];
-               if (version == 6) ledgendY*=40.0;
+                ledgendY*=0.5; 
+             if (version == 6) ledgendY*=40.0;
 	    }
 	    DX_=stdDX_;
 
-	    // Detect channels with 7 and 8 TeV Measurements
+	    // Detect channels with 7, 8, 13 TeV Measurements
 	    if (ii==0){
 	      if (chanMeasurement[ii]==chanMeasurement[ii+1]) DX_ = stdDX_/2;
-              nSubChan_ = 0;
+              if (chanMeasurement[ii]==chanMeasurement[ii+2])  DX_ = stdDX_/3;
+             nSubChan_ = 0;
 	    } else if (ii==(k_nChan-1)) {
 	      if (chanMeasurement[ii]==chanMeasurement[ii-1]) {
 		DX_ = stdDX_/2.0;
 		nSubChan_ = 1;
+              if (chanMeasurement[ii]==chanMeasurement[ii-2])  DX_ = stdDX_/3;
 	      }
-	    }else if (chanMeasurement[ii]==chanMeasurement[ii-1]) {
+	    } else if (ii==1) {
+	      if (chanMeasurement[ii]==chanMeasurement[ii-1]) DX_ = stdDX_/2;
+	      nSubChan_ = 1;
+ 	      if (chanMeasurement[ii]==chanMeasurement[ii+1]) DX_ = stdDX_/3;
+	    }  else if (ii==(k_nChan-1)) {
+	      if (chanMeasurement[ii]==chanMeasurement[ii-1]) DX_ = stdDX_/2;
+ 	      if (chanMeasurement[ii]==chanMeasurement[ii+1]) DX_ = stdDX_/3;
+	    } else if (chanMeasurement[ii]==chanMeasurement[ii-1]) {
 	      DX_ = stdDX_/2.0;
               nSubChan_ = 1;
+              if (chanMeasurement[ii]==chanMeasurement[ii-2]) { 
+		nSubChan_ = 0;
+ 		DX_ = stdDX_/3;
+	      }
+              if (chanMeasurement[ii]==chanMeasurement[ii+1])  DX_ = stdDX_/3;
             }else if (chanMeasurement[ii]==chanMeasurement[ii+1]) {
 	      DX_ = stdDX_/2.0;
               nSubChan_ = 0;
+	      if (chanMeasurement[ii]==chanMeasurement[ii+2])  {
+		DX_ = stdDX_/3;
+                nSubChan_ = 0;
+	      }
+	    }
+            if (version == 7||version==6){
+              cout << chanMeasurement[ii] << " " << stdDX_ << " " << DX_ << " " << nSubChan_ << endl;
+              nSubChan_ = 1;
+	      DX_ = stdDX_;
 	    }
 
             // handle the number of jets
@@ -414,7 +481,7 @@ Sigma(float ymin=0.001, float ymax=100 )
 	      ntxt++;
 	    }
             if ((version<3&&ii==k_VBFW8)||(version==4&&ii==k_VBFW8)){
-	      txt[ntxt] = "W#rightarrowl#nu, Z#rightarrowll, l=e,#mu" ;
+	      txt[ntxt] = "EW: W#rightarrowl#nu, Z#rightarrowll, l=e,#mu" ;
               txtSize[ntxt] = 0.015;
 	      txtY[ntxt] = ymin*0.25;
 	      txtX[ntxt] = nBin_-0.0*DX_;
@@ -437,20 +504,29 @@ Sigma(float ymin=0.001, float ymax=100 )
 	      ntxt++;
 	    }
 
-	    if (DX_==stdDX_ || ((DX_==(stdDX_/2)) && (nSubChan_==1))) {
+	    if (DX_==stdDX_ || ((DX_==(stdDX_/2)|| (DX_==(stdDX_/3))) && (nSubChan_==1))) {
 	      txt[ntxt] = chanMeasurement[ii];
 	      txtSize[ntxt] = 0.015;
-	      if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
+	      //if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
 	      if (version==4) txtSize[ntxt] = 0.03;
               txtY[ntxt] = ymin*0.5;
+              if (version == 7)  txtY[ntxt] = ymin*0.75;
 	      if (DX_==stdDX_) txtX[ntxt] = nBin_;
 	      if (DX_==stdDX_/2) txtX[ntxt] = nBin_-0.5*DX_;
+	      if (DX_==stdDX_/3) txtX[ntxt] = nBin_;
 	      txtAlign[ntxt] = 21;
 	      txtAlign[ntxt] = 21;
 	      txtFont[ntxt] = 42;
+              if (big13TeV&&(ii==k_W13 || ii== k_Z13 || ii==k_WZ13 || ii==k_ZZ13 ||ii==k_tt13||ii==k_t13) ) txtColor[ntxt]=kRed;
 	      ntxt++;
-              vline_.push_back( nBin_+0.5*DX_);
-	      vmin_.push_back( 0 );
+	      if (DX_==stdDX_/2||DX_==stdDX_){
+		vline_.push_back( nBin_+0.5*DX_);
+		vmin_.push_back( 0 );
+	      } else if (DX_==stdDX_/3){
+		vline_.push_back( nBin_+1.5*DX_);
+		vmin_.push_back( 0 );
+	      }
+
 	      if ((version==0 || version==2)&& nBin_ < 180 ) vmax_.push_back( 1. );
 	      if ((version==0 || version==2)&& nBin_ > 180 ) vmax_.push_back( 200.0 );
 	      if (version==1 && nBin_ < 280 ) vmax_.push_back( 1. );
@@ -461,6 +537,8 @@ Sigma(float ymin=0.001, float ymax=100 )
 	      if (version==4 && nBin_ > 30 ) vmax_.push_back( 200.0 );
 	      if (version==6 && nBin_ < 30 ) vmax_.push_back( 1. );
 	      if (version==6 && nBin_ > 30 ) vmax_.push_back( 200.0 );
+	      if (version==7 && nBin_ < 50 ) vmax_.push_back( 1. );
+	      if (version==7 && nBin_ > 50 ) vmax_.push_back( 200.0 );
 	      vstyle_.push_back(3);
 	    } 
 	    if ( version==0 && ii != k_tt1jet8 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
@@ -518,7 +596,7 @@ Sigma(float ymin=0.001, float ymax=100 )
 
 
  
-  float xw_ = 1200;
+  float xw_ = 1800;
   float yw_ = xw_/aspR;
  
   // the canvas
@@ -526,7 +604,7 @@ Sigma(float ymin=0.001, float ymax=100 )
   c_->SetLeftMargin( 150./xw_ );
   c_->SetRightMargin( 30./xw_ );
   c_->SetTopMargin(  75./yw_ );
-  c_->SetBottomMargin( 65./yw_ ); 
+  c_->SetBottomMargin( 95./yw_ ); 
   c_->SetFillColor(0);
   c_->SetTickx(0);
   c_->SetTicky(1);
@@ -584,8 +662,9 @@ Sigma(float ymin=0.001, float ymax=100 )
   //if (version==4)
   float xx_ = nBin_-(0.48*nBin_);
   if (version == 6) xx_ = nBin_-(0.65*nBin_);
+  if (version == 7) xx_ = nBin_-(0.55*nBin_);
   float dxx_ = DX_/2.0;
- if (version == 6) dxx_ = DX_/4.0;
+ if (version == 6 || version == 7) dxx_ = DX_/4.0;
  
   DataPoint p_( 0, 0, 0.3*yy_, 
 		yy_, 0,
@@ -615,9 +694,13 @@ Sigma(float ymin=0.001, float ymax=100 )
       if  (iChan  == k_VH8) type = 8;
       if  (iChan  == k_ttH8) type = 8;
       if  (iChan  == k_WVg) type = 8;
+      if  (iChan  == k_Wgg8) type = 8;
+      if  (iChan  == k_Zgg8) type = 8;
       if  (iChan  == k_exWW8) type = 8;
       if  (iChan  == k_exWW8) type = 8;
       if  (iChan  == k_SSWW8) type = 8;
+      if  (iChan  == k_EWKWg8) type = 8;
+      if  (iChan  == k_EWKZg8) type = 8;
       if  (iChan == k_tt8) type = 8;
       if  (iChan == k_tt1jet8) type = 8;
       if  (iChan == k_tt2jet8) type = 8;
@@ -629,7 +712,7 @@ Sigma(float ymin=0.001, float ymax=100 )
       if  (iChan == k_Z5jet8) type = 8;
       if  (iChan == k_Z6jet8) type = 8;
       if  (iChan == k_Z7jet8) type = 8;
-      if  (iChan == k_tschan) type = 8;
+      if  (iChan == k_tschan8) type = 8;
       if  (iChan == k_ttW8) type = 8;
       if  (iChan == k_ttZ8) type = 8;
       if  (iChan == k_ttg) type = 8;
@@ -637,6 +720,16 @@ Sigma(float ymin=0.001, float ymax=100 )
 		
      if  (iChan == k_t8) type = 8;
       if  (iChan == k_tW8) type = 8;
+
+
+      if  (iChan == k_tt13) type = 13;
+      if  (iChan == k_ttZ13) type = 13;
+      if  (iChan == k_W13) type = 13;
+      if  (iChan == k_Z13) type = 13;
+      if  (iChan == k_t13) type = 13;
+     if  (iChan == k_WZ13) type = 13;
+      if  (iChan == k_ZZ13) type = 13;
+ 
 
       if (type != 71){
       DataPoint p2_( chanSigma[iChan], chanEStat[iChan], chanETot[iChan], 
@@ -695,15 +788,15 @@ void text_init()
   txt[0] = "CMS Preliminary";
   txtSize[0] = 0.055;
   txtX[0] = 0.94;
-  txtY[0] = 0.93;
+  txtY[0] = 0.95;
   txtAlign[0] = 31;
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "July 2015";
+  txt[1] = "April 2016";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
-  txtY[1] = 0.93;
+  txtY[1] = 0.95;
   txtAlign[1] = 11;
   txtNDC[1]=true;
   txtFont[1] = 42;

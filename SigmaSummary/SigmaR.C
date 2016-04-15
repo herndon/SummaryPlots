@@ -82,14 +82,20 @@ public:
 
   void draw()
   {
-    if (_type==8) 
-      {
+    if (_type==13) 
+       {
 	_theoColor = kBlue;
+        _expCircleColor = kBlack;
+        _expFillColor = kBlack;
+       } else if (_type == 8)    {
+	_theoColor = kBlue;
+        _expCircleColor = kRed;
         _expFillColor = kRed;
       } else if (_type == 7)
       {
 	_theoColor = kBlue;
-        _expFillColor = kWhite;
+        _expCircleColor = kRed;
+         _expFillColor = kWhite;
       } else
       {
 	_theoColor = kBlue;
@@ -136,7 +142,7 @@ public:
 	_dataPoint.SetMarkerColor(_expFillColor);
 	_dataPoint.DrawClone();
 	_dataPoint.SetMarkerStyle(kOpenCircle);
- 	_dataPoint.SetMarkerColor(kRed);
+ 	_dataPoint.SetMarkerColor(_expCircleColor);
 	_dataPoint.DrawClone();
 	
       }
@@ -225,6 +231,30 @@ public:
  	_dataPoint8.SetMarkerColor(kRed);
 	_dataPoint8.DrawClone();
 
+	TGraphErrors _dataTotPoint13Th(1);
+	_dataTotPoint13Th.SetPoint(1, _ypos, _sigma_theo-2 );
+	_dataTotPoint13Th.SetPointError( 1, _e_tot, 0 );
+	_dataTotPoint13Th.SetLineWidth(1);
+	_dataTotPoint13Th.SetLineColor(kBlack);
+	_dataTotPoint13Th.SetMarkerSize(0);
+	_dataTotPoint13Th.DrawClone("e");	
+
+	TGraphErrors _dataTotPoint13(1);
+	_dataTotPoint13.SetPoint(1, _ypos, _sigma_theo-2 );
+	_dataTotPoint13.SetPointError( 1, _e_tot/2, 0 );
+	_dataTotPoint13.SetLineWidth(1);
+	_dataTotPoint13.SetLineColor(kRed);
+	_dataTotPoint13.SetMarkerSize(0);
+	_dataTotPoint13.DrawClone("e");	
+
+
+ 	TMarker _dataPoint13( _ypos, _sigma_theo-2, kFullCircle );
+ 	_dataPoint13.SetMarkerSize(markerSize);
+	_dataPoint13.SetMarkerColor(kBlack);
+	_dataPoint13.DrawClone();
+	_dataPoint13.SetMarkerStyle(kOpenCircle);
+ 	_dataPoint13.SetMarkerColor(kBlack);
+	_dataPoint13.DrawClone();
 
 
 
@@ -241,6 +271,14 @@ public:
 	txtSize[ntxt] = 0.03;
 	txtX[ntxt] = _ypos - 0.7;
 	txtY[ntxt] = _sigma_theo -1;
+ 	txtAlign[ntxt] = 12;
+	txtFont[ntxt] = 42;
+	ntxt++;
+
+	txt[ntxt] = "13 TeV CMS measurement (stat,stat+sys) ";
+	txtSize[ntxt] = 0.03;
+	txtX[ntxt] = _ypos - 0.7;
+	txtY[ntxt] = _sigma_theo -2;
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
@@ -290,6 +328,7 @@ private:
   float _dy;
   int _theoColor;
   int _expFillColor;
+  int _expCircleColor;
   int _type;
 };
 
@@ -414,7 +453,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   //  ***** Dynamically set y axis
   //  ***** Invert y axis
   c_->SetLogy(false);
-  h_->GetYaxis()->SetRangeUser(0.5,nBin_+2.5);
+  h_->GetYaxis()->SetRangeUser(0.5,nBin_+3.5);
   h_->GetXaxis()->SetRangeUser(0.5,2.0);
   h_->Draw("hist][");
   
@@ -429,7 +468,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
           chanTheo[ii] = 1.0;
 	}
 
-  float yy_ = nBin_+1.5;
+  float yy_ = nBin_+2.5;
   float xx_ = 1.85;
   float dyx_ = 1.2;
   DataPoint p_( 0, 0, 0.1, 
@@ -451,7 +490,10 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       if  (iChan  == k_WW8) type = 8;
       if  (iChan  == k_WZ8) type = 8;
       if  (iChan  == k_ZZ8) type = 8;
- 
+       if  (iChan  == k_WZ13) type = 13;
+       if  (iChan  == k_WZ13fid) type = 13;
+      if  (iChan  == k_ZZ13) type = 13;
+
       if (version ==2 && ( 
       (iChan  == k_W1jet) ||(iChan  == k_W2jet) || (iChan  == k_W3jet) ||(iChan  == k_W4jet) ||
       (iChan  == k_Z1jet) ||(iChan  == k_Z2jet) || (iChan  == k_Z3jet) ||(iChan  == k_Z4jet) )) type = 71;
@@ -515,7 +557,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "Mar. 2015";
+  txt[1] = "April 2016";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.965;
