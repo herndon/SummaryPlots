@@ -1,19 +1,25 @@
 
 
-enum {  k_atlas_wg_dkg=0, k_cms_wg_dkg,   k_atlas_ww8_dkg, k_cms_ww_dkg, k_cms_ww8_dkg, k_atlas_wz8_dkg, k_atlas_wv_dkg, k_cms_wv_dkg, k_d0_vv_dkg, k_lep_ww_dkg, k_atlas_wg_lg, k_cms_wg_lg, k_atlas_ww8_lg, k_cms_ww_lg, k_cms_ww8_lg, k_atlas_wz8_lg, k_atlas_wv_lg, k_cms_wv_lg, k_d0_vv_lg, k_lep_ww_lg, k_atlas_ww_dkz, k_atlas_ww8_dkz, k_cms_ww8_dkz, k_atlas_wz8_dkz, k_atlas_wv_dkz, k_cms_wv_dkz,  k_lep_ww_dkz,  k_atlas_ww_dk,  k_d0_vv_dk, k_atlas_ww_lz, k_atlas_ww8_lz, k_cms_ww_lz, k_cms_ww8_lz,  k_atlas_wz_lz, k_atlas_wz8_lz, k_atlas_wv_lz, k_cms_wv_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_atlas_ww8_dgz, k_cms_ww_dgz,  k_cms_ww8_dgz,  k_atlas_wz_dgz, k_atlas_wz8_dgz, k_atlas_wv_dgz, k_d0_vv_dgz, k_lep_ww_dgz, k_atlas_zg_h3g,  k_cms_zg_h3g, k_cms_zg8_h3g, k_cms_zg8_h3g2, k_cdf_zg_h3g, k_atlas_zg_h3z, k_cms_zg_h3z, k_cms_zg8_h3z, k_cms_zg8_h3z2, k_cdf_zg_h3z, k_atlas_zg_h4g,  k_cms_zg_h4g, k_cms_zg8_h4g, k_cms_zg8_h4g2, k_atlas_zg_h4z,   k_cms_zg_h4z, k_cms_zg8_h4z, k_cms_zg8_h4z2, k_atlas_zz_f4g, k_cms_zz_f4g, k_cms_zz2_f4g, k_cms_zzc_f4g, k_atlas_zz_f4z, k_cms_zz_f4z,  k_cms_zz2_f4z, k_cms_zzc_f4z, k_atlas_zz_f5g, k_cms_zz_f5g,  k_cms_zz2_f5g, k_cms_zzc_f5g, k_atlas_zz_f5z, k_cms_zz_f5z, k_cms_zz2_f5z, k_cms_zzc_f5z,
-
-k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_a0w,  k_cms_wwg8_acw, k_cms_ssww8_acw, k_cms_ggww_acw, k_cms_ggww8_acw, k_cms_wvg8_fm0, k_cms_zg8_fm0, k_cms_wg8_fm0, k_cms_ssww8_fm0, k_cms_ggww_fm0, k_cms_ggww8_fm0, k_cms_wvg8_fm1, k_cms_zg8_fm1, k_cms_wg8_fm1, k_cms_ssww8_fm1, k_cms_ggww_fm1, k_cms_ggww8_fm1,  k_cms_wgg8_fm2, k_atlas_wgg8_fm2, k_cms_zg8_fm2, k_cms_wg8_fm2,  k_cms_wgg8_fm3, k_atlas_wgg8_fm3, k_cms_zg8_fm3, k_cms_wg8_fm3,  k_cms_wg8_fm4,  k_cms_wg8_fm5, k_cms_wg8_fm6, k_cms_ssww8_fm6, k_cms_wg8_fm7, k_cms_ssww8_fm7,  k_cms_wgg8_ft0, k_atlas_wgg8_ft0, k_cms_wvg8_ft0,  k_cms_zg8_ft0, k_cms_wg8_ft0, k_cms_ssww8_ft0,  k_cms_wgg8_ft1, k_cms_zg8_ft1,  k_cms_wg8_ft1, k_cms_ssww8_ft1,   k_cms_wgg8_ft2, k_cms_zg8_ft2, k_cms_wg8_ft2, k_cms_ssww8_ft2, k_cms_wg8_ft5,  k_cms_wg8_ft6, k_cms_wg8_ft7, k_cms_zg8_ft8, k_cms_zg8_ft9,  k_atlas_ssww8_fs0, k_cms_ssww8_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_nChan };
+enum {  k_atlas_wg_dkg=0, k_cms_wg_dkg,   k_atlas_ww8_dkg, k_cms_ww_dkg, k_cms_ww8_dkg, k_atlas_wz8_dkg, k_atlas_wv_dkg, k_cms_wv_dkg, k_d0_vv_dkg, k_lep_ww_dkg, 
+k_atlas_wg_lg, k_cms_wg_lg, k_atlas_ww8_lg, k_cms_ww_lg, k_cms_ww8_lg, k_atlas_wz8_lg, k_atlas_wv_lg, k_cms_wv_lg, k_d0_vv_lg, k_lep_ww_lg, 
+k_atlas_ww_dkz, k_atlas_ww8_dkz, k_cms_ww8_dkz, k_atlas_wz8_dkz, k_atlas_wv_dkz, k_cms_wv_dkz,  k_lep_ww_dkz,  k_atlas_ww_dk,  k_d0_vv_dk, k_atlas_ww_lz, k_atlas_ww8_lz, k_cms_ww_lz, k_cms_ww8_lz,  k_atlas_wz_lz, k_atlas_wz8_lz, k_atlas_wv_lz, k_cms_wv_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_atlas_ww8_dgz, k_cms_ww_dgz,  k_cms_ww8_dgz,  k_atlas_wz_dgz, k_atlas_wz8_dgz, k_atlas_wv_dgz, k_d0_vv_dgz, k_lep_ww_dgz, 
+k_atlas_zg_h3g,  k_atlas_zg8_h3g, k_cms_zg_h3g, k_cms_zg8_h3g, k_cms_zg8_h3g2, k_cdf_zg_h3g, k_atlas_zg_h3z,  k_atlas_zg8_h3z, k_cms_zg_h3z, k_cms_zg8_h3z, k_cms_zg8_h3z2, k_cdf_zg_h3z, k_atlas_zg_h4g, k_atlas_zg8_h4g, k_cms_zg_h4g, k_cms_zg8_h4g, k_cms_zg8_h4g2, k_atlas_zg_h4z,  k_atlas_zg8_h4z, k_cms_zg_h4z, k_cms_zg8_h4z, k_cms_zg8_h4z2, 
+k_atlas_zz_f4g, k_cms_zz_f4g, k_cms_zz2_f4g, k_cms_zzc_f4g, k_atlas_zz_f4z, k_cms_zz_f4z,  k_cms_zz2_f4z, k_cms_zzc_f4z, k_atlas_zz_f5g, k_cms_zz_f5g,  k_cms_zz2_f5g, k_cms_zzc_f5g, k_atlas_zz_f5z, k_cms_zz_f5z, k_cms_zz2_f5z, k_cms_zzc_f5z, 
+k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_a0w,  k_cms_wwg8_acw, k_cms_ssww8_acw, k_cms_ggww_acw, k_cms_ggww8_acw, 
+        k_cms_wvg8_fm0, k_cms_zg8_fm0, k_cms_wg8_fm0, k_cms_ssww8_fm0, k_cms_ggww_fm0, k_cms_ggww8_fm0, k_cms_wvg8_fm1, k_cms_zg8_fm1, k_cms_wg8_fm1, k_cms_ssww8_fm1, k_cms_ggww_fm1, k_cms_ggww8_fm1,   k_atlas_zgg8_fm2, k_cms_wgg8_fm2, k_atlas_wgg8_fm2, k_cms_zg8_fm2, k_cms_wg8_fm2,   k_atlas_zgg8_fm3, k_cms_wgg8_fm3, k_atlas_wgg8_fm3, k_cms_zg8_fm3, k_cms_wg8_fm3,  k_cms_wg8_fm4,  k_cms_wg8_fm5, k_cms_wg8_fm6, k_cms_ssww8_fm6, k_cms_wg8_fm7, k_cms_ssww8_fm7,  
+k_cms_wgg8_ft0,  k_atlas_zgg8_ft0, k_atlas_wgg8_ft0, k_cms_wvg8_ft0,  k_cms_zg8_ft0, k_cms_wg8_ft0, k_cms_ssww8_ft0,  k_cms_wgg8_ft1, k_cms_zg8_ft1,  k_cms_wg8_ft1, k_cms_ssww8_ft1,   k_cms_wgg8_ft2, k_cms_zg8_ft2, k_cms_wg8_ft2, k_cms_ssww8_ft2,  k_atlas_zgg8_ft5, k_cms_wg8_ft5,  k_cms_wg8_ft6, k_cms_wg8_ft7, k_cms_zg8_ft8,  k_atlas_zgg8_ft9, k_cms_zg8_ft9,  
+k_atlas_ssww8_fs0, k_cms_ssww8_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_nChan };
 
 // Available plot sets
 bool catgcg = false;
 bool catgcz = false;
 bool natgcg = false;
-bool natgcz = true;
+bool natgcz = false;
 
 bool atgc = catgcg||catgcz||natgcg||natgcz;
 
 bool aqgc_a = false;
-bool aqgc_ft = false; 
+bool aqgc_ft = true; 
 bool aqgc_fm = false;
 bool aqgc_fs = false;
 
@@ -882,6 +888,7 @@ if (catgcz)
 if (natgcg)
   {
 
+
   // h3 parameters scale to 100 for graphing 
   // http://arxiv.org/abs/1302.1283 submitted to PRD
 
@@ -896,6 +903,19 @@ if (natgcg)
     chanaCM[k_atlas_zg_h3g]  = -0.015 * scale_; 
     chanaCP[k_atlas_zg_h3g]  = +0.016 * scale_; 
     plotChan[k_atlas_zg_h3g] = true;
+
+    // http://arxiv.org/abs/1604.05232#
+
+    chan = k_atlas_zg8_h3g;
+    chanName[chan]            = "h^{#gamma}_{3}";
+    chanMeasurement[chan]     = "Z#gamma(ll#gamma,#nu#nu#gamma)";
+    chanLumi[chan]            = "20.3 fb^{-1}";
+    chanSqrtS[chan]          = "8 TeV";
+    chanExp[chan]            = "ATLAS";
+    chanaCC[chan]  = 0.0   * scale_; 
+    chanaCM[chan]  = -0.00095 * scale_; 
+    chanaCP[chan]  = +0.00099 * scale_; 
+    plotChan[chan] = true;
 
 
   // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
@@ -996,6 +1016,18 @@ if (natgcg)
   chanaCP[k_atlas_zg_h3z]  = +0.014 * scale_; 
   plotChan[k_atlas_zg_h3z] = true;
  
+    // http://arxiv.org/abs/1604.05232#
+
+    chan = k_atlas_zg8_h3z;
+    chanName[chan]            = "h^{Z}_{3}";
+    chanMeasurement[chan]     = "Z#gamma(ll#gamma,#nu#nu#gamma)";
+    chanLumi[chan]            = "20.3 fb^{-1}";
+    chanSqrtS[chan]          = "8 TeV";
+    chanExp[chan]            = "ATLAS";
+    chanaCC[chan]  = 0.0   * scale_; 
+    chanaCM[chan]  = -0.00078 * scale_; 
+    chanaCP[chan]  = +0.00086 * scale_; 
+    plotChan[chan] = true;
 
 
   // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
@@ -1103,6 +1135,18 @@ if (natgcg)
   chanaCP[k_atlas_zg_h4g]  = +0.000092 * scale_; 
   plotChan[k_atlas_zg_h4g] = true;
 
+    // http://arxiv.org/abs/1604.05232#
+
+    chan = k_atlas_zg8_h4g;
+    chanName[chan]            = "h^{#gamma}_{4}";
+    chanMeasurement[chan]     = "Z#gamma(ll#gamma,#nu#nu#gamma)";
+    chanLumi[chan]            = "20.3 fb^{-1}";
+    chanSqrtS[chan]          = "8 TeV";
+    chanExp[chan]            = "ATLAS";
+    chanaCC[chan]  = 0.0   * scale_; 
+    chanaCM[chan]  = -0.0000032 * scale_; 
+    chanaCP[chan]  = +0.0000032 * scale_; 
+    plotChan[chan] = true;
 
 
   // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
@@ -1196,6 +1240,19 @@ if (natgcg)
   chanaCP[k_atlas_zg_h4z]  = +0.000087 * scale_; 
   plotChan[k_atlas_zg_h4z] = true;
  
+    // http://arxiv.org/abs/1604.05232#
+
+    chan = k_atlas_zg8_h4z;
+    chanName[chan]            = "h^{Z}_{4}";
+    chanMeasurement[chan]     = "Z#gamma(ll#gamma,#nu#nu#gamma)";
+    chanLumi[chan]            = "20.3 fb^{-1}";
+    chanSqrtS[chan]          = "8 TeV";
+    chanExp[chan]            = "ATLAS";
+    chanaCC[chan]  = 0.0   * scale_; 
+    chanaCM[chan]  = -0.0000030 * scale_; 
+    chanaCP[chan]  = +0.0000029 * scale_; 
+    plotChan[chan] = true;
+
 
  // ATLAS http://arxiv.org/abs/1205.2531 Phys.Lett. B717 (2012) 49-69
   // superceeded
@@ -1594,20 +1651,21 @@ if (aqgc_a) {
   chanaCC[chan]       = 0.0   * scale_; 
   chanaCM[chan]       = -4.0 * scale_; 
   chanaCP[chan]       = 4.0 * scale_; 
-  plotChan[chan]        = true;
+  plotChan[chan]        = false;
 
 
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/FSQ-13-008/index.html
   // https://cds.cern.ch/record/2025577
+  // http://arxiv.org/abs/1604.04464
 
     chanName[k_cms_ggww8_a0w]            = "a^{W}_{0} /#Lambda^{2}";
   chanMeasurement[k_cms_ggww8_a0w]     = "#gamma#gamma#rightarrowWW";
-  chanLumi[k_cms_ggww8_a0w]            = "19.7 fb^{-1}";
+  chanLumi[k_cms_ggww8_a0w]            = "24.7 fb^{-1}";
   chanExp[k_cms_ggww8_a0w]            = "CMS";
-  chanSqrtS[k_cms_ggww8_a0w]          = "8 TeV";
+  chanSqrtS[k_cms_ggww8_a0w]          = "7,8 TeV";
   chanaCC[k_cms_ggww8_a0w]  = 0.0   * scale_; 
-  chanaCM[k_cms_ggww8_a0w]  = -1.2 * scale_; 
-  chanaCP[k_cms_ggww8_a0w]  = 1.2 * scale_; 
+  chanaCM[k_cms_ggww8_a0w]  = -1.1 * scale_; 
+  chanaCP[k_cms_ggww8_a0w]  = 1.1 * scale_; 
   plotChan[k_cms_ggww8_a0w] = true;
 
   // http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-13-009/index.html
@@ -1654,19 +1712,20 @@ if (aqgc_a) {
   chanaCC[k_cms_ggww_acw]  = 0.0   * scale_; 
   chanaCM[k_cms_ggww_acw]  = -15.0 * scale_; 
   chanaCP[k_cms_ggww_acw]  = 15.0 * scale_; 
-  plotChan[k_cms_ggww_acw] = true;
+  plotChan[k_cms_ggww_acw] = false;
 
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/FSQ-13-008/index.html
   // https://cds.cern.ch/record/2025577
+  // http://arxiv.org/abs/1604.04464
 
   chanName[k_cms_ggww8_acw]            = "a^{W}_{C} /#Lambda^{2}";
   chanMeasurement[k_cms_ggww8_acw]     = "#gamma#gamma#rightarrowWW";
-  chanLumi[k_cms_ggww8_acw]            = "19.7 fb^{-1}";
+  chanLumi[k_cms_ggww8_acw]            = "24.7 fb^{-1}";
   chanExp[k_cms_ggww8_acw]            = "CMS";
-  chanSqrtS[k_cms_ggww8_acw]          = "8 TeV";
+  chanSqrtS[k_cms_ggww8_acw]          = "7,8 TeV";
   chanaCC[k_cms_ggww8_acw]  = 0.0   * scale_; 
-  chanaCM[k_cms_ggww8_acw]  = -4.4 * scale_; 
-  chanaCP[k_cms_ggww8_acw]  = 4.4 * scale_; 
+  chanaCM[k_cms_ggww8_acw]  = -4.1 * scale_; 
+  chanaCP[k_cms_ggww8_acw]  = 4.1 * scale_; 
   plotChan[k_cms_ggww8_acw] = true;
 
  
@@ -1677,6 +1736,30 @@ if (aqgc_a) {
 
 if (aqgc_fm) {
 
+  // http://arxiv.org/abs/1604.05232#
+
+  chan = k_atlas_zgg8_fm2;
+  chanName[chan]        = "f_{M,2} /#Lambda^{4}";
+  chanMeasurement[chan] = "Z#gamma#gamma";
+  chanLumi[chan]        = "20.3 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = -16000 * 0.25 * gp*gp * scale_; 
+  chanaCP[chan]       = 16000 * 0.25 * gp*gp * scale_; 
+  plotChan[chan]        = true;
+
+  chan = k_atlas_zgg8_fm3;
+  chanName[chan]        = "f_{M,3} /#Lambda^{4}";
+  chanMeasurement[chan] = "Z#gamma#gamma";
+  chanLumi[chan]        = "20.3 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = -29000 * 0.25 * gp*gp * scale_; 
+  chanaCP[chan]       = 27000 * 0.25 * gp*gp * scale_; 
+  plotChan[chan]        = true;
+
 
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-008/index.html
   chan = k_cms_wgg8_fm2;
@@ -1685,7 +1768,7 @@ if (aqgc_fm) {
   chanLumi[chan]        = "19.4 fb^{-1}";
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "8 TeV";
-  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCC[chan]       = 0.0 * scale_; 
   chanaCM[chan]       = -751 * scale_; 
   chanaCP[chan]       = 729 * scale_; 
   plotChan[chan]        = false;
@@ -1957,7 +2040,7 @@ if (aqgc_fm) {
   chanaCC[chan]       = 0.0   * scale_; 
   chanaCM[chan]       =  (-4.0/fm0toa0w) * scale_; 
   chanaCP[chan]       =  (4.0/fm0toa0w) * scale_; 
-  plotChan[chan]        = true;
+  plotChan[chan]        = false;
 
 
   chan = k_cms_ggww_fm1;
@@ -1969,37 +2052,75 @@ if (aqgc_fm) {
   chanaCC[chan]       = 0.0   * scale_; 
   chanaCM[chan]       =  (-15/fm1toacw) * scale_; 
   chanaCP[chan]       =  (15/fm1toacw) * scale_; 
-  plotChan[chan]        = true;
+  plotChan[chan]        = false;
     
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/FSQ-13-008/index.html
   // https://cds.cern.ch/record/2025577
+  // http://arxiv.org/abs/1604.04464
 
   chan = k_cms_ggww8_fm0;
   chanName[chan]        = "f_{M,0} /#Lambda^{4}";
   chanMeasurement[chan] = "#gamma#gamma#rightarrowWW";
-  chanLumi[chan]        = "19.7 fb^{-1}";
+  chanLumi[chan]        = "24.7 fb^{-1}";
   chanExp[chan]         = "CMS";
-  chanSqrtS[chan]       = "8 TeV";
+  chanSqrtS[chan]       = "7,8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
-  chanaCM[chan]       = -4.6 * scale_; 
-  chanaCP[chan]       = 4.6 * scale_; 
+  chanaCM[chan]       = -4.2 * scale_; 
+  chanaCP[chan]       = 4.2 * scale_; 
   plotChan[chan] = true;
 
 
   chan = k_cms_ggww8_fm1;
   chanName[chan]        = "f_{M,1} /#Lambda^{4}";
   chanMeasurement[chan] = "#gamma#gamma#rightarrowWW";
-  chanLumi[chan]        = "19.7 fb^{-1}";
+  chanLumi[chan]        = "24.7 fb^{-1}";
   chanExp[chan]         = "CMS";
-  chanSqrtS[chan]       = "8 TeV";
+  chanSqrtS[chan]       = "7,8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
-  chanaCM[chan]       = -17 * scale_; 
-  chanaCP[chan]       = 17 * scale_; 
+  chanaCM[chan]       = -16 * scale_; 
+  chanaCP[chan]       = 16 * scale_; 
   plotChan[chan] = true;
 
  }
 
 if (aqgc_ft) {
+
+  //  http://arxiv.org/abs/1604.05232#
+
+  chan = k_atlas_zgg8_ft0;
+  chanName[chan]        = "f_{T,0} /#Lambda^{4}";
+  chanMeasurement[chan] = "Z#gamma#gamma";
+  chanLumi[chan]        = "20.3 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = -86.0 * g*g*g*g * scale_; 
+  chanaCP[chan]       = 103.0 * g*g*g*g * scale_; 
+  plotChan[chan]        = true;
+
+
+  chan = k_atlas_zgg8_ft5;
+  chanName[chan]        = "f_{T,5} /#Lambda^{4}";
+  chanMeasurement[chan] = "Z#gamma#gamma";
+  chanLumi[chan]        = "20.3 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = -690.0 * 0.25 * g*g*gp*gp * scale_; 
+  chanaCP[chan]       = 680.0 * 0.25 * g*g*gp*gp * scale_; 
+  plotChan[chan]        = true;
+
+  chan = k_atlas_zgg8_ft9;
+  chanName[chan]        = "f_{T,9} /#Lambda^{4}";
+  chanMeasurement[chan] = "Z#gamma#gamma";
+  chanLumi[chan]        = "20.3 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = -7400.0 * 0.25 * 0.25 * gp*gp*gp*gp * scale_; 
+  chanaCP[chan]       = 7400.0 * 0.25 * 0.25 * gp*gp*gp*gp * scale_; 
+  plotChan[chan]        = true;
+
 
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-008/index.html
   chan = k_cms_wgg8_ft0;

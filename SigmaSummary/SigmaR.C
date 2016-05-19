@@ -285,7 +285,7 @@ public:
 
         txt[ntxt] = "CMS measurements";
         txtSize[ntxt] = 0.035;
-        txtX[ntxt] = 0.55;
+        txtX[ntxt] = 0.43;
         txtY[ntxt] = _sigma_theo -0.00;
         txtAlign[ntxt] = 12;
         txtFont[ntxt] = 42;
@@ -293,7 +293,7 @@ public:
 
         txt[ntxt] = "vs. NLO #scale[0.70]{(NNLO)} theory";
         txtSize[ntxt] = 0.035;
-        txtX[ntxt] = 0.55;
+        txtX[ntxt] = 0.43;
         txtY[ntxt] = _sigma_theo -0.8;
         txtAlign[ntxt] = 12;
         txtFont[ntxt] = 42;
@@ -378,7 +378,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
       txt[ntxt] = chanMeasurement[ii];
       txtSize[ntxt] = size_;
-      txtX[ntxt] = 0.55;
+      txtX[ntxt] = 0.43;
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -454,7 +454,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   //  ***** Invert y axis
   c_->SetLogy(false);
   h_->GetYaxis()->SetRangeUser(0.5,nBin_+3.5);
-  h_->GetXaxis()->SetRangeUser(0.5,2.0);
+  h_->GetXaxis()->SetRangeUser(0.4,2.0);
   h_->Draw("hist][");
   
 
@@ -471,7 +471,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   float yy_ = nBin_+2.5;
   float xx_ = 1.85;
   float dyx_ = 1.2;
-  DataPoint p_( 0, 0, 0.1, 
+  DataPoint p_( 0, 0, 0.08, 
 		yy_, 0,
 		xx_, dyx_, type ) ;
   p_.draw();
@@ -493,6 +493,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
        if  (iChan  == k_WZ13) type = 13;
        if  (iChan  == k_WZ13fid) type = 13;
       if  (iChan  == k_ZZ13) type = 13;
+       if  (iChan  == k_ZZ13fid) type = 13;
 
       if (version ==2 && ( 
       (iChan  == k_W1jet) ||(iChan  == k_W2jet) || (iChan  == k_W3jet) ||(iChan  == k_W4jet) ||
@@ -567,16 +568,16 @@ void text_init()
 
   txt[2] = "All results at:";
   txtSize[2] = 0.03;
-  txtX[2] = 0.15;
-  txtY[2] = 0.05;
+  txtX[2] = 0.10;
+  txtY[2] = 0.04;
   txtAlign[2] = 21;
   txtNDC[2]=true;
   txtFont[2] = 42;
 
   txt[3] = "http://cern.ch/go/pNj7";
   txtSize[3] = 0.03;
-  txtX[3] = 0.15;
-  txtY[3] = 0.015;
+  txtX[3] = 0.10;
+  txtY[3] = 0.012;
   txtAlign[3] = 21;
   txtNDC[3]=true;
   txtFont[3] = 42;
