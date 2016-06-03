@@ -1410,22 +1410,22 @@ scale_ = 1.0;
   chanETheo[k_tt8] = (chanETheop[k_tt8] +chanETheom[k_tt8])/2.0;
 
 // ttbar 13 TeV
-// !!!!! http://arxiv.org/abs/1510.05302 ????? to be replaced with prel results?
+//http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-16-005/index.html
   if (use13TeV) chanMeasurement[k_tt13] = "tt";
 if (big13TeV) chanMeasurement[k_tt13]    =  "#splitline{   tt}{13Tev}";
   chanLumi[k_tt13] = "";
 
-  chanSigma[k_tt13]  =   769.0 * scale_; 
-  chanEStatp[k_tt13]  =   55.0 * scale_;
-chanESystp[k_tt13]  =   sqrt(60.0*60.0 + 92.0*92.0) * scale_;
+  chanSigma[k_tt13]  =   793.0 * scale_; 
+  chanEStatp[k_tt13]  =   8.0 * scale_;
+chanESystp[k_tt13]  =   sqrt(38.0*38.0 + 21.0*21.0) * scale_;
   chanETotp[k_tt13]   =  sqrt( 
 			   chanEStatp[k_tt13]*chanEStatp[k_tt13]
 			   +
 			   chanESystp[k_tt13]*chanESystp[k_tt13]
 			    );
 
-  chanEStatm[k_tt13]  =   55.0 * scale_;
-  chanESystm[k_tt13]  =    sqrt(60.0*60.0 + 92.0*92.0) * scale_;
+  chanEStatm[k_tt13]  =   8.0 * scale_;
+  chanESystm[k_tt13]  =    sqrt(38.0*38.0 + 21.0*21.0) * scale_;
   chanETotm[k_tt13]   =  sqrt( 
 			   chanEStatm[k_tt13]*chanEStatm[k_tt13]
 			   +
@@ -1438,8 +1438,8 @@ chanESystp[k_tt13]  =   sqrt(60.0*60.0 + 92.0*92.0) * scale_;
 
 
   chanTheo[k_tt13] =   832.0 * scale_;
-chanETheop[k_tt13] =  sqrt(20.0*20.0+35.0*35.0) * scale_;
-  chanETheom[k_tt13] = sqrt(29.0*29.0+35.0*35.0) * scale_;
+chanETheop[k_tt13] =  40.0 * scale_;
+  chanETheom[k_tt13] = 46.0 * scale_;
   chanETheo[k_tt13] = (chanETheop[k_tt13] +chanETheom[k_tt13])/2.0;
 
 
@@ -1726,22 +1726,22 @@ chanETheom[k_t8] =  sqrt(1.0*1.0 + 2.2*2.2) * scale_;
   // chanETheo[k_t8] = (chanETheop[k_t8] +chanETheom[k_t8])/2.0;
 
 
-// single top http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-15-004/index.html
+//http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-16-003/index.html
   if (use13TeV) chanMeasurement[k_t13] = "t_{t-ch}";
 if (big13TeV) chanMeasurement[k_t13]    =  "#splitline{  t_{t-ch}}{13Tev}";
   chanLumi[k_t13] = "";
 
-  chanSigma[k_t13]  =   274. * scale_; 
-  chanEStatp[k_t13]  =   98. * scale_;
-chanESystp[k_t13]  =   sqrt(52.*52.+33.*33.) * scale_;
+  chanSigma[k_t13]  =   227.8 * scale_; 
+  chanEStatp[k_t13]  =   9.1 * scale_;
+chanESystp[k_t13]  =   sqrt(14.0*14.0+28.7*28.7+6.2*6.2) * scale_;
   chanETotp[k_t13]   =  sqrt( 
 			   chanEStatp[k_t13]*chanEStatp[k_t13]
 			   +
 			   chanESystp[k_t13]*chanESystp[k_t13]
 			    );
 
-  chanEStatm[k_t13]  =   98. * scale_;
-  chanESystm[k_t13]  =   sqrt(52.*52.+33.*33.) * scale_;
+  chanEStatm[k_t13]  =   9.1 * scale_;
+  chanESystm[k_t13]  =   sqrt(14.0*14.0+27.7*27.7+6.2*6.2) * scale_;
   chanETotm[k_t13]   =  sqrt( 
 			   chanEStatm[k_t13]*chanEStatm[k_t13]
 			   +
@@ -1753,9 +1753,9 @@ chanESystp[k_t13]  =   sqrt(52.*52.+33.*33.) * scale_;
  
 
 
-  chanTheo[k_t13] =   214.5 * scale_;
-chanETheop[k_t13] =  sqrt(0.7*0.7 + 0.3*0.3) * scale_;
-chanETheom[k_t13] =  sqrt(0.6*0.6 +0.6*0.6) * scale_;
+  chanTheo[k_t13] =   216.99 * scale_;
+chanETheop[k_t13] =  sqrt(6.62*6.62 + 6.16*6.16) * scale_;
+chanETheom[k_t13] =  sqrt(4.64*4.64 +6.16*6.16) * scale_;
   chanETheo[k_t13] = (chanETheop[k_t13] +chanETheom[k_t13])/2.0;
 
 
@@ -2989,7 +2989,7 @@ if (version == 6) chanMeasurement[k_SSWW8] = "#splitline{EWK ss WW}{WW #rightarr
   chanETheo[k_ttH] = (chanETheop[k_ttH] +chanETheom[k_ttH])/2.0;
 
 
-  chanSigma[k_ttH]  =   -5.359 * chanTheo[k_ttH] * scale_; 
+  chanSigma[k_ttH]  =   -2.19 * chanTheo[k_ttH] * scale_; 
   chanEStatp[k_ttH]  =   0.0;
   chanESystp[k_ttH]  =   0.0;
   chanETotp[k_ttH]   =  0.0;
