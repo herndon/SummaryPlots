@@ -728,7 +728,8 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_W13) type = 13;
       if  (iChan == k_Z13) type = 13;
       if  (iChan == k_t13) type = 13;
-     if  (iChan == k_WZ13) type = 13;
+      if  (iChan == k_WW13) type = 13;
+      if  (iChan == k_WZ13) type = 13;
       if  (iChan == k_ZZ13) type = 13;
  
 
@@ -794,7 +795,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "April 2016";
+  txt[1] = "June 2016";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.95;

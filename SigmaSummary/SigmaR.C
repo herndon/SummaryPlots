@@ -291,7 +291,7 @@ public:
         txtFont[ntxt] = 42;
         ntxt++;
 
-        txt[ntxt] = "vs. NLO #scale[0.70]{(NNLO)} theory";
+        txt[ntxt] = "vs. NNLO #scale[0.70]{(NLO)} theory";
         txtSize[ntxt] = 0.035;
         txtX[ntxt] = 0.43;
         txtY[ntxt] = _sigma_theo -0.8;
@@ -490,6 +490,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       if  (iChan  == k_WW8) type = 8;
       if  (iChan  == k_WZ8) type = 8;
       if  (iChan  == k_ZZ8) type = 8;
+      if  (iChan  == k_WW13) type = 13;
        if  (iChan  == k_WZ13) type = 13;
        if  (iChan  == k_WZ13fid) type = 13;
       if  (iChan  == k_ZZ13) type = 13;
@@ -558,7 +559,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "April 2016";
+  txt[1] = "June 2016";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.965;
