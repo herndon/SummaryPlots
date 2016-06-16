@@ -7,6 +7,11 @@ depending on the value of "version" (0-5) in plot.C.
 Ranges of the TCanvas must be adjusted for 3 and 4
 See TCanvas* declaration in Plot.C
 
+In root 6 loading macros doesn't work in scripts.  Instead
+> root < plot.txt
+
+
+
 To run the diboson cross section ratio script:
 > root plotR.C
 A pdf and png files are produced, SigmaR_v0.pdf,

@@ -1,8 +1,12 @@
 Author: Matthew Herndon 
 
 To run the script:
-> root -l plotaQGC.C
+> root -l plotaGC.C
 pdf and png files are produced, aQGC_v0.pdf
+
+In root 6 loading macros doesn't work in scripts.  Instead
+> root < plotaGC.txt
+
 
 To control which subset of aQGC paramaters to plot
 Change the lines
