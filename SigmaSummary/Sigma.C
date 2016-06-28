@@ -319,7 +319,7 @@ public:
 	ntxt++;
   }
 if (version !=6){
-	txt[ntxt] = "13 TeV CMS measurement (L #leq 1.3 fb^{-1})";
+	txt[ntxt] = "13 TeV CMS measurement (L #leq 2.7 fb^{-1})";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
 	txtY[ntxt] = _sigma_theo/(dy_);
@@ -361,7 +361,7 @@ TCanvas*
 // version 4 ymin=0.005, float ymax=  50000000
 // version 6 ymin 0.0005, ymax 100
 // version 7 ymin 5.0, ymax 600000
-Sigma(float ymin=0.0005, float ymax=30000 )
+Sigma(float ymin=0.0005, float ymax=600000 )
 {
 
 #include "data.C"
@@ -749,7 +749,7 @@ Sigma(float ymin=0.0005, float ymax=30000 )
       if  (iChan == k_WW13) type = 13;
       if  (iChan == k_WZ13) type = 13;
       if  (iChan == k_ZZ13) type = 13;
- 
+      if  (iChan == k_ttH13) type = 13; 
 
       if (type != 71){
       DataPoint p2_( chanSigma[iChan], chanEStat[iChan], chanETot[iChan], 

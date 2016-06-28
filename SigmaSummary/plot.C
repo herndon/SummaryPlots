@@ -3,7 +3,7 @@ void plot()
   gROOT->LoadMacro("tdrstyle.C");
   gROOT->LoadMacro("Sigma.C++");
   setTDRStyle();  
-  version=3;
+  version=1;
   TString str("SigmaNew_v"); str+=version;
   Sigma()->Print(str+".png");
   //Sigma()->Print(str+".eps");
