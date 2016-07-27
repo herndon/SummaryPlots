@@ -411,7 +411,9 @@ Sigma(float ymin=0.03, float ymax=3000 )
             if (ledgendY == 0 && chanSigma[ii] > 0.0) {
 	      ledgendY = chanSigma[ii];
                 ledgendY*=0.5; 
-             if (version == 6) ledgendY*=40.0;
+		// Sometimes the automation using teh highest xsection channel doesn't work.  Should resolve
+	     if (version == 6) ledgendY*=40.0;
+             if (version == 8) ledgendY*=5.0;
 	    }
 	    DX_=stdDX_;
 
@@ -508,11 +510,12 @@ Sigma(float ymin=0.03, float ymax=3000 )
 	    if (DX_==stdDX_ || ((DX_==(stdDX_/2)|| (DX_==(stdDX_/3))) && (nSubChan_==1))) {
 	      txt[ntxt] = chanMeasurement[ii];
                txtSize[ntxt] = 0.015;
-	      if (version==0||version==8) txtSize[ntxt] = 0.02;
+	      if (version==0) txtSize[ntxt] = 0.02;
 	      //if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
-	      if (version==4) txtSize[ntxt] = 0.03;
+	      if (version==4||version==8) txtSize[ntxt] = 0.025;
               txtY[ntxt] = ymin*0.5;
               if (version == 7)  txtY[ntxt] = ymin*0.75;
+              if (version == 8)  txtY[ntxt] = ymin*0.65;
 	      if (DX_==stdDX_) txtX[ntxt] = nBin_;
 	      if (DX_==stdDX_/2) txtX[ntxt] = nBin_-0.5*DX_;
 	      if (DX_==stdDX_/3) txtX[ntxt] = nBin_;
@@ -529,8 +532,8 @@ Sigma(float ymin=0.03, float ymax=3000 )
 		vmin_.push_back( 0 );
 	      }
 
-	      if ((version==0 || version==2 || version == 8)&& nBin_ < 180 ) vmax_.push_back( 1. );
-	      if ((version==0 || version==2 || version == 8)&& nBin_ > 180 ) vmax_.push_back( 200.0 );
+	      if ((version==0 || version==2)&& nBin_ < 180 ) vmax_.push_back( 1. );
+	      if ((version==0 || version==2)&& nBin_ > 180 ) vmax_.push_back( 200.0 );
 	      if (version==1 && nBin_ < 280 ) vmax_.push_back( 1. );
 	      if (version==1 && nBin_ > 280 ) vmax_.push_back( 200.0 );
 	      if (version==3 && nBin_ < 200 ) vmax_.push_back( 1. );
@@ -541,6 +544,8 @@ Sigma(float ymin=0.03, float ymax=3000 )
 	      if (version==6 && nBin_ > 30 ) vmax_.push_back( 200.0 );
 	      if (version==7 && nBin_ < 50 ) vmax_.push_back( 1. );
 	      if (version==7 && nBin_ > 50 ) vmax_.push_back( 200.0 );
+	      if (version==8 && nBin_ < 130 ) vmax_.push_back( 1. );
+	      if (version==8 && nBin_ > 130 ) vmax_.push_back( 100.0 );
 	      vstyle_.push_back(3);
 	    } 
 	    if ( (version==0||version==8) && ii != k_tt1jet8 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
@@ -665,6 +670,7 @@ Sigma(float ymin=0.03, float ymax=3000 )
   float xx_ = nBin_-(0.48*nBin_);
   if (version == 6) xx_ = nBin_-(0.65*nBin_);
   if (version == 7) xx_ = nBin_-(0.55*nBin_);
+  if (version == 8) xx_ = nBin_-(0.35*nBin_);
   float dxx_ = DX_/2.0;
  if (version == 6 || version == 7) dxx_ = DX_/4.0;
  
@@ -814,7 +820,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "June 2016";
+  txt[1] = "August 2016";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.95;
