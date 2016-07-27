@@ -342,6 +342,43 @@ if (version==4){
 	
 }
 
+if (version==8) {
+
+
+  
+  plotChan[k_tt]=true;
+  plotChan[k_tt8]=true;
+  if (use13TeV) plotChan[k_tt13]=true;
+  plotChan[k_tt1jet] = true;
+  plotChan[k_tt2jet] = true;
+  plotChan[k_tt3jet] = true;
+  plotChan[k_tt1jet8] = true;
+  plotChan[k_tt2jet8] = true;
+  plotChan[k_tt3jet8] = true;
+
+  plotChan[k_t]=true;
+  plotChan[k_t8]=true;
+  if (use13TeV) plotChan[k_t13]=true;
+  plotChan[k_tschan]=true;
+  plotChan[k_tschan8]=true;
+  plotChan[k_tW]=true;
+  plotChan[k_tW8]=true;
+  plotChan[k_ttg]=true;
+  plotChan[k_ttW8]=true;
+  plotChan[k_ttZ]=true;
+  plotChan[k_ttZ8]=true;
+  if (use13TeV)  plotChan[k_ttZ13]=true;
+  plotChan[k_ttg]=true;
+
+  plotChan[k_ttH]=true;
+  plotChan[k_ttH8]=true;
+  plotChan[k_ttH13]=true;
+
+
+ }
+
+
+
 // Ratio plot for dibosons
 if (version==5) {
 

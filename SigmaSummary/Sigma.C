@@ -198,7 +198,7 @@ public:
     else
       {
 	float dy_ = 1/2.0;
-        if (version <= 2 || version == 6 || version == 7) _dx = _dx*2.0;
+        if (version <= 2 || version == 6 || version == 7 || version == 8) _dx = _dx*2.0;
 
 	if (version !=3 && version != 4 && version != 6 && version != 7) {
        
@@ -361,7 +361,8 @@ TCanvas*
 // version 4 ymin=0.005, float ymax=  50000000
 // version 6 ymin 0.0005, ymax 100
 // version 7 ymin 5.0, ymax 600000
-Sigma(float ymin=0.0005, float ymax=600000 )
+// version 8 ymin 0.0005, ymax 600000
+Sigma(float ymin=0.03, float ymax=3000 )
 {
 
 #include "data.C"
@@ -507,7 +508,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 	    if (DX_==stdDX_ || ((DX_==(stdDX_/2)|| (DX_==(stdDX_/3))) && (nSubChan_==1))) {
 	      txt[ntxt] = chanMeasurement[ii];
                txtSize[ntxt] = 0.015;
-	      if (version==0) txtSize[ntxt] = 0.02;
+	      if (version==0||version==8) txtSize[ntxt] = 0.02;
 	      //if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
 	      if (version==4) txtSize[ntxt] = 0.03;
               txtY[ntxt] = ymin*0.5;
@@ -528,8 +529,8 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 		vmin_.push_back( 0 );
 	      }
 
-	      if ((version==0 || version==2)&& nBin_ < 180 ) vmax_.push_back( 1. );
-	      if ((version==0 || version==2)&& nBin_ > 180 ) vmax_.push_back( 200.0 );
+	      if ((version==0 || version==2 || version == 8)&& nBin_ < 180 ) vmax_.push_back( 1. );
+	      if ((version==0 || version==2 || version == 8)&& nBin_ > 180 ) vmax_.push_back( 200.0 );
 	      if (version==1 && nBin_ < 280 ) vmax_.push_back( 1. );
 	      if (version==1 && nBin_ > 280 ) vmax_.push_back( 200.0 );
 	      if (version==3 && nBin_ < 200 ) vmax_.push_back( 1. );
@@ -542,7 +543,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 	      if (version==7 && nBin_ > 50 ) vmax_.push_back( 200.0 );
 	      vstyle_.push_back(3);
 	    } 
-	    if ( version==0 && ii != k_tt1jet8 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
+	    if ( (version==0||version==8) && ii != k_tt1jet8 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
 	      if (chanMeasurement[ii] == "#geq1j") txt[ntxt] = "#geqn jet(s)";
 	      if (chanMeasurement[ii] == "1j") txt[ntxt] = "=n jet(s)";
 	      txtSize[ntxt] = size_;
@@ -825,7 +826,7 @@ void text_init()
   txt[2] = "All results at: http://cern.ch/go/pNj7";
   txtSize[2] = 0.025;
   txtX[2] = 0.07;
-  if (version ==0) txtX[2] = 0.05;
+  if (version ==0||version==8) txtX[2] = 0.05;
   txtY[2] = 0.01;
   txtAlign[2] = 11;
   txtNDC[2]=true;

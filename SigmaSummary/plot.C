@@ -3,11 +3,11 @@ void plot()
   gROOT->LoadMacro("tdrstyle.C");
   gROOT->LoadMacro("Sigma.C++");
   setTDRStyle();  
-  version=1;
+  version=8;
   TString str("SigmaNew_v"); str+=version;
   Sigma()->Print(str+".png");
   //Sigma()->Print(str+".eps");
-  Sigma()->Print(str+".pdf");
+  //Sigma()->Print(str+".pdf");
   return;
 }
 
