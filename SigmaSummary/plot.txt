@@ -1,6 +1,6 @@
   gROOT->LoadMacro("tdrstyle.C");
   gROOT->LoadMacro("Sigma.C++");
   setTDRStyle();  
-  version=8;
+  version=3;
   TString str("SigmaNew_v"); str+=version;
   Sigma()->Print(str+".png");
