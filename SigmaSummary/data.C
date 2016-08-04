@@ -393,12 +393,12 @@ if (version==5) {
   plotChan[k_WW13]=true;
   plotChan[k_WZ]=true;
   plotChan[k_WZ8]=true;
-  plotChan[k_WZ13fid]=false;
-  if (use13TeV) plotChan[k_WZ13]=true;
+  plotChan[k_WZ13fid]=true;
+  if (use13TeV) plotChan[k_WZ13]=false;
   plotChan[k_ZZ]=true;
   plotChan[k_ZZ8]=true;
-  plotChan[k_ZZ13fid]=false;
-  if (use13TeV) plotChan[k_ZZ13]=true;
+  plotChan[k_ZZ13fid]=true;
+  if (use13TeV) plotChan[k_ZZ13]=false;
 
  }
 
@@ -2558,14 +2558,14 @@ chanESyst[k_WW13]  =   sqrt(5.7*5.7 + 6.4*6.4 + 3.6*3.6) * scale_;
 if (big13TeV) chanMeasurement[k_WZ13]    =  "#splitline{  WZ}{13Tev}";
   chanLumi[k_WZ13] = "2.3 fb^{-1}";
 
-  chanSigma[k_WZ13]  =  40.9 * scale_; 
-  chanEStatp[k_WZ13]  =   3.4 * scale_;
-  chanEStatm[k_WZ13]  =   3.4 * scale_;
+  chanSigma[k_WZ13]  =  39.9 * scale_; 
+  chanEStatp[k_WZ13]  =   3.2 * scale_;
+  chanEStatm[k_WZ13]  =   3.2 * scale_;
 chanEStat[k_WZ13]  = ( chanEStatp[k_WZ13] + chanEStatm[k_WZ13])/2.0;
 
 
-  chanESystp[k_WZ13]  =    sqrt( 3.1*3.1+0.4*0.4+1.3*1.3)* scale_;
-  chanESystm[k_WZ13]  =    sqrt( 3.3*3.3+0.4*0.4+1.3*1.3)* scale_;
+  chanESystp[k_WZ13]  =    sqrt( 2.9*2.9+0.4*0.4+1.3*1.3)* scale_;
+  chanESystm[k_WZ13]  =    sqrt( 3.1*3.1+0.4*0.4+1.3*1.3)* scale_;
   chanESyst[k_WZ13]  = ( chanESystp[k_WZ13] + chanESystm[k_WZ13])/2.0;
  
 
@@ -2578,9 +2578,9 @@ chanEStat[k_WZ13]  = ( chanEStatp[k_WZ13] + chanEStatm[k_WZ13])/2.0;
 //  chanTheo[k_WZ13] =  42.6 * scale_;
 //  chanETheo[k_WZ13] =  1.2 * scale_;
 // +1.6-0.8
-  chanTheo[k_WZ13] =  49.98 * scale_;
-  chanETheop[k_WZ13] =  0.022 * 49.98 * scale_;
-  chanETheom[k_WZ13] =  0.020 * 49.98 * scale_;
+  chanTheo[k_WZ13] =  50.0 * scale_;
+chanETheop[k_WZ13] =  sqrt(1.1*1.1) * scale_;
+chanETheom[k_WZ13] =  sqrt(1.0*1.0)  * scale_;
   chanETheo[k_WZ13]   = (chanETheop[k_WZ13]+chanETheom[k_WZ13])/2.0;  
 
 
@@ -2591,14 +2591,14 @@ chanEStat[k_WZ13]  = ( chanEStatp[k_WZ13] + chanEStatm[k_WZ13])/2.0;
   if (big13TeV) chanMeasurement[k_WZ13fid]    =  "#splitline{  WZ}{13Tev}";
   chanLumi[k_WZ13fid] = "2.3 fb^{-1}";
 
-  chanSigma[k_WZ13fid]  =  0.265 * scale_; 
-  chanEStatp[k_WZ13fid]  =   0.022 * scale_;
-  chanEStatm[k_WZ13fid]  =   0.022 * scale_;
+  chanSigma[k_WZ13fid]  =  0.258 * scale_; 
+  chanEStatp[k_WZ13fid]  =   0.021 * scale_;
+  chanEStatm[k_WZ13fid]  =   0.021 * scale_;
 chanEStat[k_WZ13fid]  = ( chanEStatp[k_WZ13fid] + chanEStatm[k_WZ13fid])/2.0;
 
 
-  chanESystp[k_WZ13fid]  =    sqrt( 0.020*0.020+0.009*0.009)* scale_;
-  chanESystm[k_WZ13fid]  =    sqrt( 0.022*0.022+0.009*0.009 )* scale_;
+  chanESystp[k_WZ13fid]  =    sqrt( 0.019*0.019+0.008*0.008)* scale_;
+  chanESystm[k_WZ13fid]  =    sqrt( 0.020*0.020+0.008*0.008 )* scale_;
   chanESyst[k_WZ13fid]  = ( chanESystp[k_WZ13fid] + chanESystm[k_WZ13fid])/2.0;
  
 
@@ -2607,9 +2607,10 @@ chanEStat[k_WZ13fid]  = ( chanEStatp[k_WZ13fid] + chanEStatm[k_WZ13fid])/2.0;
 			   +
 			   chanESyst[k_WZ13fid]*chanESyst[k_WZ13fid]
 			    );
-  chanTheo[k_WZ13fid] =  0.274 * scale_;
-  chanETheo[k_WZ13fid] =  0.0105 * scale_;
-// +1.6-0.8
+  chanTheo[k_WZ13fid] =  50.0 * (0.258/39.9)* scale_;
+  chanETheop[k_WZ13fid] =  sqrt(1.1*1.1) * (0.258/39.9) * scale_;
+  chanETheom[k_WZ13fid] =  sqrt(1.0*1.0) * (0.258/39.9) * scale_;
+  chanETheo[k_WZ13fid]   = (chanETheop[k_WZ13fid]+chanETheom[k_WZ13fid])/2.0;  
 
 // ZZ
   chanMeasurement[k_ZZ] = "ZZ";
@@ -2690,12 +2691,12 @@ if (big13TeV) chanMeasurement[k_ZZ13]    =  "#splitline{  ZZ}{13Tev}";
 			   chanESyst[k_ZZ13]*chanESyst[k_ZZ13]
 			    );
 // New NNLO Number (check)
-  chanTheo[k_ZZ13] =  16.5 * scale_;
-  chanETheop[k_ZZ13] =  0.034 * 16.5 * scale_;
-  chanETheom[k_ZZ13] =  0.027 * 16.5 * scale_;
-//chanTheo[k_ZZ13] =  15.0 * scale_;
-//chanETheop[k_ZZ13] =  0.8 * scale_;
-//chanETheom[k_ZZ13] =  0.6 * scale_;
+//chanTheo[k_ZZ13] =  16.5 * scale_;
+//chanETheop[k_ZZ13] =  0.034 * 16.5 * scale_;
+//chanETheom[k_ZZ13] =  0.027 * 16.5 * scale_;
+chanTheo[k_ZZ13] =  16.2 * scale_;
+chanETheop[k_ZZ13] =  sqrt(0.6*0.6)* scale_;
+chanETheom[k_ZZ13] =  sqrt(0.4*0.4)* scale_;
   chanETheo[k_ZZ13]   = (chanETheop[k_ZZ13]+chanETheom[k_ZZ13])/2.0;  
 
   scale_ = 1.;
@@ -2722,8 +2723,10 @@ chanEStat[k_ZZ13fid]  = ( chanEStatp[k_ZZ13fid] + chanEStatm[k_ZZ13fid])/2.0;
 			   +
 			   chanESyst[k_ZZ13fid]*chanESyst[k_ZZ13fid]
 			    );
-chanTheo[k_ZZ13fid] =  16.5 * (0.0348/14.6)   * scale_;
-  chanETheo[k_ZZ13fid] =  16.5 * 0.0305 *  (0.0348/14.6) * scale_;
+chanTheo[k_ZZ13fid] =  16.2 * (0.0348/14.6)   * scale_;
+  chanETheop[k_ZZ13fid] =  0.6 *  (0.0348/14.6) * scale_;
+  chanETheom[k_ZZ13fid] =  0.4 *  (0.0348/14.6) * scale_;
+  chanETheo[k_ZZ13fid] = (chanETheop[k_ZZ13fid]+chanETheom[k_ZZ13fid])/2.0;  
 // fixed scale 16.18
 // +1.6-0.8, needs NNLO update
 
