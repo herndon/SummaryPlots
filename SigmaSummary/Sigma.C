@@ -362,7 +362,7 @@ TCanvas*
 // version 6 ymin 0.0005, ymax 100
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.0005, float ymax=30000 )
+Sigma(float ymin=0.0005, float ymax=600000 )
 {
 
 #include "data.C"

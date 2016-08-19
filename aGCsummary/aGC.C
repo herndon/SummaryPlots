@@ -397,7 +397,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	for (int ii=0; ii<numberExperiments;ii++){
 	  if (types&baseTwo){
 
-	    // Need to change to exp*1.25 for QGC plots, 1.0 for TGC plots 
+	    // Need to change to exp*1.25 for QGC plots, 1.05 for TGC plots 
 	    TGraphErrors _dataTotPoint(1);
 	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.25 );
 	    _dataTotPoint.SetPointError( 1, dyx_/2, 0 );
@@ -502,7 +502,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "April 2016";
+  txt[1] = "August 2016";
   txtSize[1] = 0.028;
   txtX[1] = 0.10;
   txtY[1] = 0.97;
