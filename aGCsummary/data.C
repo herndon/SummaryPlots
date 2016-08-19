@@ -5,7 +5,7 @@ k_atlas_wg_lg, k_cms_wg_lg, k_atlas_ww8_lg, k_cms_ww_lg, k_cms_ww8_lg, k_atlas_w
 k_atlas_ww_dkz, k_atlas_ww8_dkz, k_cms_ww8_dkz, k_atlas_wz_dkz, k_atlas_wz8_dkz, k_atlas_wz13_dkz, k_atlas_wz813_dkz, k_atlas_wv_dkz, k_cms_wv_dkz,  k_lep_ww_dkz,  k_atlas_ww_dk,  k_d0_vv_dk, k_atlas_ww_lz, k_atlas_ww8_lz, k_cms_ww_lz, k_cms_ww8_lz,  k_atlas_wz_lz, k_atlas_wz8_lz, k_atlas_wz13_lz, k_atlas_wz813_lz, k_atlas_wv_lz, k_cms_wv_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_atlas_ww8_dgz, k_cms_ww_dgz,  k_cms_ww8_dgz,  k_atlas_wz_dgz, k_atlas_wz8_dgz, k_atlas_wz13_dgz, k_atlas_wz813_dgz, k_atlas_wv_dgz, k_d0_vv_dgz, k_lep_ww_dgz, 
 k_atlas_zg_h3g,  k_atlas_zg8_h3g, k_cms_zg_h3g, k_cms_zg8_h3g, k_cms_zg8_h3g2, k_cdf_zg_h3g, k_atlas_zg_h3z,  k_atlas_zg8_h3z, k_cms_zg_h3z, k_cms_zg8_h3z, k_cms_zg8_h3z2, k_cdf_zg_h3z, k_atlas_zg_h4g, k_atlas_zg8_h4g, k_cms_zg_h4g, k_cms_zg8_h4g, k_cms_zg8_h4g2, k_atlas_zg_h4z,  k_atlas_zg8_h4z, k_cms_zg_h4z, k_cms_zg8_h4z, k_cms_zg8_h4z2, 
 k_atlas_zz_f4g, k_cms_zz_f4g, k_cms_zz2_f4g, k_cms_zzc_f4g, k_atlas_zz_f4z, k_cms_zz_f4z,  k_cms_zz2_f4z, k_cms_zzc_f4z, k_atlas_zz_f5g, k_cms_zz_f5g,  k_cms_zz2_f5g, k_cms_zzc_f5g, k_atlas_zz_f5z, k_cms_zz_f5z, k_cms_zz2_f5z, k_cms_zzc_f5z, 
-k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_a0w,  k_cms_wwg8_acw, k_cms_ssww8_acw, k_cms_ggww_acw, k_cms_ggww8_acw, 
+k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_atlas_ggww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_a0w,  k_cms_wwg8_acw, k_cms_ssww8_acw, k_atlas_ggww8_acw, k_cms_ggww_acw, k_cms_ggww8_acw, 
         k_cms_wvg8_fm0, k_cms_zg8_fm0, k_cms_wg8_fm0, k_cms_ssww8_fm0,  k_atlas_ggww8_fm0, k_cms_ggww_fm0, k_cms_ggww8_fm0, k_cms_wvg8_fm1, k_cms_zg8_fm1, k_cms_wg8_fm1, k_cms_ssww8_fm1,  k_atlas_ggww8_fm1, k_cms_ggww_fm1, k_cms_ggww8_fm1,   k_atlas_zgg8_fm2, k_cms_wgg8_fm2, k_atlas_wgg8_fm2, k_cms_zg8_fm2, k_cms_wg8_fm2,   k_atlas_zgg8_fm3, k_cms_wgg8_fm3, k_atlas_wgg8_fm3, k_cms_zg8_fm3, k_cms_wg8_fm3,  k_cms_wg8_fm4,  k_cms_wg8_fm5, k_cms_wg8_fm6, k_cms_ssww8_fm6, k_cms_wg8_fm7, k_cms_ssww8_fm7,  
 k_cms_wgg8_ft0,  k_atlas_zgg8_ft0, k_atlas_wgg8_ft0, k_cms_wvg8_ft0,  k_cms_zg8_ft0, k_cms_wg8_ft0, k_cms_ssww8_ft0,  k_cms_wgg8_ft1, k_cms_zg8_ft1,  k_cms_wg8_ft1, k_cms_ssww8_ft1,   k_cms_wgg8_ft2, k_cms_zg8_ft2, k_cms_wg8_ft2, k_cms_ssww8_ft2,  k_atlas_zgg8_ft5, k_cms_wg8_ft5,  k_cms_wg8_ft6, k_cms_wg8_ft7, k_cms_zg8_ft8,  k_atlas_zgg8_ft9, k_cms_zg8_ft9,  
 k_atlas_ssww8_fs0, k_cms_ssww8_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_nChan };
@@ -35,7 +35,7 @@ bool aqgc_zg8 = true;
 
 // ac0 = - fm0 * 4.0 * m_W^2 / g^2 -  fm2 * 8.0 * m_W^2 / g'^2
 // note reverse positive and negative values
-// where fm1 = 1/2 * fm0
+// where fm2 = 1/2 * fm0
 // and g = e/ sin(theta_W),  g = sqrt(0.00781616*4.0*3.14159)/sin(theta_W)
 // and g' = e/cos(theta_W), g' = sqrt(0.00781616*4.0*3.14169)/(m_W/m_Z)
 
@@ -45,10 +45,39 @@ float fm0toa0w = (4.0 * 0.080385 * 0.080385 * (0.23126 /(0.00781616*4.0*3.14159)
 
 float g = sqrt(0.00781616*4.0*3.14159)/sqrt(0.23126);
 float gp = sqrt(0.00781616*4.0*3.14169)/(0.080385/0.0911876);
+float mw = 0.080385;
+
 
   // ac1 = fm1 * 4.0 * m_W^2 / g^2 + fm1 * 8.0 * m_W^2 / g'^2
 
   float fm1toacw = fm0toa0w;
+
+// ATLAS gg->WW
+// a0W = g^2*v^2*fm0 =
+//     = 4^M_W^2*fm0
+
+// CMS gg->WW
+// a0W = (4*M_W^2/e^2)*fm0 = (4*M_W^2/(g*sin(theta_W))^2)*
+
+// Thus fm0_cms = (g*sin(theta_W))^2)*fm0_ATLAS
+
+// rather than g^2 as in the VBFNLO to MG5 conversion
+
+// as opposed to CMS WVg
+// a0W = (4*M_W^2/g^2)*fm0 + (8*M_W^2/g'^2)*fm2
+//     = (4*M_W^2)*fm0_vbfnlo + (2*M_W^2)*fm2_VBFNLO
+//     = (4*M_W^2)*fm0_vbfnlo + (4*M_W)*fm0_VBFNLO
+//     = (8*M_W^2)*fm0_vbfnlo
+// which differs by g^2 as in the VBFNLO to MG5 conversion but with a factor of two
+
+
+// a to madgraph f for f0 f1
+// a = (g^2*v^2)*f_vbfnlo
+// a = (4*mW^2)*f_vbfnlo
+// a = (4*mW^2)*(1/g^2)*f_madgraph
+
+
+float madftoa = 4.0*mw*mw/(g*g);
 
 
 int nPlotChan = 0;
@@ -1718,7 +1747,33 @@ if (aqgc_a) {
   plotChan[k_cms_ssww8_a0w] = true;
 
 
-						   
+ //https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/STDM-2015-10/
+
+  chan = k_atlas_ggww8_a0w;
+  chanName[chan]        = "a^{W}_{0} /#Lambda^{2}";
+  chanMeasurement[chan] = "#gamma#gamma#rightarrowWW";
+  chanLumi[chan]        = "20.2 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = - 1.7 * scale_; 
+  chanaCP[chan]       =  1.7 * scale_; 
+  plotChan[chan] = false;
+
+
+  chan = k_atlas_ggww8_acw;
+  chanName[chan]        = "a^{W}_{C} /#Lambda^{2}";
+  chanMeasurement[chan] = "#gamma#gamma#rightarrowWW";
+  chanLumi[chan]        = "20.2 fb^{-1}";
+  chanExp[chan]         = "ATLAS";
+  chanSqrtS[chan]       = "8 TeV";
+  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCM[chan]       = -6.4 * scale_; 
+  chanaCP[chan]       =  6.3 * scale_; 
+  plotChan[chan] = false;
+
+
+  
   
   // http://arxiv.org/abs/1305.5596 JHEP 07 (2013) 116
 
@@ -1876,8 +1931,12 @@ if (aqgc_fm) {
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
-  chanaCM[chan]       = -77 * scale_; 
-  chanaCP[chan]       = 81 * scale_; 
+  // CMS gg->WW type parameters
+  //chanaCM[chan]       = -77 * scale_; 
+  //chanaCP[chan]       = 81 * scale_; 
+  // Madgraph type f parameters
+  chanaCM[chan]       = -(20/madftoa) * scale_; 
+  chanaCP[chan]       = (21/madftoa) * scale_; 
   plotChan[chan]        = true;
 
  
@@ -1888,8 +1947,13 @@ if (aqgc_fm) {
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
+  // CMS gg->WW type parameters
   chanaCM[chan]       = -131 * scale_; 
   chanaCP[chan]       = 123 * scale_; 
+  // Madgraph type f parameters
+  chanaCM[chan]       = -(32/madftoa) * scale_; 
+  chanaCP[chan]       = (34/madftoa) * scale_; 
+  
   plotChan[chan]        = true;
 
 
@@ -2119,7 +2183,10 @@ if (aqgc_fm) {
   chanaCC[chan]       = 0.0   * scale_; 
   chanaCM[chan]       = - g*g* 66.0 * scale_; 
   chanaCP[chan]       =  g*g* 66.0 * scale_; 
-  plotChan[chan] = false;
+  // to go to CMS gg->WW fm parameters
+  //chanaCM[chan]       = - 1.5* scale_/fm0toa0w; 
+  //chanaCP[chan]       =   1.6 * scale_/fm0toa0w; 
+  plotChan[chan] = true;
 
 
   chan = k_atlas_ggww8_fm1;
@@ -2130,8 +2197,11 @@ if (aqgc_fm) {
   chanSqrtS[chan]       = "8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
   chanaCM[chan]       = -g*g*250.0 * scale_; 
-  chanaCP[chan]       =  g*g*240.0 * scale_; 
-  plotChan[chan] = false;
+  chanaCP[chan]       =  g*g*240.0 * scale_;
+  // to go to CMS gg->WW parameters
+  //chanaCM[chan]       = - 5.9 * scale_/fm0toa0w; 
+  //chanaCP[chan]       =   5.8 * scale_/fm0toa0w; 
+  plotChan[chan] = true;
 
 
   
@@ -2143,9 +2213,12 @@ if (aqgc_fm) {
   chanLumi[chan]        = "5.1 fb^{-1}";
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "7 TeV";
-  chanaCC[chan]       = 0.0   * scale_; 
+  chanaCC[chan]       = 0.0   * scale_;
+  // to go to CMS gg->WW f type parameters
   chanaCM[chan]       =  (-4.0/fm0toa0w) * scale_; 
   chanaCP[chan]       =  (4.0/fm0toa0w) * scale_; 
+  chanaCM[chan]       =  (-4.0/madftoa) * scale_; 
+  chanaCP[chan]       =  (4.0/madftoa) * scale_; 
   plotChan[chan]        = false;
 
 
@@ -2156,8 +2229,11 @@ if (aqgc_fm) {
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "7 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
+  // to go to CMS gg->WW type f paramters
   chanaCM[chan]       =  (-15/fm1toacw) * scale_; 
   chanaCP[chan]       =  (15/fm1toacw) * scale_; 
+  chanaCM[chan]       =  (-15/madftoa) * scale_; 
+  chanaCP[chan]       =  (15/madftoa) * scale_; 
   plotChan[chan]        = false;
     
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/FSQ-13-008/index.html
@@ -2171,8 +2247,12 @@ if (aqgc_fm) {
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "7,8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
+  // CMS type f parameters
   chanaCM[chan]       = -4.2 * scale_; 
   chanaCP[chan]       = 4.2 * scale_; 
+  // Madgraph type f parameters
+  chanaCM[chan]       = -(1.1/madftoa) * scale_; 
+  chanaCP[chan]       = (1.1/madftoa) * scale_; 
   plotChan[chan] = true;
 
 
@@ -2183,8 +2263,13 @@ if (aqgc_fm) {
   chanExp[chan]         = "CMS";
   chanSqrtS[chan]       = "7,8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
+  // CMS type f parameters
   chanaCM[chan]       = -16 * scale_; 
   chanaCP[chan]       = 16 * scale_; 
+  // Madgraph type f paramters
+  chanaCM[chan]       =  - (4.1/madftoa) * scale_; 
+  chanaCP[chan]       = (4.1/madftoa) * scale_; 
+
   plotChan[chan] = true;
 
  }
