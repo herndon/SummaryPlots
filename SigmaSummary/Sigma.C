@@ -56,6 +56,7 @@ void draw_bin_grid( float xmin, float xmax, float ymin, float ymax,
 // constants
 const float W_br_lnu    = 10.800e-02;
 const float Z0_br_ll    =  3.366e-02;
+const float Z0_br_nunu    =  20.00-02;
 
 int version = 0;
 bool plotVJets = false;
@@ -755,6 +756,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_W13) type = 13;
       if  (iChan == k_Z13) type = 13;
       if  (iChan == k_t13) type = 13;
+      if  (iChan == k_Zg13) type = 13;
       if  (iChan == k_WW13) type = 13;
       if  (iChan == k_WZ13) type = 13;
       if  (iChan == k_ZZ13) type = 13;
