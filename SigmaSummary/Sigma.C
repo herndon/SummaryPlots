@@ -358,12 +358,12 @@ private:
 
 TCanvas*
 // version 0-2 ymin 0.0005, ymax 600000
-// version 3  ymin 0.0005 ymax 30000, 
+// version 3  ymin 0.0001 ymax 30000, 
 // version 4 ymin=0.005, float ymax=  50000000
 // version 6 ymin 0.0005, ymax 100
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.0005, float ymax=600000 )
+Sigma(float ymin=0.0005, float ymax=100 )
 {
 
 #include "data.C"
@@ -461,7 +461,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
             // handle the number of jets
             if (subChan[ii] > 2){
               DX_=stdDX_/subChan[ii];
-	      if (chanMeasurement[ii].find("1j") < 100 && (ii!=k_tt1jet8)){
+	      if (chanMeasurement[ii].find("1j") < 100 && (ii!=k_tt1jet8)&& (ii!=k_tt1jet13)){
 		nBin_-=stdDX_; 
 	      }
 	    } 
@@ -501,7 +501,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 	      txt[ntxt] = "Fiducial  W and Z #sigmas with W#rightarrowl#nu, Z#rightarrowll and kinematic selection" ;
              txtSize[ntxt] = size_;
 	      txtY[ntxt] = ymin*0.34;
-	      txtX[ntxt] = nBin_-0.0*DX_;
+	      txtX[ntxt] = nBin_-8.0*DX_;
 	      txtAlign[ntxt] = 21;
 	      txtAlign[ntxt] = 11;
 	      txtFont[ntxt] = 42;
@@ -538,7 +538,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 	      if (version==1 && nBin_ < 280 ) vmax_.push_back( 1. );
 	      if (version==1 && nBin_ > 280 ) vmax_.push_back( 200.0 );
 	      if (version==3 && nBin_ < 200 ) vmax_.push_back( 1. );
-	      if (version==3 && nBin_ > 200 ) vmax_.push_back( 100.0 );
+	      if (version==3 && nBin_ > 200 ) vmax_.push_back( 40.0 );
 	      if (version==4 && nBin_ < 30 ) vmax_.push_back( 1. );
 	      if (version==4 && nBin_ > 30 ) vmax_.push_back( 200.0 );
 	      if (version==6 && nBin_ < 30 ) vmax_.push_back( 1. );
@@ -549,12 +549,12 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 	      if (version==8 && nBin_ > 130 ) vmax_.push_back( 100.0 );
 	      vstyle_.push_back(3);
 	    } 
-	    if ( (version==0||version==8) && ii != k_tt1jet8 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
+	    if ( (version==0||version==8) && ii != k_tt1jet8  && ii != k_tt1jet13 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
 	      if (chanMeasurement[ii] == "#geq1j") txt[ntxt] = "#geqn jet(s)";
 	      if (chanMeasurement[ii] == "1j") txt[ntxt] = "=n jet(s)";
 	      txtSize[ntxt] = size_;
 	      if (chanMeasurement[ii] == "#geq1j") txtY[ntxt] = chanSigma[ii]*1.4;
-	      if (chanMeasurement[ii] == "1j") txtY[ntxt] = chanSigma[ii]*2.0;
+	      if (chanMeasurement[ii] == "1j") txtY[ntxt] = chanSigma[ii]*2.2;
 	      txtX[ntxt] = nBin_-3;
 	      txtAlign[ntxt] = 11;
 	      txtFont[ntxt] = 42;
@@ -714,6 +714,10 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_tt1jet8) type = 8;
       if  (iChan == k_tt2jet8) type = 8;
       if  (iChan == k_tt3jet8) type = 8;
+      if  (iChan == k_tt1jet13) type = 13;
+      if  (iChan == k_tt2jet13) type = 13;
+      if  (iChan == k_tt3jet13) type = 13;
+      if  (iChan == k_tt4jet13) type = 13;
       if  (iChan == k_Z1jet8) type = 8;
       if  (iChan == k_Z2jet8) type = 8;
       if  (iChan == k_Z3jet8) type = 8;
@@ -726,10 +730,12 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_Z2jet13) type = 13;
       if  (iChan == k_Z3jet13) type = 13;
       if  (iChan == k_Z4jet13) type = 13;
-      if  (iChan == k_Z5jet13) type = 13;
-      if  (iChan == k_Z6jet13) type = 13;
+      //if  (iChan == k_Z5jet13) type = 13;
+      //if  (iChan == k_Z6jet13) type = 13;
 
      if  (iChan == k_Z1cjet8) type = 8;
+     if  (iChan == k_Z1bjet8) type = 8;
+     if  (iChan == k_Z2bjet8) type = 8;
       
       if  (iChan == k_W1jet8n) type = 8;
       if  (iChan == k_W2jet8n) type = 8;
@@ -739,12 +745,19 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_W6jet8n) type = 8;
       if  (iChan == k_W7jet8n) type = 8;
 
+      if  (iChan == k_W1jet13) type = 13;
+      if  (iChan == k_W2jet13) type = 13;
+      if  (iChan == k_W3jet13) type = 13;
+      if  (iChan == k_W4jet13) type = 13;
+      if  (iChan == k_W5jet13) type = 13;
+
+      
        if  (iChan == k_W2bjet8) type = 8;
 
       if  (iChan == k_tschan8) type = 8;
       if  (iChan == k_ttW8) type = 8;
       if  (iChan == k_ttZ8) type = 8;
-      if  (iChan == k_ttg) type = 8;
+      if  (iChan == k_ttg8) type = 8;
       if  (iChan == k_Hgg8) type = 8;
 		
      if  (iChan == k_t8) type = 8;
@@ -753,15 +766,19 @@ Sigma(float ymin=0.0005, float ymax=600000 )
 
       if  (iChan == k_tt13) type = 13;
       if  (iChan == k_ttZ13) type = 13;
+      if  (iChan == k_ttW13) type = 13;
       if  (iChan == k_W13) type = 13;
       if  (iChan == k_Z13) type = 13;
       if  (iChan == k_t13) type = 13;
-      if  (iChan == k_Zg13) type = 13;
+      //if  (iChan == k_Zg13) type = 13;
       if  (iChan == k_WW13) type = 13;
       if  (iChan == k_WZ13) type = 13;
       if  (iChan == k_ZZ13) type = 13;
       if  (iChan == k_ttH13) type = 13; 
+      if  (iChan  == k_ggHgg13) type = 13;
+      if  (iChan  == k_VBFHgg13) type = 13;
 
+      
       if (type != 71){
       DataPoint p2_( chanSigma[iChan], chanEStat[iChan], chanETot[iChan], 
 		    chanTheo[iChan], chanETheo[iChan],
@@ -824,7 +841,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "August 2016";
+  txt[1] = "Jan 2017";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.95;

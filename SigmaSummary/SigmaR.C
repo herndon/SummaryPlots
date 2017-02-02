@@ -55,6 +55,8 @@ void draw_bin_grid( float xmin, float xmax, float ymin, float ymax,
 // constants
 const float W_br_lnu    = 10.800e-02;
 const float Z0_br_ll    =  3.366e-02;
+const float Z0_br_nunu    =  20.00-02;
+
 
 int version = 0;
 bool plotVJets = false;
@@ -559,7 +561,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "July 2016";
+  txt[1] = "Jan 2017";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.965;

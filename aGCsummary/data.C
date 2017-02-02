@@ -12,7 +12,7 @@ k_atlas_ssww8_fs0, k_cms_ssww8_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_nChan 
 
 // Available plot sets
 bool catgcg = false;
-bool catgcz = true;
+bool catgcz = false;
 bool natgcg = false;
 bool natgcz = false;
 
@@ -20,7 +20,7 @@ bool atgc = catgcg||catgcz||natgcg||natgcz;
 
 bool aqgc_a = false;
 bool aqgc_ft = false; 
-bool aqgc_fm = false;
+bool aqgc_fm = true;
 bool aqgc_fs = false;
 
 bool aqgc = aqgc_a||aqgc_fs||aqgc_fm||aqgc_ft;
@@ -1973,8 +1973,8 @@ if (aqgc_fm) {
   //chanaCM[chan]       = -77 * scale_; 
   //chanaCP[chan]       = 81 * scale_; 
   // Madgraph type f parameters
-  chanaCM[chan]       = -(20/madftoa) * scale_; 
-  chanaCP[chan]       = (21/madftoa) * scale_; 
+  chanaCM[chan]       = -(21/madftoa) * scale_; 
+  chanaCP[chan]       = (20/madftoa) * scale_; 
   plotChan[chan]        = true;
 
  

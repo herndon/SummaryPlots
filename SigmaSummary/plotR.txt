@@ -4,4 +4,5 @@
   version=5; // version=1 --> simplified plot
   TString str("SigmaR_v"); str+=version;
   SigmaR()->Print(str+".png");
+  SigmaR()->Print(str+".pdf");
 
