@@ -183,14 +183,14 @@ public:
 
  	TBox _limit(_xpos-_dx/5.,-_sigma, _xpos+_dx/5., -1.5*_sigma);
  	_limit.SetFillStyle(3254);
- 	_limit.SetFillColor( kRed );
+ 	_limit.SetFillColor( _expLineColor );
 	_limit.DrawClone();
 
  	TGraphErrors _dataTotPoint(1);
  	_dataTotPoint.SetPoint(1, _xpos, -_sigma );
  	_dataTotPoint.SetPointError( 1, _dx/3., 0 );
  	_dataTotPoint.SetLineWidth(2);
- 	_dataTotPoint.SetLineColor(kRed);
+ 	_dataTotPoint.SetLineColor(_expLineColor);
  	_dataTotPoint.SetMarkerSize(0);	
 	_dataTotPoint.DrawClone("ez");
 
@@ -203,20 +203,50 @@ public:
 
 	if (version !=3 && version != 4 && version != 6 && version != 7) {
        
- 	TBox _limit(_xpos-_dx/3., _sigma_theo*dy_, 
-		    _xpos+_dx/3., 1.5*_sigma_theo*dy_);
+ 	TBox _limit(_xpos-_dx/3., _sigma_theo*0.9*dy_, 
+		    _xpos+_dx/3., 1.5*_sigma_theo*0.9*dy_);
  	_limit.SetFillStyle(3254);
  	_limit.SetFillColor( kRed );
 	_limit.DrawClone();
 
  	TGraphErrors _limitLine(1);
- 	_limitLine.SetPoint(1, _xpos, _sigma_theo*dy_ );
+ 	_limitLine.SetPoint(1, _xpos, _sigma_theo*0.9*dy_ );
  	_limitLine.SetPointError( 1, _dx/2., 0 );
  	_limitLine.SetLineWidth(2);
  	_limitLine.SetLineColor(kRed);
  	_limitLine.SetMarkerSize(0);	
 	_limitLine.DrawClone("ez");
 
+  	TBox _limit8(_xpos + 1.5*_dx - _dx/3., _sigma_theo*0.9*dy_, 
+		     _xpos + 1.5*_dx + _dx/3., 1.5*_sigma_theo*0.9*dy_);
+ 	_limit8.SetFillStyle(3254);
+ 	_limit8.SetFillColor( kBlue );
+	_limit8.DrawClone();
+
+	TGraphErrors _limitLine8(1);
+ 	_limitLine8.SetPoint(1, _xpos + 1.5*_dx , _sigma_theo*0.9*dy_ );
+ 	_limitLine8.SetPointError( 1, _dx/2., 0 );
+ 	_limitLine8.SetLineWidth(2);
+ 	_limitLine8.SetLineColor(kBlue);
+ 	_limitLine8.SetMarkerSize(0);	
+	_limitLine8.DrawClone("ez");
+
+  	TBox _limit13(_xpos + 3.0*_dx - _dx/3., _sigma_theo*0.9*dy_, 
+		     _xpos + 3.0*_dx + _dx/3., 1.5*_sigma_theo*0.9*dy_);
+ 	_limit13.SetFillStyle(3254);
+ 	_limit13.SetFillColor(_expColor13 );
+	_limit13.DrawClone();
+
+	TGraphErrors _limitLine13(1);
+ 	_limitLine13.SetPoint(1, _xpos + 3.0*_dx , _sigma_theo*0.9*dy_ );
+ 	_limitLine13.SetPointError( 1, _dx/2., 0 );
+ 	_limitLine13.SetLineWidth(2);
+ 	_limitLine13.SetLineColor(_expColor13);
+ 	_limitLine13.SetMarkerSize(0);	
+	_limitLine13.DrawClone("ez");
+
+
+	
 	}
 
 	//_sigma_theo = 5.169*1000.*1000.;
@@ -291,9 +321,9 @@ public:
 
 
 	if (version != 3 && version != 4 && version !=6 && version !=7) {
-	txt[ntxt] = "CMS 95%CL limit";
+	txt[ntxt] = "CMS 95%CL limits at 7, 8 and 13 TeV";
 	txtSize[ntxt] = 0.025;
-	txtX[ntxt] = _xpos + _dx;
+	txtX[ntxt] = _xpos + 4.0*_dx;
 	txtY[ntxt] = _sigma_theo*dy_;
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
@@ -320,7 +350,7 @@ public:
 	ntxt++;
   }
 if (version !=6){
-	txt[ntxt] = "13 TeV CMS measurement (L #leq 2.7 fb^{-1})";
+	txt[ntxt] = "13 TeV CMS measurement (L #leq 12.9 fb^{-1})";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
 	txtY[ntxt] = _sigma_theo/(dy_);
@@ -363,7 +393,7 @@ TCanvas*
 // version 6 ymin 0.0005, ymax 100
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.0005, float ymax=100 )
+Sigma(float ymin=0.0005, float ymax=600000 )
 {
 
 #include "data.C"
@@ -529,6 +559,9 @@ Sigma(float ymin=0.0005, float ymax=100 )
 		vline_.push_back( nBin_+0.5*DX_);
 		vmin_.push_back( 0 );
 	      } else if (DX_==stdDX_/3){
+		cout << "ii: " << ii << " k_tt: " << k_tt << endl;
+		// if (ii == k_tt+1) vline_.push_back( nBin_+4.5*DX_);
+		//if (ii != k_tt+1) vline_.push_back( nBin_+1.5*DX_);
 		vline_.push_back( nBin_+1.5*DX_);
 		vmin_.push_back( 0 );
 	      }
@@ -702,6 +735,7 @@ Sigma(float ymin=0.0005, float ymax=100 )
       if  (iChan  == k_VBFH8) type = 8;
       if  (iChan  == k_VH8) type = 8;
       if  (iChan  == k_ttH8) type = 8;
+      if  (iChan  == k_HH8) type = 8;
       if  (iChan  == k_WVg) type = 8;
       if  (iChan  == k_Wgg8) type = 8;
       if  (iChan  == k_Zgg8) type = 8;
@@ -775,6 +809,7 @@ Sigma(float ymin=0.0005, float ymax=100 )
       if  (iChan == k_WZ13) type = 13;
       if  (iChan == k_ZZ13) type = 13;
       if  (iChan == k_ttH13) type = 13; 
+      if  (iChan == k_HH13) type = 13; 
       if  (iChan  == k_ggHgg13) type = 13;
       if  (iChan  == k_VBFHgg13) type = 13;
 

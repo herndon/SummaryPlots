@@ -2,7 +2,7 @@
 
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
-enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W7jet8n, k_W1cjet, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z6jetn, k_Z6jet8, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8, k_WZ13, k_WZ13fid,  k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_VBFW8, k_VBFZ, k_VBFZ8, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_EWKZg8, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_t, k_t8, k_t13, k_tW, k_tW8, k_tschan, k_tschan8, k_ttg8, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13, k_HZZ,  k_ggH, k_ggH8, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFHgg13, k_VH, k_VH8,  k_ttH, k_ttH8, k_ttH13, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
+enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W7jet8n, k_W1cjet, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z6jetn, k_Z6jet8, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8, k_WZ13, k_WZ13fid,  k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_VBFW8, k_VBFZ, k_VBFZ8, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_EWKZg8, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_t, k_t8, k_t13, k_tW, k_tW8, k_tschan, k_tschan8, k_ttg8, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13, k_HZZ,  k_ggH, k_ggH8, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFHgg13, k_VH, k_VH8,  k_ttH, k_ttH8, k_ttH13, k_HH8, k_HH13, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
 
 
 
@@ -139,6 +139,10 @@ if (version==0||version==1) {
   plotChan[k_VH8]=true;
   plotChan[k_ttH8]=true;
   plotChan[k_ttH13]=true;
+  plotChan[k_HH8]=true;
+  plotChan[k_HH13]=true;
+
+  
   plotChan[k_ggHgg13]=true;
   plotChan[k_VBFHgg13]=true;
 
@@ -231,6 +235,10 @@ if (version==2) {
   plotChan[k_VH8]=true;
   plotChan[k_ttH8]=true;
   plotChan[k_ttH13]=true;
+  plotChan[k_HH8]=true;
+  plotChan[k_HH13]=true;
+
+
   plotChan[k_ggHgg13]=true;
   plotChan[k_VBFHgg13]=true;
 
@@ -3575,8 +3583,8 @@ if (version == 6) chanMeasurement[k_SSWW8] = "#splitline{EWK ss WW}{WW #rightarr
 
 // cross section from https://arxiv.org/abs/1610.07922 N3NLO
   chanTheo[k_ggHgg13] =   48.58 * scale_;
-chanETheop[k_ggHgg13] =  sqrt(2.22*2.22+1.56*1.56) * scale_;
-  chanETheom[k_ggHgg13] =  sqrt(3.27*3.27+1.56*1.56) * scale_;
+chanETheop[k_ggHgg13] =  sqrt(4.6*4.6+3.9*3.9)*(chanTheo[k_ggHgg13]/100.0) * scale_;
+chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * scale_;
   chanETheo[k_ggHgg13] = (chanETheop[k_ggHgg13] +chanETheom[k_ggHgg13])/2.0;
 
 
@@ -3887,6 +3895,8 @@ chanETheop[k_ggHgg13] =  sqrt(2.22*2.22+1.56*1.56) * scale_;
 // https://twiki.cern.ch/twiki/bin/view/CMSPublic/TTHCombMoriond2016
 // Replaced with ttH, H->bb at with 12.9 fb-1 which is better
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-038/index.html
+// replace with 22 which has better sensativity
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-022/index.html
 
   chanMeasurement[k_ttH13]  = "ttH";
   chanLumi[k_ttH13]  = "12.9 fb^{-1}";
@@ -3898,6 +3908,8 @@ chanETheom[k_ttH13] =  sqrt(0.092*0.092 + 0.036*0.036)*chanTheo[k_ttH13];
 
 
   chanSigma[k_ttH13]  =   -1.5 * chanTheo[k_ttH13] * scale_; 
+// Conveners prefer multilepon result
+  chanSigma[k_ttH13]  =   -3.4 * chanTheo[k_ttH13] * scale_; 
   chanEStatp[k_ttH13]  =   0.0;
   chanESystp[k_ttH13]  =   0.0;
   chanETotp[k_ttH13]   =  0.0;
@@ -3909,8 +3921,64 @@ chanETheom[k_ttH13] =  sqrt(0.092*0.092 + 0.036*0.036)*chanTheo[k_ttH13];
   chanEStat[k_ttH13] = (chanEStatp[k_ttH13] +chanEStatm[k_ttH13])/2.0;
   chanESyst[k_ttH13] = (chanESystp[k_ttH13] +chanESystm[k_ttH13])/2.0;
   chanETot[k_ttH13] = (chanETotp[k_ttH13] +chanETotm[k_ttH13])/2.0;
- 
-// ????? add H measurements from gg channel http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-020/index.html
+
+// HH production at 8 TeV
+//http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-13-032/index.html
+// https://arxiv.org/abs/1603.06896 Phys. Rev. D 94, 052012 (2016)
+// Best limit from hh->ggbb 
+
+  
+
+
+  chanMeasurement[k_HH8]  = "HH";
+  chanLumi[k_HH8]  = "19.7 fb^{-1}";
+
+chanTheo[k_HH8] =   10.0 * 0.001 * scale_;
+chanETheop[k_HH8] =  1.4*0.001;
+chanETheom[k_HH8] =  1.4*0.001;
+  chanETheo[k_HH8] = (chanETheop[k_HH8] +chanETheom[k_HH8])/2.0;
+
+
+  chanSigma[k_HH8]  =   -74 * chanTheo[k_HH8] * scale_; 
+  chanEStatp[k_HH8]  =   0.0;
+  chanESystp[k_HH8]  =   0.0;
+  chanETotp[k_HH8]   =  0.0;
+
+  chanEStatm[k_HH8]  =  0.0;
+  chanESystm[k_HH8]  =  0.0;
+  chanETotm[k_HH8]   =  0.0;
+
+  chanEStat[k_HH8] = (chanEStatp[k_HH8] +chanEStatm[k_HH8])/2.0;
+  chanESyst[k_HH8] = (chanESystp[k_HH8] +chanESystm[k_HH8])/2.0;
+  chanETot[k_HH8] = (chanETotp[k_HH8] +chanETotm[k_HH8])/2.0;
+
+// HH production at 13 TeV
+//http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-032/index.html
+// Best limit from H->ggbb  
+
+
+  chanMeasurement[k_HH13]  = "HH";
+  chanLumi[k_HH13]  = "2.7 fb^{-1}";
+
+  chanTheo[k_HH13] =   33.45 * 0.001 * scale_;
+  chanETheop[k_HH13] =  0.114*chanTheo[k_HH13];
+  chanETheom[k_HH13] =  0.114*chanTheo[k_HH13];
+  chanETheo[k_HH13] = (chanETheop[k_HH13] +chanETheom[k_HH13])/2.0;
+
+
+  chanSigma[k_HH13]  =   -7.90 * 0.001 * (1.0/0.00262) * scale_; 
+  chanEStatp[k_HH13]  =   0.0;
+  chanESystp[k_HH13]  =   0.0;
+  chanETotp[k_HH13]   =  0.0;
+
+  chanEStatm[k_HH13]  =  0.0;
+  chanESystm[k_HH13]  =  0.0;
+  chanETotm[k_HH13]   =  0.0;
+
+  chanEStat[k_HH13] = (chanEStatp[k_HH13] +chanEStatm[k_HH13])/2.0;
+  chanESyst[k_HH13] = (chanESystp[k_HH13] +chanESystm[k_HH13])/2.0;
+  chanETot[k_HH13] = (chanETotp[k_HH13] +chanETotm[k_HH13])/2.0;
+
 
 
 
