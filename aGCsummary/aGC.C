@@ -193,7 +193,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    vstyle_.push_back(1);
 
 	    txt[ntxt] = chanName[ii];
-	    txtSize[ntxt] = size_+0.01;
+	    txtSize[ntxt] = size_-0.01;
 	    txtX[ntxt] = 1.0*minRange;
 	    if (aqgc) txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
 	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +1.1*DY_;

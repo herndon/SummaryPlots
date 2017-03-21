@@ -14,14 +14,14 @@ k_atlas_ssww8_fs0, k_cms_ssww8_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_nChan 
 bool catgcg = false;
 bool catgcz = false;
 bool natgcg = false;
-bool natgcz = true;
+bool natgcz = false;
 
 bool atgc = catgcg||catgcz||natgcg||natgcz;
 
 bool aqgc_a = false;
 bool aqgc_ft = false; 
 bool aqgc_fm = false;
-bool aqgc_fs = false;
+bool aqgc_fs = true;
 
 bool aqgc = aqgc_a||aqgc_fs||aqgc_fm||aqgc_ft;
 
@@ -71,12 +71,13 @@ float mw = 0.080385;
 // which differs by g^2 as in the VBFNLO to MG5 conversion but with a factor of two
 
 
-// a to madgraph f for f0 f1
+// a to madgraph f for f0 f1 ATLAS
 // a = (g^2*v^2)*f_vbfnlo
 // a = (4*mW^2)*f_vbfnlo
 // a = (4*mW^2)*(1/g^2)*f_madgraph
 
 
+// This should be for ATLAS results
 float madftoa = 4.0*mw*mw/(g*g);
 
 
@@ -2127,7 +2128,8 @@ if (aqgc_a) {
 if (aqgc_fm) {
 
   // http://arxiv.org/abs/1604.05232#
-
+  // fm sign flip
+  
   chan = k_atlas_zgg8_fm2;
   chanName[chan]        = "f_{M,2} /#Lambda^{4}";
   chanMeasurement[chan] = "Z#gamma#gamma";
@@ -2146,8 +2148,8 @@ if (aqgc_fm) {
   chanExp[chan]         = "ATLAS";
   chanSqrtS[chan]       = "8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
-  chanaCM[chan]       = -29000 * 0.25 * gp*gp * scale_; 
-  chanaCP[chan]       = 27000 * 0.25 * gp*gp * scale_; 
+  chanaCM[chan]       = -27000 * 0.25 * gp*gp * scale_; 
+  chanaCP[chan]       = 29000 * 0.25 * gp*gp * scale_; 
   plotChan[chan]        = true;
 
 
@@ -2187,11 +2189,11 @@ if (aqgc_fm) {
   chanSqrtS[chan]       = "8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
   // CMS gg->WW type parameters
-  //chanaCM[chan]       = -77 * scale_; 
-  //chanaCP[chan]       = 81 * scale_; 
-  // Madgraph type f parameters
-  chanaCM[chan]       = -(21/madftoa) * scale_; 
-  chanaCP[chan]       = (20/madftoa) * scale_; 
+  chanaCM[chan]       = -77 * scale_; 
+  chanaCP[chan]       = 81 * scale_; 
+  // Madgraph type f parameters using ATLAS conversion - test - this is wrong
+  //chanaCM[chan]       = -(21/madftoa) * scale_; 
+  //chanaCP[chan]       = (20/madftoa) * scale_; 
   plotChan[chan]        = true;
 
  
@@ -2205,9 +2207,9 @@ if (aqgc_fm) {
   // CMS gg->WW type parameters
   chanaCM[chan]       = -131 * scale_; 
   chanaCP[chan]       = 123 * scale_; 
-  // Madgraph type f parameters
-  chanaCM[chan]       = -(32/madftoa) * scale_; 
-  chanaCP[chan]       = (34/madftoa) * scale_; 
+  // Madgraph type f parameters using ATLAS conversion - test - this is wrong
+  //chanaCM[chan]       = -(32/madftoa) * scale_; 
+  //chanaCP[chan]       = (34/madftoa) * scale_; 
   
   plotChan[chan]        = true;
 
@@ -2354,6 +2356,7 @@ if (aqgc_fm) {
 
   // Phys. Rev. Lett. 115, 031802 (2015)
   // http://arxiv.org/abs/1503.03243
+  // fm sign flip
   
   chan = k_atlas_wgg8_fm2;
   chanName[chan]        = "f_{M,2} /#Lambda^{4}";
@@ -2374,8 +2377,8 @@ if (aqgc_fm) {
   chanExp[chan]         = "ATLAS";
   chanSqrtS[chan]       = "8 TeV";
   chanaCC[chan]       = 0.0   * scale_; 
-  chanaCM[chan]       = -15000 * (gp*gp/4.0) * scale_; 
-  chanaCP[chan]       =  14000 * (gp*gp/4.0) * scale_; 
+  chanaCM[chan]       = -14000 * (gp*gp/4.0) * scale_; 
+  chanaCP[chan]       =  15000 * (gp*gp/4.0) * scale_; 
   plotChan[chan]        = true;
 
   
@@ -2428,7 +2431,10 @@ if (aqgc_fm) {
   plotChan[chan]        = true;
 
   //https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/STDM-2015-10/
+  // https://arxiv.org/abs/1607.03745, Phys. Rev. D 94 (2016) 032011
+  // fm sign flips
 
+  
   chan = k_atlas_ggww8_fm0;
   chanName[chan]        = "f_{M,0} /#Lambda^{4}";
   chanMeasurement[chan] = "#gamma#gamma#rightarrowWW";
@@ -2472,8 +2478,9 @@ if (aqgc_fm) {
   // to go to CMS gg->WW f type parameters
   chanaCM[chan]       =  (-4.0/fm0toa0w) * scale_; 
   chanaCP[chan]       =  (4.0/fm0toa0w) * scale_; 
-  chanaCM[chan]       =  (-4.0/madftoa) * scale_; 
-  chanaCP[chan]       =  (4.0/madftoa) * scale_; 
+  // ATLAS conversion - test - this is wrong
+  //chanaCM[chan]       =  (-4.0/madftoa) * scale_; 
+  //chanaCP[chan]       =  (4.0/madftoa) * scale_; 
   plotChan[chan]        = false;
 
 
@@ -2487,8 +2494,9 @@ if (aqgc_fm) {
   // to go to CMS gg->WW type f paramters
   chanaCM[chan]       =  (-15/fm1toacw) * scale_; 
   chanaCP[chan]       =  (15/fm1toacw) * scale_; 
-  chanaCM[chan]       =  (-15/madftoa) * scale_; 
-  chanaCP[chan]       =  (15/madftoa) * scale_; 
+  // ATLAS conversion - test - this is wrong
+  //chanaCM[chan]       =  (-15/madftoa) * scale_; 
+  //chanaCP[chan]       =  (15/madftoa) * scale_; 
   plotChan[chan]        = false;
     
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/FSQ-13-008/index.html
@@ -2505,9 +2513,9 @@ if (aqgc_fm) {
   // CMS type f parameters
   chanaCM[chan]       = -4.2 * scale_; 
   chanaCP[chan]       = 4.2 * scale_; 
-  // Madgraph type f parameters
-  chanaCM[chan]       = -(1.1/madftoa) * scale_; 
-  chanaCP[chan]       = (1.1/madftoa) * scale_; 
+  // Madgraph type f parameters - ATLAS conversion - test - this is wrong
+  //chanaCM[chan]       = -(1.1/madftoa) * scale_; 
+  //chanaCP[chan]       = (1.1/madftoa) * scale_; 
   plotChan[chan] = true;
 
 
@@ -2521,9 +2529,9 @@ if (aqgc_fm) {
   // CMS type f parameters
   chanaCM[chan]       = -16 * scale_; 
   chanaCP[chan]       = 16 * scale_; 
-  // Madgraph type f paramters
-  chanaCM[chan]       =  - (4.1/madftoa) * scale_; 
-  chanaCP[chan]       = (4.1/madftoa) * scale_; 
+  // Madgraph type f paramters - ATLAS conversion - test - this is wrong
+  //chanaCM[chan]       =  - (4.1/madftoa) * scale_; 
+  //chanaCP[chan]       = (4.1/madftoa) * scale_; 
 
   plotChan[chan] = true;
 
