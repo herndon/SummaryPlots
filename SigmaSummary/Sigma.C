@@ -350,7 +350,7 @@ public:
 	ntxt++;
   }
 if (version !=6){
-	txt[ntxt] = "13 TeV CMS measurement (L #leq 12.9 fb^{-1})";
+	txt[ntxt] = "13 TeV CMS measurement (L #leq 35.9 fb^{-1})";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
 	txtY[ntxt] = _sigma_theo/(dy_);
@@ -792,6 +792,10 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_ttW8) type = 8;
       if  (iChan == k_ttZ8) type = 8;
       if  (iChan == k_ttg8) type = 8;
+      if  (iChan == k_tZq8) type = 8;
+      if  (iChan == k_tttt8) type = 8;
+ 
+      
       if  (iChan == k_Hgg8) type = 8;
 		
      if  (iChan == k_t8) type = 8;
@@ -801,6 +805,7 @@ Sigma(float ymin=0.0005, float ymax=600000 )
       if  (iChan == k_tt13) type = 13;
       if  (iChan == k_ttZ13) type = 13;
       if  (iChan == k_ttW13) type = 13;
+      if  (iChan == k_tttt13) type = 13;
       if  (iChan == k_W13) type = 13;
       if  (iChan == k_Z13) type = 13;
       if  (iChan == k_t13) type = 13;
@@ -876,7 +881,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "Jan 2017";
+  txt[1] = "March 2017";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.95;
