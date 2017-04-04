@@ -1,5 +1,3 @@
-
-
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
 enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W7jet8n, k_W1cjet, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z6jetn, k_Z6jet8, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8, k_WZ13, k_WZ13fid,  k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_VBFW8, k_VBFZ, k_VBFZ8, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_EWKZg8, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_t, k_t8, k_t13, k_tW, k_tW8, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13, k_tttt8, k_tttt13, k_HZZ,  k_ggH, k_ggH8, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFHgg13, k_VH, k_VH8,  k_ttH, k_ttH8, k_ttH13, k_HH8, k_HH13, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
@@ -3526,14 +3524,14 @@ scale_ = 0.001;
   chanMeasurement[k_Wgg8] = "W#gamma#gamma";
   chanLumi[k_Wgg8] = "19.4 fb^{-1}";
 
-  chanSigma[k_Wgg8]  =  6.0 * scale_; 
-  chanEStatp[k_Wgg8]  =   1.8 * scale_;
-  chanEStatm[k_Wgg8]  =   1.8 * scale_;
+  chanSigma[k_Wgg8]  =  4.9 * scale_; 
+  chanEStatp[k_Wgg8]  =   1.4 * scale_;
+  chanEStatm[k_Wgg8]  =   1.4 * scale_;
   chanEStat[k_Wgg8]  = ( chanEStatp[k_Wgg8] + chanEStatm[k_Wgg8])/2.0;
 
 
-  chanESystp[k_Wgg8]  =    sqrt( 2.3*2.3+0.2*0.2)* scale_;
-  chanESystm[k_Wgg8]  =    sqrt( 2.3*2.3+0.2*0.2)* scale_;
+  chanESystp[k_Wgg8]  =    sqrt( 1.6*1.6+0.1*0.1)* scale_;
+  chanESystm[k_Wgg8]  =    sqrt( 1.6*1.6+0.1*0.1)* scale_;
   chanESyst[k_Wgg8]  = ( chanESystp[k_Wgg8] + chanESystm[k_Wgg8])/2.0;
 
 

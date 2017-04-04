@@ -196,7 +196,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    txtSize[ntxt] = size_-0.01;
 	    txtX[ntxt] = 1.0*minRange;
 	    if (aqgc) txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
-	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +1.1*DY_;
+	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +0.8*DY_;
 	    cout << "chan: " << txt[ntxt] << endl;
 	    cout << "text location Y: " << txtY[ntxt] << endl;
             cout << "text location X: " << txtX[ntxt] << endl;
@@ -399,7 +399,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 
 	    // Need to change to exp*1.25 for QGC plots, 0.9 for TGC plots 
 	    TGraphErrors _dataTotPoint(1);
-	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.21 );
+	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.1 );
 	    _dataTotPoint.SetPointError( 1, dyx_/2, 0 );
 	    _dataTotPoint.SetLineWidth(2);
 	    _dataTotPoint.SetLineColor(colors[ii]);
@@ -407,7 +407,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    _dataTotPoint.DrawClone("e");	
 
 	    if (baseTwo==8||baseTwo==16){
-	    TMarker _dataPoint( xx_, yy_-dyy_*exp*1.21, kFullCircle );
+	    TMarker _dataPoint( xx_, yy_-dyy_*exp*1.1, kFullCircle );
 	    _dataPoint.SetMarkerSize(markerSize);
 	    _dataPoint.SetMarkerColor(colors[ii]);
 	    _dataPoint.DrawClone();
@@ -419,7 +419,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    txt[ntxt] = experiments[ii];
 	    txtSize[ntxt] = 0.018;
 	    txtX[ntxt] = xx_ - 0.20*maxRange;
-	    txtY[ntxt] = yy_-dyy_*exp*1.21;
+	    txtY[ntxt] = yy_-dyy_*exp*1.1;
 	    txtAlign[ntxt] = 12;
 	    txtFont[ntxt] = 42;
 	    ntxt++;
@@ -502,7 +502,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "March 2017";
+  txt[1] = "April 2017";
   txtSize[1] = 0.028;
   txtX[1] = 0.10;
   txtY[1] = 0.97;
