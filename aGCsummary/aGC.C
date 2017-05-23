@@ -158,7 +158,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
  
   float shift_ = 2.;
   if (version ==2) shift_ = 1.5;
-  float size_  = 0.030;
+  float size_  = 0.025;
 
   vector<int> channel_;
   vector<float> ypos_;
@@ -502,7 +502,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "April 2017";
+  txt[1] = "May 2017";
   txtSize[1] = 0.028;
   txtX[1] = 0.10;
   txtY[1] = 0.97;

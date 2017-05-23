@@ -370,7 +370,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   size_t DY_;
   DY_=1;
 
-
+  plotChan[k_exWW] = false; 
   for( size_t ii=0; ii<k_nChan; ii++ )
     {
       if (plotChan[ii]) {
@@ -428,7 +428,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   c_->SetFrameLineWidth(2);
   c_->SetFrameBorderMode(0);
 
-  TH1F* h_= new TH1F( "bidon", "bidon", 30, 0, 3);
+  TH1F* h_= new TH1F( "bidon", "bidon", 30, 0.0, 4);
   TAxis* ax_ = h_->GetXaxis();
   TAxis* ay_ = h_->GetYaxis();
   
@@ -456,7 +456,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   //  ***** Invert y axis
   c_->SetLogy(false);
   h_->GetYaxis()->SetRangeUser(0.5,nBin_+3.5);
-  h_->GetXaxis()->SetRangeUser(0.4,2.0);
+  h_->GetXaxis()->SetRangeUser(0.0,4.0);
   h_->Draw("hist][");
   
 
@@ -493,11 +493,24 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       if  (iChan  == k_WZ8) type = 8;
       if  (iChan  == k_ZZ8) type = 8;
       if  (iChan  == k_WW13) type = 13;
-       if  (iChan  == k_WZ13) type = 13;
-       if  (iChan  == k_WZ13fid) type = 13;
+      if  (iChan  == k_WZ13) type = 13;
+      if  (iChan  == k_WZ13fid) type = 13;
       if  (iChan  == k_ZZ13) type = 13;
-       if  (iChan  == k_ZZ13fid) type = 13;
+      if  (iChan  == k_ZZ13fid) type = 13;
 
+      if  (iChan  == k_VBFZ8) type = 8;
+      if  (iChan  == k_VBFZ13) type = 13;
+      if  (iChan  == k_exWW8) type = 8;
+      if  (iChan  == k_SSWW8) type = 8;
+      if  (iChan  == k_SSWW13) type = 13;
+      if  (iChan  == k_EWKWg8) type = 8;
+      if  (iChan  == k_EWKZg8) type = 8;
+      if  (iChan  == k_EWKZZ13) type = 13;
+
+
+
+
+       
       if (version ==2 && ( 
       (iChan  == k_W1jet) ||(iChan  == k_W2jet) || (iChan  == k_W3jet) ||(iChan  == k_W4jet) ||
       (iChan  == k_Z1jet) ||(iChan  == k_Z2jet) || (iChan  == k_Z3jet) ||(iChan  == k_Z4jet) )) type = 71;
