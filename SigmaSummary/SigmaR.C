@@ -35,6 +35,7 @@ int ndivx = 506;
 int ndivy = 506;
 float aspR = 1.4; 
 
+
 // texts
 size_t ntxt = 1;
 vector<string> txt(100);
@@ -180,11 +181,11 @@ public:
 
 
 
-
+        if (version ==5)  _e_tot =  _e_tot/4.0;
 
 	TGraphErrors _dataTotPointTh(1);
 	_dataTotPointTh.SetPoint(1, _ypos, _sigma_theo );
-	_dataTotPointTh.SetPointError( 1, _e_tot, 0 );
+	_dataTotPointTh.SetPointError( 1.0, _e_tot, 0 );
 	_dataTotPointTh.SetLineWidth(1);
 	_dataTotPointTh.SetLineColor(kBlack);
 	_dataTotPointTh.SetMarkerSize(0);
@@ -192,7 +193,7 @@ public:
 
 	TGraphErrors _dataTotPoint(1);
 	_dataTotPoint.SetPoint(1, _ypos, _sigma_theo );
-	_dataTotPoint.SetPointError( 1, _e_tot/2, 0 );
+	_dataTotPoint.SetPointError( 1.0, _e_tot/2, 0 );
 	_dataTotPoint.SetLineWidth(1);
 	_dataTotPoint.SetLineColor(kRed);
 	_dataTotPoint.SetMarkerSize(0);
@@ -262,7 +263,8 @@ public:
 
 	txt[ntxt] = "7 TeV CMS measurement (stat,stat+sys) ";
 	txtSize[ntxt] = 0.03;
-	txtX[ntxt] = _ypos - 0.7;
+	txtX[ntxt] = _ypos*0.62;
+	if (version==6) txtX[ntxt] = _ypos*0.42;
 	txtY[ntxt] = _sigma_theo;
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
@@ -271,7 +273,8 @@ public:
 
 	txt[ntxt] = "8 TeV CMS measurement (stat,stat+sys) ";
 	txtSize[ntxt] = 0.03;
-	txtX[ntxt] = _ypos - 0.7;
+	txtX[ntxt] = _ypos*0.62;
+	if (version==6) txtX[ntxt] = _ypos*0.42;
 	txtY[ntxt] = _sigma_theo -1;
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
@@ -279,23 +282,28 @@ public:
 
 	txt[ntxt] = "13 TeV CMS measurement (stat,stat+sys) ";
 	txtSize[ntxt] = 0.03;
-	txtX[ntxt] = _ypos - 0.7;
+	txtX[ntxt] = _ypos*0.62;
+	if (version==6) txtX[ntxt] = _ypos*0.42;
 	txtY[ntxt] = _sigma_theo -2;
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
 
-        txt[ntxt] = "CMS measurements";
+        txt[ntxt] = "CMS EWK measurements vs.";
+        if (version ==5) txt[ntxt] = "CMS measurements";
         txtSize[ntxt] = 0.035;
-        txtX[ntxt] = 0.43;
-        txtY[ntxt] = _sigma_theo -0.00;
+        txtX[ntxt] = 0.0;
+        if (version == 5) txtX[ntxt] = 0.45;
+        txtY[ntxt] = _sigma_theo;
         txtAlign[ntxt] = 12;
         txtFont[ntxt] = 42;
         ntxt++;
 
-        txt[ntxt] = "vs. NNLO #scale[0.70]{(NLO)} theory";
+        txt[ntxt] = "Theory";
+        if (version == 5) txt[ntxt] = "vs. NNLO #scale[0.70]{(NLO)} theory";
         txtSize[ntxt] = 0.035;
-        txtX[ntxt] = 0.43;
+        txtX[ntxt] = 0.4;
+        if (version == 5) txtX[ntxt] = 0.45;
         txtY[ntxt] = _sigma_theo -0.8;
         txtAlign[ntxt] = 12;
         txtFont[ntxt] = 42;
@@ -339,8 +347,18 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 {
 
 #include "data.C"
-
+  plotChan[k_exWW] = false; 
+  if (version==6)  nPlotChan =  nPlotChan-1;
+  
   if (version ==2) ymax = 4;
+
+  float xAxisMin = -0.5;
+  float xAxisMax = 4.9;
+
+  if (version == 5) xAxisMin = 0.4;
+  if (version == 5) xAxisMax = 2.0;
+  
+
   text_init();
 
   gStyle->SetEndErrorSize(5);
@@ -352,7 +370,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   int chanColor = kBlue;
   int type = 7;
  
-  float shift_ = 2.;
+  float shift_ = 1.5;
   if (version ==2) shift_ = 1.5;
   float size_  = 0.04;
 
@@ -370,7 +388,6 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   size_t DY_;
   DY_=1;
 
-  plotChan[k_exWW] = false; 
   for( size_t ii=0; ii<k_nChan; ii++ )
     {
       if (plotChan[ii]) {
@@ -380,7 +397,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
       txt[ntxt] = chanMeasurement[ii];
       txtSize[ntxt] = size_;
-      txtX[ntxt] = 0.43;
+      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*0.03;;
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -388,7 +405,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
       txt[ntxt] = chanResult[ii];
       txtSize[ntxt] = size_;
-      txtX[ntxt] = 1.43;
+      txtX[ntxt] = xAxisMin + (xAxisMax-xAxisMin)*0.6;
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -396,7 +413,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
       txt[ntxt] = chanLumi[ii];
       txtSize[ntxt] = size_;
-      txtX[ntxt] = 1.82;
+      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*0.87;
       txtY[ntxt] = nPlotChan - (nBin_) +1.55*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -428,7 +445,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   c_->SetFrameLineWidth(2);
   c_->SetFrameBorderMode(0);
 
-  TH1F* h_= new TH1F( "bidon", "bidon", 30, 0.0, 4);
+  TH1F* h_= new TH1F( "bidon", "bidon", 30, -0.5, 4.9);
   TAxis* ax_ = h_->GetXaxis();
   TAxis* ay_ = h_->GetYaxis();
   
@@ -456,7 +473,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   //  ***** Invert y axis
   c_->SetLogy(false);
   h_->GetYaxis()->SetRangeUser(0.5,nBin_+3.5);
-  h_->GetXaxis()->SetRangeUser(0.0,4.0);
+  h_->GetXaxis()->SetRangeUser(xAxisMin,xAxisMax);
   h_->Draw("hist][");
   
 
@@ -471,9 +488,10 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 	}
 
   float yy_ = nBin_+2.5;
-  float xx_ = 1.85;
+  float xx_ = xAxisMin + (xAxisMax-xAxisMin)*0.93;
   float dyx_ = 1.2;
-  DataPoint p_( 0, 0, 0.08, 
+  if (version == 6) float xx_ = xAxisMin + (xAxisMax-xAxisMin)*0.93;
+  DataPoint p_( 0, 0, 0.2, 
 		yy_, 0,
 		xx_, dyx_, type ) ;
   p_.draw();
@@ -499,6 +517,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       if  (iChan  == k_ZZ13fid) type = 13;
 
       if  (iChan  == k_VBFZ8) type = 8;
+     if  (iChan  == k_VBFW8) type = 8;
       if  (iChan  == k_VBFZ13) type = 13;
       if  (iChan  == k_exWW8) type = 8;
       if  (iChan  == k_SSWW8) type = 8;
@@ -574,7 +593,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "March 2017";
+  txt[1] = "May 2017";
   txtSize[1] = 0.03;
   txtX[1] = 0.14;
   txtY[1] = 0.965;

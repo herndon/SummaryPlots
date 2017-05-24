@@ -1669,6 +1669,8 @@ scale_ = 1.;
  chanMeasurement[k_VBFZ]     = "#splitline{EW}{qqZ}";
 if (version == 6) chanMeasurement[k_VBFZ]     = "#splitline{EWK qq(Z)}{(Z) #rightarrow ll}";
 if (ratioPlot) chanMeasurement[k_VBFZ]     = "qqZ";
+chanLumi[k_VBFZ] = "5.0 fb^{-1}";
+
 
   chanSigma[k_VBFZ]  =   0.154 * scale_; 
   chanEStatp[k_VBFZ]  =   0.024 * scale_;
@@ -1703,6 +1705,8 @@ http://cms-results.web.cern.ch/cms-results/public-results/publications/FSQ-12-03
  chanMeasurement[k_VBFZ8]     = "#splitline{EW}{qqZ}";
 if (version == 6) chanMeasurement[k_VBFZ8]     = "#splitline{EWK qq(Z)}{(Z) #rightarrow ll}";
 if (ratioPlot) chanMeasurement[k_VBFZ8]     = "qqZ";
+chanLumi[k_VBFZ8] = "19.7 fb^{-1}";
+
 
   chanSigma[k_VBFZ8]  =   0.174 * scale_; 
   chanEStatp[k_VBFZ8]  =   0.015 * scale_;
@@ -1738,6 +1742,7 @@ if (ratioPlot) chanMeasurement[k_VBFZ8]     = "qqZ";
  chanMeasurement[k_VBFZ13]     = "#splitline{EW}{qqZ}";
 if (version == 6) chanMeasurement[k_VBFZ13]     = "#splitline{EWK qq(Z)}{(Z) #rightarrow ll}";
 if (ratioPlot) chanMeasurement[k_VBFZ13]     = "qqZ";
+chanLumi[k_VBFZ13] = "35.9 fb^{-1}";
 
 
   chanSigma[k_VBFZ13]  =   0.552 * scale_; 
@@ -1777,6 +1782,7 @@ if (ratioPlot) chanMeasurement[k_VBFZ13]     = "qqZ";
  chanMeasurement[k_VBFW8]     = "#splitline{EW}{qqW}";
 if (version == 6) chanMeasurement[k_VBFW8]     = "#splitline{EWK qqW}{W #rightarrow l#nu}";
 if (ratioPlot) chanMeasurement[k_VBFW8]     = "qqW";
+chanLumi[k_VBFW8] = "19.3 fb^{-1}";
 
 
 chanSigma[k_VBFW8]  =   0.42 * scale_; 
@@ -3804,8 +3810,8 @@ float ZZsigBR_ = ((15.32+1.211)*5.1+(19.52+1.559)*19.6) * (1/(5.1+19.6)) * 0.026
 
   scale_=1/1000.0;
 
-  chanMeasurement[k_EWKZg8] = "#splitline{EW}{Z#gammajj}";
-if (ratioPlot) chanMeasurement[k_EWKZg8]     = "Z#gammajj";
+  chanMeasurement[k_EWKZg8] = "#splitline{EW}{qqZ#gamma}";
+if (ratioPlot) chanMeasurement[k_EWKZg8]     = "qqZ#gamma";
 
   chanLumi[k_EWKZg8] = "19.7 fb^{-1}";
 
@@ -3816,7 +3822,7 @@ if (ratioPlot) chanMeasurement[k_EWKZg8]     = "Z#gammajj";
 
   chanESystp[k_EWKZg8]  =    sqrt( 0.41*0.41+0.5*0.5)* scale_;
   chanESystm[k_EWKZg8]  =    sqrt( 0.27*0.27+0.5*0.5)* scale_;
-  chanESyst[k_EWKZg8]  = ( chanESyst[k_EWKZg8] + chanESyst[k_EWKZg8])/2.0;
+  chanESyst[k_EWKZg8]  = ( chanESystp[k_EWKZg8] + chanESystm[k_EWKZg8])/2.0;
 
 
   chanETot[k_EWKZg8]   =  sqrt( 
@@ -3835,8 +3841,8 @@ chanETheo[k_EWKZg8] =  sqrt(0.11*0.11 + 0.05*0.05) * scale_;
 
   scale_=1/1000.0;
 
-  chanMeasurement[k_EWKWg8] = "#splitline{EW}{W#gammajj}";
-if (ratioPlot) chanMeasurement[k_EWKWg8]     = "W#gammajj";
+  chanMeasurement[k_EWKWg8] = "#splitline{EW}{qqW#gamm}";
+if (ratioPlot) chanMeasurement[k_EWKWg8]     = "qqW#gamma";
 
 
   chanLumi[k_EWKWg8] = "19.7 fb^{-1}";
@@ -3848,7 +3854,7 @@ if (ratioPlot) chanMeasurement[k_EWKWg8]     = "W#gammajj";
 
   chanESystp[k_EWKWg8]  =    sqrt( 3.4*3.4+0.3*0.3)* scale_;
   chanESystm[k_EWKWg8]  =    sqrt( 3.4*3.4+0.3*0.3)* scale_;
-  chanESyst[k_EWKWg8]  = ( chanESyst[k_EWKWg8] + chanESyst[k_EWKWg8])/2.0;
+  chanESyst[k_EWKWg8]  = ( chanESystp[k_EWKWg8] + chanESystm[k_EWKWg8])/2.0;
 
 
   chanETot[k_EWKWg8]   =  sqrt( 
@@ -3867,8 +3873,8 @@ chanETheo[k_EWKWg8] =  sqrt(1.2*1.2 + 0.2*0.2) * scale_;
 
   scale_=1/1000.0;
 
-  chanMeasurement[k_EWKZZ13] = "#splitline{EW}{ZZjj}";
-  if (ratioPlot) chanMeasurement[k_EWKZZ13]     = "ZZjj";
+  chanMeasurement[k_EWKZZ13] = "#splitline{EW}{qqZZ}";
+  if (ratioPlot) chanMeasurement[k_EWKZZ13]     = "qqZZ";
 
   chanLumi[k_EWKZZ13] = "35.9 fb^{-1}";
 
@@ -3879,7 +3885,7 @@ chanETheo[k_EWKWg8] =  sqrt(1.2*1.2 + 0.2*0.2) * scale_;
 
   chanESystp[k_EWKZZ13]  =    sqrt( 0.13*0.13)* scale_;
   chanESystm[k_EWKZZ13]  =    sqrt( 0.09*0.09)* scale_;
-  chanESyst[k_EWKZZ13]  = ( chanESyst[k_EWKZZ13] + chanESyst[k_EWKZZ13])/2.0;
+  chanESyst[k_EWKZZ13]  = ( chanESystp[k_EWKZZ13] + chanESystm[k_EWKZZ13])/2.0;
 
 
   chanETot[k_EWKZZ13]   =  sqrt( 
@@ -4013,15 +4019,15 @@ scale_ = 2.0;
 
   chanMeasurement[k_exWW8] = "#splitline{#gamma#gamma#rightarrow}{WW}";
 if (version == 6) chanMeasurement[k_exWW8] = "#splitline{#gamma#gamma#rightarrow WW}{WW #rightarrow l#nul#nu}";
-if (ratioPlot) chanMeasurement[k_exWW8]     = "ss WW";
+if (ratioPlot) chanMeasurement[k_exWW8]     = "#gamma#gamma#rightarrowWW";
 
 chanLumi[k_exWW8]= "19.7 fb^{-1}";
 //scale_ = 1.0/(W_br_lnu*W_br_lnu*2.0) ;
 scale_ = 2.0;
 
   chanSigma[k_exWW8]  =  0.0108 * scale_; 
-  chanEStat[k_exWW8]  =   0.0046 * scale_;
-  chanESyst[k_exWW8]  =   0.0 * scale_;
+  chanESyst[k_exWW8]  =   0.0046 * scale_;
+  chanEStat[k_exWW8]  =   0.0 * scale_;
   chanETot[k_exWW8]   =  sqrt( 
 			   chanEStat[k_exWW8]*chanEStat[k_exWW8]
 			   +
@@ -4366,7 +4372,8 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
 
 // VBF vector boson fusion Higgs 7 TeV 
   chanMeasurement[k_VBFH]  = "#splitline{VBF}{qqH}";
-  chanLumi[k_VBFH]  = "5.1 fb^{-1}";
+if (version == 6) chanMeasurement[k_VBFH] = "qqH";
+chanLumi[k_VBFH]  = "5.1 fb^{-1}";
 
   chanTheo[k_VBFH] =   1.222 * scale_;
   chanETheop[k_VBFH] =  0.0252 * chanTheo[k_VBFH];
@@ -4391,7 +4398,9 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
  
 // VBF vector boson fusion Higgs 8 TeV
   chanMeasurement[k_VBFH8]  = "#splitline{VBF}{qqH}";
-  chanLumi[k_VBFH8]  = "19.5 fb^{-1}";
+  if (version == 6) chanMeasurement[k_VBFH8] = "qqH";
+
+chanLumi[k_VBFH8]  = "19.5 fb^{-1}";
 
   chanTheo[k_VBFH8] =   1.578 * scale_;
   chanETheop[k_VBFH8] =  0.0261 * chanTheo[k_VBFH8];
@@ -4422,6 +4431,7 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
 
 
   chanMeasurement[k_VBFHgg13]  = "#splitline{VBF}{qqH}";
+  if (version == 6) chanMeasurement[k_VBFHgg13] = "qqH";
   chanLumi[k_VBFHgg13]  = "12.9 fb^{-1}";
 
 // cross section from https://arxiv.org/abs/1610.07922 NNLO+EW
