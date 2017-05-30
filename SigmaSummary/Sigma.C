@@ -822,7 +822,11 @@ Sigma(float ymin=0.000003, float ymax=30000 )
      if  (iChan == k_WZ2jet8) type = 8;
      if  (iChan == k_WZ3jet8) type = 8;
 
-     if (iChan == k_ZZ0jet13) type = 13;
+     if (iChan == k_ZZ0jet8) type = 8;
+     if  (iChan == k_ZZ1jet8) type = 8;
+     if  (iChan == k_ZZ2jet8) type = 8;
+     if  (iChan == k_ZZ3jet8) type = 8;
+    if (iChan == k_ZZ0jet13) type = 13;
      if  (iChan == k_ZZ1jet13) type = 13;
      if  (iChan == k_ZZ2jet13) type = 13;
      if  (iChan == k_ZZ3jet13) type = 13;
