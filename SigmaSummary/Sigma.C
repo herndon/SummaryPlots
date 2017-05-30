@@ -393,7 +393,7 @@ TCanvas*
 // version 6 ymin 0.0001, ymax 50
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.000003, float ymax=30000 )
+Sigma(float ymin=0.000003, float ymax=40000 )
 {
 
 #include "data.C"
@@ -653,7 +653,7 @@ Sigma(float ymin=0.000003, float ymax=30000 )
   c_->SetFrameLineWidth(2);
   c_->SetFrameBorderMode(0);
 
-  TH1F* h_= new TH1F( "bidon", "bidon", 820, -20.0, 800.0);
+  TH1F* h_= new TH1F( "bidon", "bidon", 1000, -20.0, 1000.0);
   TAxis* ax_ = h_->GetXaxis();
   TAxis* ay_ = h_->GetYaxis();
   
@@ -684,6 +684,7 @@ Sigma(float ymin=0.000003, float ymax=30000 )
   cout << "Setting axis " << nBin_ << endl;
   c_->SetLogy(true);
   h_->GetXaxis()->SetRangeUser(-stdDX_/2.0-2.0, nBin_+stdDX_/2.0+2.0);
+  //if (version==3)  h_->GetXaxis()->SetRangeUser(-stdDX_/2.0-2.0, nBin_+stdDX_);
   if (version==4) h_->GetXaxis()->SetRangeUser(-stdDX_/8.0, nBin_+stdDX_/8.0);
   h_->GetYaxis()->SetRangeUser(ymin,ymax);
   h_->Draw("hist][");
@@ -700,6 +701,7 @@ Sigma(float ymin=0.000003, float ymax=30000 )
 
 
   float yy_ = ledgendY/2.0; 
+  if (version==3)  yy_*=2.0; 
   //if (version==4)
   float xx_ = nBin_-(0.48*nBin_);
   if (version == 7) xx_ = nBin_-(0.55*nBin_);
@@ -747,6 +749,7 @@ Sigma(float ymin=0.000003, float ymax=30000 )
       if  (iChan  == k_EWKWg8) type = 8;
       if  (iChan  == k_EWKZg8) type = 8;
       if  (iChan  == k_EWKZZ13) type = 13;
+
       if  (iChan == k_tt8) type = 8;
       if  (iChan == k_tt1jet8) type = 8;
       if  (iChan == k_tt2jet8) type = 8;
@@ -762,6 +765,9 @@ Sigma(float ymin=0.000003, float ymax=30000 )
       if  (iChan == k_Z5jet8) type = 8;
       if  (iChan == k_Z6jet8) type = 8;
       if  (iChan == k_Z7jet8) type = 8;
+
+      if  (iChan == k_tt2bjet13) type = 13;
+ 
 
       if  (iChan == k_Z1jet13) type = 13;
       if  (iChan == k_Z2jet13) type = 13;
@@ -903,8 +909,8 @@ void text_init()
 
   txt[1] = "May 2017";
   txtSize[1] = 0.03;
-  txtX[1] = 0.14;
-  txtY[1] = 0.95;
+  txtX[1] = 0.1;
+  txtY[1] = 0.96;
   txtAlign[1] = 11;
   txtNDC[1]=true;
   txtFont[1] = 42;

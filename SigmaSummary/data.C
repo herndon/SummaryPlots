@@ -1,6 +1,6 @@
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
-enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W7jet8n, k_W1cjet, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z6jetn, k_Z6jet8, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8, k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_WZ13, k_WZ13fid,  k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VBFW8, k_VBFZ, k_VBFZ8, k_VBFZ13, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZZ13, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_t, k_t8, k_t13, k_tW, k_tW8, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13, k_tttt8, k_tttt13, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFHgg13, k_VBFHtt13, k_VH, k_VH8, k_VH13, k_ttH, k_ttH8, k_ttH13, k_HH8, k_HH13, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
+enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W7jet8n, k_W1cjet, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z6jetn, k_Z6jet8, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8, k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_WZ13, k_WZ13fid,  k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VBFW8, k_VBFZ, k_VBFZ8, k_VBFZ13, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZZ13, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13, k_tttt8, k_tttt13, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFHgg13, k_VBFHtt13, k_VH, k_VH8, k_VH13, k_ttH, k_ttH8, k_ttH13, k_HH8, k_HH13, k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
 
 
 
@@ -381,6 +381,9 @@ if (version==3) {
   plotChan[k_tt3jet13] = true;
   plotChan[k_tt4jet13] = true;
 
+  plotChan[k_tt2bjet13] = true;
+
+  
 
   plotChan[k_H0jet13] = true;
   plotChan[k_H1jet13] = true;
@@ -2428,6 +2431,40 @@ chanETheop[k_tt13] =  sqrt(20.0*20.0 + 35.0*35.0) * scale_;
   chanETheop[k_tt4jet13] =  1.97 * scale_;
   chanETheom[k_tt4jet13] =  1.97 * scale_;
   chanETheo[k_tt4jet13] = (chanETheop[k_tt4jet13] +chanETheom[k_tt4jet13])/2.0;
+
+
+// tt + 2 b jets 13 TeV
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-16-010/index.html
+// https://arxiv.org/abs/1705.10141
+
+  chanMeasurement[k_tt2bjet13] = "2b";
+
+  chanSigma[k_tt2bjet13]  =   4.0 * scale_; 
+  chanEStatp[k_tt2bjet13]  =   0.6 * scale_;
+  chanESystp[k_tt2bjet13]  =   1.3 * scale_;
+  chanETotp[k_tt2bjet13]   =  sqrt( 
+			   chanEStatp[k_tt2bjet13]*chanEStatp[k_tt2bjet13]
+			   +
+			   chanESystp[k_tt2bjet13]*chanESystp[k_tt2bjet13]
+			    );
+
+  chanEStatm[k_tt2bjet13]  =   0.6 * scale_;
+  chanESystm[k_tt2bjet13]  =   1.3 * scale_;
+  chanETotm[k_tt2bjet13]   =  sqrt( 
+			   chanEStatm[k_tt2bjet13]*chanEStatm[k_tt2bjet13]
+			   +
+			   chanESystm[k_tt2bjet13]*chanESystm[k_tt2bjet13]
+			    );
+  chanEStat[k_tt2bjet13] = (chanEStatp[k_tt2bjet13] +chanEStatm[k_tt2bjet13])/2.0;
+  chanESyst[k_tt2bjet13] = (chanESystp[k_tt2bjet13] +chanESystm[k_tt2bjet13])/2.0;
+  chanETot[k_tt2bjet13] = (chanETotp[k_tt2bjet13] +chanETotm[k_tt2bjet13])/2.0;
+ 
+
+
+  chanTheo[k_tt2bjet13] =   3.2 * scale_;
+  chanETheop[k_tt2bjet13] =  0.4 * scale_;
+  chanETheom[k_tt2bjet13] =  0.4 * scale_;
+  chanETheo[k_tt2bjet13] = (chanETheop[k_tt2bjet13] +chanETheom[k_tt2bjet13])/2.0;
 
 
 // single top t chan only
