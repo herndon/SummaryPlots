@@ -7,7 +7,6 @@
 #include <vector>
 
 
-
 #include "TStyle.h"
 #include "TH1F.h"
 #include "TH2F.h"
@@ -393,7 +392,7 @@ TCanvas*
 // version 6 ymin 0.0001, ymax 50
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.000003, float ymax=40000 )
+Sigma(float ymin=0.0001, float ymax=600000 )
 {
 
 #include "data.C"
@@ -907,7 +906,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2017";
+  txt[1] = "July 2017";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
