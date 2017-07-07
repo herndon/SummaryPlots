@@ -193,7 +193,8 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    vstyle_.push_back(1);
 
 	    txt[ntxt] = chanName[ii];
-	    txtSize[ntxt] = size_+0.01;
+	    if (aqgc) txtSize[ntxt] = size_-0.01;
+	    if (atgc) txtSize[ntxt] = size_+0.01;
 	    txtX[ntxt] = 1.0*minRange;
 	    if (aqgc) txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
 	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +0.8*DY_;
@@ -502,7 +503,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2017";
+  txt[1] = "June 2017";
   txtSize[1] = 0.028;
   txtX[1] = 0.10;
   txtY[1] = 0.97;
