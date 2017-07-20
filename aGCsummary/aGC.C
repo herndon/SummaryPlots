@@ -193,10 +193,10 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    vstyle_.push_back(1);
 
 	    txt[ntxt] = chanName[ii];
-	    if (aqgc) txtSize[ntxt] = size_-0.01;
+	    if (aqgc) txtSize[ntxt] = size_-0.0;
 	    if (atgc) txtSize[ntxt] = size_+0.01;
 	    txtX[ntxt] = 1.0*minRange;
-	    if (aqgc) txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
+	    if (aqgc) txtY[ntxt] = nPlotChan - (nBin_) +1.1*DY_;
 	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +0.8*DY_;
 	    cout << "chan: " << txt[ntxt] << endl;
 	    cout << "text location Y: " << txtY[ntxt] << endl;
@@ -307,7 +307,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
   TCanvas* c_=new TCanvas("aGC","atgc",300,300,xw_,yw_);
   c_->SetLeftMargin( 40./xw_ );
   c_->SetRightMargin( 40./xw_ );
-  c_->SetTopMargin(  0./yw_ );
+  c_->SetTopMargin(  10./yw_ );
   c_->SetBottomMargin( 80./yw_ ); 
   c_->SetFillColor(0);
   c_->SetTickx(0);
@@ -348,19 +348,19 @@ aGC(float ymin=-2.0, float ymax=900000 )
   //  ***** Dynamically set y axis
   //  ***** Invert y axis
   c_->SetLogy(false);
-  h_->GetYaxis()->SetRangeUser(0.5,nBin_+0.5*exps+0.5);
+  h_->GetYaxis()->SetRangeUser(0.5,nBin_+(1.0/1.4)*exps+0.75);
   h_->GetXaxis()->SetRangeUser(minRange,maxRange);
   h_->GetXaxis()->SetTicks("");
   h_->Draw("hist][");
   
 
   // Create ledgend
-    float yy_ = nBin_+0.5*exps;
+  float yy_ = nBin_+(1.0/1.4)*exps+0.25;
     float xx_ = 0.05*maxRange;
     float dyx_ = 0.07*maxRange;
 
 
-  	float dyy_ = 1/2.0;
+  	float dyy_ = 1.0/1.4;
         int exp = 0;
 
 
@@ -400,7 +400,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 
 	    // Need to change to exp*1.25 for QGC plots, 0.9 for TGC plots 
 	    TGraphErrors _dataTotPoint(1);
-	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.1 );
+	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.35 );
 	    _dataTotPoint.SetPointError( 1, dyx_/2, 0 );
 	    _dataTotPoint.SetLineWidth(2);
 	    _dataTotPoint.SetLineColor(colors[ii]);
@@ -408,7 +408,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    _dataTotPoint.DrawClone("e");	
 
 	    if (baseTwo==8||baseTwo==16){
-	    TMarker _dataPoint( xx_, yy_-dyy_*exp*1.1, kFullCircle );
+	    TMarker _dataPoint( xx_, yy_-dyy_*exp*1.35, kFullCircle );
 	    _dataPoint.SetMarkerSize(markerSize);
 	    _dataPoint.SetMarkerColor(colors[ii]);
 	    _dataPoint.DrawClone();
@@ -420,7 +420,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    txt[ntxt] = experiments[ii];
 	    txtSize[ntxt] = 0.018;
 	    txtX[ntxt] = xx_ - 0.20*maxRange;
-	    txtY[ntxt] = yy_-dyy_*exp*1.1;
+	    txtY[ntxt] = yy_-dyy_*exp*1.35;
 	    txtAlign[ntxt] = 12;
 	    txtFont[ntxt] = 42;
 	    ntxt++;
@@ -503,10 +503,10 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "June 2017";
+  txt[1] = "July 2017";
   txtSize[1] = 0.028;
   txtX[1] = 0.10;
-  txtY[1] = 0.97;
+  txtY[1] = 0.96;
   txtAlign[1] = 31;
   txtNDC[1]=true;
   txtFont[1] = 42;
