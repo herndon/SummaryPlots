@@ -392,7 +392,7 @@ TCanvas*
 // version 6 ymin 0.0001, ymax 50
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.0001, float ymax=600000 )
+Sigma(float ymin=0.000003, float ymax=30000 )
 {
 
 #include "data.C"
@@ -792,6 +792,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan == k_W3jet13) type = 13;
       if  (iChan == k_W4jet13) type = 13;
       if  (iChan == k_W5jet13) type = 13;
+      if  (iChan == k_W6jet13) type = 13;
 
       
        if  (iChan == k_W2bjet8) type = 8;
