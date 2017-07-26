@@ -6,7 +6,6 @@
 #include <string>
 #include <vector>
 
-
 #include "TStyle.h"
 #include "TH1F.h"
 #include "TH2F.h"
@@ -85,7 +84,7 @@ public:
     int _expColor8 = kBlue;
     int	_expColor13 = 209;
 
-    if (_type==8) 
+    if (_type==8||_type==18) 
       {
 	_theoColor = 209;
 	_theoColor = _theoColorG;
@@ -182,6 +181,7 @@ public:
 
  	TBox _limit(_xpos-_dx/5.,-_sigma, _xpos+_dx/5., -1.5*_sigma);
  	_limit.SetFillStyle(3254);
+ 	if (_type==18) _limit.SetFillStyle(3244);
  	_limit.SetFillColor( _expLineColor );
 	_limit.DrawClone();
 
@@ -198,11 +198,12 @@ public:
     else
       {
 	float dy_ = 1/2.0;
-        if (version <= 2 || version == 6 || version == 7 || version == 8) _dx = _dx*2.0;
+        if (version <= 2 || version == 6 || version == 7 || version == 8 || version == 6 ) _dx = _dx*2.0;
 
 	if (version !=3 && version != 4 && version != 6 && version != 7) {
        
- 	TBox _limit(_xpos-_dx/3., _sigma_theo*0.9*dy_, 
+	  if (version != 9) {
+	 TBox _limit(_xpos-_dx/3., _sigma_theo*0.9*dy_, 
 		    _xpos+_dx/3., 1.5*_sigma_theo*0.9*dy_);
  	_limit.SetFillStyle(3254);
  	_limit.SetFillColor( kRed );
@@ -215,7 +216,8 @@ public:
  	_limitLine.SetLineColor(kRed);
  	_limitLine.SetMarkerSize(0);	
 	_limitLine.DrawClone("ez");
-
+	 
+	
   	TBox _limit8(_xpos + 1.5*_dx - _dx/3., _sigma_theo*0.9*dy_, 
 		     _xpos + 1.5*_dx + _dx/3., 1.5*_sigma_theo*0.9*dy_);
  	_limit8.SetFillStyle(3254);
@@ -243,7 +245,40 @@ public:
  	_limitLine13.SetLineColor(_expColor13);
  	_limitLine13.SetMarkerSize(0);	
 	_limitLine13.DrawClone("ez");
+	  } else{
 
+ 	TBox _limit8(_xpos - _dx/3., _sigma_theo*0.9*dy_, 
+		     _xpos + _dx/3., 1.5*_sigma_theo*0.9*dy_);
+ 	_limit8.SetFillStyle(3254);
+ 	_limit8.SetFillColor( kBlue );
+	_limit8.DrawClone();
+
+	TGraphErrors _limitLine8(1);
+ 	_limitLine8.SetPoint(1, _xpos , _sigma_theo*0.9*dy_ );
+ 	_limitLine8.SetPointError( 1, _dx/2., 0 );
+ 	_limitLine8.SetLineWidth(2);
+ 	_limitLine8.SetLineColor(kBlue);
+ 	_limitLine8.SetMarkerSize(0);	
+	_limitLine8.DrawClone("ez");
+
+  	TBox _limit13(_xpos + 1.5*_dx - _dx/3., _sigma_theo*0.9*dy_, 
+		     _xpos + 1.5*_dx + _dx/3., 1.5*_sigma_theo*0.9*dy_);
+ 	_limit13.SetFillStyle(3254);
+ 	_limit13.SetFillColor(_expColor13 );
+	_limit13.DrawClone();
+
+	TGraphErrors _limitLine13(1);
+ 	_limitLine13.SetPoint(1, _xpos + 1.5*_dx , _sigma_theo*0.9*dy_ );
+ 	_limitLine13.SetPointError( 1, _dx/2., 0 );
+ 	_limitLine13.SetLineWidth(2);
+ 	_limitLine13.SetLineColor(_expColor13);
+ 	_limitLine13.SetMarkerSize(0);	
+	_limitLine13.DrawClone("ez");
+
+
+	  }
+
+	    
 
 	
 	}
@@ -251,7 +286,7 @@ public:
 	//_sigma_theo = 5.169*1000.*1000.;
         _e_tot = _e_tot/1.5;
 
-	if (version !=7) {
+	if (version !=7 && version != 9) {
 	TGraphErrors _dataTotPoint(1);
 	_dataTotPoint.SetPoint(1, _xpos, _sigma_theo/(dy_*dy_*dy_) );
 	_dataTotPoint.SetPointError( 1, 0, _e_tot/(dy_*dy_*dy_) );
@@ -290,7 +325,7 @@ public:
 
 	}
 
- if (version != 20) {
+ if (version != 20 && version != 9) {
 	TGraphErrors _dataTotPoint13(1);
 	_dataTotPoint13.SetPoint(1, _xpos, _sigma_theo/(dy_) );
 	_dataTotPoint13.SetPointError( 1, 0, _e_tot/(dy_) );
@@ -321,15 +356,19 @@ public:
 
 	if (version != 3 && version != 4 && version !=6 && version !=7) {
 	txt[ntxt] = "CMS 95%CL limits at 7, 8 and 13 TeV";
+	if (version == 9) txt[ntxt] = "CMS 95%CL limits at 8 and 13 TeV";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + 4.0*_dx;
 	txtY[ntxt] = _sigma_theo*dy_;
+	if (version ==9) txtX[ntxt] = _xpos + 2.2*_dx;
+	if (version ==9) txtY[ntxt] = _sigma_theo*dy_*1.1;
+
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
 	}
 
-  if (version !=7){
+  if (version !=7 && version != 9){
 	//cout << "_sigma_theo="<<_sigma_theo << endl;
 	txt[ntxt] = "7 TeV CMS measurement (L #leq 5.0 fb^{-1})";
 	txtSize[ntxt] = 0.025;
@@ -348,7 +387,7 @@ public:
 	txtFont[ntxt] = 42;
 	ntxt++;
   }
-if (version !=20){
+if (version !=20 && version != 9){
 	txt[ntxt] = "13 TeV CMS measurement (L #leq 35.9 fb^{-1})";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
@@ -361,6 +400,7 @@ if (version !=20){
 	txt[ntxt] = "Theory prediction";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
+	if (version ==9) txtX[ntxt] = _xpos + 2.2*_dx;
 	txtY[ntxt] = _sigma_theo;
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
@@ -392,7 +432,8 @@ TCanvas*
 // version 6 ymin 0.0001, ymax 50
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.03, ymax 3000
-Sigma(float ymin=0.000003, float ymax=30000 )
+// version 9 ymin 0.001, ymax 1000
+Sigma(float ymin=0.0001, float ymax=600000 )
 {
 
 #include "data.C"
@@ -438,12 +479,14 @@ Sigma(float ymin=0.000003, float ymax=30000 )
       for( size_t ii=0; ii<k_nChan; ii++ )
 	{
 	  if (plotChan[ii]) {
-            if (ledgendY == 0 && chanSigma[ii] > 0.0) {
+            if (ledgendY == 0 && chanSigma[ii] != 0.0) {
 	      ledgendY = chanSigma[ii];
+	      if (ledgendY < 0.0) ledgendY = ledgendY*-1.0;
                 ledgendY*=0.5; 
 		// Sometimes the automation using teh highest xsection channel doesn't work.  Should resolve
-	     if (version == 6) ledgendY*=15.0;
+	     if (version == 6 ) ledgendY*=15.0;
              if (version == 8) ledgendY*=5.0;
+	     if (version == 9 ) ledgendY*=1500.0;
 	    }
 	    DX_=stdDX_;
 
@@ -481,7 +524,15 @@ Sigma(float ymin=0.000003, float ymax=30000 )
                 nSubChan_ = 0;
 	      }
 	    }
-            if (version == 7||version==6){
+            if (ii==k_HHComb8){
+		DX_ = stdDX_/2.0;
+		nSubChan_ = 0;
+	    }
+            if (ii==k_HHbbgg13){
+		DX_ = stdDX_/2.0;
+		nSubChan_ = 1;
+	    }
+            if (version == 7||version==6||version==9){
               cout << chanMeasurement[ii] << " " << stdDX_ << " " << DX_ << " " << nSubChan_ << endl;
               nSubChan_ = 1;
 	      DX_ = stdDX_;
@@ -542,10 +593,11 @@ Sigma(float ymin=0.000003, float ymax=30000 )
                txtSize[ntxt] = 0.015;
 	      if (version==0) txtSize[ntxt] = 0.02;
 	      //if (ii == k_SSWW8) txtSize[ntxt] = 0.0125;
-	      if (version==4||version==8) txtSize[ntxt] = 0.025;
+	      if (version==4||version==8 || version == 9) txtSize[ntxt] = 0.025;
               txtY[ntxt] = ymin*0.5;
               if (version == 7)  txtY[ntxt] = ymin*0.75;
               if (version == 8)  txtY[ntxt] = ymin*0.65;
+              if (version == 9)  txtY[ntxt] = ymin*0.55;
 	      if (DX_==stdDX_) txtX[ntxt] = nBin_;
 	      if (DX_==stdDX_/2) txtX[ntxt] = nBin_-0.5*DX_;
 	      if (DX_==stdDX_/3) txtX[ntxt] = nBin_;
@@ -573,12 +625,14 @@ Sigma(float ymin=0.000003, float ymax=30000 )
 	      if (version==3 && nBin_ > 200 ) vmax_.push_back( 40.0 );
 	      if (version==4 && nBin_ < 30 ) vmax_.push_back( 1. );
 	      if (version==4 && nBin_ > 30 ) vmax_.push_back( 200.0 );
-	      if (version==6 && nBin_ < 80 ) vmax_.push_back( 1. );
-	      if (version==6 && nBin_ > 80 ) vmax_.push_back( 40.0 );
+	      if ((version==6)&& nBin_ < 80 ) vmax_.push_back( 1. );
+	      if ((version==6)&& nBin_ > 80 ) vmax_.push_back( 40.0 );
 	      if (version==7 && nBin_ < 50 ) vmax_.push_back( 1. );
 	      if (version==7 && nBin_ > 50 ) vmax_.push_back( 200.0 );
 	      if (version==8 && nBin_ < 130 ) vmax_.push_back( 1. );
 	      if (version==8 && nBin_ > 130 ) vmax_.push_back( 100.0 );
+	      if ((version==9)&& nBin_ < 40 ) vmax_.push_back( 1. );
+	      if ((version==9)&& nBin_ > 40 ) vmax_.push_back( 40.0 );
 	      vstyle_.push_back(3);
 	    } 
 	    if ( (version==0||version==8) && ii != k_tt1jet8  && ii != k_tt1jet13 && (chanMeasurement[ii] == "#geq1j" || chanMeasurement[ii] == "1j" )) {
@@ -737,7 +791,6 @@ Sigma(float ymin=0.000003, float ymax=30000 )
       if  (iChan  == k_VH8) type = 8;
       if  (iChan  == k_VH13) type = 13;
       if  (iChan  == k_ttH8) type = 8;
-      if  (iChan  == k_HH8) type = 8;
       if  (iChan  == k_WVg) type = 8;
       if  (iChan  == k_Wgg8) type = 8;
       if  (iChan  == k_Zgg8) type = 8;
@@ -839,10 +892,18 @@ Sigma(float ymin=0.000003, float ymax=30000 )
 
 
       if  (iChan == k_ttH13) type = 13; 
-      if  (iChan == k_HH13) type = 13; 
       if  (iChan  == k_ggHgg13) type = 13;
       if  (iChan  == k_VBFHgg13) type = 13;
-     if  (iChan  == k_VBFHtt13) type = 13;
+      if  (iChan  == k_VBFHtt13) type = 13;
+
+
+     if  (iChan == k_HHbbtautau8) type = 8; 
+     if  (iChan  == k_HHbbgg8) type = 8;
+     if  (iChan == k_HHComb8) type = 8; 
+     if  (iChan == k_HHComb8&&version==9) type = 18; 
+     if  (iChan == k_HHWWbb13) type = 13; 
+     if  (iChan == k_HHbbgg13) type = 13; 
+      if  (iChan == k_HHbbtautau13) type = 13; 
 
       
       if (type != 71){
@@ -915,12 +976,12 @@ void text_init()
   txtNDC[1]=true;
   txtFont[1] = 42;
 
-  if (version != 6) {
+  if (version != 6 && version != 9) {
   txt[2] = "All results at: http://cern.ch/go/pNj7";
   txtSize[2] = 0.025;
   txtX[2] = 0.07;
   if (version ==0||version==8) txtX[2] = 0.05;
-  txtY[2] = 0.01;
+  txtY[2] = 0.005;
   txtAlign[2] = 11;
   txtNDC[2]=true;
   txtFont[2] = 42;
