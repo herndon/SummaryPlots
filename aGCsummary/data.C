@@ -11,7 +11,7 @@ k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_atlas_ggww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_
 k_atlas_ssww8_fs0, k_cms_ssww8_fs0,  k_cms_ssww13_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_cms_ssww13_fs1, k_nChan };
 
 // Available plot sets
-bool catgcg = false;
+bool catgcg = true;
 bool catgcz = false;
 bool natgcg = false;
 bool natgcz = false;
@@ -19,7 +19,7 @@ bool natgcz = false;
 bool atgc = catgcg||catgcz||natgcg||natgcz;
 
 bool aqgc_a = false;
-bool aqgc_ft = true; 
+bool aqgc_ft = false; 
 bool aqgc_fm = false;
 bool aqgc_fs = false;
 
@@ -157,9 +157,9 @@ if (catgcg) {
   chanExp[chan]            = "ATLAS";
   chanSqrtS[chan]          = "8 TeV";
   chanaCC[chan]  = 0.0   * scale_; 
-  chanaCM[chan]  = ((-0.016-0.020)/tan2thetaw) * scale_; 
-  chanaCP[chan]  = ((0.027+0.025)/tan2thetaw) * scale_;  
-  plotChan[chan] = true; 
+  chanaCM[chan]  = ((-0.016-0.0020)/tan2thetaw) * scale_; 
+  chanaCP[chan]  = ((0.027+0.0025)/tan2thetaw) * scale_;  
+  plotChan[chan] = false;// removing conversions with corr matrix 
 
 
 
@@ -302,7 +302,7 @@ if (catgcg) {
 
 // ATLAS http://arxiv.org/abs/1302.1283 submitted to PRD
 
- chanName[k_atlas_wg_lg]            = "#lambda_{#gamma}";
+  chanName[k_atlas_wg_lg]            = "#lambda_{#gamma}";
   chanMeasurement[k_atlas_wg_lg]     = "W#gamma";
   chanLumi[k_atlas_wg_lg]            = "4.6 fb^{-1}";
   chanExp[k_atlas_wg_lg]            = "ATLAS";
@@ -1156,7 +1156,16 @@ if (catgcz)
   chanaCC[chan]  = 0.0   * scale_; 
   chanaCM[chan]  = (-2.0 - 17.0*0.30082992949) * 0.5 * 0.080385 * 0.080385 * scale_; 
   chanaCP[chan]  = (5.7 + 14.0*0.30082992949) * 0.5 * 0.080385 * 0.080385 * scale_;
-  plotChan[chan] = true; 
+
+  chanaCM[chan]  = (-0.0087 - 0.044 * tan2thetaw) * scale_; 
+  chanaCP[chan]  = (0.024 + 0.063 *tan2thetaw) * scale_;  
+
+  
+  plotChan[chan] = false;// removing conversions with corr matrix  
+
+
+
+
   
   chan = k_cms_wv8_dgz;
   chanName[chan]            = "#Deltag^{Z}_{1}";

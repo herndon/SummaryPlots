@@ -360,7 +360,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
     float dyx_ = 0.07*maxRange;
 
 
-  	float dyy_ = 1.0/1.4;
+  	float dyy_ = 1.0/1.5;
         int exp = 0;
 
 

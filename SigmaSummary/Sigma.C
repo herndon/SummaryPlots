@@ -968,7 +968,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "July 2017";
+  txt[1] = "August 2017";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
