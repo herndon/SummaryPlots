@@ -593,9 +593,9 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2017";
+  txt[1] = "January 2018";
   txtSize[1] = 0.03;
-  txtX[1] = 0.14;
+  txtX[1] = 0.18;
   txtY[1] = 0.965;
   txtAlign[1] = 31;
   txtNDC[1]=true;

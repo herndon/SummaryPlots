@@ -2,7 +2,7 @@
 
 enum {  k_atlas_wg_dkg=0, k_cms_wg_dkg,   k_atlas_ww8_dkg, k_cms_ww_dkg, k_cms_ww8_dkg, k_atlas_wz8_dkg, k_atlas_wv_dkg, k_atlas_wvjj8_dkg, k_atlas_wvJ8_dkg, k_cms_wv_dkg,  k_cms_wv8_dkg, k_d0_vv_dkg, k_lep_ww_dkg, 
 k_atlas_wg_lg, k_cms_wg_lg, k_atlas_ww8_lg, k_cms_ww_lg, k_cms_ww8_lg, k_atlas_wz8_lg, k_atlas_wv_lg, k_atlas_wvjj8_lg, k_atlas_wvJ8_lg, k_cms_wv_lg, k_cms_wv8_lg, k_d0_vv_lg, k_lep_ww_lg, 
-	k_atlas_ww_dkz, k_atlas_ww8_dkz, k_cms_ww8_dkz, k_atlas_wz_dkz, k_atlas_wz8_dkz, k_atlas_wz13_dkz, k_atlas_wz813_dkz, k_cms_wz8_dkz, k_atlas_wv_dkz, k_cms_wv_dkz, k_cms_wv8_dkz, k_cms_wv13_dkz,   k_lep_ww_dkz,  k_atlas_ww_dk,  k_d0_vv_dk, k_atlas_ww_lz, k_atlas_ww8_lz, k_cms_ww_lz, k_cms_ww8_lz,  k_atlas_wz_lz, k_atlas_wz8_lz, k_atlas_wz13_lz, k_atlas_wz813_lz, k_cms_wz8_lz, k_atlas_wv_lz,  k_atlas_wvjj8_lz, k_atlas_wvJ8_lz, k_cms_wv_lz, k_cms_wv8_lz, k_cms_wv13_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_atlas_ww8_dgz, k_cms_ww_dgz,  k_cms_ww8_dgz,  k_atlas_wz_dgz, k_atlas_wz8_dgz, k_atlas_wz13_dgz, k_atlas_wz813_dgz, k_cms_wz8_dgz, k_atlas_wv_dgz,  k_atlas_wvjj8_dgz, k_atlas_wvJ8_dgz, k_cms_wv8_dgz, k_cms_wv13_dgz, k_d0_vv_dgz, k_lep_ww_dgz, 
+	k_atlas_ww_dkz, k_atlas_ww8_dkz, k_cms_ww8_dkz, k_atlas_wz_dkz, k_atlas_wz8_dkz, k_atlas_wz13_dkz, k_atlas_wz813_dkz, k_cms_wz8_dkz, k_atlas_wv_dkz, k_cms_wv_dkz, k_cms_wv8_dkz, k_cms_wv13_dkz,   k_lep_ww_dkz,  k_atlas_ww_dk,  k_d0_vv_dk, k_atlas_ww_lz, k_atlas_ww8_lz, k_cms_ww_lz, k_cms_ww8_lz,  k_atlas_wz_lz, k_atlas_wz8_lz, k_atlas_wz13_lz, k_atlas_wz813_lz, k_cms_wz8_lz, k_atlas_wv_lz,  k_atlas_wvjj8_lz, k_atlas_wvJ8_lz, k_cms_wv_lz, k_cms_wv8_lz, k_cms_wv13_lz, k_cms_vbfz13_lz, k_d0_vv_lz,  k_lep_ww_lz, k_atlas_ww_dgz, k_atlas_ww8_dgz, k_cms_ww_dgz,  k_cms_ww8_dgz,  k_atlas_wz_dgz, k_atlas_wz8_dgz, k_atlas_wz13_dgz, k_atlas_wz813_dgz, k_cms_wz8_dgz, k_atlas_wv_dgz,  k_atlas_wvjj8_dgz, k_atlas_wvJ8_dgz, k_cms_wv8_dgz, k_cms_wv13_dgz, k_cms_vbfz13_dgz, k_d0_vv_dgz, k_lep_ww_dgz, 
 k_atlas_zg_h3g,  k_atlas_zg8_h3g, k_cms_zg_h3g, k_cms_zg8_h3g, k_cms_zg8_h3g2, k_cdf_zg_h3g, k_atlas_zg_h3z,  k_atlas_zg8_h3z, k_cms_zg_h3z, k_cms_zg8_h3z, k_cms_zg8_h3z2, k_cdf_zg_h3z, k_atlas_zg_h4g, k_atlas_zg8_h4g, k_cms_zg_h4g, k_cms_zg8_h4g, k_cms_zg8_h4g2, k_atlas_zg_h4z,  k_atlas_zg8_h4z, k_cms_zg_h4z, k_cms_zg8_h4z, k_cms_zg8_h4z2, 
 	k_atlas_zz_f4g, k_atlas_zz8_f4g,  k_atlas_zz13_f4g, k_cms_zz_f4g, k_cms_zz2_f4g, k_cms_zzc_f4g, k_cms_zz13_f4g, k_atlascms_zz_f4g, k_atlas_zz_f4z,  k_atlas_zz8_f4z,  k_atlas_zz13_f4z, k_cms_zz_f4z,  k_cms_zz2_f4z, k_cms_zzc_f4z, k_cms_zz13_f4z, k_atlascms_zz_f4z, k_atlas_zz_f5g,  k_atlas_zz8_f5g,  k_atlas_zz13_f5g, k_cms_zz_f5g,  k_cms_zz2_f5g, k_cms_zzc_f5g, k_cms_zz13_f5g, k_atlascms_zz_f5g, k_atlas_zz_f5z,   k_atlas_zz8_f5z, k_atlas_zz13_f5z, k_cms_zz_f5z, k_cms_zz2_f5z, k_cms_zzc_f5z, k_cms_zz13_f5z, k_atlascms_zz_f5z,
 k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_atlas_ggww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_a0w,  k_cms_wwg8_acw, k_cms_ssww8_acw, k_atlas_ggww8_acw, k_cms_ggww_acw, k_cms_ggww8_acw, 
@@ -11,8 +11,8 @@ k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_atlas_ggww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_
 k_atlas_ssww8_fs0, k_cms_ssww8_fs0,  k_cms_ssww13_fs0, k_atlas_ssww8_fs1, k_cms_ssww8_fs1, k_cms_ssww13_fs1, k_nChan };
 
 // Available plot sets
-bool catgcg = true;
-bool catgcz = false;
+bool catgcg = false;
+bool catgcz = true;
 bool natgcg = false;
 bool natgcz = false;
 
@@ -874,6 +874,8 @@ if (catgcz)
 
 
 
+  
+
 
 // D0 http://arxiv.org/abs/1208.5458 Phys.Lett. B718 (2012) 451-459
 
@@ -1106,7 +1108,9 @@ if (catgcz)
   chanaCP[chan]  = +0.066 * scale_;
   plotChan[chan] = true;
 
+  
 
+  
    // CMS WZ 8 TeV
   // http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-14-014/index.html
   // https://arxiv.org/abs/1609.05721 Submitted to EPJC
@@ -1240,6 +1244,30 @@ if (catgcz)
   chanaCP[chan]  = +0.024 * scale_; 
   plotChan[chan] = true;
 
+
+  // CMS VBF Z 13 TeV 
+   chan = k_cms_vbfz13_lz;
+  chanName[chan]            = "#lambda_{Z}";
+  chanMeasurement[chan]     = "VBF Z";
+  chanLumi[chan]            = "35.9 fb^{-1}";
+  chanSqrtS[chan]           = "13 TeV";
+  chanExp[chan]             = "CMS";
+  chanaCC[chan]  = 0.0   * scale_;
+  chanaCM[chan]  = -0.010 * scale_;
+  chanaCP[chan]  = +0.010 * scale_;
+  plotChan[chan] = true;
+
+
+    chan = k_cms_vbfz13_dgz;
+  chanName[chan]            = "#Deltag^{Z}_{1}";
+  chanMeasurement[chan]     = "VBF Z";
+  chanLumi[chan]            = "35.9 fb^{-1}";
+  chanSqrtS[chan]          = "13 TeV";
+  chanExp[chan]            = "CMS";
+  chanaCC[chan]  = 0.0   * scale_; 
+  chanaCM[chan]  = -0.035 * scale_; 
+  chanaCP[chan]  = +0.042 * scale_; 
+  plotChan[chan] = true;
 
   
   }
@@ -2010,6 +2038,9 @@ if (natgcz)
 
   // ATLAS 13 TeV ZZ results
   // https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2017-031/
+  // https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/STDM-2016-15/
+  // https://arxiv.org/abs/1709.07703
+  // submitted to Phys. Rev. D,
   
   chan = k_atlas_zz13_f4g;
   chanName[chan]            = "f^{#gamma}_{4}";
@@ -2107,8 +2138,9 @@ if (natgcz)
   chanaCP[chan]  = +0.089 * scale_; 
   plotChan[chan] = true;
 
-    // SMP-16-017 ZZ at 13 TeV
- 
+    // CMS SMP-16-017
+    // https://arxiv.org/abs/1709.08601 submitted to EPCJ
+    // http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-16-017/
   chan = k_cms_zz13_f4g;
   chanName[chan]            = "f^{#gamma}_{4}";
   chanMeasurement[chan]     = "ZZ (4l)";
@@ -2116,8 +2148,8 @@ if (natgcz)
   chanSqrtS[chan]          = "13 TeV";
   chanExp[chan]            = "CMS";
   chanaCC[chan]  = 0.0   * scale_; 
-  chanaCM[chan]  = -0.0133 * scale_; 
-  chanaCP[chan]  = +0.0132 * scale_; 
+  chanaCM[chan]  = -0.012 * scale_; 
+  chanaCP[chan]  = +0.013 * scale_; 
   plotChan[chan] = true;
 
   chan = k_cms_zz13_f4z;
@@ -2127,8 +2159,8 @@ if (natgcz)
   chanSqrtS[chan]          = "13 TeV";
   chanExp[chan]            = "CMS";
   chanaCC[chan]  = 0.0   * scale_; 
-  chanaCM[chan]  = -0.0117 * scale_; 
-  chanaCP[chan]  = +0.0110 * scale_; 
+  chanaCM[chan]  = -0.012 * scale_; 
+  chanaCP[chan]  = +0.010 * scale_; 
   plotChan[chan] = true;
 
   chan = k_cms_zz13_f5g;
@@ -2138,8 +2170,8 @@ if (natgcz)
   chanSqrtS[chan]          = "13 TeV";
   chanExp[chan]            = "CMS";
   chanaCC[chan]  = 0.0   * scale_; 
-  chanaCM[chan]  = -0.0123 * scale_; 
-  chanaCP[chan]  = +0.0130 * scale_; 
+  chanaCM[chan]  = -0.012 * scale_; 
+  chanaCP[chan]  = +0.013 * scale_; 
   plotChan[chan] = true;
 
   chan = k_cms_zz13_f5z;
@@ -2150,7 +2182,7 @@ if (natgcz)
   chanExp[chan]            = "CMS";
   chanaCC[chan]  = 0.0   * scale_; 
   chanaCM[chan]  = -0.0100 * scale_; 
-  chanaCP[chan]  = +0.0125 * scale_; 
+  chanaCP[chan]  = +0.013 * scale_; 
   plotChan[chan] = true;
 
 
