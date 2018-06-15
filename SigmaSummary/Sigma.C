@@ -433,7 +433,7 @@ TCanvas*
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.0001, float ymax=600000 )
+Sigma(float ymin=0.0003, float ymax=3000 )
 {
 
 #include "data.C"
@@ -827,8 +827,8 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan == k_Z2jet13) type = 13;
       if  (iChan == k_Z3jet13) type = 13;
       if  (iChan == k_Z4jet13) type = 13;
-      //if  (iChan == k_Z5jet13) type = 13;
-      //if  (iChan == k_Z6jet13) type = 13;
+      if  (iChan == k_Z5jet13) type = 13;
+      if  (iChan == k_Z6jet13) type = 13;
 
      if  (iChan == k_Z1cjet8) type = 8;
      if  (iChan == k_Z1bjet8) type = 8;
@@ -850,8 +850,11 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan == k_W6jet13) type = 13;
 
       
-       if  (iChan == k_W2bjet8) type = 8;
+      if  (iChan == k_W1cjet13) type = 13;
+      if  (iChan == k_W2bjet8) type = 8;
 
+
+       
       if  (iChan == k_tschan8) type = 8;
       if  (iChan == k_ttW8) type = 8;
       if  (iChan == k_ttZ8) type = 8;
@@ -896,9 +899,12 @@ Sigma(float ymin=0.0001, float ymax=600000 )
 
 
       if  (iChan == k_ttH13) type = 13; 
+      if  (iChan == k_tH13) type = 13; 
       if  (iChan  == k_ggHgg13) type = 13;
+      if  (iChan  == k_ggH13) type = 13;
       if  (iChan  == k_VBFHgg13) type = 13;
       if  (iChan  == k_VBFHtt13) type = 13;
+     if  (iChan  == k_VBFH13) type = 13;
 
       if (iChan == k_H0jet13 ) type = 13;
       if (iChan == k_H1jet13 ) type = 13;
@@ -978,7 +984,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "January 2018";
+  txt[1] = "May 2018";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
@@ -1014,4 +1020,3 @@ text_write()
       latex.DrawLatex(txtX[ii],txtY[ii],txt[ii].c_str());
     }
 }
-

@@ -1,6 +1,6 @@
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
-enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W6jet13, k_W7jet8n, k_W1cjet, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z6jetn, k_Z6jet8, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8,  k_WZ13, k_WZ13fid,  k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VBFW8, k_VBFZ, k_VBFZ8, k_VBFZ13, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZZ13, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tW13, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_tZq13, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13,  k_tttt8, k_tttt13, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFHgg13, k_VBFHtt13, k_VH, k_VH8, k_VH13,  k_WH13, k_ZH13, k_ttH, k_ttH8, k_ttH13, k_HHbbtautau8, k_HHbbgg8, k_HHComb8,   k_HHWWbb13,  k_HHbbtautau13,  k_HHbbgg13 , k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
+enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W6jet13, k_W7jet8n, k_W1cjet, k_W1cjet13, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z5jet13, k_Z6jetn, k_Z6jet8, k_Z6jet13, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8,  k_WZ13, k_WZ13fid,  k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VBFW8, k_VBFZ, k_VBFZ8, k_VBFZ13, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZZ13, k_WVg,k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tW13, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_tZq13, k_ttW8, k_ttW13, k_ttZ, k_ttZ8, k_ttZ13,  k_tttt8, k_tttt13, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggH13, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFH13, k_VBFHgg13, k_VBFHtt13, k_VH, k_VH8, k_VH13,  k_WH13, k_ZH13, k_ttH, k_ttH8, k_ttH13, k_tH13, k_HHbbtautau8, k_HHbbgg8, k_HHComb8,   k_HHWWbb13,  k_HHbbtautau13,  k_HHbbgg13 , k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
 
 
 
@@ -11,7 +11,7 @@ enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn
 
 bool big13TeV = false;
 bool use13TeV = true;
-bool ratioPlot = true;
+bool ratioPlot = false;
 
   float nPlotBins = 0;
   int nPlotChan = 0;
@@ -151,14 +151,17 @@ if (version==0||version==1) {
   plotChan[k_ZH13]=true;
   plotChan[k_ttH8]=true;
   plotChan[k_ttH13]=true;
+  plotChan[k_tH13]=false;
   plotChan[k_HHComb8]=true;
   plotChan[k_HHbbgg13]=true;
 
   
-  plotChan[k_ggHgg13]=true;
+  plotChan[k_ggHgg13]=false;
+  plotChan[k_ggH13]=true;
 
   plotChan[k_VBFHgg13]=false;
-  plotChan[k_VBFHtt13]=true;
+  plotChan[k_VBFHtt13]=false;
+  plotChan[k_VBFH13]=true;
 
   
   plotChan[k_HZZ]=false;
@@ -261,14 +264,17 @@ if (version==2) {
   plotChan[k_ZH13]=true;
   plotChan[k_ttH8]=true;
   plotChan[k_ttH13]=true;
+  plotChan[k_tH13]=false;
   plotChan[k_HHComb8]=true;
   plotChan[k_HHbbgg13]=true;
 
 
-  plotChan[k_ggHgg13]=true;
+  plotChan[k_ggHgg13]=false;
+  plotChan[k_ggH13]=true;
 
   plotChan[k_VBFHgg13]=false;
-  plotChan[k_VBFHtt13]=true;
+  plotChan[k_VBFHtt13]=false;
+  plotChan[k_VBFH13]=true;
 
 
   plotChan[k_HZZ]=false;
@@ -306,6 +312,7 @@ if (version==3) {
 
   
   plotChan[k_W1cjet] = true;
+  plotChan[k_W1cjet13] = true;
   plotChan[k_W2bjet] = true;
   plotChan[k_W2bjet8] = true;
 
@@ -331,8 +338,8 @@ if (version==3) {
   plotChan[k_Z2jet13] = true;
   plotChan[k_Z3jet13] = true;
   plotChan[k_Z4jet13] = true;
-  //plotChan[k_Z5jet13] = false;
-  //plotChan[k_Z6jet13] = false;
+  plotChan[k_Z5jet13] = true;
+  plotChan[k_Z6jet13] = true;
 
   
   plotChan[k_Z1cjet8] = true;
@@ -489,6 +496,7 @@ if (version==8) {
   plotChan[k_ttH]=true;
   plotChan[k_ttH8]=true;
   plotChan[k_ttH13]=true;
+  plotChan[k_tH13]=true;
 
 
  }
@@ -1136,6 +1144,28 @@ chanETheo[k_W5jet13] =   ((0.215587+0.192129)/2.0) * scale_;
   chanTheo[k_W1cjet]  = 109.9 * scale_;
 chanETheo[k_W1cjet] = 6.4 * scale_;
 
+// W + 1 c jet 13  TeV
+// From http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-17-014/index.html
+
+  chanMeasurement[k_W1cjet13] = "1c";
+
+  chanSigma[k_W1cjet13]  = 1026 * scale_;
+  chanEStat[k_W1cjet13]  = 31 * scale_;
+  chanESystp[k_W1cjet13]   = 76 * scale_;
+  chanESystm[k_W1cjet13]   = 72 * scale_;
+  chanESyst[k_W1cjet13]   = 74 * scale_;
+  chanETot[k_W1cjet13]  =  sqrt( chanESyst[k_W1cjet13]*chanESyst[k_W1cjet13] 
+			       + 
+			       chanEStat[k_W1cjet13]*chanEStat[k_W1cjet13]
+			       );
+// Using NN3.1 PDF - note c quarks are >- 5.0GeV
+chanTheo[k_W1cjet13]  = 1030.2 * scale_;
+chanETheo[k_W1cjet13] = sqrt(0.053*0.053 +0.027*0.027) * chanTheo[k_W1cjet13];
+
+
+
+
+
 // W + 2 b jet 7  TeV
 // From http://arxiv.org/abs/1312.6608 submitted to PLB
   chanMeasurement[k_W2bjet] = "2b";
@@ -1477,152 +1507,109 @@ chanTheo[k_Z6jet8] = chanTheo[k_Z6jet8] +  chanTheo[k_Z7jet8];
 
     // Z+jets 13 TeV
     // https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-010/index.html
-    // Private communication from Fengwangdong Zhang <fengwdz@gmail.com>, Philippe Gras <philippe.gras@cern.ch>
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-16-015/
+// https://arxiv.org/abs/1804.05252 submitted to EPJC
+    // Theory numbers Private communication from Philippe Gras <philippe.gras@cern.ch>
 
-// 1 jet exclusive
+// 1 jet inclusive
   chanMeasurement[k_Z1jet13] = "#geq1j";
 
-  chanSigma[k_Z1jet13]  = 98.1 * scale_;
-  chanEStat[k_Z1jet13]  =   0.0 * chanSigma[k_Z1jet13] * scale_;
-  chanETot[k_Z1jet13]   =   6.7 * scale_;
+  chanSigma[k_Z1jet13]  = 126.2 * scale_;
+  chanEStat[k_Z1jet13]  =   0.0023 * chanSigma[k_Z1jet13];
+  chanETot[k_Z1jet13]   =   0.057 * chanSigma[k_Z1jet13];
   chanESyst[k_Z1jet13]  =  sqrt( chanETot[k_Z1jet13]*chanETot[k_Z1jet13] 
 			       - 
 			       chanEStat[k_Z1jet13]*chanEStat[k_Z1jet13]
 			       );
-  chanTheo[k_Z1jet13]  = 105.5 * scale_;
-  chanETheo[k_Z1jet13] =  0.5* scale_;
+  chanTheo[k_Z1jet13]  = 132.149 * scale_;
+  chanETheop[k_Z1jet13] =  9.17* scale_;
+  chanETheom[k_Z1jet13] =  9.51* scale_;
+  chanETheo[k_Z1jet13] =  0.5 * (chanETheop[k_Z1jet13]+chanETheom[k_Z1jet13])* scale_;
 
-// 2 jet exclusive
+// 2 jet inclusive
   chanMeasurement[k_Z2jet13] = "#geq2j";
   scale_ = 1.0;
 
-  chanSigma[k_Z2jet13]  = 21.8 * scale_;
-  chanEStat[k_Z2jet13]  =   0.0 * chanSigma[k_Z2jet13] * scale_;
-  chanETot[k_Z2jet13]   =   2.0  * scale_;
+  chanSigma[k_Z2jet13]  = 28.3 * scale_;
+  chanEStat[k_Z2jet13]  =   0.0052 * chanSigma[k_Z2jet13];
+  chanETot[k_Z2jet13]   =   0.08 * chanSigma[k_Z2jet13];
   chanESyst[k_Z2jet13]  =  sqrt( chanETot[k_Z2jet13]*chanETot[k_Z2jet13] 
 			       - 
 			       chanEStat[k_Z2jet13]*chanEStat[k_Z2jet13]
 			       );
-  chanTheo[k_Z2jet13]  = 23.9 * scale_;
-  chanETheo[k_Z2jet13] =  0.3* scale_;
+  chanTheo[k_Z2jet13]  = 29.6852 * scale_;
+  chanETheop[k_Z2jet13] =  2.53 * scale_;
+  chanETheom[k_Z2jet13] =  2.78 * scale_;
+  chanETheo[k_Z2jet13] =  0.5 * (chanETheop[k_Z2jet13]+chanETheom[k_Z2jet13])* scale_;
 
 
 
-// 3 jet exclusive
+
+// 3 jet inclusive
   chanMeasurement[k_Z3jet13] = "#geq3j";
   scale_ = 1.0;
 
-  chanSigma[k_Z3jet13]  = 4.58 * scale_;
-  chanEStat[k_Z3jet13]  =   0.0 * chanSigma[k_Z3jet13] * scale_;
-  chanETot[k_Z3jet13]   =   0.60 * scale_;
+  chanSigma[k_Z3jet13]  = 6.01 * scale_;
+  chanEStat[k_Z3jet13]  =   0.011 * chanSigma[k_Z3jet13];
+  chanETot[k_Z3jet13]   =   0.11 * chanSigma[k_Z3jet13];
   chanESyst[k_Z3jet13]  =  sqrt( chanETot[k_Z3jet13]*chanETot[k_Z3jet13] 
 			       - 
 			       chanEStat[k_Z3jet13]*chanEStat[k_Z3jet13]
 			       );
-  chanTheo[k_Z3jet13]  = 5.04 * scale_;
-  chanETheo[k_Z3jet13] =  0.11* scale_;
+  chanTheo[k_Z3jet13]  = 6.35439 * scale_;
+  chanETheop[k_Z3jet13] =  0.655 * scale_;
+  chanETheom[k_Z3jet13] =  0.645 * scale_;
+  chanETheo[k_Z3jet13] =  0.5 * (chanETheop[k_Z3jet13]+chanETheom[k_Z3jet13])* scale_;
 
-// 4 jet exclusive
+// 4 jet inclusive
   chanMeasurement[k_Z4jet13] = "#geq4j";
   scale_ = 1.0;
 
-  chanSigma[k_Z4jet13]  = 1.00 * scale_;
-  chanEStat[k_Z4jet13]  =   0.0 * chanSigma[k_Z4jet13] * scale_;
-  chanETot[k_Z4jet13]   =   0.16  * scale_;
+  chanSigma[k_Z4jet13]  = 1.33 * scale_;
+  chanEStat[k_Z4jet13]  =   0.028 * chanSigma[k_Z4jet13];
+  chanETot[k_Z4jet13]   =   0.12 * chanSigma[k_Z4jet13];
   chanESyst[k_Z4jet13]  =  sqrt( chanETot[k_Z4jet13]*chanETot[k_Z4jet13] 
 			       - 
 			       chanEStat[k_Z4jet13]*chanEStat[k_Z4jet13]
 			       );
-  chanTheo[k_Z4jet13]  = 0.99 * scale_;
-  chanETheo[k_Z4jet13] =  0.05* scale_;
+  chanTheo[k_Z4jet13]  = 1.26 * scale_;
+  chanETheop[k_Z4jet13] =  0.121 * scale_;
+  chanETheom[k_Z4jet13] =  0.124 * scale_;
+  chanETheo[k_Z4jet13] =  0.5 * (chanETheop[k_Z4jet13]+chanETheom[k_Z4jet13])* scale_;
 
 
-// inclusize result without theoretical uncerainties    
-// 1 jet inclusize
-  chanMeasurement[k_Z1jet13] = "#geq1j";
-
-  chanSigma[k_Z1jet13]  = 126 * scale_;
-  chanEStat[k_Z1jet13]  =   0.0 * chanSigma[k_Z1jet13] * scale_;
-  chanETot[k_Z1jet13]   =   0.055 * chanSigma[k_Z1jet13] * scale_;
-  chanESyst[k_Z1jet13]  =  sqrt( chanETot[k_Z1jet13]*chanETot[k_Z1jet13] 
-			       - 
-			       chanEStat[k_Z1jet13]*chanEStat[k_Z1jet13]
-			       );
-  chanTheo[k_Z1jet13]  = 126. * scale_;
-  chanETheo[k_Z1jet13] =  0.5* scale_;
- 
-
-// 2 jet inclusize
-  chanMeasurement[k_Z2jet13] = "#geq2j";
+// 5 jet inclusive
+  chanMeasurement[k_Z5jet13] = "#geq5j";
   scale_ = 1.0;
 
-  chanSigma[k_Z2jet13]  = 27.7 * scale_;
-  chanEStat[k_Z2jet13]  =   0.0 * chanSigma[k_Z2jet13] * scale_;
-  chanETot[k_Z2jet13]   =   0.076 * chanSigma[k_Z2jet13] * scale_;
-  chanESyst[k_Z2jet13]  =  sqrt( chanETot[k_Z2jet13]*chanETot[k_Z2jet13] 
+  chanSigma[k_Z5jet13]  = 0.320 * scale_;
+  chanEStat[k_Z5jet13]  =   0.048 * chanSigma[k_Z5jet13];
+  chanETot[k_Z5jet13]   =   0.14 * chanSigma[k_Z5jet13];
+  chanESyst[k_Z5jet13]  =  sqrt( chanETot[k_Z5jet13]*chanETot[k_Z5jet13] 
 			       - 
-			       chanEStat[k_Z2jet13]*chanEStat[k_Z2jet13]
+			       chanEStat[k_Z5jet13]*chanEStat[k_Z5jet13]
 			       );
-  chanTheo[k_Z2jet13]  = 27.7 * scale_;
-  chanETheo[k_Z2jet13] =  0.3 * scale_;
+  chanTheo[k_Z5jet13]  = 0.262 * scale_;
+  chanETheop[k_Z5jet13] =  0.0296 * scale_;
+  chanETheom[k_Z5jet13] =  0.0296 * scale_;
+  chanETheo[k_Z5jet13] =  0.5 * (chanETheop[k_Z5jet13]+chanETheom[k_Z5jet13])* scale_;
 
-
-
-// 3 jet inclusize
-  chanMeasurement[k_Z3jet13] = "#geq3j";
+// 6 jet inclusive
+  chanMeasurement[k_Z6jet13] = "#geq6j";
   scale_ = 1.0;
 
-  chanSigma[k_Z3jet13]  = 5.91 * scale_;
-  chanEStat[k_Z3jet13]  =   0.0 * chanSigma[k_Z3jet13] * scale_;
-  chanETot[k_Z3jet13]   =   0.10 * chanSigma[k_Z3jet13] * scale_;
-  chanESyst[k_Z3jet13]  =  sqrt( chanETot[k_Z3jet13]*chanETot[k_Z3jet13] 
+  chanSigma[k_Z6jet13]  = 0.045 * scale_;
+  chanEStat[k_Z6jet13]  =   0.15 * chanSigma[k_Z6jet13];
+  chanETot[k_Z6jet13]   =   0.24 * chanSigma[k_Z6jet13];
+  chanESyst[k_Z6jet13]  =  sqrt( chanETot[k_Z6jet13]*chanETot[k_Z6jet13] 
 			       - 
-			       chanEStat[k_Z3jet13]*chanEStat[k_Z3jet13]
+			       chanEStat[k_Z6jet13]*chanEStat[k_Z6jet13]
 			       );
-  chanTheo[k_Z3jet13]  = 5.91 * scale_;
-  chanETheo[k_Z3jet13] =  0.11* scale_;
+  chanTheo[k_Z6jet13]  = 0.0552 * scale_;
+  chanETheop[k_Z6jet13] =  0.00544 * scale_;
+  chanETheom[k_Z6jet13] =  0.00582 * scale_;
+  chanETheo[k_Z6jet13] =  0.5 * (chanETheop[k_Z6jet13]+chanETheom[k_Z6jet13])* scale_;
 
-// 4 jet inclusize
-  chanMeasurement[k_Z4jet13] = "#geq4j";
-  scale_ = 1.0;
-
-  chanSigma[k_Z4jet13]  = 1.34 * scale_;
-  chanEStat[k_Z4jet13]  =   0.0 * chanSigma[k_Z4jet13] * scale_;
-  chanETot[k_Z4jet13]   =   0.13 * chanSigma[k_Z4jet13] * scale_;
-  chanESyst[k_Z4jet13]  =  sqrt( chanETot[k_Z4jet13]*chanETot[k_Z4jet13] 
-			       - 
-			       chanEStat[k_Z4jet13]*chanEStat[k_Z4jet13]
-			       );
-  chanTheo[k_Z4jet13]  = 1.34 * scale_;
-  chanETheo[k_Z4jet13] =  0.05* scale_;
-
-// // 5 jet inclusize, not yet public
-//   chanMeasurement[k_Z5jet13] = "#geq5j";
-//   scale_ = 1.0;
-
-//   chanSigma[k_Z5jet13]  = 0.334 * scale_;
-//   chanEStat[k_Z5jet13]  =   0.0 * chanSigma[k_Z5jet13] * scale_;
-//   chanETot[k_Z5jet13]   =   0.20 * chanSigma[k_Z5jet13] * scale_;
-//   chanESyst[k_Z5jet13]  =  sqrt( chanETot[k_Z5jet13]*chanETot[k_Z5jet13] 
-// 			       - 
-// 			       chanEStat[k_Z5jet13]*chanEStat[k_Z5jet13]
-// 			       );
-//   chanTheo[k_Z5jet13]  = 0.334 * scale_;
-//   chanETheo[k_Z5jet13] =  0.01* scale_;
-
-// // 6 jet inclusize
-//   chanMeasurement[k_Z6jet13] = "#geq6j";
-//   scale_ = 1.0;
-
-//   chanSigma[k_Z6jet13]  = 0.0733 * scale_;
-//   chanEStat[k_Z6jet13]  =   0.0 * chanSigma[k_Z6jet13] * scale_;
-//   chanETot[k_Z6jet13]   =   0.40 * chanSigma[k_Z6jet13] * scale_;
-//   chanESyst[k_Z6jet13]  =  sqrt( chanETot[k_Z6jet13]*chanETot[k_Z6jet13] 
-// 			       - 
-// 			       chanEStat[k_Z6jet13]*chanEStat[k_Z6jet13]
-// 			       );
-//   chanTheo[k_Z6jet13]  = 0.0733 * scale_;
-//   chanETheo[k_Z6jet13] =  0.0025* scale_;
 
 // Z + 2 c jet 8 TeV
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-009/index.html
@@ -2778,15 +2765,16 @@ chanMeasurement[k_tW] = "tW";
   chanETheom[k_tW8] =  1.5 * scale_;
   chanETheo[k_tW8] = (chanETheop[k_tW8] +chanETheom[k_tW8])/2.0;
 
-// tW 13 TeV 
-// CMS PAS TOP-17-018
+// tW 13 TeV
+// https://arxiv.org/abs/1805.07399 Submitted to JHEP
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-17-018/
 
   chanMeasurement[k_tW13] = "tW";
   chanLumi[k_tW13] = "";
 
   chanSigma[k_tW13]  =   63.1 * scale_; 
   chanEStatp[k_tW13]  =   1.8 * scale_;
-chanESystp[k_tW13]  =   sqrt(6.0*6.0 + 2.1*2.1) * scale_;
+chanESystp[k_tW13]  =   sqrt(6.4*6.4 + 2.1*2.1) * scale_;
   chanETotp[k_tW13]   =  sqrt( 
 			   chanEStatp[k_tW13]*chanEStatp[k_tW13]
 			   +
@@ -2794,7 +2782,7 @@ chanESystp[k_tW13]  =   sqrt(6.0*6.0 + 2.1*2.1) * scale_;
 			    );
 
   chanEStatm[k_tW13]  =   1.8 * scale_;
-  chanESystm[k_tW13]  =   sqrt(6.0*6.0 + 2.1*2.1)  * scale_;
+  chanESystm[k_tW13]  =   sqrt(6.4*6.4 + 2.1*2.1)  * scale_;
   chanETotm[k_tW13]   =  sqrt( 
 			   chanEStatm[k_tW13]*chanEStatm[k_tW13]
 			   +
@@ -3677,7 +3665,7 @@ chanEStat[k_WZ13fid]  = ( chanEStatp[k_WZ13fid] + chanEStatm[k_WZ13fid])/2.0;
 //  chanETheo[k_ZZ8] =  0.6 * scale_;
 
 // ZZ 13 TeV
-// https://arxiv.org/abs/1709.08601 submitted to to Eur. Phys. J. C.
+// https://arxiv.org/abs/1709.08601 Eur. Phys. J. C 78 (2018) 165
 // http://cms-results.web.cern.ch/cms-results/public-results/publicationsSMP-16-017/
 
   if (use13TeV) chanMeasurement[k_ZZ13] = "ZZ";
@@ -4514,6 +4502,35 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
   chanETot[k_ggHgg13] = (chanETotp[k_ggHgg13] +chanETotm[k_ggHgg13])/2.0;
  
 
+// gg -> H gluon fusion Higgs 13 TeV
+// from 13 GeV Combiation pass  PAS HIG-17-031
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-031/index.html
+  chanMeasurement[k_ggH13]  = "ggH";
+  chanLumi[k_ggH13]  = "35.9 fb^{-1}";
+
+// cross section from https://arxiv.org/abs/1610.07922 N3NLO
+  chanTheo[k_ggH13] =   48.58 * scale_;
+chanETheop[k_ggH13] =  sqrt(4.6*4.6+3.9*3.9)*(chanTheo[k_ggH13]/100.0) * scale_;
+chanETheom[k_ggH13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggH13]/100.0) * scale_;
+  chanETheo[k_ggH13] = (chanETheop[k_ggH13] +chanETheom[k_ggH13])/2.0;
+
+
+  chanSigma[k_ggH13]  =   1.23 * chanTheo[k_ggH13]; 
+  chanEStatp[k_ggH13]  =   0.08 * chanTheo[k_ggH13];
+  chanESystp[k_ggH13]  =   0.12 * chanTheo[k_ggH13];
+chanETotp[k_ggH13]   =   0.14 * chanTheo[k_ggH13];
+
+
+  chanEStatm[k_ggH13]  =  0.08 * chanTheo[k_ggH13];
+  chanESystm[k_ggH13]  =  0.10 * chanTheo[k_ggH13];
+  chanETotm[k_ggH13]   =  0.13 * chanTheo[k_ggH13];;
+
+  chanEStat[k_ggH13] = (chanEStatp[k_ggH13] +chanEStatm[k_ggH13])/2.0;
+  chanESyst[k_ggH13] = (chanESystp[k_ggH13] +chanESystm[k_ggH13])/2.0;
+  chanETot[k_ggH13] = (chanETotp[k_ggH13] +chanETotm[k_ggH13])/2.0;
+ 
+
+
 
 // VBF H, vector boson fusion  Higgs 7 TeV
   // chanMeasurement[k_VBFH] = "#splitline{VBF}{qqH}";
@@ -4606,7 +4623,6 @@ chanLumi[k_VBFH8]  = "19.5 fb^{-1}";
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-020/index.html
 // from H->gg PAS 35.9fb-1 result did not improve
 
-
   chanMeasurement[k_VBFHgg13]  = "#splitline{VBF}{qqH}";
   if (version == 6) chanMeasurement[k_VBFHgg13] = "qqH";
   chanLumi[k_VBFHgg13]  = "12.9 fb^{-1}";
@@ -4666,6 +4682,39 @@ chanLumi[k_VBFH8]  = "19.5 fb^{-1}";
   chanEStat[k_VBFHtt13] = (chanEStatp[k_VBFHtt13] +chanEStatm[k_VBFHtt13])/2.0;
   chanESyst[k_VBFHtt13] = (chanESystp[k_VBFHtt13] +chanESystm[k_VBFHtt13])/2.0;
   chanETot[k_VBFHtt13] = (chanETotp[k_VBFHtt13] +chanETotm[k_VBFHtt13])/2.0;
+ 
+// VBF vector boson fusion Higgs 13 TeV 35.9
+// VBF Higgs 13 TeV
+// from 13 GeV Combiation pass  PAS HIG-17-031
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-031/index.html
+
+
+ 
+  chanMeasurement[k_VBFH13]  = "#splitline{VBF}{qqH}";
+  chanLumi[k_VBFH13]  = "35.9 fb^{-1}";
+
+// cross section from https://arxiv.org/abs/1610.07922 NNLO+EW
+
+  chanTheo[k_VBFH13] =   3.7817 * scale_;
+  chanETheop[k_VBFH13] =  0.0043 * chanTheo[k_VBFH13];
+  chanETheom[k_VBFH13] =  0.0033 * chanTheo[k_VBFH13];
+  chanETheo[k_VBFH13] = (chanETheop[k_VBFH13] +chanETheom[k_VBFH13])/2.0;
+
+
+  chanSigma[k_VBFH13]  =   0.73 * chanTheo[k_VBFH13]; 
+  chanEStatp[k_VBFH13]  =   0.24 * chanTheo[k_VBFH13];
+  chanESystp[k_VBFH13]  =   0.17 * chanTheo[k_VBFH13];
+  chanETotp[k_VBFH13]   =  0.30 * chanTheo[k_VBFH13];
+
+
+  chanEStatm[k_VBFH13]  =  0.23 * chanTheo[k_VBFH13];
+  chanESystm[k_VBFH13]  =  0.15 * chanTheo[k_VBFH13];
+  chanETotm[k_VBFH13]   =  0.27 * chanTheo[k_VBFH13];
+
+
+  chanEStat[k_VBFH13] = (chanEStatp[k_VBFH13] +chanEStatm[k_VBFH13])/2.0;
+  chanESyst[k_VBFH13] = (chanESystp[k_VBFH13] +chanESystm[k_VBFH13])/2.0;
+  chanETot[k_VBFH13] = (chanETotp[k_VBFH13] +chanETotm[k_VBFH13])/2.0;
  
 
 
@@ -4784,6 +4833,11 @@ chanETotp[k_VH13]   =  sqrt(chanEStatp[k_VH13]*chanEStatp[k_VH13] + chanESystp[k
 
 
 // WH
+// WH Higgs 13 TeV 35.9
+// WH Higgs 13 TeV
+// from 13 GeV Combiation pass  PAS HIG-17-031
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-031/index.html
+
 
   chanMeasurement[k_WH13]  = "WH";
   chanLumi[k_WH13]  = "35.9 fb^{-1}";
@@ -4794,15 +4848,15 @@ chanETheop[k_WH13] =  sqrt(1.373*0.005*1.373*0.005 + 1.373*0.019*1.373*0.019);
   chanETheo[k_WH13] = (chanETheop[k_WH13] +chanETheom[k_WH13])/2.0;
 
 
-  chanSigma[k_WH13]  =   1.7 * chanTheo[k_WH13]; 
-  chanEStatp[k_WH13]  =   0.7 * chanTheo[k_WH13];
-  chanESystp[k_WH13]  =   0.0 * chanTheo[k_WH13];
-chanETotp[k_WH13]   =  sqrt(chanEStatp[k_WH13]*chanEStatp[k_WH13] + chanESystp[k_WH13]*chanESystp[k_WH13])  ;
+  chanSigma[k_WH13]  =   2.18 * chanTheo[k_WH13]; 
+  chanEStatp[k_WH13]  =   0.46 * chanTheo[k_WH13];
+  chanESystp[k_WH13]  =   0.34 * chanTheo[k_WH13];
+chanETotp[k_WH13]   =    0.58 * chanTheo[k_WH13];
 
 
-  chanEStatm[k_WH13]  =  0.7 * chanTheo[k_WH13];
-  chanESystm[k_WH13]  =  0.0 * chanTheo[k_WH13];
-  chanETotm[k_WH13]   =   sqrt(chanEStatm[k_WH13]*chanEStatm[k_WH13] + chanESystm[k_WH13]*chanESystm[k_WH13]);
+  chanEStatm[k_WH13]  =  0.45 * chanTheo[k_WH13];
+  chanESystm[k_WH13]  =  0.32 * chanTheo[k_WH13];
+  chanETotm[k_WH13]   =  0.55 * chanTheo[k_WH13];
 
   chanEStat[k_WH13] = (chanEStatp[k_WH13] +chanEStatm[k_WH13])/2.0;
   chanESyst[k_WH13] = (chanESystp[k_WH13] +chanESystm[k_WH13])/2.0;
@@ -4810,6 +4864,10 @@ chanETotp[k_WH13]   =  sqrt(chanEStatp[k_WH13]*chanEStatp[k_WH13] + chanESystp[k
 
 
 // ZH
+// ZH Higgs 13 TeV 35.9
+// ZH Higgs 13 TeV
+// from 13 GeV Combiation pass  PAS HIG-17-031
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-031/index.html
 
   chanMeasurement[k_ZH13]  = "ZH";
   chanLumi[k_ZH13]  = "35.9 fb^{-1}";
@@ -4820,15 +4878,15 @@ chanETheop[k_ZH13] =  sqrt(0.8837*0.038*0.8837*0.038 + 0.8837*0.016*0.8837*0.016
   chanETheo[k_ZH13] = (chanETheop[k_ZH13] +chanETheom[k_ZH13])/2.0;
 
 
-chanSigma[k_ZH13]  =   0.9 * chanTheo[k_ZH13]; 
-  chanEStatp[k_ZH13]  =   0.5 * chanTheo[k_ZH13];
-  chanESystp[k_ZH13]  =   0.0 * chanTheo[k_ZH13];
-chanETotp[k_ZH13]   =  sqrt(chanEStatp[k_ZH13]*chanEStatp[k_ZH13] + chanESystp[k_ZH13]*chanESystp[k_ZH13])  ;
+chanSigma[k_ZH13]  =   0.87 * chanTheo[k_ZH13]; 
+  chanEStatp[k_ZH13]  =   0.39 * chanTheo[k_ZH13];
+  chanESystp[k_ZH13]  =   0.20 * chanTheo[k_ZH13];
+chanETotp[k_ZH13]   =    0.44 * chanTheo[k_ZH13];
 
 
-  chanEStatm[k_ZH13]  =  0.5 * chanTheo[k_ZH13];
-  chanESystm[k_ZH13]  =  0.0 * chanTheo[k_ZH13];
-  chanETotm[k_ZH13]   =   sqrt(chanEStatm[k_ZH13]*chanEStatm[k_ZH13] + chanESystm[k_ZH13]*chanESystm[k_ZH13]);
+  chanEStatm[k_ZH13]  =  0.38 * chanTheo[k_ZH13];
+  chanESystm[k_ZH13]  =  0.18 * chanTheo[k_ZH13];
+  chanETotm[k_ZH13]   =  0.42 * chanTheo[k_ZH13];
 
   chanEStat[k_ZH13] = (chanEStatp[k_ZH13] +chanEStatm[k_ZH13])/2.0;
   chanESyst[k_ZH13] = (chanESystp[k_ZH13] +chanESystm[k_ZH13])/2.0;
@@ -4928,6 +4986,14 @@ chanETotp[k_ZH13]   =  sqrt(chanEStatp[k_ZH13]*chanEStatp[k_ZH13] + chanESystp[k
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-022/index.html
 // replaced with multilepton which has better sensativity
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-004/index.html
+// ttH Higgs 13 TeV 35.9
+// ttH Higgs 13 TeV
+// from 13 GeV Combiation pass  PAS HIG-17-031
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-031/index.html
+// From 13 GeV ttH observation HIG-
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-031/index.htm
+// https://arxiv.org/abs/1804.02610, accepted for publication in PRL
+
   chanMeasurement[k_ttH13]  = "ttH";
   chanLumi[k_ttH13]  = "35.9 fb^{-1}";
 
@@ -4942,18 +5008,41 @@ chanETheom[k_ttH13] =  sqrt(0.092*0.092 + 0.036*0.036)*chanTheo[k_ttH13];
   chanSigma[k_ttH13]  =   -3.4 * chanTheo[k_ttH13] * scale_;
 // Update to new multilepton result
   chanSigma[k_ttH13]  =   1.5 * chanTheo[k_ttH13] * scale_;
+  chanSigma[k_ttH13]  =   1.14 * chanTheo[k_ttH13] * scale_;
 
-  chanEStatp[k_ttH13]  =   0.5 * chanTheo[k_ttH13] * scale_;
-  chanESystp[k_ttH13]  =   0.0;
-  chanETotp[k_ttH13]   =  0.5 * chanTheo[k_ttH13] * scale_;
+  chanEStatp[k_ttH13]  =   0.17 * chanTheo[k_ttH13] * scale_;
+chanESystp[k_ttH13]  =   sqrt(0.16*0.16+0.13*0.13+0.14*0.14)* chanTheo[k_ttH13] * scale_;
+  chanETotp[k_ttH13]   =  0.31 * chanTheo[k_ttH13] * scale_;
 
-  chanEStatm[k_ttH13]  =  0.5 * chanTheo[k_ttH13] * scale_;
-  chanESystm[k_ttH13]  =  0.0;
-  chanETotm[k_ttH13]   =  0.5 * chanTheo[k_ttH13] * scale_;
+  chanEStatm[k_ttH13]  =  0.16 * chanTheo[k_ttH13] * scale_;
+  chanESystm[k_ttH13]  =  sqrt(0.16*0.16+0.12*0.12+0.05*0.05)* chanTheo[k_ttH13] * scale_;
+  chanETotm[k_ttH13]   =  0.27 * chanTheo[k_ttH13] * scale_;
 
   chanEStat[k_ttH13] = (chanEStatp[k_ttH13] +chanEStatm[k_ttH13])/2.0;
   chanESyst[k_ttH13] = (chanESystp[k_ttH13] +chanESystm[k_ttH13])/2.0;
   chanETot[k_ttH13] = (chanETotp[k_ttH13] +chanETotm[k_ttH13])/2.0;
+
+// HIG-17-016 tH in tHq and tHW - in progress
+
+  chanMeasurement[k_tH13]  = "tH";
+  chanLumi[k_tH13]  = "35.9 fb^{-1}";
+
+chanTheo[k_tH13] =   (0.071+0.016) * scale_;
+chanETheop[k_tH13] =  0.025*chanTheo[k_tH13];
+chanETheom[k_tH13] =  0.025*chanTheo[k_tH13];
+  chanETheo[k_tH13] = (chanETheop[k_tH13] +chanETheom[k_tH13])/2.0;
+
+
+chanSigma[k_tH13]  =   -4.65 * scale_; 
+
+// Conveners prefer multilepon result
+  chanEStat[k_tH13] = (chanEStatp[k_tH13] +chanEStatm[k_tH13])/2.0;
+  chanESyst[k_tH13] = (chanESystp[k_tH13] +chanESystm[k_tH13])/2.0;
+  chanETot[k_tH13] = (chanETotp[k_tH13] +chanETotm[k_tH13])/2.0;
+
+
+
+
 
 // HH production at 8 TeV in the bbtautau channel
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-15-013/index.html
@@ -5069,6 +5158,9 @@ chanMeasurement[k_HHbbtautau13]  = "#splitline{HH}{bb#tau#tau}"; // def "HH"
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-16-032/index.html
 // Best limit from HH->ggbb
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-17-008/index.html
+// ggbb limit updated in
+// https://arxiv.org/abs/1806.00408
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-17-008/ 
 chanMeasurement[k_HHbbgg13]  = "HH"; // def "HH"
 if (version == 9)chanMeasurement[k_HHbbgg13]  = "#splitline{HH}{bb#gamma#gamma}"; // def "HH"                                                                                                                         
 chanLumi[k_HHbbgg13]  = "35.9 fb^{-1}";
@@ -5077,7 +5169,9 @@ chanETheop[k_HHbbgg13] =  2.4*0.001; // adding (in quad.) the Theo. (5%), PDF (2
 chanETheom[k_HHbbgg13] =  2.8*0.001; // adding (in quad.) the Theo. (5%), PDF (2.1%), alpha_S (2.3%) and scale (-6.0%) unc.s together                                                              
 chanETheo[k_HHbbgg13]  = (chanETheop[k_HHbbgg13] +chanETheom[k_HHbbgg13])/2.0;
 
-chanSigma[k_HHbbgg13]  =   -19.2 * chanTheo[k_HHbbgg13] * scale_; // FOR bbgammagamma (HIG-16-032)                                                                                          
+chanSigma[k_HHbbgg13]  =   -19.2 * chanTheo[k_HHbbgg13] * scale_; // FOR bbgammagamma (HIG-16-032)
+
+chanSigma[k_HHbbgg13]  =   -24 * chanTheo[k_HHbbgg13] * scale_; // FOR bbgammagamma (HIG-17-008)                                                              
 
 chanEStatp[k_HHbbgg13]  =  0.0;
 chanESystp[k_HHbbgg13]  =  0.0;
