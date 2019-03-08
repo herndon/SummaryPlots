@@ -44,14 +44,14 @@ bool _natgcg;
 // texts
 size_t ntxt = 1;
 string currentName;
-vector<string> txt(200);
-vector<float>  txtSize(200);
-vector<float>  txtX(200);
-vector<float>  txtY(200);
-vector<int>    txtNDC(200);
-vector<int>    txtAlign(200);
-vector<int>    txtFont(200);
-vector<int>    txtColor(200);
+vector<string> txt(250);
+vector<float>  txtSize(250);
+vector<float>  txtX(250);
+vector<float>  txtY(250);
+vector<int>    txtNDC(250);
+vector<int>    txtAlign(250);
+vector<int>    txtFont(250);
+vector<int>    txtColor(250);
 void text_init();
 void text_reset();
 void text_write();
@@ -400,7 +400,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 
 	    // Need to change to exp*1.25 for QGC plots, 0.9 for TGC plots 
 	    TGraphErrors _dataTotPoint(1);
-	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.35 );
+	    _dataTotPoint.SetPoint(1, xx_, yy_-dyy_*exp*1.25 );
 	    _dataTotPoint.SetPointError( 1, dyx_/2, 0 );
 	    _dataTotPoint.SetLineWidth(2);
 	    _dataTotPoint.SetLineColor(colors[ii]);
@@ -408,7 +408,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    _dataTotPoint.DrawClone("e");	
 
 	    if (baseTwo==8||baseTwo==16){
-	    TMarker _dataPoint( xx_, yy_-dyy_*exp*1.35, kFullCircle );
+	    TMarker _dataPoint( xx_, yy_-dyy_*exp*1.25, kFullCircle );
 	    _dataPoint.SetMarkerSize(markerSize);
 	    _dataPoint.SetMarkerColor(colors[ii]);
 	    _dataPoint.DrawClone();
@@ -420,7 +420,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    txt[ntxt] = experiments[ii];
 	    txtSize[ntxt] = 0.018;
 	    txtX[ntxt] = xx_ - 0.20*maxRange;
-	    txtY[ntxt] = yy_-dyy_*exp*1.35;
+	    txtY[ntxt] = yy_-dyy_*exp*1.25;
 	    txtAlign[ntxt] = 12;
 	    txtFont[ntxt] = 42;
 	    ntxt++;
@@ -476,7 +476,7 @@ void draw_bin_grid( float xmin, float xmax, float ymin, float ymax, int iCol, in
 
 void text_reset()
 {
-  for( size_t ii=0; ii<200; ii++ )
+  for( size_t ii=0; ii<250; ii++ )
     {
       txt[ii]="";
       txtX[ii]=0.50;
@@ -503,7 +503,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "Jan 2018";
+  txt[1] = "March 2019";
   txtSize[1] = 0.028;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
@@ -512,7 +512,7 @@ void text_init()
   txtFont[1] = 42;
  
    if (_natgcg) {
-  txt[ntxt] = "x10^{-1}(h_{3}),";
+  txt[ntxt] = "x10^{-2}(h_{3}),";
   txtSize[ntxt] = 0.03;
   txtX[ntxt] = 0.91;
   txtY[ntxt] = 0.06;
@@ -521,7 +521,7 @@ void text_init()
   txtFont[ntxt] = 42;
   ntxt++;
 
-  txt[ntxt] = "x10^{-3}(h_{4})";
+  txt[ntxt] = "x10^{-4}(h_{4})";
   txtSize[ntxt] = 0.03;
   txtX[ntxt] = 0.91;
   txtY[ntxt] = 0.02;

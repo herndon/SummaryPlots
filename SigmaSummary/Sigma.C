@@ -198,7 +198,7 @@ public:
     else
       {
 	float dy_ = 1/2.0;
-        if (version <= 2 || version == 6 || version == 7 || version == 8 || version == 6 ) _dx = _dx*2.0;
+        if (version <= 2 || version == 6 || version == 7 || version == 6 ) _dx = _dx*2.0;
 
 	if (version !=3 && version != 4 && version != 6 && version != 7) {
        
@@ -362,6 +362,10 @@ public:
 	txtY[ntxt] = _sigma_theo*dy_;
 	if (version ==9) txtX[ntxt] = _xpos + 2.2*_dx;
 	if (version ==9) txtY[ntxt] = _sigma_theo*dy_*1.1;
+	if (version ==8) txtX[ntxt] = _xpos + 1.05*_dx;
+	if (version ==8) txtY[ntxt] = _sigma_theo*dy_*0.5;
+	if (version ==8) txtX[ntxt] = _xpos + 4.0*_dx;
+	if (version ==8) txtY[ntxt] = _sigma_theo*dy_*1.1;
 
 	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
@@ -433,7 +437,7 @@ TCanvas*
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.0003, float ymax=3000 )
+Sigma(float ymin=0.0001, float ymax=600000 )
 {
 
 #include "data.C"
@@ -483,7 +487,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
 	      ledgendY = chanSigma[ii];
 	      if (ledgendY < 0.0) ledgendY = ledgendY*-1.0;
                 ledgendY*=0.5; 
-		// Sometimes the automation using teh highest xsection channel doesn't work.  Should resolve
+		// Sometimes the automation using the highest xsection channel doesn't work.  Should resolve
 	     if (version == 6 ) ledgendY*=15.0;
              if (version == 8) ledgendY*=5.0;
 	     if (version == 9 ) ledgendY*=1500.0;
@@ -752,13 +756,14 @@ Sigma(float ymin=0.0003, float ymax=3000 )
   //      chanTheo[ii] = 1.0;
   //}
 
+  if (noTop && noHiggs) DX_=stdDX_/2;
 
   float yy_ = ledgendY/2.0; 
   if (version==3)  yy_*=2.0; 
   //if (version==4)
   float xx_ = nBin_-(0.48*nBin_);
   if (version == 7) xx_ = nBin_-(0.55*nBin_);
-  if (version == 8) xx_ = nBin_-(0.40*nBin_);
+  if (version == 8) xx_ = nBin_-(0.45*nBin_);
   float dxx_ = DX_/2.0;
  if (version == 6 || version == 7) dxx_ = DX_/4.0;
  
@@ -803,6 +808,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan  == k_EWKWg8) type = 8;
       if  (iChan  == k_EWKZg8) type = 8;
       if  (iChan  == k_EWKZZ13) type = 13;
+     if  (iChan  == k_EWKWZ13) type = 13;
 
       if  (iChan == k_tt8) type = 8;
       if  (iChan == k_tt1jet8) type = 8;
@@ -861,6 +867,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan == k_ttg8) type = 8;
       if  (iChan == k_tZq8) type = 8;
       if  (iChan == k_tZq13) type = 13;
+      if  (iChan == k_tg13) type = 13;
       if  (iChan == k_tttt8) type = 8;
  
       
@@ -902,9 +909,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan == k_tH13) type = 13; 
       if  (iChan  == k_ggHgg13) type = 13;
       if  (iChan  == k_ggH13) type = 13;
-      if  (iChan  == k_VBFHgg13) type = 13;
-      if  (iChan  == k_VBFHtt13) type = 13;
-     if  (iChan  == k_VBFH13) type = 13;
+      if  (iChan  == k_VBFH13) type = 13;
 
       if (iChan == k_H0jet13 ) type = 13;
       if (iChan == k_H1jet13 ) type = 13;
@@ -919,6 +924,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
      if  (iChan == k_HHComb8&&version==9) type = 18; 
      if  (iChan == k_HHWWbb13) type = 13; 
      if  (iChan == k_HHbbgg13) type = 13; 
+     if  (iChan == k_HHComb13) type = 13; 
       if  (iChan == k_HHbbtautau13) type = 13; 
 
       
@@ -984,7 +990,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2018";
+  txt[1] = "Jan 2019";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
