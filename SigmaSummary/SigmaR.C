@@ -518,6 +518,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
       if  (iChan  == k_VBFZ8) type = 8;
      if  (iChan  == k_VBFW8) type = 8;
+     if  (iChan  == k_VBFW13) type = 13;
       if  (iChan  == k_VBFZ13) type = 13;
       if  (iChan  == k_exWW8) type = 8;
       if  (iChan  == k_SSWW8) type = 8;
@@ -594,7 +595,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "Jan 2019";
+  txt[1] = "March 2019";
   txtSize[1] = 0.03;
   txtX[1] = 0.18;
   txtY[1] = 0.965;

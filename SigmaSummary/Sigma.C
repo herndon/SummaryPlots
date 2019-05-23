@@ -392,7 +392,7 @@ public:
 	ntxt++;
   }
 if (version !=20 && version != 9){
-	txt[ntxt] = "13 TeV CMS measurement (L #leq 35.9 fb^{-1})";
+	txt[ntxt] = "13 TeV CMS measurement (L #leq 137 fb^{-1})";
 	txtSize[ntxt] = 0.025;
 	txtX[ntxt] = _xpos + _dx;
 	txtY[ntxt] = _sigma_theo/(dy_);
@@ -437,7 +437,7 @@ TCanvas*
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.0001, float ymax=600000 )
+Sigma(float ymin=0.000003, float ymax=30000 )
 {
 
 #include "data.C"
@@ -582,7 +582,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
 
 
 	    if (version==3&&ii==k_Z){
-	      txt[ntxt] = "Fiducial  W, Z and H #sigmas with W#rightarrowl#nu, Z#rightarrowll, H#rightarrow#gamma#gamma and kinematic selection" ;
+	      txt[ntxt] = "Fiducial  W and Z #sigmas with W#rightarrowl#nu, Z#rightarrowll and kinematic selection" ;
              txtSize[ntxt] = size_;
 	      txtY[ntxt] = ymin*0.24;
 	      txtX[ntxt] = nBin_;
@@ -785,6 +785,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan  == k_W8) type = 8;
       if  (iChan  == k_Z8) type = 8;
       if  (iChan  == k_VBFW8) type = 8;
+      if  (iChan  == k_VBFW13) type = 13;
       if  (iChan  == k_VBFZ8) type = 8;
       if  (iChan  == k_VBFZ13) type = 13;
       if  (iChan  == k_Zg8) type = 8;
@@ -799,6 +800,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan  == k_ZH13) type = 13;
       if  (iChan  == k_ttH8) type = 8;
       if  (iChan  == k_WVg) type = 8;
+      if  (iChan  == k_WWW13) type = 13;
       if  (iChan  == k_Wgg8) type = 8;
       if  (iChan  == k_Zgg8) type = 8;
       if  (iChan  == k_exWW8) type = 8;
@@ -990,7 +992,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "Jan 2019";
+  txt[1] = "March 2019";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;

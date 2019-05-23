@@ -197,7 +197,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
 	    if (atgc) txtSize[ntxt] = size_+0.01;
 	    txtX[ntxt] = 1.0*minRange;
 	    if (aqgc) txtY[ntxt] = nPlotChan - (nBin_) +1.1*DY_;
-	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +0.8*DY_;
+	    if (atgc) txtY[ntxt] = nPlotChan - (nBin_) +0.4*DY_;
 	    cout << "chan: " << txt[ntxt] << endl;
 	    cout << "text location Y: " << txtY[ntxt] << endl;
             cout << "text location X: " << txtX[ntxt] << endl;
@@ -503,7 +503,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "March 2019";
+  txt[1] = "May 2019";
   txtSize[1] = 0.028;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
