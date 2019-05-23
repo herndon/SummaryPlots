@@ -10,9 +10,9 @@ k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_atlas_ggww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_
 
 // Available plot sets
 bool catgcg = false;
-bool catgcz = false;
+bool catgcz = true;
 bool natgcg = false;
-bool natgcz = true;
+bool natgcz = false;
 
 bool atgc = catgcg||catgcz||natgcg||natgcz;
 
@@ -32,6 +32,7 @@ bool aqgc_zz13 = true;
 float scale_h3 = 100;
 float scale_h4 = 10000;
 
+// Constants for EFT<->LEP and MadGraph<->VBFNLO EFT conversions
 
 float mw = 0.080385;
 float mz = 0.0911876;
@@ -49,7 +50,7 @@ float g = sqrt(alpha*4.0*3.14159)/sqrt(sin2thw);
 float gp = sqrt(alpha*4.0*3.14169)/(mw/mz);
 
 
-
+// Constancts for a to f EFT conversions
 
 // ac0 = - fm0 * 4.0 * m_W^2 / g^2 -  fm2 * 8.0 * m_W^2 / g'^2
 // note reverse positive and negative values
@@ -61,6 +62,8 @@ float fm0toa0w = 4.0 * mw * mw / (g*g)  + 4.0 * mw * mw / (gp*gp);
 
   float fm1toacw = fm0toa0w;
 
+
+// Issues with gg->WW conversions
 // ATLAS gg->WW
 // a0W = g^2*v^2*fm0 =
 //     = 4^M_W^2*fm0
@@ -88,6 +91,7 @@ float fm0toa0w = 4.0 * mw * mw / (g*g)  + 4.0 * mw * mw / (gp*gp);
 
 // This should be for ATLAS results
 float madftoa = 4.0*mw*mw/(g*g);
+
 
 
 int nPlotChan = 0;
@@ -192,7 +196,7 @@ if (catgcg) {
   chanaCC[k_cms_ww8_dkg]  = (-3.6-3.2) * 0.5 * mz * mz  * scale_; 
   chanaCM[k_cms_ww8_dkg]  = (-11.4 - 29.2) * 0.5 * mz * mz * scale_; 
   chanaCP[k_cms_ww8_dkg]  = (5.4 + 23.9) * 0.5 * mz * mz * scale_; 
-  plotChan[k_cms_ww8_dkg] = true; 
+  plotChan[k_cms_ww8_dkg] = false; 
 
 
  // https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/STDM-2014-02/, http://arxiv.org/abs/1603.02151
@@ -593,10 +597,10 @@ if (catgcz)
   chanLumi[k_cms_ww8_dkz]            = "19.4 fb^{-1}";
   chanSqrtS[k_cms_ww8_dkz]          = "8 TeV";
   chanExp[k_cms_ww8_dkz]            = "CMS";
-  chanaCC[k_cms_ww8_dkz]  =     (-3.6 + 3.2*0.30082992949) * 0.5 * mw * mw * scale_; 
-  chanaCM[k_cms_ww8_dkz]  = (-11.4 - 23.9*0.30082992949) * 0.5 * mw * mw * scale_; 
-  chanaCP[k_cms_ww8_dkz]  = (5.4 + 29.2*0.30082992949) * 0.5 * mw * mw * scale_; 
-  plotChan[k_cms_ww8_dkz] = true; 
+  chanaCC[k_cms_ww8_dkz]  =     (-3.6 + 3.2*tan2thw) * 0.5 * mw * mw * scale_; 
+  chanaCM[k_cms_ww8_dkz]  = (-11.4 - 23.9*tan2thw) * 0.5 * mw * mw * scale_; 
+  chanaCP[k_cms_ww8_dkz]  = (5.4 + 29.2*tan2thw) * 0.5 * mw * mw * scale_; 
+  plotChan[k_cms_ww8_dkz] = false; 
 
    // https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/STDM-2014-02/, http://arxiv.org/abs/1603.02151
 
@@ -1404,8 +1408,8 @@ if (catgcz)
   chanSqrtS[chan]          = "13 TeV";
   chanExp[chan]            = "ATLAS";
   chanaCC[chan]  =    0 * scale_; 
-  chanaCM[chan]  = (-7.4 - 18.0*0.30082992949) * 0.5 * mw * mw * scale_; 
-  chanaCP[chan]  = (4.1 + 21.0*0.30082992949) * 0.5 * mw * mw * scale_; 
+  chanaCM[chan]  = (-7.4 - 18.0*tan2thw) * 0.5 * mw * mw * scale_; 
+  chanaCP[chan]  = (4.1 + 21.0*tan2thw) * 0.5 * mw * mw * scale_; 
   plotChan[chan] = false; // needs correlation matrix 
 
   chan = k_atlas_ww13_lz;
