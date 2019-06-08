@@ -324,6 +324,7 @@ aGC(float ymin=-2.0, float ymax=900000 )
   if (aqgc_a) ax_->SetTitle("WW#gamma#gamma aQGC Limits @95% C.L. [TeV^{-2}]");
   if (aqgc_fm||aqgc_ft||aqgc_fs) ax_->SetTitle("aQGC Limits @95% C.L. [TeV^{-4}]");
   if (atgc) ax_->SetTitle("aTGC Limits @95% C.L.");
+  if (catgceft) ax_->SetTitle("aTGC Limits @95% C.L. [TeV^{-2}]");
   if (_natgcg) ax_->SetTitle("aTGC Limits @95% C.L.          ");
   ax_->SetNdivisions(ndivx);
   ax_->SetTitleOffset(titleOffsetX);
@@ -493,7 +494,7 @@ void text_init()
 {
   text_reset();
 
-  ntxt = 2;
+  ntxt = 3;
 
   txt[0] = "";
   txtSize[0] = 0.055;
@@ -510,7 +511,18 @@ void text_init()
   txtAlign[1] = 31;
   txtNDC[1]=true;
   txtFont[1] = 42;
- 
+
+  txt[2] = "aC summary plots at: http://cern.ch/go/8ghC";
+  txtSize[2] = 0.025;
+  txtX[2] = 0.035;
+  //if (version ==0||version==8) txtX[2] = 0.05;
+  txtY[2] = 0.024;
+  txtAlign[2] = 11;
+  txtNDC[2]=true;
+  txtFont[2] = 42;
+
+
+  
    if (_natgcg) {
   txt[ntxt] = "x10^{-2}(h_{3}),";
   txtSize[ntxt] = 0.03;
@@ -530,7 +542,6 @@ void text_init()
   txtFont[ntxt] = 42;
   ntxt++;
   }
-
  
 }
 

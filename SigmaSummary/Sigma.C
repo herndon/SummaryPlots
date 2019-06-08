@@ -437,7 +437,7 @@ TCanvas*
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.000003, float ymax=30000 )
+Sigma(float ymin=0.0001, float ymax=600000 )
 {
 
 #include "data.C"
@@ -569,7 +569,7 @@ Sigma(float ymin=0.000003, float ymax=30000 )
 	      ntxt++;
 	    }
             if ((version<3&&ii==k_VBFW8)||(version==4&&ii==k_VBFW8)){
-	      txt[ntxt] = "EW: W#rightarrowl#nu, Z#rightarrowll, l=e,#mu" ;
+	      txt[ntxt] = "EW,Z#gamma#gamma,W#gamma#gamma: fiducial with W#rightarrowl#nu, Z#rightarrowll, l=e,#mu" ;
               txtSize[ntxt] = 0.015;
 	      txtY[ntxt] = ymin*0.25;
 	      txtX[ntxt] = nBin_-0.0*DX_;
