@@ -10,16 +10,16 @@ k_cms_wwg8_a0w, k_cms_ssww8_a0w, k_atlas_ggww8_a0w, k_cms_ggww_a0w, k_cms_ggww8_
 
 // Available plot sets
 bool catgcg = false;
-bool catgcz = false;
+bool catgcz = true;
 bool natgcg = false;
 bool natgcz = false;
 
-bool catgceft  = false;
+bool catgceft  = true;
 
 bool atgc = catgcg||catgcz||natgcg||natgcz|catgceft;
 
 bool aqgc_a = false;
-bool aqgc_ft = true; 
+bool aqgc_ft = false; 
 bool aqgc_fm = false;
 bool aqgc_fs = false;
 
@@ -528,6 +528,10 @@ if (catgcg) {
 
   // CMS WV 13 TeV
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-18-008/index.html
+  // http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-18-008/index.html
+  // https://arxiv.org/abs/1907.08354
+  // Submitted to JHEP
+  
 
 
   chan = k_cms_wv13_lg;
@@ -536,7 +540,7 @@ if (catgcg) {
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanSqrtS[chan]          = "13 TeV";
   chanExp[chan]            = "CMS";
-  chanaCC[chan]  = 0.0   * scale_; 
+  chanaCC[chan]  = -0.0010   * scale_; 
   chanaCM[chan]  = -0.0065 * scale_; 
   chanaCP[chan]  = +0.0066 * scale_; 
   plotChan[chan] = true;
@@ -1326,7 +1330,7 @@ if (catgcz||catgceft)
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanSqrtS[chan]           = "13 TeV";
   chanExp[chan]             = "CMS";
-  chanaCC[chan]  = 0.0   * scale_;
+  chanaCC[chan]  = -0.0010   * scale_;
   chanaCM[chan]  = -0.0079 * scale_;
   chanaCP[chan]  = +0.0082 * scale_;
   plotChan[chan] = true;
@@ -1338,7 +1342,7 @@ if (catgcz||catgceft)
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanExp[chan]            = "CMS";
   chanSqrtS[chan]          = "13 TeV";
-  chanaCC[chan]  = 0.0   * scale_; 
+  chanaCC[chan]  =   1.07   * scale_; 
   chanaCM[chan]  = - 8.78 * scale_;// expected value! 
   chanaCP[chan]  = + 8.54 * scale_;// expected value
   plotChan[chan] = false;
@@ -1352,7 +1356,7 @@ if (catgcz||catgceft)
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanSqrtS[chan]           = "13 TeV";
   chanExp[chan]             = "CMS";
-  chanaCC[chan]  = 0.0   * scale_;
+  chanaCC[chan]  = -0.0010   * scale_;
   chanaCM[chan]  = -0.0065 * scale_;
   chanaCP[chan]  = +0.0066 * scale_;
   plotChan[chan] = true;
@@ -1365,7 +1369,7 @@ if (catgcz||catgceft)
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanExp[chan]            = "CMS";
   chanSqrtS[chan]          = "13 TeV";
-  chanaCC[chan]  = 0.0   * scale_; 
+  chanaCC[chan]  = - 0.26   * scale_; 
   chanaCM[chan]  = - 1.58 * scale_;// expected value! 
   chanaCP[chan]  = + 1.59 * scale_;// expected value
   plotChan[chan] = false;
@@ -1379,7 +1383,7 @@ if (catgcz||catgceft)
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanSqrtS[chan]          = "13 TeV";
   chanExp[chan]            = "CMS";
-  chanaCC[chan]  = 0.0   * scale_;
+  chanaCC[chan]  =  0.0027   * scale_;
   chanaCM[chan]  = -0.0061 * scale_;
   chanaCP[chan]  = +0.0074 * scale_;
   plotChan[chan] = true;
@@ -1391,7 +1395,7 @@ if (catgcz||catgceft)
   chanLumi[chan]            = "35.9 fb^{-1}";
   chanExp[chan]            = "CMS";
   chanSqrtS[chan]          = "13 TeV";
-  chanaCC[chan]  = 0.0   * scale_; 
+  chanaCC[chan]  = 1.21   * scale_; 
   chanaCM[chan]  = - 2.00 * scale_;// expected value! 
   chanaCP[chan]  = + 2.65 * scale_;// expected value
   plotChan[chan] = false;
@@ -4015,6 +4019,7 @@ if (aqgc_fm) {
   // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-18-006/index.html
   // updated for publication
   // http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-18-006/index.html
+  // https://arxiv.org/abs/1905.07445 submitted to PLB
   
   
   chan = k_cms_vv13_fm0;
