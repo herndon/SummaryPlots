@@ -1,6 +1,6 @@
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
-enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W6jet13, k_W7jet8n, k_W1cjet, k_W1cjet13, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z5jet13, k_Z6jetn, k_Z6jet8, k_Z6jet13, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8,  k_WZ13, k_WZ13fid,  k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VBFW8, k_VBFW13, k_VBFZ, k_VBFZ8, k_VBFZ13, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKWZ13, k_EWKZZ13, k_WWW13, k_WVg, k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tW13, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_tZq13, k_ttZ,  k_ttZ8, k_ttZ13,   k_tg13, k_ttW8, k_ttW13,   k_tttt8, k_tttt13, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggH13, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFH13, k_VH, k_VH8, k_VH13,  k_WH13, k_ZH13, k_ttH, k_ttH8, k_ttH13, k_tH13, k_HHbbtautau8, k_HHbbgg8, k_HHComb8,   k_HHComb13, k_HHWWbb13,  k_HHbbtautau13,  k_HHbbgg13,  k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
+enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W6jet13, k_W7jet8n, k_W1cjet, k_W1cjet8, k_W1cjet13, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z5jet13, k_Z6jetn, k_Z6jet8, k_Z6jet13, k_Z7jet8, k_Z1cjet8, k_Z1bjet,k_Z1bjet8, k_Z2bjet, k_Z2bjet8, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Zg, k_Zg8, k_WV, k_WW, k_WW8, k_WW13, k_WW1jet, k_WZ, k_WZ8,  k_WZ13, k_WZ13fid,  k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VBFW8, k_VBFW13, k_VBFZ, k_VBFZ8, k_VBFZ13, k_exWW,  k_exWW8,  k_EWKWg8, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZg13, k_EWKWZ13, k_EWKZZ13, k_WWW13, k_WVg, k_Zgg8, k_Wgg8,  k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13,  k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tW13, k_tschan, k_tschan8, k_ttg8,  k_tZq8, k_tZq13, k_ttZ,  k_ttZ8, k_ttZ13,   k_tg13, k_ttW8, k_ttW13,   k_tttt8, k_tttt13, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggH13, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFH13, k_VH, k_VH8, k_VH13,  k_WH13, k_ZH13, k_ttH, k_ttH8, k_ttH13, k_tH13, k_HHbbtautau8, k_HHbbgg8, k_HHComb8,   k_HHComb13, k_HHWWbb13,  k_HHbbtautau13,  k_HHbbgg13,  k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_nChan };
 
 
 
@@ -91,6 +91,7 @@ if (version==0||version==1) {
   plotChan[k_SSWW13]=true;
   plotChan[k_EWKWg8]=true;
   plotChan[k_EWKZg8]=true;
+  plotChan[k_EWKZg13]=true;
   plotChan[k_EWKWZ13]=true;
   plotChan[k_EWKZZ13]=true;
 
@@ -210,6 +211,7 @@ if (version==2) {
   plotChan[k_SSWW13]=true;
   plotChan[k_EWKWg8]=true;
   plotChan[k_EWKZg8]=true;
+  plotChan[k_EWKZg13]=true;
   plotChan[k_EWKWZ13]=true;
   plotChan[k_EWKZZ13]=true;
 
@@ -316,6 +318,7 @@ if (version==3) {
 
   
   plotChan[k_W1cjet] = true;
+  plotChan[k_W1cjet8] = true;
   plotChan[k_W1cjet13] = true;
   plotChan[k_W2bjet] = true;
   plotChan[k_W2bjet8] = true;
@@ -476,7 +479,10 @@ if (version==8) {
   plotChan[k_tt2jet13] = true;
   plotChan[k_tt3jet13] = true;
   plotChan[k_tt4jet13] = true;
- 
+
+  plotChan[k_tt2bjet13] = true;
+
+  
   plotChan[k_t]=true;
   plotChan[k_t8]=true;
   if (use13TeV) plotChan[k_t13]=true;
@@ -555,6 +561,7 @@ if (version==6) {
   plotChan[k_SSWW13]=true;
   plotChan[k_EWKWg8]=true;
   plotChan[k_EWKZg8]=true;
+  plotChan[k_EWKZg13]=true;
   plotChan[k_EWKWZ13]=true;
   plotChan[k_EWKZZ13]=true;
 
@@ -1149,6 +1156,26 @@ chanETheo[k_W5jet13] =   ((0.215587+0.192129)/2.0) * scale_;
 			       );
   chanTheo[k_W1cjet]  = 109.9 * scale_;
 chanETheo[k_W1cjet] = 6.4 * scale_;
+
+// W + 1 c jet 8  TeV
+// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-18-013/index.html
+
+  chanMeasurement[k_W1cjet8] = "1c";
+
+  chanSigma[k_W1cjet8]  = 116.3 * scale_;
+  chanEStat[k_W1cjet8]  = 0.7 * scale_;
+  chanESyst[k_W1cjet8]   = 5.2 * scale_;
+  chanETot[k_W1cjet8]  =  sqrt( chanESyst[k_W1cjet8]*chanESyst[k_W1cjet8] 
+			       + 
+			       chanEStat[k_W1cjet8]*chanEStat[k_W1cjet8]
+			       );
+// charge quarks are > 25 GeV, measurement is fiducial
+chanTheo[k_W1cjet8]  = 110.9 * scale_;
+chanETheo[k_W1cjet8] = 0.2;
+
+
+
+
 
 // W + 1 c jet 13  TeV
 // https://arxiv.org/abs/1811.10021 Submitted to EPJC
@@ -2513,20 +2540,25 @@ chanETheop[k_tt13] =  sqrt(20.0*20.0 + 35.0*35.0) * scale_;
 
 // tt + 2 b jets 13 TeV
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-16-010/index.html
-// https://arxiv.org/abs/1705.10141
+// https://arxiv.org/abs/1705.10141 Phys. Lett. B 776 (2018) 355
+// superceeded by
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-18-011/index.html
+// https://arxiv.org/abs/1909.05306 Submitted to PLB
+// Final version has better systematic uncerainty
+
 
   chanMeasurement[k_tt2bjet13] = "2b";
 
-  chanSigma[k_tt2bjet13]  =   4.0 * scale_; 
-  chanEStatp[k_tt2bjet13]  =   0.6 * scale_;
-  chanESystp[k_tt2bjet13]  =   1.3 * scale_;
+  chanSigma[k_tt2bjet13]  =   5.5 * scale_; 
+  chanEStatp[k_tt2bjet13]  =   0.3 * scale_;
+  chanESystp[k_tt2bjet13]  =   1.6 * scale_;
   chanETotp[k_tt2bjet13]   =  sqrt( 
 			   chanEStatp[k_tt2bjet13]*chanEStatp[k_tt2bjet13]
 			   +
 			   chanESystp[k_tt2bjet13]*chanESystp[k_tt2bjet13]
 			    );
 
-  chanEStatm[k_tt2bjet13]  =   0.6 * scale_;
+  chanEStatm[k_tt2bjet13]  =   0.3 * scale_;
   chanESystm[k_tt2bjet13]  =   1.3 * scale_;
   chanETotm[k_tt2bjet13]   =  sqrt( 
 			   chanEStatm[k_tt2bjet13]*chanEStatm[k_tt2bjet13]
@@ -2538,10 +2570,10 @@ chanETheop[k_tt13] =  sqrt(20.0*20.0 + 35.0*35.0) * scale_;
   chanETot[k_tt2bjet13] = (chanETotp[k_tt2bjet13] +chanETotm[k_tt2bjet13])/2.0;
  
 
-
-  chanTheo[k_tt2bjet13] =   3.2 * scale_;
-  chanETheop[k_tt2bjet13] =  0.4 * scale_;
-  chanETheom[k_tt2bjet13] =  0.4 * scale_;
+// Powheg prediction, though very close to madgraph NLO FxFx
+  chanTheo[k_tt2bjet13] =   3.5 * scale_;
+  chanETheop[k_tt2bjet13] =  0.6 * scale_;
+  chanETheom[k_tt2bjet13] =  0.6 * scale_;
   chanETheo[k_tt2bjet13] = (chanETheop[k_tt2bjet13] +chanETheom[k_tt2bjet13])/2.0;
 
 
@@ -3045,16 +3077,20 @@ chanETheom[k_ttW13] =  sqrt(0.115*0.115+0.020*0.020+ 0.027*0.027) * chanTheo[k_t
 
 
 // ttZ at 13 TeV
-// Udate to http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-18-009/index.html for ttZ
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-18-009/
+// https://arxiv.org/abs/1907.11270
+// Submitted to JHEP
+
+
 
 
 chanMeasurement[k_ttZ13] = "ttZ";
    chanLumi[k_ttZ13] = "77.5";
 
 
-  chanSigma[k_ttZ13]  =   1.00 * scale_; 
-  chanEStatp[k_ttZ13]  =   0.06 * scale_;
-  chanESystp[k_ttZ13]  =   0.07 * scale_;
+  chanSigma[k_ttZ13]  =   0.95 * scale_; 
+  chanEStatp[k_ttZ13]  =   0.05 * scale_;
+  chanESystp[k_ttZ13]  =   0.06 * scale_;
   chanETotp[k_ttZ13]   =  sqrt( 
 			   chanEStatp[k_ttZ13]*chanEStatp[k_ttZ13]
 			   +
@@ -3076,9 +3112,9 @@ chanMeasurement[k_ttZ13] = "ttZ";
 
 
 // From Higgs paper https://arxiv.org/abs/1610.07922 NLO QCD+EWK
-  chanTheo[k_ttZ13] =   0.839 * scale_;
-  chanETheop[k_ttZ13] = sqrt(0.096*0.096+0.028*0.028+ 0.028*0.028) * chanTheo[k_ttZ13];
-  chanETheom[k_ttZ13] =  sqrt(0.112*0.112+0.028*0.028+ 0.028*0.028) * chanTheo[k_ttZ13];
+  chanTheo[k_ttZ13] =   0.86 * scale_;
+  chanETheop[k_ttZ13] = sqrt(0.07*0.07+0.03*0.03) * scale_;
+  chanETheom[k_ttZ13] =  sqrt(0.08*0.08+0.03*0.03) * scale_;
   chanETheo[k_ttZ13] = (chanETheop[k_ttZ13] +chanETheom[k_ttZ13])/2.0;
 
 
@@ -3255,7 +3291,10 @@ scale_ = 1.0;
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-17-009/
 // Combined with
 // http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/TOP-17-019/index.html
-// Then replace with TOP-18-003
+// replaced with TOP-18-003
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-18-003/index.html
+// https://arxiv.org/abs/1908.06463
+// Submitted to EPJC
 
 
 
@@ -4145,6 +4184,37 @@ if (ratioPlot) chanMeasurement[k_EWKZg8]     = "qqZ#gamma";
 chanETheo[k_EWKZg8] =  sqrt(0.11*0.11 + 0.05*0.05) * scale_;
 
   scale_ = 1.;
+
+// EWK Zg PAS-SMP-18-007
+
+  scale_=1/1000.0;
+
+  chanMeasurement[k_EWKZg13] = "#scale[0.80]{#splitline{EW}{qqZ#gamma}}";
+if (ratioPlot) chanMeasurement[k_EWKZg13]     = "qqZ#gamma";
+
+  chanLumi[k_EWKZg13] = "35.9 fb^{-1}";
+
+  chanSigma[k_EWKZg13]  =  3.20 * scale_; 
+  chanEStatp[k_EWKZg13]  =   1.00 * scale_;
+  chanEStatm[k_EWKZg13]  =   1.00 * scale_;
+  chanEStat[k_EWKZg13]  = ( chanEStatp[k_EWKZg13] + chanEStatm[k_EWKZg13])/2.0;
+
+  chanESystp[k_EWKZg13]  =    sqrt( 0.57*0.57+0.07*0.07)* scale_;
+  chanESystm[k_EWKZg13]  =    sqrt( 0.57*0.57+0.07*0.07)* scale_;
+  chanESyst[k_EWKZg13]  = ( chanESystp[k_EWKZg13] + chanESystm[k_EWKZg13])/2.0;
+
+
+  chanETot[k_EWKZg13]   =  sqrt( 
+			   chanEStat[k_EWKZg13]*chanEStat[k_EWKZg13]
+			   +
+			   chanESyst[k_EWKZg13]*chanESyst[k_EWKZg13]
+			    );
+  chanTheo[k_EWKZg13] =  4.97 * scale_;
+chanETheo[k_EWKZg13] =  sqrt(0.25*0.25 + 0.14*0.14) * scale_;
+
+  scale_ = 1.;
+
+
 
 // EWK Wg 
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-14-011/index.html

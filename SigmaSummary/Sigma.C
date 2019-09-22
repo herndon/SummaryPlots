@@ -431,13 +431,13 @@ private:
 
 TCanvas*
 // version 0-2 ymin 0.0001, ymax 600000
-// version 3  ymin 0.000003 ymax 30000, 
+// version 3  ymin 0.00003 ymax 30000, 
 // version 4 ymin=0.005, float ymax=  50000000
 // version 6 ymin 0.0001, ymax 50
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.0001, float ymax=600000 )
+Sigma(float ymin=0.0003, float ymax=3000 )
 {
 
 #include "data.C"
@@ -809,6 +809,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan  == k_SSWW13) type = 13;
       if  (iChan  == k_EWKWg8) type = 8;
       if  (iChan  == k_EWKZg8) type = 8;
+      if  (iChan  == k_EWKZg13) type = 13;
       if  (iChan  == k_EWKZZ13) type = 13;
      if  (iChan  == k_EWKWZ13) type = 13;
 
@@ -858,6 +859,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
       if  (iChan == k_W6jet13) type = 13;
 
       
+      if  (iChan == k_W1cjet8) type = 8;
       if  (iChan == k_W1cjet13) type = 13;
       if  (iChan == k_W2bjet8) type = 8;
 
@@ -992,7 +994,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "March 2019";
+  txt[1] = "September 2019";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;

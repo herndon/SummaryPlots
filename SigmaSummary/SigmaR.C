@@ -289,7 +289,7 @@ public:
 	txtFont[ntxt] = 42;
 	ntxt++;
 
-        txt[ntxt] = "CMS EWK measurements vs.";
+        txt[ntxt] = "CMS EW measurements vs.";
         if (version ==5) txt[ntxt] = "CMS measurements";
         txtSize[ntxt] = 0.035;
         txtX[ntxt] = 0.0;
@@ -595,7 +595,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "March 2019";
+  txt[1] = "July 2019";
   txtSize[1] = 0.03;
   txtX[1] = 0.18;
   txtY[1] = 0.965;

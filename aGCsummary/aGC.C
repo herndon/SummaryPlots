@@ -504,7 +504,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2019";
+  txt[1] = "July 2019";
   txtSize[1] = 0.028;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
