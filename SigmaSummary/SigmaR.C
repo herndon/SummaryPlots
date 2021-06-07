@@ -506,6 +506,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       type = 7;
       if  (iChan  == k_W8) type = 8;
       if  (iChan  == k_Z8) type = 8;
+      if  (iChan  == k_Wg13) type = 13;
       if  (iChan  == k_Zg8) type = 8;
       if  (iChan  == k_WW8) type = 8;
       if  (iChan  == k_WZ8) type = 8;
@@ -524,6 +525,7 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       if  (iChan  == k_SSWW8) type = 8;
       if  (iChan  == k_SSWW13) type = 13;
       if  (iChan  == k_EWKWg8) type = 8;
+      if  (iChan  == k_EWKWg13) type = 13;
       if  (iChan  == k_EWKZg8) type = 8;
       if  (iChan  == k_EWKWZ13) type = 13;
      if  (iChan  == k_EWKZZ13) type = 13;
@@ -595,7 +597,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "July 2019";
+  txt[1] = "May 2021";
   txtSize[1] = 0.03;
   txtX[1] = 0.18;
   txtY[1] = 0.965;

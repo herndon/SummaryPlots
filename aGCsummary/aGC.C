@@ -44,14 +44,14 @@ bool _natgcg;
 // texts
 size_t ntxt = 1;
 string currentName;
-vector<string> txt(250);
-vector<float>  txtSize(250);
-vector<float>  txtX(250);
-vector<float>  txtY(250);
-vector<int>    txtNDC(250);
-vector<int>    txtAlign(250);
-vector<int>    txtFont(250);
-vector<int>    txtColor(250);
+vector<string> txt(500);
+vector<float>  txtSize(500);
+vector<float>  txtX(500);
+vector<float>  txtY(500);
+vector<int>    txtNDC(500);
+vector<int>    txtAlign(500);
+vector<int>    txtFont(500);
+vector<int>    txtColor(500);
 void text_init();
 void text_reset();
 void text_write();
@@ -477,7 +477,7 @@ void draw_bin_grid( float xmin, float xmax, float ymin, float ymax, int iCol, in
 
 void text_reset()
 {
-  for( size_t ii=0; ii<250; ii++ )
+  for( size_t ii=0; ii<500; ii++ )
     {
       txt[ii]="";
       txtX[ii]=0.50;
@@ -504,9 +504,9 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "July 2019";
+  txt[1] = "Aug 2020";
   txtSize[1] = 0.028;
-  txtX[1] = 0.1;
+  txtX[1] = 0.10;
   txtY[1] = 0.96;
   txtAlign[1] = 31;
   txtNDC[1]=true;

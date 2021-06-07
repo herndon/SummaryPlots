@@ -437,7 +437,7 @@ TCanvas*
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.0003, float ymax=3000 )
+Sigma(float ymin=0.0001, float ymax=600000 )
 {
 
 #include "data.C"
@@ -626,7 +626,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
 	      if (version==1 && nBin_ < 280 ) vmax_.push_back( 1. );
 	      if (version==1 && nBin_ > 280 ) vmax_.push_back( 200.0 );
 	      if (version==3 && nBin_ < 200 ) vmax_.push_back( 1. );
-	      if (version==3 && nBin_ > 200 ) vmax_.push_back( 40.0 );
+	      if (version==3 && nBin_ > 200 ) vmax_.push_back( 30.0 );
 	      if (version==4 && nBin_ < 30 ) vmax_.push_back( 1. );
 	      if (version==4 && nBin_ > 30 ) vmax_.push_back( 200.0 );
 	      if ((version==6)&& nBin_ < 80 ) vmax_.push_back( 1. );
@@ -789,6 +789,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan  == k_VBFZ8) type = 8;
       if  (iChan  == k_VBFZ13) type = 13;
       if  (iChan  == k_Zg8) type = 8;
+      if  (iChan  == k_Wg13) type = 13;
       if  (iChan  == k_WW8) type = 8;
       if  (iChan  == k_WZ8) type = 8;
       if  (iChan  == k_ZZ8) type = 8;
@@ -800,14 +801,21 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan  == k_ZH13) type = 13;
       if  (iChan  == k_ttH8) type = 8;
       if  (iChan  == k_WVg) type = 8;
+      if  (iChan  == k_VVV13) type = 13;
       if  (iChan  == k_WWW13) type = 13;
+      if  (iChan  == k_WWZ13) type = 13;
+      if  (iChan  == k_WZZ13) type = 13;
+      if  (iChan  == k_ZZZ13) type = 13;
       if  (iChan  == k_Wgg8) type = 8;
       if  (iChan  == k_Zgg8) type = 8;
+      if  (iChan  == k_Wgg13) type = 13;
+      if  (iChan  == k_Zgg13) type = 13;
       if  (iChan  == k_exWW8) type = 8;
       if  (iChan  == k_exWW8) type = 8;
       if  (iChan  == k_SSWW8) type = 8;
       if  (iChan  == k_SSWW13) type = 13;
       if  (iChan  == k_EWKWg8) type = 8;
+      if  (iChan  == k_EWKWg13) type = 13;
       if  (iChan  == k_EWKZg8) type = 8;
       if  (iChan  == k_EWKZg13) type = 13;
       if  (iChan  == k_EWKZZ13) type = 13;
@@ -829,6 +837,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan == k_Z6jet8) type = 8;
       if  (iChan == k_Z7jet8) type = 8;
 
+      if  (iChan == k_tt2cjet13) type = 13;
       if  (iChan == k_tt2bjet13) type = 13;
  
 
@@ -840,6 +849,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan == k_Z6jet13) type = 13;
 
      if  (iChan == k_Z1cjet8) type = 8;
+     if  (iChan == k_Z1cjet13) type = 13;
      if  (iChan == k_Z1bjet8) type = 8;
      if  (iChan == k_Z2bjet8) type = 8;
       
@@ -869,6 +879,7 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan == k_ttW8) type = 8;
       if  (iChan == k_ttZ8) type = 8;
       if  (iChan == k_ttg8) type = 8;
+      if  (iChan == k_ttg13) type = 13;
       if  (iChan == k_tZq8) type = 8;
       if  (iChan == k_tZq13) type = 13;
       if  (iChan == k_tg13) type = 13;
@@ -891,9 +902,14 @@ Sigma(float ymin=0.0003, float ymax=3000 )
       if  (iChan == k_t13) type = 13;
       //if  (iChan == k_Zg13) type = 13;
       if  (iChan == k_WW13) type = 13;
+      if  (iChan == k_WW13fid) type = 13;
       if  (iChan == k_WZ13) type = 13;
       if  (iChan == k_ZZ13) type = 13;
 
+     if  (iChan == k_Wg2jet13) type = 13;
+     if  (iChan == k_Zg2jet13) type = 13;
+
+      
      if (iChan == k_WZ0jet8) type = 8;
      if  (iChan == k_WZ1jet8) type = 8;
      if  (iChan == k_WZ2jet8) type = 8;
@@ -994,7 +1010,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "September 2019";
+  txt[1] = "May 2021";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;
