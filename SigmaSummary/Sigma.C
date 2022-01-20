@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <iomanip>
 #include <stdlib.h>
@@ -24,8 +25,9 @@ float markerSize = 1.0;
 float titleOffsetX = 1.0;
 float titleOffsetY = 0.8;
 float titleSizeX = 0.03;
-float titleSizeY = 0.05;
-float labelSizeX = 0.05;
+float titleSizeY = 0.2;
+float labelSizeX = 0.2;
+float smallScale = 1.0;
 float labelOffsetX = 0.006;
 float labelOffsetY = 0.004;
 float labelSizeY = 0.045;
@@ -437,7 +439,7 @@ TCanvas*
 // version 7 ymin 5.0, ymax 600000
 // version 8 ymin 0.0003, ymax 3000
 // version 9 ymin 0.001, ymax 1000
-Sigma(float ymin=0.00001, float ymax=600000 )
+Sigma(float ymin=0.0001, float ymax=600000 )
 {
 
 #include "data.C"
@@ -811,7 +813,9 @@ Sigma(float ymin=0.00001, float ymax=600000 )
       if  (iChan  == k_Wgg13) type = 13;
       if  (iChan  == k_Zgg13) type = 13;
       if  (iChan  == k_exWW8) type = 8;
-      if  (iChan  == k_exWW8) type = 8;
+      if  (iChan  == k_EWKWV13) type = 13;
+      if  (iChan  == k_EWKWW13) type = 13;
+      if  (iChan  == k_SSWW8) type = 8;
       if  (iChan  == k_SSWW8) type = 8;
       if  (iChan  == k_SSWW13) type = 13;
       if  (iChan  == k_EWKWg8) type = 8;
@@ -945,6 +949,7 @@ Sigma(float ymin=0.00001, float ymax=600000 )
      if  (iChan == k_HHWWbb13) type = 13; 
      if  (iChan == k_HHbbgg13) type = 13; 
      if  (iChan == k_HHComb13) type = 13; 
+     if  (iChan == k_HHbbbb13) type = 13; 
       if  (iChan == k_HHbbtautau13) type = 13; 
 
       
@@ -1010,7 +1015,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2021";
+  txt[1] = "June 2021";
   txtSize[1] = 0.03;
   txtX[1] = 0.1;
   txtY[1] = 0.96;

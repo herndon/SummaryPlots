@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <iomanip>
 #include <stdlib.h>
 #include <stdio.h>
@@ -395,14 +396,38 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       ypos_.push_back(nBin_-0.5*DY_);
       dy_.push_back(DY_);
 
+
+      // txt[ntxt] = "~~";
+      // txtSize[ntxt] = size_;
+      // txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*0.016;
+      // txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
+      // txtAlign[ntxt] = 12;
+      // txtFont[ntxt] = 42;
+      // ntxt++;
+
+
+      
+      txt[ntxt] = "#splitline{https://arxiv.org/abs/" + chanPreprint[ii] +"}{https://arxiv.org/abs/"+chanPreprint[ii]+"}";
+      if (chanPublication[ii]=="") txt[ntxt] = chanPreprint[ii];
+      cout << txt[ntxt] << endl;
+      txtSize[ntxt] = size_*0.4;
+      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*(0.032);
+      txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
+      txtAlign[ntxt] = 12;
+      txtFont[ntxt] = 42;
+      txtColor[ntxt] = kWhite;
+      ntxt++;
+
+
       txt[ntxt] = chanMeasurement[ii];
       txtSize[ntxt] = size_;
-      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*0.03;;
+      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*0.03;
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
       ntxt++;
 
+      
       txt[ntxt] = chanResult[ii];
       txtSize[ntxt] = size_;
       txtX[ntxt] = xAxisMin + (xAxisMax-xAxisMin)*0.6;
@@ -522,11 +547,14 @@ SigmaR(float ymin=0.009, float ymax=900000 )
      if  (iChan  == k_VBFW13) type = 13;
       if  (iChan  == k_VBFZ13) type = 13;
       if  (iChan  == k_exWW8) type = 8;
+      if  (iChan  == k_EWKWV13) type = 13;
+      if  (iChan  == k_EWKWW13) type = 13;
       if  (iChan  == k_SSWW8) type = 8;
       if  (iChan  == k_SSWW13) type = 13;
       if  (iChan  == k_EWKWg8) type = 8;
       if  (iChan  == k_EWKWg13) type = 13;
       if  (iChan  == k_EWKZg8) type = 8;
+      if  (iChan  == k_EWKZg13) type = 13;
       if  (iChan  == k_EWKWZ13) type = 13;
      if  (iChan  == k_EWKZZ13) type = 13;
 
@@ -587,7 +615,7 @@ void text_init()
 {
   text_reset();
 
-  ntxt = 4;
+  ntxt = 5;
 
   txt[0] = "CMS Preliminary";
   txtSize[0] = 0.040;
@@ -620,7 +648,18 @@ void text_init()
   txtAlign[3] = 21;
   txtNDC[3]=true;
   txtFont[3] = 42;
+  txtColor[3]=kWhite;
 
+  // txt[4] = "CMS Summary Plots";
+  // txtSize[4] = 0.03;
+  // txtX[4] = 0.15;
+  // txtY[4] = 0.012;
+  // txtAlign[4] = 21;
+  // txtNDC[4]=true;
+  // txtFont[4] = 42;
+  // txtColor[4]=kBlack;
+
+  
   
 }
 
