@@ -1,0 +1,18 @@
+# exo-llsummaryplots
+
+For CMS EXO long-lived summary plots.
+
+This repo makes the mass scale bar chart (1) and the LLP summary plot (2).
+
+It uses python 3.7 on osx with matplotlib. The input database is an apple Numbers spread sheet which is converted to csv with an apple script called from the main python script. The entries in the numbers file contain latex sequences (without using predefined latex macros). The script should be able to create sub-charts for individual topics as well using command line parameters.
+
+(1) mass scale bar chart:
+
+the command which creates the bar chart is:
+python3 makeEXOBarPlot.py -l -g ALL
+
+
+(2) LLP bar chart:
+
+All files are in the LL subdirectory. The command line to generate the public LLP plot is this:
+python3 makeEXOBarPlotLL.py --LLP -l -g RPV RPC OLL
