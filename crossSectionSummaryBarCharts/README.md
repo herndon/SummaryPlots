@@ -22,3 +22,4 @@ python3 makeCrossSectionBarChart.py -g -j -l EW DB TOP HIG
 (3) Cross section ratio plot of measured cross section and predictions
 
 python3 makeCrossSectionBarChart.py -g -r ALL
+
