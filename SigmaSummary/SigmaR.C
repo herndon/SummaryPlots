@@ -625,7 +625,7 @@ void text_init()
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  txt[1] = "May 2021";
+  txt[1] = "May 2022";
   txtSize[1] = 0.03;
   txtX[1] = 0.18;
   txtY[1] = 0.965;

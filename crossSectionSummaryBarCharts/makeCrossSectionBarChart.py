@@ -177,50 +177,52 @@ hdr3 = ax1.text(0.5,0.98, \
                 transform = fig.transFigure,
                 size=textsize)
 hdr4 = ax1.text(0.97,0.03, \
-                r"Jan 2022", \
+                r"May 2022", \
                 horizontalalignment='right',verticalalignment='bottom',color='black',weight='bold',
                 transform = fig.transFigure,
                 size=textsize*0.5)
 
 #-------------Foot note--------------------------#
+textYPosition1 = 0.03
+textYPosition2 = 0.02
+textYPosition3 = 0.01
+
+textYPosition1 = 0.030
+textYPosition2 = 0.015
+textYPosition3 = 0.01
+
+
 if not (args.ratio) :
-    caption = ax1.text(0.03,0.03, \
+    caption = ax1.text(0.03,textYPosition1, \
                        "Measured cross sections and exclusion limits at 95% C.L.",
                        horizontalalignment='left',verticalalignment='center',color='black',
                        transform = fig.transFigure,
                        size=textsize*0.5)
 if (args.ratio) :
-    caption = ax1.text(0.03,0.03, \
+    caption = ax1.text(0.03,textYPosition1, \
                        "Ratios of measured cross sections to predictions",
                        horizontalalignment='left',verticalalignment='center',color='black',
                        transform = fig.transFigure,
                        size=textsize*0.5)
-
-
     
-caption = ax1.text(0.03,0.02, \
+caption = ax1.text(0.03,textYPosition2, \
                 "See here for all cross section summary plots",
                    horizontalalignment='left',verticalalignment='center',url='https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsCombined',color='black',
                 transform = fig.transFigure,
                 size=textsize*0.5)
 
-caption = ax1.text(0.22,0.03, \
+caption = ax1.text(0.25,textYPosition1, \
                 "Inner colored bars statistical uncertainty, outer narrow bars statistical+systematic uncertainty",
                 horizontalalignment='left',verticalalignment='center',color='black',
                 transform = fig.transFigure,
                 size=textsize*0.5)
 
-caption = ax1.text(0.22,0.02, \
-                   "Light colored bars: 7 TeV, Medium bars: 8 TeV, Dark bars: 13 TeV",
+caption = ax1.text(0.25,textYPosition2, \
+                   "Light colored bars: 7 TeV, Medium bars: 8 TeV, Dark bars: 13 TeV, Black bars: theory prediction",
                 horizontalalignment='left',verticalalignment='center',color='black',
                 transform = fig.transFigure,
                 size=textsize*0.5)
 
-caption = ax1.text(0.22,0.01, \
-                "Black bar theory prediction",
-                horizontalalignment='left',verticalalignment='center',color='black',
-                transform = fig.transFigure,
-                size=textsize*0.5)
 
 
 #--------------Output-----------------------------#
