@@ -237,8 +237,10 @@ class CrossSectionAnalysisCategory:
                 bars_color = adjust_lightness(bar_color,1.0)
             elif al.energy == "8 TeV":
                 bars_color = adjust_lightness(bar_color,0.8)
+            elif al.energy == "13 TeV":
+                bars_color = adjust_lightness(bar_color,0.8)
             else:
-                bars_color = adjust_lightness(bar_color,0.6)           
+                bars_color = adjust_lightness(bar_color,0.4)           
             self.bars_color.append(bars_color)
             self.bar_color = adjust_lightness(bar_color,0.8)
 

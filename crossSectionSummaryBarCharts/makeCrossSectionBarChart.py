@@ -168,7 +168,7 @@ hdr1 = ax1.text(gap[0],ymax+0.1, \
                 size=textsize*0.6)
 hdr2 = ax1.text(xmax,ymax+0.1, \
                 #                r"36 $\mathrm{fb}^{-1}$ (13 TeV)", \
-                r"18 pb$^{-1}$ - 138 fb$^{-1}$ (7,8,13 TeV)", \
+                r"18 pb$^{-1}$ - 138 fb$^{-1}$ (7,8,13,13.6 TeV)", \
                 horizontalalignment='right',verticalalignment='bottom',color='black',
                 size=textsize*0.6)
 hdr3 = ax1.text(0.5,0.98, \
@@ -176,8 +176,8 @@ hdr3 = ax1.text(0.5,0.98, \
                 horizontalalignment='center',verticalalignment='top',color=title_color,weight='bold',
                 transform = fig.transFigure,
                 size=textsize)
-hdr4 = ax1.text(0.97,0.03, \
-                r"May 2022", \
+hdr4 = ax1.text(0.97,0.025, \
+                r"September 2022", \
                 horizontalalignment='right',verticalalignment='bottom',color='black',weight='bold',
                 transform = fig.transFigure,
                 size=textsize*0.5)
@@ -218,7 +218,7 @@ caption = ax1.text(0.25,textYPosition1, \
                 size=textsize*0.5)
 
 caption = ax1.text(0.25,textYPosition2, \
-                   "Light colored bars: 7 TeV, Medium bars: 8 TeV, Dark bars: 13 TeV, Black bars: theory prediction",
+                   "Light colored bars: 7 TeV, Medium: 8 TeV, Dark: 13 TeV, Darkest: 13.6 TeV, Black bars: theory prediction",
                 horizontalalignment='left',verticalalignment='center',color='black',
                 transform = fig.transFigure,
                 size=textsize*0.5)

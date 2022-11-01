@@ -1,6 +1,6 @@
 // standard versions 0 with verticle stacking of QCD results ,1 without verticle stacking, 2 QCD EWK only, 3 QCD rad only
 
-enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W6jet13, k_W7jet8n, k_W1cjet, k_W1cjet8, k_W1cjet13, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z5jet13, k_Z6jetn, k_Z6jet8, k_Z6jet13, k_Z7jet8, k_Z1cjet8, k_Z1cjet13, k_Z1bjet,k_Z1bjet8,  k_Z1bjet13, k_Z2bjet, k_Z2bjet8,  k_Z2bjet13, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Wg13, k_Wg2jet13, k_Zg, k_Zg8, k_Zg2jet13, k_WV, k_WW, k_WW8, k_WW13, k_WW13fid, k_WW1jet, k_WZ, k_WZ8,  k_WZ13, k_WZ13fid,  k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VVV13, k_WWW13, k_WWZ13,  k_WZZ13, k_ZZZ13, k_WVg, k_Wgg8,k_Wgg13, k_Zgg8, k_Zgg13, k_VBFW8, k_VBFW13, k_VBFZ, k_VBFZ8, k_VBFZ13, k_EWKWV13, k_exWW,  k_exWW8,  k_EWKWg8, k_EWKWg13, k_EWKWW13, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZg13, k_EWKWZ13, k_EWKZZ13,   k_tt,  k_tt8, k_tt13, k_tt1jet, k_tt1jet8,  k_tt0jet13, k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13, k_tt2cjet13, k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tW13, k_tschan, k_tschan8, k_ttg8, k_ttg13, k_tZq8, k_tZq13, k_ttZ,  k_ttZ8, k_ttZ13,   k_tg13, k_ttW8, k_ttW13,   k_tttt8, k_tttt13,  k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggH13, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFH13, k_VH, k_VH8, k_VH13,  k_WH13, k_ZH13, k_ttH, k_ttH8, k_ttH13, k_tH13, k_HHbbtautau8, k_HHbbgg8, k_HHComb8, k_HHbbbb13,  k_HHComb13,  k_HHWWbb13,  k_HHbbtautau13,  k_HHbbgg13,  k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_nChan };
+enum { k_W=0,  k_W8, k_W13, k_W8n, k_W1jet, k_W2jet, k_W3jet, k_W4jet,  k_W1jetn, k_W1jet8n, k_W1jet13, k_W2jetn, k_W2jet8n, k_W2jet13, k_W3jetn, k_W3jet8n, k_W3jet13, k_W4jetn, k_W4jet8n, k_W4jet13, k_W5jetn, k_W5jet8n, k_W5jet13, k_W6jetn, k_W6jet8n, k_W6jet13, k_W7jet8n, k_W1cjet, k_W1cjet8, k_W1cjet13, k_W2bjet, k_W2bjet8, k_Z,  k_Z8,  k_Z13, k_Z1jet, k_Z2jet, k_Z3jet, k_Z4jet, k_Z1jetn, k_Z1jet8, k_Z1jet13, k_Z2jetn,  k_Z2jet8, k_Z2jet13, k_Z3jetn, k_Z3jet8, k_Z3jet13, k_Z4jetn,  k_Z4jet8, k_Z4jet13, k_Z5jetn, k_Z5jet8, k_Z5jet13, k_Z6jetn, k_Z6jet8, k_Z6jet13, k_Z7jet8, k_Z1cjet8, k_Z1cjet13, k_Z1bjet,k_Z1bjet8,  k_Z1bjet13, k_Z2bjet, k_Z2bjet8,  k_Z2bjet13, k_Wp, k_Wm, k_gg, k_ggnew, k_Wg, k_Wg13, k_Wg2jet13, k_Zg, k_Zg8, k_Zg2jet13, k_WV, k_WW, k_WW8, k_WW13, k_WW13fid, k_WW1jet, k_WZ, k_WZ8,  k_WZ13, k_WZ13fid,  k_WZ0jet8, k_WZ1jet8, k_WZ2jet8, k_WZ3jet8, k_ZZ, k_ZZ8,  k_ZZ13,  k_ZZ13fid, k_ZZ0jet8, k_ZZ0jet13, k_ZZ1jet8,  k_ZZ1jet13, k_ZZ2jet8,  k_ZZ2jet13,  k_ZZ3jet8, k_ZZ3jet13, k_VVV13, k_WWW13, k_WWZ13,  k_WZZ13, k_ZZZ13, k_WVg, k_Wgg8,k_Wgg13, k_Zgg8, k_Zgg13, k_VBFW8, k_VBFW13, k_VBFZ, k_VBFZ8, k_VBFZ13, k_EWKWV13, k_exWW,  k_exWW8,  k_EWKWg8, k_EWKWg13, k_EWKWW13, k_SSWW8, k_SSWW13, k_EWKZg8, k_EWKZg13, k_EWKWZ13, k_EWKZZ13,   k_tt,  k_tt8, k_tt13, k_tt136, k_tt1jet, k_tt1jet8,  k_tt0jet13, k_tt1jet13, k_tt2jet, k_tt2jet8, k_tt2jet13, k_tt3jet, k_tt3jet8,  k_tt3jet13, k_tt4jet13, k_tt2cjet13, k_tt2bjet13, k_t, k_t8, k_t13, k_tW, k_tW8, k_tW13, k_tschan, k_tschan8, k_ttg8, k_ttg13, k_tZq8, k_tZq13, k_ttZ,  k_ttZ8, k_ttZ13,   k_tg13, k_ttW8, k_ttW13,   k_tttt8, k_tttt13,  k_HZZ,  k_H1jet, k_ggH, k_ggH8, k_ggH13, k_ggHgg13, k_VBFH, k_VBFH8, k_VBFH13, k_VH, k_VH8, k_VH13,  k_WH13, k_ZH13, k_ttH, k_ttH8, k_ttH13, k_tH13, k_HHbbtautau8, k_HHbbgg8, k_HHComb8, k_HHbbbb13,  k_HHComb13,  k_HHWWbb13,  k_HHbbtautau13,  k_HHbbgg13,  k_incj, k_incg, k_gj, k_Hgg, k_Hgg8, k_H0jet13, k_H1jet13, k_H2jet13, k_H3jet13, k_H4jet13, k_nChan };
 
 
 
@@ -18,7 +18,7 @@ bool noTop = false;
 
 bool exportExeFormat = true;
 bool lessLimits = true;
-bool noJets = false;
+bool noJets = true;
 
 if (version==5||version==6){
  exportExeFormat = false;
@@ -215,6 +215,7 @@ vector<float>
   chanGroup[k_tt]="TOP";
   chanGroup[k_tt8]="TOP";
   chanGroup[k_tt13]="TOP";
+  chanGroup[k_tt136]="TOP";
   chanGroup[k_tt1jet] = "TOP";
   chanGroup[k_tt2jet] = "TOP";
   chanGroup[k_tt3jet] = "TOP";
@@ -267,9 +268,9 @@ vector<float>
   chanGroup[k_tH13]="HIG";
   chanGroup[k_HHComb8]="HIG";
   //chanGroup[k_HHbbgg13]="";
-  //chanGroup[k_HHComb13]="";
+  chanGroup[k_HHComb13]="HIG";
   //chanGroup[k_HHbbbb13]="HIG";
-  chanGroup[k_HHbbtautau13]="HIG";
+  //chanGroup[k_HHbbtautau13]="HIG";
   chanGroup[k_ggHgg13]="HIG";
   chanGroup[k_ggH13]="HIG";
   chanGroup[k_VBFH13]="HIG";
@@ -353,6 +354,7 @@ vector<float>
   chanEnergy[k_tt] = "7 TeV";
   chanEnergy[k_tt8] = "8 TeV";
   chanEnergy[k_tt13] = "13 TeV";
+  chanEnergy[k_tt136] = "13.6 TeV";
   chanEnergy[k_tt1jet] = "7 TeV";
   chanEnergy[k_tt2jet] = "7 TeV";
   chanEnergy[k_tt3jet] = "7 TeV";
@@ -402,9 +404,9 @@ vector<float>
   chanEnergy[k_tH13] = "13 TeV";
   chanEnergy[k_HHComb8] = "8 TeV";
   //chanEnergy[k_HHbbgg13] ="";
-  //chanEnergy[k_HHComb13] ="";
+  chanEnergy[k_HHComb13] ="13 TeV";
   //chanEnergy[k_HHbbbb13] = "13 TeV";
-  chanEnergy[k_HHbbtautau13] = "13 TeV";
+  //chanEnergy[k_HHbbtautau13] = "13 TeV";
   chanEnergy[k_ggHgg13] = "13 TeV";
   chanEnergy[k_ggH13] = "13 TeV";
   chanEnergy[k_VBFH13] = "13 TeV";
@@ -587,6 +589,7 @@ if (version==0||version==1||exportExeFormat) {
   plotChan[k_tt]=true;
   plotChan[k_tt8]=true;
   if (use13TeV) plotChan[k_tt13]=true;
+  if (use13TeV) plotChan[k_tt136]=true;
   // Removed 7,8 TeV results, no publically avilable numbers
   //if (!noJets) plotChan[k_tt1jet] = true;
   //if (!noJets) plotChan[k_tt2jet] = true;
@@ -639,9 +642,9 @@ if (version==0||version==1||exportExeFormat) {
   plotChan[k_tH13]=true;
   if (!lessLimits) plotChan[k_HHComb8]=true;
   //plotChan[k_HHbbgg13]=true;
-  //plotChan[k_HHComb13]=true;
+  plotChan[k_HHComb13]=true;
   //plotChan[k_HHbbbb13]=true;
-  plotChan[k_HHbbtautau13]=true;
+  //plotChan[k_HHbbtautau13]=true;
 
   
   plotChan[k_ggHgg13]=false;
@@ -730,6 +733,7 @@ if (version==0||version==1||exportExeFormat) {
   chanFlag[k_tt] += 1;
   chanFlag[k_tt8] += 1;
   if (use13TeV) chanFlag[k_tt13] += 1;
+  if (use13TeV) chanFlag[k_tt136] += 1;
   // Removed 7,8 TeV results, no publically avilable numbers
   //if (!noJets) chanFlag[k_tt1jet] += 1;
   //if (!noJets) chanFlag[k_tt2jet] += 1;
@@ -781,9 +785,9 @@ if (version==0||version==1||exportExeFormat) {
   chanFlag[k_tH13] += 1;
   if (!lessLimits) chanFlag[k_HHComb8] += 1;
   //chanFlag[k_HHbbgg13] += 1;
-  //chanFlag[k_HHComb13] += 1;
+  chanFlag[k_HHComb13] += 1;
   //chanFlag[k_HHbbbb13] += 1;
-  chanFlag[k_HHbbtautau13] += 1;
+  //chanFlag[k_HHbbtautau13] += 1;
 
   
   chanFlag[k_ggHgg13] += 0;
@@ -864,6 +868,7 @@ if (version==2) {
   plotChan[k_tt]=true;
   plotChan[k_tt8]=true;
   if (use13TeV) plotChan[k_tt13]=true;
+  if (use13TeV) plotChan[k_tt136]=true;
   //plotChan[k_tt1jet] = true;
   //plotChan[k_tt2jet] = true;
   //plotChan[k_tt3jet] = true;
@@ -915,9 +920,9 @@ if (version==2) {
   plotChan[k_tH13]=true;
   plotChan[k_HHComb8]=true;
   //plotChan[k_HHbbgg13]=true;
-  //plotChan[k_HHComb13]=true;
+  plotChan[k_HHComb13]=true;
   //plotChan[k_HHbbbb13]=true;
-  plotChan[k_HHbbtautau13]=true;
+  //plotChan[k_HHbbtautau13]=true;
 
 
   plotChan[k_ggHgg13]=false;
@@ -1227,6 +1232,7 @@ if (version==8) {
   plotChan[k_tt]=true;
   plotChan[k_tt8]=true;
   if (use13TeV) plotChan[k_tt13]=true;
+  if (use13TeV) plotChan[k_tt136]=true;
   // Remove 7,8 TeV results, not publically avilable numbers
   //plotChan[k_tt1jet] = true;
   //plotChan[k_tt2jet] = true;
@@ -1345,6 +1351,7 @@ if (version==7) {
   plotChan[k_WZ13]=true;
   plotChan[k_ZZ13]=true;
   plotChan[k_tt13]=true;
+  plotChan[k_tt136]=true;
   plotChan[k_t13]=true;
   plotChan[k_ttZ13]=true;
 }
@@ -3436,6 +3443,44 @@ chanETheop[k_tt13] =  40.0 * scale_;
   chanETheom[k_tt13] = 46.0 * scale_;
   chanETheo[k_tt13] = (chanETheop[k_tt13] +chanETheom[k_tt13])/2.0;
 // top++2.0
+
+// ttbar 13.6 TeV
+
+
+  if (use13TeV) chanMeasurement[k_tt136] = "tt";
+  if (big13TeV) chanMeasurement[k_tt136]    =  "#splitline{   tt}{13Tev}";
+  chanLumi[k_tt136] = "1.2 fb^{-1}";
+  chanCadi[k_tt136] = "TOP-22-012";
+  chanPreprint[k_tt136] = "https://cds.cern.ch/record/2834110";
+  chanPublication[k_tt136] = "";
+
+
+  chanSigma[k_tt136]  =   887.0 * scale_; 
+  chanEStatp[k_tt136]  =   43.0 * scale_;
+chanESystp[k_tt136]  =   sqrt(53.*53.) * scale_;
+  chanETotp[k_tt136]   =  sqrt( 
+			   chanEStatp[k_tt136]*chanEStatp[k_tt136]
+			   +
+			   chanESystp[k_tt136]*chanESystp[k_tt136]
+			    );
+
+  chanEStatm[k_tt136]  =   41.0 * scale_;
+  chanESystm[k_tt136]  =    sqrt(53.*53.) * scale_;
+  chanETotm[k_tt136]   =  sqrt( 
+			   chanEStatm[k_tt136]*chanEStatm[k_tt136]
+			   +
+			   chanESystm[k_tt136]*chanESystm[k_tt136]
+			    );
+  chanEStat[k_tt136] = (chanEStatp[k_tt136] +chanEStatm[k_tt136])/2.0;
+  chanESyst[k_tt136] = (chanESystp[k_tt136] +chanESystm[k_tt136])/2.0;
+  chanETot[k_tt136] = (chanETotp[k_tt136] +chanETotm[k_tt136])/2.0;
+ 
+
+
+  chanTheo[k_tt136] =   921.0 * scale_;
+chanETheop[k_tt136] =  29.0 * scale_;
+  chanETheom[k_tt136] = 37.0 * scale_;
+  chanETheo[k_tt136] = (chanETheop[k_tt136] +chanETheom[k_tt136])/2.0;
 
 
 // top with jets
@@ -7165,12 +7210,15 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
 // https://arxiv.org/abs/1809.10733
 // Submitted to EPJC
 // Update to http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-19-005/index.html
+// Update to HIG-22-001 not yet published
 
   chanMeasurement[k_ggH13]  = "ggH";
-  chanLumi[k_ggH13]  = "137 fb^{-1}";
-  chanCadi[k_ggH13] = "HIG-19-005";
-  chanPreprint[k_ggH13] = "https://cds.cern.ch/record/2706103";
+  chanLumi[k_ggH13]  = "139 fb^{-1}";
+  chanCadi[k_ggH13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_ggH13] = "https://doi.org/10.1038/s41586-022-04892-x";
   chanPublication[k_ggH13] = "";
+
+
 
 // cross section from https://arxiv.org/abs/1610.07922 N3NLO
   chanTheo[k_ggH13] =   48.58 * scale_;
@@ -7179,15 +7227,15 @@ chanETheom[k_ggH13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggH13]/100.0) * scale_;
   chanETheo[k_ggH13] = (chanETheop[k_ggH13] +chanETheom[k_ggH13])/2.0;
 
 
-  chanSigma[k_ggH13]  =   1.04 * chanTheo[k_ggH13]; 
-  chanEStatp[k_ggH13]  =   0.05 * chanTheo[k_ggH13];
-  chanESystp[k_ggH13]  =   0.08 * chanTheo[k_ggH13];
-chanETotp[k_ggH13]   =   0.09 * chanTheo[k_ggH13];
+  chanSigma[k_ggH13]  =   0.97 * chanTheo[k_ggH13]; 
+  chanEStatp[k_ggH13]  =   0.04 * chanTheo[k_ggH13];
+  chanESystp[k_ggH13]  =   0.07 * chanTheo[k_ggH13];
+chanETotp[k_ggH13]   =   0.08 * chanTheo[k_ggH13];
 
 
-  chanEStatm[k_ggH13]  =  0.05 * chanTheo[k_ggH13];
-  chanESystm[k_ggH13]  =  0.07 * chanTheo[k_ggH13];
-  chanETotm[k_ggH13]   =  0.09 * chanTheo[k_ggH13];;
+  chanEStatm[k_ggH13]  =  0.04 * chanTheo[k_ggH13];
+  chanESystm[k_ggH13]  =  0.06 * chanTheo[k_ggH13];
+  chanETotm[k_ggH13]   =  0.07 * chanTheo[k_ggH13];;
 
   chanEStat[k_ggH13] = (chanEStatp[k_ggH13] +chanEStatm[k_ggH13])/2.0;
   chanESyst[k_ggH13] = (chanESystp[k_ggH13] +chanESystm[k_ggH13])/2.0;
@@ -7296,12 +7344,13 @@ chanETheom[k_VBFH8] = sqrt(0.0024*0.0024+0.021*0.021+0.004*0.004+0.022*0.022) * 
 // https://arxiv.org/abs/1809.10733
 // Submitted to EPJC
 // Update to http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-19-005/index.html
+// Update to HIG-22-001 not yet published
 
   chanMeasurement[k_VBFH13]  = "#scale[0.70]{#splitline{VBF}{qqH}}";
   if (exportExeFormat) chanMeasurement[k_VBFH13] = "VBF qqH";
-  chanLumi[k_VBFH13]  = "137 fb^{-1}";
-  chanCadi[k_VBFH13] = "HIG-19-005";
-  chanPreprint[k_VBFH13] = "https://cds.cern.ch/record/2706103";
+  chanLumi[k_VBFH13]  = "138 fb^{-1}";
+  chanCadi[k_VBFH13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_VBFH13] = "https://doi.org/10.1038/s41586-022-04892-x";
   chanPublication[k_VBFH13] = "";
 
 // cross section from https://arxiv.org/abs/1610.07922 NNLO+EW
@@ -7312,15 +7361,15 @@ chanETheom[k_VBFH13] =  sqrt(0.0033*0.0033+0.021*0.021+0.005*0.005+0.021*0.021) 
   chanETheo[k_VBFH13] = (chanETheop[k_VBFH13] +chanETheom[k_VBFH13])/2.0;
 
 
-  chanSigma[k_VBFH13]  =   0.75 * chanTheo[k_VBFH13]; 
-  chanEStatp[k_VBFH13]  =   0.16 * chanTheo[k_VBFH13];
-  chanESystp[k_VBFH13]  =   0.10 * chanTheo[k_VBFH13];
-  chanETotp[k_VBFH13]   =  0.19 * chanTheo[k_VBFH13];
+  chanSigma[k_VBFH13]  =   0.80 * chanTheo[k_VBFH13]; 
+  chanEStatp[k_VBFH13]  =   0.09 * chanTheo[k_VBFH13];
+  chanESystp[k_VBFH13]  =   0.08 * chanTheo[k_VBFH13];
+  chanETotp[k_VBFH13]   =  0.12 * chanTheo[k_VBFH13];
 
 
-  chanEStatm[k_VBFH13]  =  0.15 * chanTheo[k_VBFH13];
-  chanESystm[k_VBFH13]  =  0.08 * chanTheo[k_VBFH13];
-  chanETotm[k_VBFH13]   =  0.19 * chanTheo[k_VBFH13];
+  chanEStatm[k_VBFH13]  =  0.10 * chanTheo[k_VBFH13];
+  chanESystm[k_VBFH13]  =  0.07 * chanTheo[k_VBFH13];
+  chanETotm[k_VBFH13]   =  0.12 * chanTheo[k_VBFH13];
 
 
   chanEStat[k_VBFH13] = (chanEStatp[k_VBFH13] +chanEStatm[k_VBFH13])/2.0;
@@ -7422,9 +7471,10 @@ chanETheom[k_VBFH13] =  sqrt(0.0033*0.0033+0.021*0.021+0.005*0.005+0.021*0.021) 
 // From HIG-16-044
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-16-044/
 // https://arxiv.org/abs/1709.07497
+// Update to HIG-22-001 not yet published Nature 607, 60-68 (2022)
 
   chanMeasurement[k_VH13]  = "VH";
-  chanLumi[k_VH13]  = "35 fb^{-1}";
+  chanLumi[k_VH13]  = "138 fb^{-1}";
 
   chanTheo[k_VH13] =   (1.373+0.8837 )* scale_;
 chanETheop[k_VH13] =  sqrt(1.373*0.005*1.373*0.005 + 1.373*0.019*1.373*0.019)+sqrt(0.8837*0.038*0.8837*0.038 + 0.8837*0.016*0.8837*0.016);
@@ -7432,14 +7482,14 @@ chanETheop[k_VH13] =  sqrt(1.373*0.005*1.373*0.005 + 1.373*0.019*1.373*0.019)+sq
   chanETheo[k_VH13] = (chanETheop[k_VH13] +chanETheom[k_VH13])/2.0;
 
 
-chanSigma[k_VH13]  =   1.19 * chanTheo[k_VH13]; 
-  chanEStatp[k_VH13]  =   0.21 * chanTheo[k_VH13];
-  chanESystp[k_VH13]  =   0.34 * chanTheo[k_VH13];
+chanSigma[k_VH13]  =   (1.44+1.29) * chanTheo[k_VH13]; 
+chanEStatp[k_VH13]  =   sqrt(0.21*0.21+0.20*0.20) * chanTheo[k_VH13];
+chanESystp[k_VH13]  = sqrt(0.16*0.16+0.09*0.09) * chanTheo[k_VH13];
 chanETotp[k_VH13]   =  sqrt(chanEStatp[k_VH13]*chanEStatp[k_VH13] + chanESystp[k_VH13]*chanESystp[k_VH13])  ;
 
 
-  chanEStatm[k_VH13]  =  0.20 * chanTheo[k_VH13];
-  chanESystm[k_VH13]  =  0.32 * chanTheo[k_VH13];
+  chanEStatm[k_VH13]  =  sqrt(0.21*0.21+0.20*0.20) * chanTheo[k_VH13];
+  chanESystm[k_VH13]  =  sqrt(0.15*0.15+0.14*0.14) * chanTheo[k_VH13];
   chanETotm[k_VH13]   =   sqrt(chanEStatm[k_VH13]*chanEStatm[k_VH13] + chanESystm[k_VH13]*chanESystm[k_VH13]);
 
   chanEStat[k_VH13] = (chanEStatp[k_VH13] +chanEStatm[k_VH13])/2.0;
@@ -7449,18 +7499,19 @@ chanETotp[k_VH13]   =  sqrt(chanEStatp[k_VH13]*chanEStatp[k_VH13] + chanESystp[k
 
 
 
-// WH
+// WH 
 // WH Higgs 13 TeV 35.9
 // from 13 GeV Combiation paper HIG-17-031
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-17-031/index.html
 // https://arxiv.org/abs/1809.10733
 // Submitted to EPJC
 // Update to http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-19-005/index.html
+// Update to HIG-22-001 not yet published
 
   chanMeasurement[k_WH13]  = "WH";
-  chanLumi[k_WH13]  = "137 fb^{-1}";
-  chanCadi[k_WH13] = "HIG-19-005";
-  chanPreprint[k_WH13] = "https://cds.cern.ch/record/2706103";
+  chanLumi[k_WH13]  = "138 fb^{-1}";
+  chanCadi[k_WH13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_WH13] = "https://doi.org/10.1038/s41586-022-04892-x";
   chanPublication[k_WH13] = "";
 
   chanTheo[k_WH13] =   (1.373 )* scale_;
@@ -7469,15 +7520,15 @@ chanETheop[k_WH13] =  sqrt(1.373*0.005*1.373*0.005 + 1.373*0.019*1.373*0.019);
   chanETheo[k_WH13] = (chanETheop[k_WH13] +chanETheom[k_WH13])/2.0;
 
 
-  chanSigma[k_WH13]  =   1.46 * chanTheo[k_WH13]; 
-  chanEStatp[k_WH13]  =   0.29 * chanTheo[k_WH13];
-  chanESystp[k_WH13]  =   0.22 * chanTheo[k_WH13];
-chanETotp[k_WH13]   =    0.37 * chanTheo[k_WH13];
+  chanSigma[k_WH13]  =   1.44 * chanTheo[k_WH13]; 
+  chanEStatp[k_WH13]  =   0.21 * chanTheo[k_WH13];
+  chanESystp[k_WH13]  =   0.16 * chanTheo[k_WH13];
+chanETotp[k_WH13]   =    0.26 * chanTheo[k_WH13];
 
 
-  chanEStatm[k_WH13]  =  0.28 * chanTheo[k_WH13];
-  chanESystm[k_WH13]  =  0.21 * chanTheo[k_WH13];
-  chanETotm[k_WH13]   =  0.35 * chanTheo[k_WH13];
+  chanEStatm[k_WH13]  =  0.21 * chanTheo[k_WH13];
+  chanESystm[k_WH13]  =  0.15 * chanTheo[k_WH13];
+  chanETotm[k_WH13]   =  0.25 * chanTheo[k_WH13];
 
   chanEStat[k_WH13] = (chanEStatp[k_WH13] +chanEStatm[k_WH13])/2.0;
   chanESyst[k_WH13] = (chanESystp[k_WH13] +chanESystm[k_WH13])/2.0;
@@ -7491,11 +7542,12 @@ chanETotp[k_WH13]   =    0.37 * chanTheo[k_WH13];
 // https://arxiv.org/abs/1809.10733
 // Submitted to EPJC
 // Update to http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-19-005/index.html
+// Update to HIG-22-001 not yet published
 
   chanMeasurement[k_ZH13]  = "ZH";
-  chanLumi[k_ZH13]  = "137 fb^{-1}";
-  chanCadi[k_ZH13] = "HIG-19-005";
-  chanPreprint[k_ZH13] = "https://cds.cern.ch/record/2706103";
+  chanLumi[k_ZH13]  = "138 fb^{-1}";
+  chanCadi[k_ZH13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_ZH13] = "https://doi.org/10.1038/s41586-022-04892-x";
   chanPublication[k_ZH13] = "";
 
   chanTheo[k_ZH13] =   (0.8837 )* scale_;
@@ -7504,15 +7556,15 @@ chanETheop[k_ZH13] =  sqrt(0.8837*0.038*0.8837*0.038 + 0.8837*0.016*0.8837*0.016
   chanETheo[k_ZH13] = (chanETheop[k_ZH13] +chanETheom[k_ZH13])/2.0;
 
 
-chanSigma[k_ZH13]  =   0.98 * chanTheo[k_ZH13]; 
-  chanEStatp[k_ZH13]  =   0.26 * chanTheo[k_ZH13];
-  chanESystp[k_ZH13]  =   0.17 * chanTheo[k_ZH13];
-chanETotp[k_ZH13]   =    0.31 * chanTheo[k_ZH13];
+chanSigma[k_ZH13]  =   1.29 * chanTheo[k_ZH13]; 
+  chanEStatp[k_ZH13]  =   0.20 * chanTheo[k_ZH13];
+  chanESystp[k_ZH13]  =   0.09 * chanTheo[k_ZH13];
+chanETotp[k_ZH13]   =    0.22 * chanTheo[k_ZH13];
 
 
-  chanEStatm[k_ZH13]  =  0.25 * chanTheo[k_ZH13];
-  chanESystm[k_ZH13]  =  0.15 * chanTheo[k_ZH13];
-  chanETotm[k_ZH13]   =  0.29 * chanTheo[k_ZH13];
+  chanEStatm[k_ZH13]  =  0.20 * chanTheo[k_ZH13];
+  chanESystm[k_ZH13]  =  0.14 * chanTheo[k_ZH13];
+  chanETotm[k_ZH13]   =  0.25 * chanTheo[k_ZH13];
 
   chanEStat[k_ZH13] = (chanEStatp[k_ZH13] +chanEStatm[k_ZH13])/2.0;
   chanESyst[k_ZH13] = (chanESystp[k_ZH13] +chanESystm[k_ZH13])/2.0;
@@ -7555,6 +7607,7 @@ chanETotp[k_ZH13]   =    0.31 * chanTheo[k_ZH13];
   // chanETheo[k_ttH] = 0.01 *  chanSigma[k_ttH] * scale_;
 
 // ttbar H, assocaited Higgs production with a ttbar 7 TeV
+  
   chanMeasurement[k_ttH]  = "ttH";
   chanLumi[k_ttH]  = "5.1 fb^{-1}";
   chanCadi[k_ttH] = "HIG-14-009";
@@ -7617,12 +7670,13 @@ chanETotp[k_ZH13]   =    0.31 * chanTheo[k_ZH13];
 // https://arxiv.org/abs/1809.10733
 // Submitted to EPJC
 // Update to http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-19-005/index.html
+// Update to HIG-22-001 not yet published
 
 
   chanMeasurement[k_ttH13]  = "ttH";
-  chanLumi[k_ttH13]  = "137 fb^{-1}";
-  chanCadi[k_ttH13] = "HIG-19-005";
-  chanPreprint[k_ttH13] = "https://cds.cern.ch/record/2706103";
+  chanLumi[k_ttH13]  = "138 fb^{-1}";
+  chanCadi[k_ttH13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_ttH13] = "https://doi.org/10.1038/s41586-022-04892-x";
   chanPublication[k_ttH13] = "";
 
   chanTheo[k_ttH13] =   0.5071 * scale_;
@@ -7631,15 +7685,15 @@ chanETheom[k_ttH13] =  sqrt(0.092*0.092 + 0.036*0.036)*chanTheo[k_ttH13];
   chanETheo[k_ttH13] = (chanETheop[k_ttH13] +chanETheom[k_ttH13])/2.0;
 
 
-  chanSigma[k_ttH13]  =   1.14 * chanTheo[k_ttH13] * scale_;
+  chanSigma[k_ttH13]  =   0.94 * chanTheo[k_ttH13] * scale_;
 
-  chanEStatp[k_ttH13]  =   0.13 * chanTheo[k_ttH13] * scale_;
-chanESystp[k_ttH13]  =     0.17 * chanTheo[k_ttH13] * scale_;
-  chanETotp[k_ttH13]   =  0.21 * chanTheo[k_ttH13] * scale_;
+  chanEStatp[k_ttH13]  =   0.15 * chanTheo[k_ttH13] * scale_;
+chanESystp[k_ttH13]  =     0.13 * chanTheo[k_ttH13] * scale_;
+  chanETotp[k_ttH13]   =  0.20 * chanTheo[k_ttH13] * scale_;
 
-  chanEStatm[k_ttH13]  =  0.13 * chanTheo[k_ttH13] * scale_;
-  chanESystm[k_ttH13]  =  0.15 * chanTheo[k_ttH13] * scale_;
-  chanETotm[k_ttH13]   =  0.20 * chanTheo[k_ttH13] * scale_;
+  chanEStatm[k_ttH13]  =  0.15 * chanTheo[k_ttH13] * scale_;
+  chanESystm[k_ttH13]  =  0.12 * chanTheo[k_ttH13] * scale_;
+  chanETotm[k_ttH13]   =  0.19 * chanTheo[k_ttH13] * scale_;
 
   chanEStat[k_ttH13] = (chanEStatp[k_ttH13] +chanEStatm[k_ttH13])/2.0;
   chanESyst[k_ttH13] = (chanESystp[k_ttH13] +chanESystm[k_ttH13])/2.0;
@@ -7653,14 +7707,15 @@ chanESystp[k_ttH13]  =     0.17 * chanTheo[k_ttH13] * scale_;
 // Replace with
 // https://arxiv.org/abs/2011.03652 Eur. Phys. J. C 81 (2021) 378
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-19-008
+// Update to HIG-22-001 not yet published
 
 
 
   chanMeasurement[k_tH13]  = "tH";
-  chanLumi[k_tH13]  = "137 fb^{-1}";
-  chanCadi[k_tH13] = "HIG-19-008";
-  chanPreprint[k_tH13] = "2011.03652";
-  chanPublication[k_tH13] = "EPJC 81 (2021) 378";
+  chanLumi[k_tH13]  = "138 fb^{-1}";
+  chanCadi[k_tH13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_tH13] = "https://doi.org/10.1038/s41586-022-04892-x";
+  chanPublication[k_tH13] = "";
 
 // new prediction
 chanTheo[k_tH13] =   (0.0743+0.0152) * scale_;
@@ -7669,15 +7724,15 @@ chanETheom[k_tH13] =  0.025*chanTheo[k_tH13];
   chanETheo[k_tH13] = (chanETheop[k_tH13] +chanETheom[k_tH13])/2.0;
 
 
-chanSigma[k_tH13]  =   5.7 * chanTheo[k_tH13]; 
+chanSigma[k_tH13]  =   6.05 * chanTheo[k_tH13]; 
 
-  chanEStatp[k_tH13]  =   2.7 * chanTheo[k_tH13] * scale_;
-  chanESystp[k_tH13]  =   3.0 * chanTheo[k_tH13] * scale_;
-chanETotp[k_tH13]   =  sqrt(chanEStatp[k_tH13]*chanEStatp[k_tH13] + chanESystp[k_tH13]*chanESystp[k_tH13] )* scale_;
+  chanEStatp[k_tH13]  =   2.06 * chanTheo[k_tH13] * scale_;
+  chanESystp[k_tH13]  =   1.69 * chanTheo[k_tH13] * scale_;
+chanETotp[k_tH13]   =  2.66 * chanTheo[k_tH13] * scale_;
 
-  chanEStatm[k_tH13]  =   2.7 * chanTheo[k_tH13] * scale_;
-  chanESystm[k_tH13]  =   3.0 * chanTheo[k_tH13] * scale_;
-chanETotm[k_tH13]   =  sqrt(chanEStatm[k_tH13]*chanEStatm[k_tH13] + chanESystm[k_tH13]*chanESystm[k_tH13] )* scale_;
+  chanEStatm[k_tH13]  =   1.99 * chanTheo[k_tH13] * scale_;
+  chanESystm[k_tH13]  =   1.38 * chanTheo[k_tH13] * scale_;
+chanETotm[k_tH13]   = 2.42 * chanTheo[k_tH13] * scale_;
 									       
 
   chanEStat[k_tH13] = (chanEStatp[k_tH13] +chanEStatm[k_tH13])/2.0;
@@ -7778,14 +7833,16 @@ chanETheom[k_HHComb8] =  0.92*0.001; // adding (in quad.) the Theo. (5%), PDF (3
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-17-002/index.html
 // https://arxiv.org/abs/1707.02909
 // replace with
-// http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-20-010/index.html
-// https://cds.cern.ch/record/2803419
+// http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-20-010/index.html
+// https://arxiv.org/abs/2206.09401 Submitted to Physics Letters B
+// 
+
 
 chanMeasurement[k_HHbbtautau13]  = "HH "; // def "HH"
 if (version == 9) chanMeasurement[k_HHbbtautau13]  = "#splitline{HH}{bb#tau#tau}"; // def "HH"
   chanCadi[k_HHbbtautau13] = "HIG-20-010";
-  chanPreprint[k_HHbbtautau13] = "https://cds.cern.ch/record/2803419";
-  chanPublication[k_HHbbtautau13] = "";
+  chanPreprint[k_HHbbtautau13] = "2206.09401";
+  chanPublication[k_HHbbtautau13] = "Submitted to PLB";
 
 
 if (version == 9) chanMeasurement[k_HHbbtautau13]  = "#splitline{HH}{bb#tau#tau}"; // def "HH"
@@ -7874,16 +7931,19 @@ chanETot[k_HHbbgg13] = (chanETotp[k_HHbbgg13] +chanETotm[k_HHbbgg13])/2.0;
 
 chanMeasurement[k_HHComb13]  = "HH"; // def "HH"
 if (version == 9) chanMeasurement[k_HHComb13]  = "#splitline{HH}{Comb.}"; // def "HH"
+  chanCadi[k_HHComb13] = "Nature 607 60-68 (2022)";
+  chanPreprint[k_HHComb13] = "https://doi.org/10.1038/s41586-022-04892-x";
+  chanPublication[k_HHComb13] = "";
 
 
-chanLumi[k_HHComb13]  = "35.9 fb^{-1}";
+chanLumi[k_HHComb13]  = "138 fb^{-1}";
 chanTheo[k_HHComb13]   =  33.53 * 0.001 * scale_; // Updated to the latest theory cross-section, https://twiki.cern.ch/twiki/bin/view/LHCPhysics/LHCHXSWGHH                                  
 chanETheop[k_HHComb13] =  sqrt(0.060*0.060 + 0.059*0.059)*chanTheo[k_HHComb13]; // adding (in quad.) the Theo. (5%), PDF (2.1%), alpha_S (2.3%) and scale (+4.3%) unc.s together                                                              
 chanETheom[k_HHComb13] =  sqrt(0.043*0.043 + 0.059*0.059)*chanTheo[k_HHComb13]; // adding (in quad.) the Theo. (5%), PDF (2.1%), alpha_S (2.3%) and scale (-6.0%) unc.s together                                                              
 chanETheo[k_HHComb13]  = (chanETheop[k_HHComb13] +chanETheom[k_HHComb13])/2.0;
 
 //expected 12.8
-chanSigma[k_HHComb13]  =   -22.2 * chanTheo[k_HHComb13] * scale_; // HH Comb (HIG-17-030)                                                              
+chanSigma[k_HHComb13]  =   -3.4 * chanTheo[k_HHComb13] * scale_; // HH Comb (HIG-17-030)                                                              
 
 chanEStatp[k_HHComb13]  =  0.0;
 chanESystp[k_HHComb13]  =  0.0;

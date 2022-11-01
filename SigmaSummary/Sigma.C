@@ -85,6 +85,7 @@ public:
     int _expColor7 = kRed;
     int _expColor8 = kBlue;
     int	_expColor13 = 209;
+    int	_expColor136 = 205;
 
     if (_type==8||_type==18) 
       {
@@ -105,6 +106,13 @@ public:
 	_theoColor = _theoColorG;
         _expLineColor = _expColor13;
         _expFillColor = _expColor13;
+      }  else if (_type == 136)
+      {
+	//_theoColor = 221;
+	_theoColor = kBlack;
+	_theoColor = _theoColorG;
+        _expLineColor = _expColor136;
+        _expFillColor = _expColor136;
       } else
       {
       }
@@ -247,6 +255,21 @@ public:
  	_limitLine13.SetLineColor(_expColor13);
  	_limitLine13.SetMarkerSize(0);	
 	_limitLine13.DrawClone("ez");
+
+	  	TBox _limit136(_xpos + 3.0*_dx - _dx/3., _sigma_theo*0.9*dy_, 
+		     _xpos + 3.0*_dx + _dx/3., 1.5*_sigma_theo*0.9*dy_);
+ 	_limit136.SetFillStyle(3254);
+ 	_limit136.SetFillColor(_expColor136 );
+	_limit136.DrawClone();
+
+	TGraphErrors _limitLine136(1);
+ 	_limitLine136.SetPoint(1, _xpos + 3.0*_dx , _sigma_theo*0.9*dy_ );
+ 	_limitLine136.SetPointError( 1, _dx/2., 0 );
+ 	_limitLine136.SetLineWidth(2);
+ 	_limitLine136.SetLineColor(_expColor136);
+ 	_limitLine136.SetMarkerSize(0);	
+	_limitLine136.DrawClone("ez");
+
 	  } else{
 
  	TBox _limit8(_xpos - _dx/3., _sigma_theo*0.9*dy_, 
@@ -276,6 +299,20 @@ public:
  	_limitLine13.SetLineColor(_expColor13);
  	_limitLine13.SetMarkerSize(0);	
 	_limitLine13.DrawClone("ez");
+
+	TBox _limit136(_xpos + 1.5*_dx - _dx/3., _sigma_theo*0.9*dy_, 
+		     _xpos + 1.5*_dx + _dx/3., 1.5*_sigma_theo*0.9*dy_);
+ 	_limit136.SetFillStyle(3254);
+ 	_limit136.SetFillColor(_expColor136 );
+	_limit136.DrawClone();
+
+	TGraphErrors _limitLine136(1);
+ 	_limitLine136.SetPoint(1, _xpos + 1.5*_dx , _sigma_theo*0.9*dy_ );
+ 	_limitLine136.SetPointError( 1, _dx/2., 0 );
+ 	_limitLine136.SetLineWidth(2);
+ 	_limitLine136.SetLineColor(_expColor136);
+ 	_limitLine136.SetMarkerSize(0);	
+	_limitLine136.DrawClone("ez");
 
 
 	  }
@@ -345,7 +382,25 @@ public:
  	_dataPoint13.SetMarkerSize(markerSize*0.8);
 	_dataPoint13.DrawClone();
  
-}
+	TGraphErrors _dataTotPoint136(1);
+	_dataTotPoint136.SetPoint(1, _xpos, _sigma_theo/(dy_) );
+	_dataTotPoint136.SetPointError( 1, 0, _e_tot/(dy_) );
+	_dataTotPoint136.SetLineWidth(1);
+	_dataTotPoint136.SetLineColor(_expColor136);
+	_dataTotPoint136.SetMarkerSize(0);
+	_dataTotPoint136.DrawClone("e");	
+
+ 	TMarker _dataPoint136( _xpos, _sigma_theo/(dy_), kOpenSquare );
+ 	_dataPoint136.SetMarkerSize(markerSize);
+	_dataPoint136.SetMarkerColor(_expColor136);
+	_dataPoint136.DrawClone();
+	_dataPoint136.SetMarkerSize(markerSize*0.9);
+	_dataPoint136.DrawClone();
+ 	_dataPoint136.SetMarkerSize(markerSize*0.8);
+	_dataPoint136.DrawClone();
+
+
+ }
 	TGraphErrors _theoPoint13(1);
 	_theoPoint13.SetMarkerSize(0);
 	_theoPoint13.SetLineColor(_theoColorG);
@@ -354,7 +409,15 @@ public:
 	_theoPoint13.SetPointError( 1, _dx/2., 0 );
 	_theoPoint13.DrawClone("ez");
 
+	TGraphErrors _theoPoint136(1);
+	_theoPoint136.SetMarkerSize(0);
+	_theoPoint136.SetLineColor(_theoColorG);
+	_theoPoint136.SetLineWidth(2);
+	_theoPoint136.SetPoint(1, _xpos, _sigma_theo );
+	_theoPoint136.SetPointError( 1, _dx/2., 0 );
+	_theoPoint136.DrawClone("ez");
 
+	
 
 	if (version != 3 && version != 4 && version !=6 && version !=7) {
 	txt[ntxt] = "CMS 95%CL limits at 7, 8 and 13 TeV";
@@ -401,7 +464,17 @@ if (version !=20 && version != 9){
  	txtAlign[ntxt] = 12;
 	txtFont[ntxt] = 42;
 	ntxt++;
-}
+
+	txt[ntxt] = "13.6 TeV CMS measurement (L #leq 1 fb^{-1})";
+	txtSize[ntxt] = 0.025;
+	txtX[ntxt] = _xpos + _dx;
+	txtY[ntxt] = _sigma_theo/(dy_);
+ 	txtAlign[ntxt] = 12;
+	txtFont[ntxt] = 42;
+	ntxt++;
+
+
+ }
 
 	txt[ntxt] = "Theory prediction";
 	txtSize[ntxt] = 0.025;
@@ -897,6 +970,7 @@ Sigma(float ymin=0.0001, float ymax=600000 )
      if  (iChan == k_tW13) type = 13;
 
 
+      if  (iChan == k_tt136) type = 136;
       if  (iChan == k_tt13) type = 13;
       if  (iChan == k_ttZ13) type = 13;
       if  (iChan == k_ttW13) type = 13;
