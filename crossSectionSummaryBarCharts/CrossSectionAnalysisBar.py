@@ -4,11 +4,13 @@ import matplotlib.gridspec as gridspec
 import matplotlib.transforms as transforms
 from matplotlib.ticker import ScalarFormatter
 import matplotlib.patches as patches
+import numpy as np
 fig, ax = plt.subplots()
 
 #----------------------------#Configure plot from here#----------------------#
+largePlot = False
 scale = 0.5
-textsize = 30.*scale
+textsize = 40.*scale
 bar_color = 'xkcd:light orange'
 bar_edge_color = 'xkcd:royal blue'
 yaxis_label_color = 'black'
@@ -18,6 +20,9 @@ title_color = 'xkcd:dark orange'
 bar_height  =  0.30*scale
 #ratioPlot = False
 verbose = False
+
+if largePlot:
+    bar_height = 1.0*scale
 
 def adjust_lightness(color,amount=0.5):
     import matplotlib.colors as mc
@@ -111,13 +116,14 @@ class CrossSectionAnalysisBar:
 #
 class CrossSectionAnalysisBars:
 
-    def __init__(self,verbose=False,jets=False,category=None):
+    def __init__(self,verbose=False,jets=False,paperformat=False,category=None):
         self.allBars = [ ]
         self.barsPerCat = { }
 
-        self.categories = { 'EW' : { 'name_tex' : "Electroweak", 'name_size' : 1., 'color' : 'xkcd:baby blue' }, 
-                            'DB' : { 'name_tex' : "di-Boson", 'name_size' : 1., 'color' : 'xkcd:apricot' },
-                            'TB' : { 'name_tex' : "tri-Boson", 'name_size' : 1., 'color' : 'xkcd:wheat' },
+        self.categories = { 'QCD' : { 'name_tex' : "QCD", 'name_size' : 1., 'color' : 'xkcd:red' },
+                            'EW' : { 'name_tex' : "EW single-Boson", 'name_size' : 1., 'color' : 'xkcd:baby blue' },
+                            'DB' : { 'name_tex' : "EW di-Boson", 'name_size' : 1., 'color' : 'xkcd:apricot' },
+                            'TB' : { 'name_tex' : "EW tri-Boson", 'name_size' : 1., 'color' : 'xkcd:wheat' },
                             'VBS' : { 'name_tex' : "VBF and VBS", 'name_size' : 1., 'color' : 'xkcd:light olive' },
                             'TOP' : { 'name_tex' : "Top", 'name_size' : 1., 'color' : 'xkcd:lavender' },
                             'HIG' : { 'name_tex' : "Higgs", 'name_size' : 1., 'color' : 'xkcd:blush' },
@@ -125,13 +131,16 @@ class CrossSectionAnalysisBars:
 
         self.verbose = verbose
         self.jets = jets
+        self.paperformat = paperformat
 
     def setverbose(self,verbose):
         self.verbose = verbose
     def setjets(self,jets):
         self.jets = jets
+    def setpaperformat(self,paperformat):
+        self.paperformat = paperformat
     
-        
+
     def add(self,category=None,name=None,pub=None,cadi=None,paper=None,lumi=None,model=None,comment=None,\
             finalstate=None,crossSection=None,eTotm=None,eTotp=None,eStatm=None,eStatp=None,eSystm=None,eSystp=None,\
             crossSectionR=None,eRTotm=None,eRTotp=None,eRStatm=None,eRStatp=None,eRSystm=None,eRSystp=None,\
@@ -162,16 +171,17 @@ class CrossSectionAnalysisBars:
         
 class CrossSectionAnalysisCategory:
     
-    def __init__(self,verbose,jets,ratio,category,ABs):
+    def __init__(self,verbose,jets,ratio,paperformat,category,ABs):
 
         self.verbose = verbose;
         self.jets = jets;
         self.ratio = ratio;
+        self.paperformat = paperformat;
         
         self.ABs_list = ABs.getBars(category)
         
         self.name_tex = ABs.categories[category]["name_tex"]
-        self.name_size = 1.25*ABs.categories[category]["name_size"]
+        self.name_size = 2.25*ABs.categories[category]["name_size"]
         self.bar_color = ABs.categories[category]["color"]
         
         self.bars_color = [ ]
@@ -191,10 +201,14 @@ class CrossSectionAnalysisCategory:
         self.bar_labels = [ ]      # bar labels
         
         self.xmax = 0.
+        self.xmin = 1000000000000000.0
         self.ax = None
 
         self.theoryCrossSection = 0.0;
 
+    
+
+        
         #print(self.ratio)
         
         index = 0
@@ -226,6 +240,13 @@ class CrossSectionAnalysisCategory:
                 self.bar_labels.append(al.crossSection)
                 # keep trace of maximum limit
                 if (al.crossSection+al.eTotp)>self.xmax: self.xmax = al.crossSection+al.eTotp
+                # keep trace of mim limit
+                if (al.crossSection-al.eTotm) > 0.0 and (al.crossSection-al.eTotm)<self.xmin: self.xmin = al.crossSection-al.eTotm
+                if (al.crossSection) > 0.0 and (al.crossSection)<self.xmin: self.xmin = al.crossSection
+                print(al.crossSection)
+                print('new measurement')
+                print(al.eTotm)
+                print(self.xmin)
                 self.bar_vtheorylows.append(al.theoryCrossSection-al.eTheorym)
                 self.bar_vtheoryhighs.append(al.theoryCrossSection+al.eTheoryp)
             if self.ratio: self.xmax = 5.0
@@ -233,22 +254,29 @@ class CrossSectionAnalysisCategory:
             theorystring = "%0.1f fb" % (al.crossSection)
             self.bar_vtheory.append('https://large-type.com/#*'+theorystring+'*')
             bar_color = ABs.categories[category]["color"]
-            if al.energy == "7 TeV":
-                bars_color = adjust_lightness(bar_color,1.0)
+            if al.energy == "2.76 TeV":
+                bars_color = adjust_lightness(bar_color,0.8)
+            elif al.energy == "5.02 TeV":
+                bars_color = adjust_lightness(bar_color,0.7)
+            elif al.energy == "7 TeV":
+                bars_color = adjust_lightness(bar_color,0.6)
             elif al.energy == "8 TeV":
-                bars_color = adjust_lightness(bar_color,0.8)
+                bars_color = adjust_lightness(bar_color,0.5)
             elif al.energy == "13 TeV":
-                bars_color = adjust_lightness(bar_color,0.8)
+                bars_color = adjust_lightness(bar_color,0.4)
+            elif al.energy == "13.6 TeV":
+                bars_color = adjust_lightness(bar_color,0.3)
             else:
-                bars_color = adjust_lightness(bar_color,0.4)           
+                bars_color = adjust_lightness(bar_color,0.1)           
             self.bars_color.append(bars_color)
             self.bar_color = adjust_lightness(bar_color,0.8)
 
             
             index += 1
         self.nbars = index
-        self.xmax = self.xmax*10.0
+        #self.xmax = self.xmax*1.0
         if self.ratio: self.xmax = 10.0
+        #self.xmin = self.xmin/1.0
         #
         # bars are stacked: subtract lower limits
         #
@@ -288,7 +316,7 @@ class CrossSectionAnalysisCategory:
             ax.get_yticklabels()[i].set_size(0.6*bar_height_points)
             ax.get_yticklabels()[i].set_color(yaxis_label_color)
 
-        if not (self.ratio) : ax.set_xlabel(r"$\sigma$ [fb]",weight='bold',size=0.85*bar_height_points)
+        if not (self.ratio) : ax.set_xlabel(r"$\sigma$",weight='bold',size=0.85*bar_height_points)
         if (self.ratio) : ax.set_xlabel(r"$\sigma_{meas}/\sigma_{th}$",weight='bold',size=0.85*bar_height_points)
         
         # x-axis tick marks inside the plot; no y-axis tick marks
@@ -298,7 +326,7 @@ class CrossSectionAnalysisCategory:
         ax.set_xlim(xlim)
         ax.set_ylim([0,self.nbars+1])
         if logx: plt.xscale('log')
-        ax.xaxis.set_major_formatter(ScalarFormatter())
+        #ax.xaxis.set_major_formatter(ScalarFormatter())
         
         box = patches.Rectangle((0.01,0.2),0.028,(self.nbars+1)-0.4,
                                 fill=True, transform=transFD, clip_on=False, color=self.bar_color)
@@ -334,7 +362,9 @@ class CrossSectionAnalysisCategory:
             
             #xloc = gap[0] + self.bar_vlows[index]
             xloc = gap[0] + self.bar_vhighs[index]
-            xloclim = self.bar_vhighs[index]
+            xloclim = self.bar_vlows[index]
+            print('xloclim ',xloclim)
+            #if xloclim < 0.0000001 : xloclim = self.bar_vhighs[index] 
             if logx:
                 xloclim = xloclim / exp(gap[0])
             else:
@@ -362,38 +392,63 @@ class CrossSectionAnalysisCategory:
                     if verbose: print (arxiv_url)
 
             barreflocation =0.11
+            if largePlot: barreflocation = 0.21
             if self.ratio: barreflocation = 0.125
-            bar_text = ax.text(barreflocation, yloc, bar_string, horizontalalignment='left',
+            if (not self.paperformat) :
+                bar_text = ax.text(barreflocation, yloc, bar_string, horizontalalignment='left',
                        verticalalignment='center', color=desc_text_color,
                        transform = transFD, clip_on=False, size=0.7*bar_height_points,
                        url=arxiv_url, 
                        bbox = dict(color='w', alpha=0.01, url=arxiv_url))
-            bar_texts.append(bar_text)
+            if (not self.paperformat) : bar_texts.append(bar_text)
 
             bar_header = ax.text(0.048, yloc, r""+al.header+"", horizontalalignment='left',
                                 verticalalignment='center', color='black',
                                 transform = transFD,
-                                clip_on=False, size=0.7*bar_height_points, url=arxiv_url, 
+                                clip_on=False, size=0.85*bar_height_points, url=arxiv_url, 
                                 bbox = dict(color='w', alpha=0.01, url=arxiv_url))
-            bar_texts.append(bar_header)
+            print("paper format: ",self.paperformat)
+            if (not self.paperformat) : bar_texts.append(bar_header)
 
             # 0.09 for full plot 0.08 for jets plot
-            energylocation = 0.08;
-            if al.energy == "7 TeV":
+            energylocation = 0.09;
+            if largePlot: energylocation = 0.13
+            if largePlot and self.name_tex == 'VBF and VBS': energylocation = 0.145
+            if al.energy == "2.76 TeV":
+                bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
+                                verticalalignment='center', color='grey',
+                                transform = transFD,
+                                clip_on=False, size=0.85*bar_height_points)
+            elif al.energy == "5.02 TeV":
+                bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
+                                verticalalignment='center', color='grey',
+                                transform = transFD,
+                                clip_on=False, size=0.85*bar_height_points)
+            elif al.energy == "7 TeV":
                 bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
                                 verticalalignment='center', color='black',
                                 transform = transFD,
-                                clip_on=False, size=0.7*bar_height_points)
+                                clip_on=False, size=0.85*bar_height_points)
             elif al.energy == "8 TeV":
                 bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
                                 verticalalignment='center', color='blue',
                                 transform = transFD,
-                                clip_on=False, size=0.7*bar_height_points)
+                                clip_on=False, size=0.85*bar_height_points)
+            elif al.energy == "13 TeV":
+                bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
+                                verticalalignment='center', color='red',
+                                transform = transFD,
+                                clip_on=False, size=0.85*bar_height_points)
+            elif al.energy == "13.6 TeV":
+                bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
+                                verticalalignment='center', color='red',
+                                transform = transFD,
+                                clip_on=False, size=0.85*bar_height_points)
             else:
                 bar_energy = ax.text(energylocation, yloc, r""+al.energy+"", horizontalalignment='left',
                                 verticalalignment='center', color='red',
                                 transform = transFD,
-                                clip_on=False, size=0.7*bar_height_points)
+                                clip_on=False, size=0.85*bar_height_points)
  
             bar_texts.append(bar_energy)
 
@@ -409,13 +464,13 @@ class CrossSectionAnalysisCategory:
                 if verbose : print(limstring)
                 bar_limit = ax.text(0.20, yloc, limstring, horizontalalignment='left',
                                     verticalalignment='center', color='black',
-                                    transform = transFD, clip_on=False, size=0.7*bar_height_points)
+                                    transform = transFD, clip_on=False, size=0.85*bar_height_points)
                 bar_texts.append(bar_limit)
                 
                 theorystring = r"$\sigma_{th}$("+al.header+") = "+"$%0.2g^{+%0.2g}_{-%0.2g}$ fb" % (al.theoryCrossSection,al.eTheoryp,al.eTheorym)    
                 bar_theory = ax.text(0.38, yloc, theorystring, horizontalalignment='left',
                                     verticalalignment='center', color='black',
-                                    transform = transFD, clip_on=False, size=0.7*bar_height_points)
+                                    transform = transFD, clip_on=False, size=0.85*bar_height_points)
                 bar_texts.append(bar_theory)
          
                 if self.bar_vlows[index]>0.:
@@ -428,36 +483,71 @@ class CrossSectionAnalysisCategory:
                 if verbose : print(limstring)
                 bar_ratio = ax.text(0.50, yloc, ratiostring, horizontalalignment='left',
                                     verticalalignment='center', color='black',
-                                    transform = transFD, clip_on=False, size=0.7*bar_height_points)
+                                    transform = transFD, clip_on=False, size=0.85*bar_height_points)
                 bar_texts.append(bar_ratio)
 
 
                 
             #limstring = "%g" % (self.bar_vhighs[index])
             xloclimfactor = 1.5
+            xLargeTextFactor = 0.5
+            if largePlot: xLargeTextFactor = 0.5
+            if largePlot and self.name_tex == 'Electroweak': xLargeTextFactor = 10.0
             if not self.ratio:
                 if self.bar_vlows[index]>0.:
+                    # np.set_printoptions(suppress=True)
                     # limstring = "%0.2g$-$%0.2g " % (self.bar_vlows[index],self.bar_vhighs[index])
                     # define to crossSection instead
-                    limstring = r"$\sigma$("+al.header+") = "+"%0.2g fb" % (self.bar_crossSection[index])
+                    if (self.bar_crossSection[index] < 100.0) :
+                        limstring = r"$\sigma$("+al.header+") = "+"%0.2g fb" % (self.bar_crossSection[index])
+                    elif (self.bar_crossSection[index] < 100000.0) :
+                        limstring = r"$\sigma$("+al.header+") = "+"%0.2g pb" % (self.bar_crossSection[index]/1000.0)
+                    elif (self.bar_crossSection[index] < 100000000.0) :
+                        limstring = r"$\sigma$("+al.header+") = "+"%0.2g nb" % (self.bar_crossSection[index]/1000000.0)
+                    elif (self.bar_crossSection[index] < 1000000000.0) :
+                        limstring = r"$\sigma$("+al.header+") = "+"%0.2g $\mu$b" % (self.bar_crossSection[index]/1000000000.0)
+                    elif (self.bar_crossSection[index] < 100000000000000.0) :
+                        limstring = r"$\sigma$("+al.header+") = "+"%0.2g b" % (self.bar_crossSection[index]/1000000000.0)
                     xloclimfactor = 1.5
                 else:
-                    limstring = r"$\sigma$("+al.header+") < "+"%0.2g fb" % (self.bar_vhighs[index])
+                    if (self.bar_vhighs[index] < 100.0) :
+                        limstring = r"$\sigma$("+al.header+") < "+"%0.2g fb" % (self.bar_vhighs[index])
+                    elif (self.bar_vhighs[index] < 100000.0) :
+                        limstring = r"$\sigma$("+al.header+") < "+"%0.2g pb" % (self.bar_vhighs[index]/1000.0)
 
-                if self.bar_vtheoryhighs[index]>self.bar_vhighs[index]: xloclimfactor = xloclimfactor*self.bar_vtheoryhighs[index]/self.bar_vhighs[index]
+                #if self.bar_vtheoryhighs[index]>self.bar_vhighs[index]: xloclimfactor = xloclimfactor*self.bar_vtheoryhighs[index]/self.bar_vhighs[index]
+                if self.bar_vtheorylows[index]<self.bar_vlows[index]: xloclimfactor = xloclimfactor*self.bar_vtheorylows[index]/self.bar_vlows[index]
 
-                bar_limit = ax.text(xloclim*xloclimfactor, yloc, limstring, horizontalalignment='left',
+                print(xloclim)
+                print(xloclimfactor)
+                if xloclim != 0.0 :
+                    if (not self.paperformat):
+                        bar_limit = ax.text(xloclim*xloclimfactor*xLargeTextFactor, yloc, limstring, horizontalalignment='right',
                                     verticalalignment='center', color=desc_text_color,
-                                    clip_on=True, size=0.7*bar_height_points, url=arxiv_url, 
+                                    clip_on=True, size=0.85*bar_height_points, url=arxiv_url, 
                                    bbox = dict(color='w', alpha=0.01, url=arxiv_url))
-                bar_texts.append(bar_limit)
+                else :
+                    if (not self.paperformat):
+                        bar_limit = ax.text(self.bar_vhighs[index]*xloclimfactor*xLargeTextFactor*2.0, yloc, limstring, horizontalalignment='left',
+                                    verticalalignment='center', color=desc_text_color,
+                                    clip_on=True, size=0.85*bar_height_points, url=arxiv_url, 
+                                   bbox = dict(color='w', alpha=0.01, url=arxiv_url))
+                                  
+                if (not self.paperformat): bar_texts.append(bar_limit)
 
             lumistring = "%.0f fb$^{-1}$" % (float(al.lumi))
             if float(al.lumi)<1.0:
                 lumistring = "%.0f pb$^{-1}$" % (float(al.lumi)*1000.0)
-            bar_lumi = ax.text(xloclumi, yloc, r" "+lumistring, horizontalalignment='left',
+            if float(al.lumi)<0.001:
+                lumistring = "%.0f nb$^{-1}$" % (float(al.lumi)*1000000.0)
+            if float(al.lumi)<0.000001:
+                lumistring = "%.0f $\mu$b$^{-1}$" % (float(al.lumi)*1000000000.0)
+            if float(al.lumi)<=.0:
+                lumistring = "o $\mu$b$^{-1}$"
+            if (not self.paperformat):
+                bar_lumi = ax.text(xloclumi, yloc, r" "+lumistring, horizontalalignment='left',
                                 verticalalignment='center', color='black',
-                                clip_on=False, size=0.9*bar_height_points)
+                                clip_on=False, size=0.85*bar_height_points)
             
                 #annot = ax.annotate("test", xy=(xloclim*xloclimfactor, yloc), xytext=(-2, 2), textcoords="offset points",
             #                    bbox=dict(boxstyle="round", fc="w"),

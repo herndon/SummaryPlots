@@ -3,5 +3,5 @@
   setTDRStyle();  
   version=0;
   TString str("SigmaNew_v"); str+=version;
-  Sigma()->Print(str+".png");
-  //Sigma()->Print(str+".pdf");
+  //Sigma()->Print(str+".png");
+  Sigma()->Print(str+".pdf");
