@@ -30,7 +30,7 @@ Modified the .csv file to include a proper label column (and some renaming of co
 
 The same .csv file can be used for any configuration of cross sections in the plot, just needs to be extended.
 
-The configuration to be shown in the plot is steered with the .yml files, provided here e.g. as `top_xs_summary.yml`. This encodes the order, grouping and labels of the data, e.g.:
+The configuration to be shown in the plot is steered with the .yml files, provided here e.g. as `data_top_summary.yml`. This encodes the order, grouping and labels of the data, e.g.:
 ```
 ttjets:
     data:
