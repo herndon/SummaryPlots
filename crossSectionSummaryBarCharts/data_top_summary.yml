@@ -1,0 +1,77 @@
+ttbar:
+    data:
+        ttbar_13p6:
+        ttbar_13:
+        ttbar_8:
+        ttbar_7:   
+        ttbar_5:
+    label: $t\overline{t}$
+ttjets:
+    data:
+        ttbar_0j: $0j\ (p_{T} > 25\,GeV, |\eta| < 2.5)$
+        ttbar_1j: $1j$
+        ttbar_2j: $2j$
+        ttbar_3j: $3j$
+        ttbar_4j: ${\geq}4j$
+        ttbb_13: ${\geq}2b\ (p_{T} > 20\,GeV, |\eta| < 2.4)$
+        ttcc_13: ${\geq}2c\ (p_{T} > 20\,GeV, |\eta| < 2.4)$
+    label: $t\overline{t}{+}jets$
+tchannel:
+    data:
+        tchannel_13:
+        tchannel_8:
+        tchannel_7:
+    label: $t_{t-chan.}$
+tW: 
+    data:
+        tW_13:
+        tW_8:
+        tW_7:
+    label: $tW$
+schannel:
+    data:
+        schannel_8:
+        schannel_7:
+    label: $t_{s-chan.}$
+ttgamma:
+    data:
+        ttgamma_13:
+        ttgamma_8:
+    label: $t\overline{t}\gamma$
+tgamma:
+    data:
+        tgamma_13:
+    label: $t\gamma$
+ttZ:
+    data:
+        ttZ_13:
+        ttZ_8:
+    label: $t\overline{t}Z$
+tZq:
+    data:
+        tZq_13:
+        tZq_8:
+    label: $tZq$
+tZW:
+    data:
+        tWZ_13:
+    label: $tWZ$
+ttW:
+    data:
+        ttW_13:
+        ttW_8:
+    label: $t\overline{t}W$
+ttH:
+    data:
+        ttH_13:
+        ttH_8:
+    label: $t\overline{t}H$
+#tH:
+#    data:
+#        tH_13:
+#    label: $tH$
+tttt:
+    data:
+        tttt_13:
+        #tttt_8:
+    label: $t\overline{t}t\overline{t}$
