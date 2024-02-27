@@ -23,3 +23,33 @@ python3 makeCrossSectionBarChart.py -g -j -l EW DB TOP HIG
 
 python3 makeCrossSectionBarChart.py -g -r ALL
 
+
+# stairway plot (2024)
+
+Modified the .csv file to include a proper label column (and some renaming of columns for clarity).
+
+The same .csv file can be used for any configuration of cross sections in the plot, just needs to be extended.
+
+The configuration to be shown in the plot is steered with the .yml files, provided here e.g. as `top_xs_summary.yml`. This encodes the order, grouping and labels of the data, e.g.:
+```
+ttjets:
+    data:
+        ttbar_0j: $0j\ (p_{T} > 25\,GeV, |\eta| < 2.5)$
+        ttbar_1j: $1j$
+        ttbar_2j: $2j$
+        ttbar_3j: $3j$
+        ttbar_4j: ${\geq}4j$
+        ttbb_13: ${\geq}2b\ (p_{T} > 20\,GeV, |\eta| < 2.4)$
+        ttcc_13: ${\geq}2c\ (p_{T} > 20\,GeV, |\eta| < 2.4)$
+    label: $t\overline{t}{+}jets$
+```
+will produce on group in the plot with the given label, consisting of the data entries (top to bottom), where each has a separate label.
+
+The script can be used e.g. as
+```
+python3 make_xs_chart.py -i data_top_summary.csv -y data_top_summary.yml -o . --no-date
+```
+For labelling the plot the journal column of the .csv is printed next to the data point, and a hyperlink to the CMS public page is added (based on the cadi line number given).
+
+
+    
