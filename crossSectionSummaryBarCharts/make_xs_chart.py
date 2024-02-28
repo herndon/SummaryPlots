@@ -10,14 +10,16 @@ style = {
     "13.0": ("#e42536", "o"),
     "8.0":  ("#5790FC", "^"), 
     "7.0":  ("#f89c20", "v"),
-    "5.02": ("#964a8b", "s")
+    "5.02": ("#964a8b", "s"),
+    "2.76": ("#69d84f", "d")
     }
 label_style = {
     "13.6": r"13.6 TeV ($L \leq 5\,fb^{-1}$)",
     "13.0": r"13 TeV ($L \leq 138\,fb^{-1}$)",
     "8.0":  r"8 TeV ($L \leq 19.6\,fb^{-1}$)", 
     "7.0":  r"7 TeV ($L \leq 5\,fb^{-1}$)",
-    "5.02": r"5.02 TeV ($L \leq 231\,nb^{-1}$)"
+    "5.02": r"5.02 TeV ($L \leq 231\,nb^{-1}$)",
+    "2.76": r"2.76 TeV ($L \leq 231\,nb^{-1}$)"
     }
 def get_style(com):
     cfg = style.get(str(com), None)
@@ -50,6 +52,7 @@ parser = optparse.OptionParser("""
 parser.add_option("-i", dest="in_file", help="Input csv file (data)")
 parser.add_option("-y", dest="in_yaml", help="Input yml file (plotting order)")
 parser.add_option("-o", dest="out_dir", default=".", help="Output directory")
+parser.add_option("-d", dest="data_set", default="cms", help="data set")
 parser.add_option("--cmslabel", "-l", dest="cmslabel", default="",
         help="Label on top of plot (e.g. Preliminary)")
 parser.add_option("--no-date", dest="date_label", default=True, action="store_false",
@@ -205,6 +208,7 @@ plt.rcParams.update({"font.size": 35})
 length = 0
 for group in plot_data:
     n_entries = len(plot_data[group]["data"])
+    print(n_entries)
     if n_entries == 1:
         length += 2
     else:
@@ -264,7 +268,7 @@ for group in plot_data:
 
 # save fig
 timestamp = time.strftime("%Y_%m_%d",time.localtime())
-out_file = os.path.join(opts.out_dir, f"xs_summary_{timestamp}.pdf")
+out_file = os.path.join(opts.out_dir, f"xs_{opts.data_set}_summary_{timestamp}.pdf")
 # make nice
 ax.set_xscale("log")
 

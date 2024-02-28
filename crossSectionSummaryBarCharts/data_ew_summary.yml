@@ -1,0 +1,74 @@
+W:
+    data:
+#        W13:
+        W8:
+        W:
+#        W5:   
+        W276:
+    label: $W$
+Z:
+    data:
+#        Z136:
+#        Z13:
+        Z8:
+        Z:
+#        Z5:   
+        Z276:
+    label: $Z$
+g:
+    data:
+        incg:
+    label: $\gamma$
+Wg:
+    data:
+        Wg13:
+        Wg:
+    label: $W\gamma$
+Zg:
+    data:
+        Zg8:
+        Zg:
+    label: $Z\gamma$
+WW:
+    data:
+        WW13:
+        WW8:
+        WW:
+        WW5:
+    label: $WW$
+WZ:
+    data:
+        WZ13:
+        WZ8:
+        WZ:
+        WZ5:
+    label: $WZ$
+ZZ:
+    data:
+        ZZ13:
+        ZZ8:
+        ZZ:
+        ZZ5:
+    label: $ZZ$
+VVV:
+    data:
+        VVV13:
+        WWW13:
+        WWZ13:
+        WZZ13:
+        ZZZ13:
+    label: "VVV\n WWW\n WWZ\n WZZ\n ZZZ"
+Wgg:
+    data:
+        Wgg13:
+        Wgg8:
+    label: $W\gamma\gamma$
+Zgg:
+    data:
+        Zgg13:
+        Zgg8:
+    label: $Z\gamma\gamma$
+WWg:
+    data:
+        WWg13:
+    label: $WW\gamma$
