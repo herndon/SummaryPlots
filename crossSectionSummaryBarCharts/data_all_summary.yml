@@ -1,7 +1,19 @@
+totin:
+    data:
+        cmsin13:
+        cmsin:
+    label: "total\n inelastic"
 g:
     data:
         incg:
     label: $\gamma$
+jet:
+    data:
+        incj13:
+        incj8:
+        incj:
+        incj276:
+    label: "inclusive\n jet"
 W:
     data:
         W13:

@@ -21,6 +21,8 @@ bool noTop = false;
 
 bool useTOTEM = false;
 bool inProgress = true;
+bool publishedOnly = true;
+
 
 bool condenseFormat = false;
 
@@ -28,7 +30,7 @@ bool condenseFormat = false;
 bool exportExeFormat = true;
 bool exportTopFormat = true;
 
-
+bool noScale = true;
 
 bool lessLimits = true;
 bool noJets = true;
@@ -2070,8 +2072,8 @@ scale_ = 1.0;
 // https://arxiv.org/abs/1205.6334
 // PLB 715 (2012) 66
 
-scale_ = 1000.0/W_br_lnu;
-//scale_ = 1000.0;
+scale_ = 1000.0;
+if (!noScale) scale_ = 1000.0/W_br_lnu;
 
   chanMeasurement[k_W276]= "W";
   chanLumi[k_W276]= "0.000231 fb^{-1}";
@@ -2103,7 +2105,7 @@ scale_ = 1000.0/W_br_lnu;
 
 //W 5.02 TeV 
 // SMP-20-004
-scale_ = 1.0/W_br_lnu;;
+if (!noScale) scale_ = 1.0/W_br_lnu;;
 
   chanMeasurement[k_W5]= "W";
   chanLumi[k_W5]= "0.298 fb^{-1}";
@@ -2144,8 +2146,8 @@ scale_ = 1.0;
   chanPreprint[k_W] = "1107.4789";
   chanPublication[k_W] = "JHEP 10 (2011) 132";
 
-
-  scale_ = (1000./W_br_lnu);
+scale_ = 1000.0;
+if (!noScale)   scale_ = (1000./W_br_lnu);
 if (version==3) scale_ = 1000.*0.4933;
 // Scaling proceedure: by W branchign ratio
  chanSigma[k_W]  = 10.30 * scale_; 
@@ -2214,6 +2216,9 @@ if (version==3) scale_ = 1000.*0.4933;
   // chanETheo[k_W8] = 0.32 * scale_;
 
 // W 8 TeV PRL 18.2 pb http://arxiv.org/abs/1402.0923
+  scale_ = 1000.0;
+  if (!noScale) scale_ = 1.0/W_br_lnu;;
+
   chanMeasurement[k_W8]    = "W";
   chanLumi[k_W8] = "0.018 fb^{-1}";
   chanCadi[k_W8] = "SMP-12-011";
@@ -2237,33 +2242,36 @@ if (version == 3) scale_ = 1000.*0.4595;
 
 
 // W 13 http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-004/index.html
-  if (use13TeV) chanMeasurement[k_W13]    =  "W";
-  chanLumi[k_W13] = "0.043 fb^{-1}";
-  chanCadi[k_W13] = "SMP-15-004";
-  chanPreprint[k_W13] = "https://cds.cern.ch/record/2093537";
-//chanPublication[k_W13] = None
+/*   if (use13TeV) chanMeasurement[k_W13]    =  "W"; */
+/*   chanLumi[k_W13] = "0.043 fb^{-1}"; */
+/*   chanCadi[k_W13] = "SMP-15-004"; */
+/*   chanPreprint[k_W13] = "https://cds.cern.ch/record/2093537"; */
+/* //chanPublication[k_W13] = None */
 
-if (big13TeV) chanMeasurement[k_W13]    =  "#splitline{   W}{13Tev}";
+/* if (big13TeV) chanMeasurement[k_W13]    =  "#splitline{   W}{13Tev}"; */
 
-if (version == 3) scale_ = 1000.*0.4595;
+/* if (version == 3) scale_ = 1000.*0.4595; */
 
-// Scaling proceedure: by W branching ratio
-  chanSigma[k_W13]  = 19.950 * scale_; 
-  chanEStat[k_W13]  =  0.120 * scale_;
-chanESyst[k_W13]  =  sqrt(.360*.360+.960*.960) * scale_;
-  chanETot[k_W13]   =  sqrt( 
-			  chanEStat[k_W13]*chanEStat[k_W13]
-			  +
-			  chanESyst[k_W13]*chanESyst[k_W13]
-			   );
-  chanTheo[k_W13] = 19.700 * scale_;
-  chanETheo[k_W13] = 0.515 * scale_;
-// +560-470
+/* // Scaling proceedure: by W branching ratio */
+/*   chanSigma[k_W13]  = 19.950 * scale_;  */
+/*   chanEStat[k_W13]  =  0.120 * scale_; */
+/* chanESyst[k_W13]  =  sqrt(.360*.360+.960*.960) * scale_; */
+/*   chanETot[k_W13]   =  sqrt(  */
+/* 			  chanEStat[k_W13]*chanEStat[k_W13] */
+/* 			  + */
+/* 			  chanESyst[k_W13]*chanESyst[k_W13] */
+/* 			   ); */
+/*   chanTheo[k_W13] = 19.700 * scale_; */
+/*   chanETheo[k_W13] = 0.515 * scale_; */
+/* // +560-470 */
 
 
+if (!publishedOnly) {
 //W 13 TeV 
 // SMP-20-004
-scale_ = 1.0/W_br_lnu;;
+
+    scale_ = 1.0;
+if (!noScale) scale_ = 1.0/W_br_lnu;;
 
   chanMeasurement[k_W13]= "W";
   chanLumi[k_W13]= "0.201 fb^{-1}";
@@ -2292,6 +2300,57 @@ scale_ = 1.0/W_br_lnu;;
   chanETheo[k_W13] =  (chanETheop[k_W13]+chanETheom[k_W13])/2.0;
 // NNLL DYTURBO
 
+ }
+
+
+if (publishedOnly) {
+
+//W 13 TeV from assymetry paper
+//https://arxiv.org/abs/2008.04174 Phys. Rev. D 102 (2020) 092012  
+// https://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-18-012/index.html
+// Fiducial pt 25 to 35 eta < 2.4
+// Madgraph NLO 8.47, DYTURBO NNLO 8.930
+// Could scale by (8.930/(8.47*(11669.8364317421+2910.00736055506)/(11708.1549317985+2906.51165323891)))*(21.040/8.930)    
+    // NLO to NNLO k factor, fid xs' at NNLO, fid to total at NNLO
+  
+    scale_ = (1.0/W_br_lnu)*(8.930/(8.18*(11669.8364317421+2910.00736055506)/(11708.1549317985+2906.51165323891)))*(20.070/8.930);
+
+  if (noScale) scale_ = (8.930/(8.18*(11669.8364317421+2910.00736055506)/(11708.1549317985+2906.51165323891)))*(20.070/8.930);
+
+  
+  chanMeasurement[k_W13]= "W";
+  chanLumi[k_W13]= "35.9 fb^{-1}";
+  chanCadi[k_W13] = "SMP-18-012";
+  chanPreprint[k_W13] = "2008.04174";
+  chanPublication[k_W13] = "PRD 102 (2020) 092012";
+
+// Scaling proceedure: by W branching ratio
+  chanSigma[k_W13]  =  8470.0 * scale_; 
+  chanEStatp[k_W13]  =  200.0  * scale_;
+  chanEStatm[k_W13]  =  200.0 * scale_;
+  chanEStat[k_W13]  = ( chanEStatp[k_W13] + chanEStatm[k_W13])/2.0;
+
+  chanESystp[k_W13]  =    0.0* scale_;
+  chanESystm[k_W13]  =    0.0* scale_;
+  chanESyst[k_W13]  = ( chanESystp[k_W13] + chanESystm[k_W13])/2.0;
+
+  chanETot[k_W13]   =  sqrt( 
+			   chanEStat[k_W13]*chanEStat[k_W13]
+			   +
+			   chanESyst[k_W13]*chanESyst[k_W13]
+			    );
+  chanTheo[k_W13] =  20070.0 *  (1.0/W_br_lnu);
+  chanETheop[k_W13] =  170.0 *  (1.0/W_br_lnu);
+  chanETheom[k_W13] =  230.0 *  (1.0/W_br_lnu);
+  if (noScale){
+  chanTheo[k_W13] =  20070.0;
+  chanETheop[k_W13] =  170.0;
+  chanETheom[k_W13] =  230.0;
+  }
+  chanETheo[k_W13] =  (chanETheop[k_W13]+chanETheom[k_W13])/2.0;
+
+}
+
 
 
 
@@ -2313,7 +2372,10 @@ scale_ = 1.0/W_br_lnu;;
   chanPreprint[k_Z276] = "1410.4825";
   chanPublication[k_Z276] = "JHEP 03 (2015) 022";
 
-scale_ = (1000.0/Z0_br_ll);
+scale_ = 1000.0;
+if (!noScale) scale_ = (1000.0/Z0_br_ll);
+
+
 
 // Number from Federico, systematic undertinties well treated
 // Cross section integrated of rapitity bins and extapolated to the full rapidity cross section using predictions from DYTURBO
@@ -2343,7 +2405,8 @@ scale_ = (1000.0/Z0_br_ll);
 //Z 5.02 TeV 
 // SMP-20-004
 
-scale_ = (1.0/Z0_br_ll);
+scale_ = 1.0;
+if (!noScale) scale_ = (1.0/Z0_br_ll);
 
   chanMeasurement[k_Z5]= "Z";
   chanLumi[k_Z5]= "0.0054 fb^{-1}";
@@ -2384,7 +2447,8 @@ scale_ = (1.0/Z0_br_ll);
   chanPreprint[k_Z] = "1310.7291";
   chanPublication[k_Z] = "JHEP 10 (2011) 132";
 
-scale_ = (1000.0/Z0_br_ll);
+scale_ = 1000.0;
+if (!noScale) scale_ = (1000.0/Z0_br_ll);
 if (version == 3) scale_ = 1000.*0.3876;
 
 // Scaling proceedure: by Z branching ratio
@@ -2418,6 +2482,9 @@ chanESyst[k_Z]  =  sqrt(0.0059*0.0059+0.0217*0.0217+0.0217*0.0217) * scale_;
  
 
 // Z 8 TeV PRL, 18.2 pb http://arxiv.org/abs/arXiv:1402.0923
+
+  scale_ = 1000.0;
+if (!noScale) scale_ = (1000.0/Z0_br_ll);
 
 
   chanMeasurement[k_Z8]    = "Z";
@@ -2480,35 +2547,40 @@ if (version == 3) scale_ = 1000.*0.3725;
 
 // new Z 13 http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/SMP-15-011/index.html
 // https://cds.cern.ch/record/2140105
-if (use13TeV) chanMeasurement[k_Z13]    =  "Z";
-  chanLumi[k_Z13] = "2.3 fb^{-1}";
-  chanCadi[k_Z13] = "SMP-15-011";
-  chanPreprint[k_Z13] = "https://cds.cern.ch/record/2140105";
-//chanPublication[k_Z13] = None;
+/* if (use13TeV) chanMeasurement[k_Z13]    =  "Z"; */
+/*   chanLumi[k_Z13] = "2.3 fb^{-1}"; */
+/*   chanCadi[k_Z13] = "SMP-15-011"; */
+/*   chanPreprint[k_Z13] = "https://cds.cern.ch/record/2140105"; */
+/* //chanPublication[k_Z13] = None; */
 
-if (big13TeV) chanMeasurement[k_Z13]    =  "#splitline{   Z}{13Tev}";
+/* if (big13TeV) chanMeasurement[k_Z13]    =  "#splitline{   Z}{13Tev}"; */
 
-if (version == 3) scale_ = 1000.*0.4595;
-
-
-// Scaling proceedure: by Z branching ratio
-  chanSigma[k_Z13]  = 1.870 * scale_; 
-  chanEStat[k_Z13]  =  0.002 * scale_;
-chanESyst[k_Z13]  =  sqrt(.035*.035+.051*.051) * scale_;
-  chanETot[k_Z13]   =  sqrt( 
-			  chanEStat[k_Z13]*chanEStat[k_Z13]
-			  +
-			  chanESyst[k_Z13]*chanESyst[k_Z13]
-			   );
-  chanTheo[k_Z13] = 1.870 * scale_;
-  chanETheo[k_Z13] = 0.045 * scale_;
-// +50-40
+/* if (version == 3) scale_ = 1000.*0.4595; */
 
 
+/* // Scaling proceedure: by Z branching ratio */
+/*   chanSigma[k_Z13]  = 1.870 * scale_;  */
+/*   chanEStat[k_Z13]  =  0.002 * scale_; */
+/* chanESyst[k_Z13]  =  sqrt(.035*.035+.051*.051) * scale_; */
+/*   chanETot[k_Z13]   =  sqrt(  */
+/* 			  chanEStat[k_Z13]*chanEStat[k_Z13] */
+/* 			  + */
+/* 			  chanESyst[k_Z13]*chanESyst[k_Z13] */
+/* 			   ); */
+/*   chanTheo[k_Z13] = 1.870 * scale_; */
+/*   chanETheo[k_Z13] = 0.045 * scale_; */
+/* // +50-40 */
+
+
+
+
+if (!publishedOnly) {
 //Z 13 TeV 
 // SMP-20-004
 // https://cds.cern.ch/record/2868090
-scale_ = 1.0/Z0_br_ll;
+
+scale_ = 1.0;
+if (!noScale) scale_ = 1.0/Z0_br_ll;
 
   chanMeasurement[k_Z13]= "Z";
   chanLumi[k_Z13]= "0.201 fb^{-1}";
@@ -2536,10 +2608,63 @@ scale_ = 1.0/Z0_br_ll;
   chanETheo[k_Z13] =  (chanETheop[k_Z13]+chanETheom[k_Z13])/2.0;
 // NNLL DYTURBO
 
+}
+
+if (publishedOnly) {
+
+  // Z 13 TeV from phi*
+  // https://arxiv.org/abs/1909.04133 JHEP 12 (2019) 061
+  // https://cms-results.web.cern.ch/cms-results/public-results/publications/SMP-17-010/index.html
+  // Fiducial pT > 25, eta < 2.4 |mll − 91.1876GeV| < 15 GeV
+  // FEWZ NNPDF 3.1 719, DYTURBO NNPDF 3.1 says 743 60 to 120  
+  // Thus a scaling for the main plot could be (743.0/719.0)*(1940.0/743.0)
+    
+    scale_ = (743.0/719.0)*(1940.0/743.0);
+  if (!noScale) scale_ = (1.0/Z0_br_ll)*(743.0/719.0)*(1940.0/743.0);
+
+  chanMeasurement[k_Z13]= "Z";
+  chanLumi[k_Z13]= "35.9 fb^{-1}";
+  chanCadi[k_Z13] = "SMP-17-010";
+  chanPreprint[k_Z13] = "1909.04133";
+  chanPublication[k_Z13] = "JHEP 12 (2019) 061";
+
+  chanSigma[k_Z13]  =  694. * scale_; 
+  chanEStatp[k_Z13]  =  6.0  * scale_;
+  chanEStatm[k_Z13]  =   6.0 * scale_;
+  chanEStat[k_Z13]  = ( chanEStatp[k_Z13] + chanEStatm[k_Z13])/2.0;
+
+  chanESystp[k_Z13]  =    17.0 * scale_;
+  chanESystm[k_Z13]  =    17.0 * scale_;
+  chanESyst[k_Z13]  = ( chanESystp[k_Z13] + chanESystm[k_Z13])/2.0;
+
+  chanETot[k_Z13]   =  sqrt( 
+			   chanEStat[k_Z13]*chanEStat[k_Z13]
+			   +
+			   chanESyst[k_Z13]*chanESyst[k_Z13]
+			    );
+  if (!noScale) {
+  chanTheo[k_Z13] =  1940 *  (1.0/Z0_br_ll);
+  chanETheop[k_Z13] =  15.0 *  (1.0/Z0_br_ll);
+  chanETheom[k_Z13] =  21.0 *  (1.0/Z0_br_ll);
+  }
+  if (noScale){
+  chanTheo[k_Z13] =  1940 *  (1.0);
+  chanETheop[k_Z13] =  15.0 *  (1.0);
+  chanETheom[k_Z13] =  21.0 *  (1.0);
+  }
+  chanETheo[k_Z13] =  (chanETheop[k_Z13]+chanETheom[k_Z13])/2.0;
+// NNLL DYTURBO
+
+
+
+ }
+  
+
 //Z 13.6 TeV 
 // SMP-22-017
 // https://cds.cern.ch/record/2868001
-scale_ = 1.0/Z0_br_ll;
+scale_ = 1.0;
+if (!noScale) scale_ = 1.0/Z0_br_ll;
 
   chanMeasurement[k_Z136]= "Z";
   chanLumi[k_Z136]= "5.04 fb^{-1}";
@@ -5490,9 +5615,11 @@ chanESystp[k_tW13]  =   sqrt(6.4*6.4 + 2.1*2.1) * scale_;
 
 scale_ = 3.0/(0.438);
 scale_ = 1.0/(0.6741*0.1086*2);
+scale_ = 1.0;
 
-chanSigma[k_ttg8]  =   0.515 * scale_; 
-  chanEStatp[k_ttg8]  =   0.108 * scale_;
+// Switch to fiducial cross section
+chanSigma[k_ttg8]  =   0.127 * scale_; 
+  chanEStatp[k_ttg8]  =   0.027 * scale_;
   chanESystp[k_ttg8]  =   0.0 * scale_;
   chanETotp[k_ttg8]   =  sqrt( 
 			   chanEStatp[k_ttg8]*chanEStatp[k_ttg8]
@@ -5500,7 +5627,7 @@ chanSigma[k_ttg8]  =   0.515 * scale_;
 			   chanESystp[k_ttg8]*chanESystp[k_ttg8]
 			    );
 
-  chanEStatm[k_ttg8]  =   0.108 * scale_;
+  chanEStatm[k_ttg8]  =   0.027 * scale_;
   chanESystm[k_ttg8]  =   0.0 * scale_;
   chanETotm[k_ttg8]   =  sqrt( 
 			   chanEStatm[k_ttg8]*chanEStatm[k_ttg8]
@@ -5511,7 +5638,8 @@ chanSigma[k_ttg8]  =   0.515 * scale_;
   chanESyst[k_ttg8] = (chanESystp[k_ttg8] +chanESystm[k_ttg8])/2.0;
   chanETot[k_ttg8] = (chanETotp[k_ttg8] +chanETotm[k_ttg8])/2.0;
  
-
+// Switch to fiducial xs
+scale_ = 0.2380;
 
   chanTheo[k_ttg8] =   0.592 * scale_;
   chanETheop[k_ttg8] =  sqrt(0.071*0.071 + 0.030*0.030) * scale_;
@@ -5532,6 +5660,7 @@ chanSigma[k_ttg8]  =   0.515 * scale_;
 
 scale_ = 3.0/(0.438);
 scale_ = 1/(W_br_lnu*W_br_lnu);
+scale_ = 1.0;
 
   chanMeasurement[k_ttg13] = "t#bar{t}#gamma";
   if (exportExeFormat) chanMeasurement[k_ttg13] = "$\\mathrm{t\\bar{t}}\\gamma$";
@@ -5783,7 +5912,8 @@ chanETheom[k_ttW13] = sqrt(0.096*0.096+0.012*0.012) * scale_;
 // Account for BF
 
   //scale_ = scale_/(4.0*Z0_br_ll*W_br_lnu);
-  scale_ = 236.8/8.18;
+scale_ = 1.0;
+if (!noScale) scale_ = 236.8/8.18;
   chanMeasurement[k_tZq8] = "tZq";
   chanLumi[k_tZq8] = "19.7 fb^{-1}";
   chanCadi[k_tZq8] = "TOP-12-039";
@@ -5813,9 +5943,9 @@ chanETheom[k_ttW13] = sqrt(0.096*0.096+0.012*0.012) * scale_;
  
   scale_ = 1.0; 
 
-  chanTheo[k_tZq8] =   0.236 * scale_;
-  chanETheop[k_tZq8] = sqrt(0.011*0.011 + 0.011*0.011) * scale_;
-  chanETheom[k_tZq8] = sqrt(0.004*0.004 + 0.011*0.011)  * scale_;
+  chanTheo[k_tZq8] =   0.0082 * scale_;
+  chanETheop[k_tZq8] = chanTheo[k_tZq8]*0.1 ;
+  chanETheom[k_tZq8] = chanTheo[k_tZq8]*0.1 ;
   chanETheo[k_tZq8] = (chanETheop[k_tZq8] +chanETheom[k_tZq8])/2.0;
 
   scale_ = 1.0;
@@ -5831,8 +5961,8 @@ chanETheom[k_ttW13] = sqrt(0.096*0.096+0.012*0.012) * scale_;
 // https://arxiv.org/abs/2111.02860 Submitted to JHEP.
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/TOP-20-010/
 
-
-scale_ = scale_/(3.0*Z0_br_ll);
+scale_ = 1.0;
+if (!noScale) scale_ = scale_/(3.0*Z0_br_ll);
 
   chanMeasurement[k_tZq13] = "tZq";
   chanLumi[k_tZq13] = "138 fb^{-1}";
@@ -5876,8 +6006,9 @@ scale_ = scale_/(3.0*Z0_br_ll);
 // Phys. Rev. Lett. 121, 221802 (2018)
 
 // Scale by branching ratio?
+scale_ = 1.0;
 
-scale_ = 1/W_br_lnu;
+if (!noScale) scale_ = 1/W_br_lnu;
 
   chanMeasurement[k_tg13] = "t#gamma";
   if (exportExeFormat) chanMeasurement[k_tg13] = "t$\\gamma$";
@@ -6081,8 +6212,7 @@ chanTheo[k_tttt13] =   (0.0134) * scale_;
   chanPublication[k_Wg] = "PRD 89 (2014) 092005";
 
 
-
-  scale_ = (1./W_br_lnu);
+if (!noScale) scale_ = (1./W_br_lnu);
 
   chanSigma[k_Wg]  =  37.0 * scale_; 
   chanEStat[k_Wg]  =  0.8 * scale_;
@@ -6112,7 +6242,7 @@ chanTheo[k_tttt13] =   (0.0134) * scale_;
   chanPreprint[k_Wg13] = "2102.02283";
   chanPublication[k_Wg13] = "PRL 126 252002 (2021)";
 
-  scale_ = (1./W_br_lnu);
+if (!noScale) scale_ = (1./W_br_lnu);
 
   chanSigma[k_Wg13]  =  15.58 * scale_; 
   chanEStat[k_Wg13]  =  0.05 * scale_;
@@ -6199,7 +6329,7 @@ chanETheo[k_Wg13] =  sqrt(1.2*1.2+0.1*0.1) * scale_;
   chanPublication[k_Zg] = "PRD 89 (2014) 092005";
 
 
-  scale_ = (1./Z0_br_ll);
+if (!noScale) scale_ = (1./Z0_br_ll);
 
   chanSigma[k_Zg]  =  5.33 * scale_; 
   chanEStat[k_Zg]  =  0.08 * scale_;
@@ -6228,8 +6358,11 @@ chanMeasurement[k_Zg8] = "Z#gamma";
   chanPreprint[k_Zg8] = "1502.05664";
   chanPublication[k_Zg8] = "JHEP 04 (2015) 164";
 
+// Where do these numbers come from? Probably to account for pT_ell > 20 cut
+//  scale_ = ((6.4500/2100.0)/Z0_br_ll);
+scale_ = 1/1000.0;
+if (!noScale) scale_ =  1/(1000.0*Z0_br_ll);
 
-  scale_ = ((6.4500/2100.0)/Z0_br_ll);
 
   chanSigma[k_Zg8]  =  2063.0 * scale_; 
   chanEStat[k_Zg8]  =  19.0 * scale_;
@@ -9046,9 +9179,9 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
 
   chanMeasurement[k_ggH13]  = "ggH";
   chanLumi[k_ggH13]  = "139 fb^{-1}";
-  chanCadi[k_ggH13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_ggH13] = "HIG-22-001";
   chanPreprint[k_ggH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_ggH13] = "";
+  chanPublication[k_ggH13] = "Nature 607 60-68 (2022)";
 
 
 
@@ -9195,9 +9328,9 @@ chanETheom[k_VBFH8] = sqrt(0.0024*0.0024+0.021*0.021+0.004*0.004+0.022*0.022) * 
   chanMeasurement[k_VBFH13]  = "#scale[0.70]{#splitline{VBF}{qqH}}";
   if (exportExeFormat) chanMeasurement[k_VBFH13] = "VBF qqH";
   chanLumi[k_VBFH13]  = "138 fb^{-1}";
-  chanCadi[k_VBFH13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_VBFH13] = "HIG-22-001";
   chanPreprint[k_VBFH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_VBFH13] = "";
+  chanPublication[k_VBFH13] = "Nature 607 60-68 (2022)";
 
 // cross section from https://arxiv.org/abs/1610.07922 NNLO+EW
 
@@ -9382,9 +9515,9 @@ chanESystp[k_VH13]  =   sqrt(0.157*0.157*1.373*1.373+0.121*0.121*0.8837*0.8837);
 
   chanMeasurement[k_WH13]  = "WH";
   chanLumi[k_WH13]  = "138 fb^{-1}";
-  chanCadi[k_WH13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_WH13] = "HIG-22-001";
   chanPreprint[k_WH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_WH13] = "";
+  chanPublication[k_WH13] = "Nature 607 60-68 (2022)";
 
   chanTheo[k_WH13] =   (1.373 )* scale_;
 chanETheop[k_WH13] =  sqrt(1.373*0.005*1.373*0.005 + 1.373*0.019*1.373*0.019);
@@ -9432,9 +9565,9 @@ if (newHiggs) {
 
   chanMeasurement[k_ZH13]  = "ZH";
   chanLumi[k_ZH13]  = "138 fb^{-1}";
-  chanCadi[k_ZH13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_ZH13] = "HIG-22-001";
   chanPreprint[k_ZH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_ZH13] = "";
+  chanPublication[k_ZH13] = "Nature 607 60-68 (2022)";
 
   chanTheo[k_ZH13] =   (0.8837 )* scale_;
 chanETheop[k_ZH13] =  sqrt(0.8837*0.038*0.8837*0.038 + 0.8837*0.016*0.8837*0.016);
@@ -9579,9 +9712,9 @@ if (newHiggs) {
   chanMeasurement[k_ttH13]  = "t#bar{t}H";
   if (exportExeFormat) chanMeasurement[k_ttH13] = "$\\mathrm{t\\bar{t}H}$";
   chanLumi[k_ttH13]  = "138 fb^{-1}";
-  chanCadi[k_ttH13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_ttH13] = "HIG-22-001";
   chanPreprint[k_ttH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_ttH13] = "";
+  chanPublication[k_ttH13] = "Nature 607 60-68 (2022)";
 
   chanTheo[k_ttH13] =   0.5071 * scale_;
 chanETheop[k_ttH13] =  sqrt(0.058*0.058 + 0.036*0.036)*chanTheo[k_ttH13];
@@ -9630,9 +9763,9 @@ if (newHiggs) {
 
   chanMeasurement[k_tH13]  = "tH";
   chanLumi[k_tH13]  = "138 fb^{-1}";
-  chanCadi[k_tH13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_tH13] = "HIG-22-001";
   chanPreprint[k_tH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_tH13] = "";
+  chanPublication[k_tH13] = "Nature 607 60-68 (2022)";
 
 // new prediction
 chanTheo[k_tH13] =   (0.0743+0.0152) * scale_;
@@ -9862,9 +9995,9 @@ chanETot[k_HHbbgg13] = (chanETotp[k_HHbbgg13] +chanETotm[k_HHbbgg13])/2.0;
 
 chanMeasurement[k_HHComb13]  = "HH"; // def "HH"
 if (version == 9) chanMeasurement[k_HHComb13]  = "#splitline{HH}{Comb.}"; // def "HH"
-  chanCadi[k_HHComb13] = "Nature 607 60-68 (2022)";
+  chanCadi[k_HHComb13] = "HIG-22-001";
   chanPreprint[k_HHComb13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_HHComb13] = "";
+  chanPublication[k_HHComb13] = "Nature 607 60-68 (2022)";
 
 
 chanLumi[k_HHComb13]  = "138 fb^{-1}";
