@@ -75,12 +75,12 @@ VBFZ:
     label: VBF Z
 VVV:
     data:
-        VVV13:
-        WWW13:
-        WWZ13:
-        WZZ13:
-        ZZZ13:
-    label: "VVV\n WWW\n WWZ\n WZZ\n ZZZ"
+        VVV13: "VVV"
+        WWW13: "WWW"
+        WWZ13: "WWZ"
+        WZZ13: "WZZ"
+        ZZZ13: "ZZZ"
+    label: "VVV"
 Wgg:
     data:
         Wgg13:
