@@ -52,15 +52,21 @@ parser = optparse.OptionParser("""
 parser.add_option("-i", dest="in_file", help="Input csv file (data)")
 parser.add_option("-y", dest="in_yaml", help="Input yml file (plotting order)")
 parser.add_option("-o", dest="out_dir", default=".", help="Output directory")
-parser.add_option("-d", dest="data_set", default="cms", help="data set")
+parser.add_option("-d", dest="data_set", default="cms", help="data set (for plot name)")
 parser.add_option("-b","--label-buffer", dest="label_buffer", default=0., type=float,
         help="Buffer between cross sections and citation labels (default=0., recommended=0.05)")
 parser.add_option("-r","--rotate-label", dest="rotate_label", default=False, action="store_true",
         help="tilt/rotate process labels on axis (useful when labels are overlapping)")
 parser.add_option("--cmslabel", "-l", dest="cmslabel", default="",
         help="Label on top of plot (e.g. Preliminary)")
+parser.add_option("--rmax", dest="rmax", default=-1, type=float, 
+        help="Max value of ratio panel. If -1 show full range (default)")
 parser.add_option("--no-date", dest="date_label", default=True, action="store_false",
         help="Remove date label on top of plot")
+parser.add_option("--no-ratio", dest="do_ratio", default=True, action="store_false",
+        help="Remove ratio panel")
+parser.add_option("--no-references", dest="add_references", default=True, action="store_false",
+        help="Remove links to publications")
 parser.add_option("--horizontal", dest="do_horizontal", default=False, action="store_true",
         help="Make plot horizontally")
 (opts, args) = parser.parse_args()
@@ -74,6 +80,36 @@ df.set_index("label", inplace=True)
 with open(opts.in_yaml, "r") as yf:
     plot_data = yaml.load(yf, Loader=yaml.SafeLoader)
 
+# class for a single point
+class xyPoint:
+    '''
+    convenience wrapper around point for plotting
+    taking into account different axis layouts.
+    '''
+    def __init__(self, xs, xs_dn, xs_up, ax_pos, width, horizontal=opts.do_horizontal):
+        if horizontal:
+            self.x = ax_pos 
+            self.x_hi = ax_pos+width
+            self.x_lo = ax_pos-width
+            self.y = xs # cross sections on y axis
+            self.y_hi = xs+xs_up        
+            self.y_lo = xs-xs_dn
+        else:
+            self.x = xs # cross sections on x axis
+            self.x_hi = xs+xs_up
+            self.x_lo = xs-xs_dn        
+            self.y = ax_pos
+            self.y_hi = ax_pos+width
+            self.y_lo = ax_pos-width
+    
+    @property
+    def x_rng(self):
+        return [self.x_lo, self.x_hi]
+    @property
+    def y_rng(self):
+        return [self.y_lo, self.y_hi]
+    
+        
 # class for data points
 class DataPoint:
     def __init__(self, label, df=df, unit=1e-3):
@@ -88,16 +124,6 @@ class DataPoint:
         self.alpha_m = 0.8
 
         self.horizontal = opts.do_horizontal # FIXME: could also be externalized if class is to be used outside of this script
-
-    def get_xy_points(self, xs, ax_pos):
-        '''
-        takes down - up values of cross section, and lower - upper bounds of position in figure
-        returns x and y values depending on plotting direction (horizontal/vertical)
-        '''
-        if self.horizontal:
-            return ax_pos, xs
-        else:
-            return xs, ax_pos
 
     def get_xpos(self, x, w):
         '''
@@ -123,11 +149,11 @@ class DataPoint:
 
         # get max value in this row
         xs_t = self.data["xs_theory"]*self.unit
-        up_t = self.data["theory_up"]*self.unit + xs_t
+        up_t = xs_t + self.data["theory_up"]*self.unit 
         dn_t = xs_t - self.data["theory_down"]*self.unit
 
         xs_m = self.data["xs"]*self.unit 
-        up_m = self.data["tot_up"]*self.unit + xs_m
+        up_m = xs_m + self.data["tot_up"]*self.unit 
         dn_m = xs_m - self.data["tot_down"]*self.unit
         if up_m == xs_m: # for limits
             up_m *= 3
@@ -157,12 +183,9 @@ class DataPoint:
         up_m = self.data["tot_up"]*self.unit / xs_t
 
         # theory (grey band)
-        (x_lo, x_hi), (y_lo, y_hi) = self.get_xy_points(
-            xs=(1.-dn_t, 1.+up_t), 
-            ax_pos=(xp-self.buf_t, xp+self.buf_t)
-            )
+        p = xyPoint(1., dn_t, up_t, xp, self.buf_t)
 
-        rx.fill_between([x_lo, x_hi], y_lo, y_hi,
+        rx.fill_between(p.x_rng, p.y_lo, p.y_hi,
             color=self.color_t, alpha=self.alpha_t, zorder=1
             )
 
@@ -172,18 +195,14 @@ class DataPoint:
             self.plot_limit(xp, lim=xs_m, up=xs_m+1, 
                 color=color, axis=rx)
         else:
-            (x, x_lo, x_hi), (y, y_lo, y_hi) = self.get_xy_points(
-                xs=(xs_m, xs_m-dn_m, xs_m+up_m),
-                ax_pos=(xp, xp-self.buf_m, xp+self.buf_m)
-                )
+            p = xyPoint(xs_m, dn_m, up_m, xp, self.buf_m)
 
             # colored band
-            rx.fill_between([x_lo, x_hi],
-                y_lo, y_hi, color=color,
-                zorder=2, alpha=self.alpha_m, lw=0.
+            rx.fill_between(p.x_rng, p.y_lo, p.y_hi, 
+                color=color, zorder=2, alpha=self.alpha_m, lw=0.
                 )
             # marker
-            rx.plot(x, y, zorder=3, ls="",
+            rx.plot(p.x, p.y, zorder=3, ls="",
                 marker=marker, markeredgewidth=3, ms=12,
                 fillstyle="none", color="black")
 
@@ -199,12 +218,10 @@ class DataPoint:
         up = self.data["theory_up"]*self.unit
         #print(f"theory xs: {xs}")
 
-        (x_lo, x_hi), (y_lo, y_hi) = self.get_xy_points(
-            xs=(xs-dn, xs+up),
-            ax_pos=(xp-self.buf_t, xp+self.buf_t)
-            )
+        p = xyPoint(xs, dn, up, xp, self.buf_t)
+
         # grey band
-        hdl = ax.fill_between([x_lo, x_hi], y_lo, y_hi,
+        hdl = ax.fill_between(p.x_rng, p.y_lo, p.y_hi,
             color=self.color_t, alpha=self.alpha_t, zorder=1
             )
         return "theory", (hdl, "Theory prediction")
@@ -218,33 +235,24 @@ class DataPoint:
         # plot 50 overlapping patches to create fading color effect
         rng = np.linspace(lim, up, 50)
         for mx in rng:
-            (x_lo, x_hi), (y_lo, y_hi) = self.get_xy_points(
-                xs=(lim, mx),
-                ax_pos=(xp-self.buf_m, xp+self.buf_m)
-                )
-            axis.fill_between([x_lo, x_hi], y_lo, y_hi,
+            p = xyPoint(lim, 0, mx-lim, xp, self.buf_m)
+            axis.fill_between(p.x_rng, p.y_lo, p.y_hi,
                 hatch="//", color=color, alpha=0.02,
                 lw=0., zorder=2, edgecolor=color)
 
         # hatched band
-        (x_lo, x_hi), (y_lo, y_hi) = self.get_xy_points(
-            xs=(lim, up),
-            ax_pos=(xp-self.buf_m, xp+self.buf_m)
-            )
-        hdl_hatch = axis.fill_between([x_lo, x_hi], y_lo, y_hi,
+        p = xyPoint(lim, 0, up-lim, xp, self.buf_m)
+        hdl_hatch = axis.fill_between(p.x_rng, p.y_lo, p.y_hi,
             hatch="//", facecolor="none", edgecolor=color,
             linewidth=0, alpha=0.7, zorder=3)
 
         # for legend create a dummy filled area
-        (x_lo, x_hi), (y_lo, y_hi) = self.get_xy_points(
-            xs=(lim, lim),
-            ax_pos=(xp-self.buf_m, xp+self.buf_m)
-            )
-        hdl_fill = axis.fill_between([x_lo, x_hi], y_lo, y_hi,
+        p = xyPoint(lim, 0, 0, xp, self.buf_m)
+        hdl_fill = axis.fill_between(p.x_rng, p.y_lo, p.y_hi,
             color=color, alpha=0.2, zorder=3)
 
         # draw line at limit value
-        axis.plot([x_lo, x_hi], [y_lo, y_hi],
+        axis.plot(p.x_rng, p.y_rng,
             color=color, lw=3, zorder=4)
     
         return hdl_fill, hdl_hatch
@@ -270,17 +278,14 @@ class DataPoint:
             return get_legend(self.data["com"], (hdl_fill, hdl_hatch), limit=True)
         else:
             # normal data point
-            (x, x_lo, x_hi), (y, y_lo, y_hi) = self.get_xy_points(
-                xs=(xs, xs-dn, xs+up),
-                ax_pos=(xp, xp-self.buf_m, xp+self.buf_m)
-                )
+            p = xyPoint(xs, dn, up, xp, self.buf_m)
 
             # filled color area
-            hdl_fill = ax.fill_between([x_lo, x_hi], y_lo, y_hi, 
+            hdl_fill = ax.fill_between(p.x_rng, p.y_lo, p.y_hi,
                 color=color, zorder=2, alpha=self.alpha_m, lw=0.
                 )
             # marker
-            hdl_point = ax.plot(x, y, zorder=3, ls="",
+            hdl_point = ax.plot(p.x, p.y, zorder=3, ls="",
                 marker=marker, markeredgewidth=3, ms=12,
                 fillstyle="none", color="black") 
             return get_legend(self.data["com"], (hdl_fill, hdl_point[0]))
@@ -303,15 +308,21 @@ for group in plot_data:
 
 # setup plot
 if opts.do_horizontal:
-    fig, (ax, rx) = plt.subplots(2, 1, figsize=(4+length/2., 25),
-        sharex=True,
-        gridspec_kw={"height_ratios": (4,1)})
-    plt.subplots_adjust(hspace=0.01)
+    if opts.do_ratio:
+        fig, (ax, rx) = plt.subplots(2, 1, figsize=(4+length/2., 20),
+            sharex=True,
+            gridspec_kw={"height_ratios": (4,1)})
+        plt.subplots_adjust(hspace=0.01)
+    else:
+        fig, ax = plt.subplots(1, 1, figsize=(4+length/2., 16))
 else:
-    fig, (ax, rx) = plt.subplots(1, 2, figsize=(25, 4+length/2.),
-        sharey=True,
-        gridspec_kw={"width_ratios": (4,1)})
-    plt.subplots_adjust(wspace=0.01)
+    if opts.do_ratio:
+        fig, (ax, rx) = plt.subplots(1, 2, figsize=(25, 4+length/2.),
+            sharey=True,
+            gridspec_kw={"width_ratios": (4,1)})
+        plt.subplots_adjust(wspace=0.01)
+    else:
+        fig, ax = plt.subplots(1, 1, figsize=(20, 4+length/2.))
 
 x = 0
 ticks = [x-0.5]
@@ -346,7 +357,8 @@ for group in plot_data:
             legend_entries[l_type] = legend        
 
         # plot ratio
-        p.plot_ratio(x, w)
+        if opts.do_ratio:
+            p.plot_ratio(x, w)
 
         # annotate
         p.annotate(x, w, label=entries[entry])
@@ -364,7 +376,11 @@ for group in plot_data:
 timestamp = time.strftime("%Y_%m_%d",time.localtime())
 tag=""
 if opts.do_horizontal:
-    tag = "_horizontal"
+    tag += "_horizontal"
+if not opts.do_ratio:
+    tag += "_noratio"
+if not opts.add_references:
+    tag += "_norefs"
 out_file = os.path.join(opts.out_dir, f"xs_{opts.data_set}_summary{tag}_{timestamp}.pdf")
 
 # make nice
@@ -386,7 +402,11 @@ if opts.rotate_label:
     rotate = 90
 
 # set axis labels
-for axis in [ax, rx]:
+if opts.do_ratio:
+    axes = [ax, rx]
+else:
+    axes = [ax]
+for axis in axes:
     if opts.do_horizontal:
         axis.set_xticks(ticks=label_pos, minor=False)
         axis.set_xticks(ticks=ticks, minor=True)
@@ -401,21 +421,30 @@ for axis in [ax, rx]:
         axis.grid(which="minor", axis="y", lw=1, ls=":", color="black", alpha=0.7)
 
 # vertical line for ratio
-if opts.do_horizontal:
-    rx.plot([ticks[0], ticks[-1]], [1., 1.], lw=1, ls="--", color="black", zorder=1)
-    rx.set_ylim([0., 2.])
-    xmin, xmax = ax.get_ylim()
-else:
-    rx.plot([1., 1.], [ticks[0], ticks[-1]], lw=1, ls="--", color="black", zorder=1)
-    rx.set_xlim([0., 3.])
-    xmin, xmax = ax.get_xlim()
+if opts.do_ratio:
+    if opts.do_horizontal:
+        rx.plot([ticks[0], ticks[-1]], [1., 1.], lw=1, ls="--", color="black", zorder=1)
+        if opts.rmax != -1:
+            rx.set_ylim([0., opts.rmax])
+    else:
+        rx.plot([1., 1.], [ticks[0], ticks[-1]], lw=1, ls="--", color="black", zorder=1)
+        if opts.rmax != -1:
+            rx.set_xlim([0., opts.rmax])
 
 # add space on axis for publication labels
+if opts.do_horizontal:
+    xmin, xmax = ax.get_ylim()
+else:
+    xmin, xmax = ax.get_xlim()
 lmin = np.log10(xmin)
 lmax = np.log10(xmax)
 lrng = lmax - lmin
-new_lmax = lmin+lrng*(1.25+opts.label_buffer)
-new_lmin = lmax-lrng*(1.2+opts.label_buffer)
+if opts.add_references:
+    new_lmax = lmin+lrng*(1.25+opts.label_buffer)
+    new_lmin = lmax-lrng*(1.2+opts.label_buffer)
+else:
+    new_lmax = lmin+lrng*(1.+opts.label_buffer)
+    new_lmin = lmax-lrng*(1.+opts.label_buffer)
 if opts.do_horizontal:
     ax.set_ylim([10**new_lmin, xmax])
     label_lx = new_lmin+lrng*0.02
@@ -428,16 +457,20 @@ else:
 # add axis labels and publication labels
 if opts.do_horizontal:
     ax.set_ylabel(f"Production cross section, $\sigma$ (pb)", loc="center")
-    rx.set_ylabel(f"Data/Theory", loc="center")
-    for journal, link, y in pub_labels:
-        ax.annotate(journal, xy=(y, label_x), rotation="vertical",
-            fontsize=20, ha="center", va="bottom", color="blue", url=link)
+    if opts.do_ratio:
+        rx.set_ylabel(f"Data/Theory", loc="center")
+    if opts.add_references:
+        for journal, link, y in pub_labels:
+            ax.annotate(journal, xy=(y, label_x), rotation="vertical",
+                fontsize=20, ha="center", va="bottom", color="blue", url=link)
 else:
     ax.set_xlabel(f"Production cross section, $\sigma$ (pb)", loc="center")
-    rx.set_xlabel(f"Data/Theory", loc="center")
-    for journal, link, y in pub_labels:
-        ax.annotate(journal, xy=(label_x, -y),
-            fontsize=20, va="center", color="blue", url=link)
+    if opts.do_ratio:
+        rx.set_xlabel(f"Data/Theory", loc="center")
+    if opts.add_references:
+        for journal, link, y in pub_labels:
+            ax.annotate(journal, xy=(label_x, -y),
+                fontsize=20, va="center", color="blue", url=link)
 
 # legend
 leg_handles = [legend_entries[e][0] for e in legend_entries]
