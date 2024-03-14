@@ -1,0 +1,94 @@
+incj:
+    data:
+        incj13: $p_{T} > 133\, |\eta| < 2.0$
+        incj8:
+        incj:
+        incj276:
+    label: "inclusive\n jet"
+gjet:
+    data:
+        gj: $p_{T}(\gamma,j) > 40\, |\eta| < 2.5$
+    label: $\gamma + jet$
+Wjet:
+    data:
+        W1jet13: $1j\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        W2jet13: $2j$
+        W3jet13: $3j$
+        W4jet13: $4j$
+        W5jet13: $5j$
+        W6jet13: $6j$
+        W1jet8n: $1j$
+        W2jet8n: $2j$
+        W3jet8n: $3j$
+        W4jet8n: $4j$
+        W5jet8n: $5j$
+        W6jet8n: $7j$
+        W1jetn: $1j$
+        W2jetn: $2j$
+        W3jetn: $3j$
+        W4jetn: $4j$
+        W5jetn: $5j$
+        W6jetn: $6j$
+        W1cjet13: $1c\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        W1cjet8: $1c\ p_{T} > 25\,GeV, |\eta| < 2.5$
+        W1cjet: $1c\ p_{T} > 25\,GeV, |\eta| < 2.5$
+        W2bjet8: $2b\ p_{T} > 25\,GeV, |\eta| < 2.4$
+        W2bjet: $2b\ p_{T} > 25\,GeV, |\eta| < 2.4$
+    label: $W+jets$
+Zjet:
+    data:
+        Z1jet13: $1j\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        Z2jet13: $2j$
+        Z3jet13: $3j$
+        Z4jet13: $4j$
+        Z5jet13: $5j$
+        Z6jet13: $6j$
+        Z1jet8: $1j$
+        Z2jet8: $2j$
+        Z3jet8: $3j$
+        Z4jet8: $4j$
+        Z5jet8: $5j$
+        Z6jet8: $6j$
+        Z6jet8: $6j$
+        Z7jet8: $7j$
+        Z1jetn: $1j$
+        Z2jetn: $2j$
+        Z3jetn: $3j$
+        Z4jetn: $4j$
+        Z5jetn: $5j$
+        Z6jetn: $6j$
+        Z1cjet13: $1c\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        Z1cjet8: $1c\ p_{T} > 25\,GeV, |\eta| < 2.5$
+        Z1bjet13: $1b\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        Z2bjet13: $2b$
+        Z1bjet8: $1b\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        Z2bjet8: $2b$
+        Z1bjet: $1b\ p_{T} > 25\,GeV, |\eta| < 2.1$
+        Z2bjet: $2b$
+    label: $Z+jets$
+Vgjet:
+    data:
+        Wg2jet13: $W\gamma~2j, \ p_{T} > 30\,GeV, |\eta| < 4.7$ 
+        Zg2jet13: $Z\gamma~2j, \ p_{T} > 30\,GeV, |\eta| < 4.7$ 
+    label: $V\gamma+2jets$
+WWjet:
+    data:
+        WW0jet13: $0j\ p_{T} > 30\,GeV, |\eta| < 2.4$
+        WW1jet13: $1j$
+        WW2jet13: $2j$
+    label: $WW+jets$
+WZjet:
+    data:
+        WZ0jet8: $0j\ p_{T} > 30\,GeV, |\eta| < 2.5$
+        WZ1jet8: $1j$
+        WZ2jet8: $1j$
+    label: $WZ+jets$
+ZZjet:
+    data:
+        ZZ0jet13: $0j\ p_{T} > 30\,GeV, |\eta| < 4.7$
+        ZZ1jet13:
+        ZZ2jet13:
+        ZZ0jet8: 
+        ZZ1jet8:
+        ZZ2jet8:
+    label: $ZZ+jets$

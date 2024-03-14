@@ -1,0 +1,149 @@
+incj:
+    data:
+        incj8: $p_{T} > 133\, |\eta| < 2.0~~$
+        cmsin13: stack 
+        incj13: stack
+        cmsin: $~~\sigma_{in} x10^{-2}~~$ 
+        incj: stack
+        incj276: stack
+#    label: "inc.\n jet"
+    label: "tot. in.\n inc. jet"
+g:
+    data:
+        incg: $p_{T}(\gamma) > 25~~$
+        gj: $p_{T}(\gamma,j) > 40\, |\eta| < 2.5~~$
+    label: $\gamma,\gamma j$
+WandZ:
+    data:
+#        Z136:
+        W13:
+        Z13: stack
+        W8: stack
+        Z8: stack
+        W:
+        Z: stack
+#        W5:
+#        Z5: stack
+        W276: stack
+        Z276: stack
+    label: "W\n Z"
+ttbar:
+    data:
+        tt136:
+        tt8: stack
+        tt13:
+        tt: stack   
+        tt5: stack
+    label: $t\overline{t}$
+t:
+    data:
+        t13:
+        tW13: stack
+        t8:
+        tW8: stack
+        tschan8: stack
+        t:
+        tW: stack
+    label: $t_{tchan}$\n$tW$\n$t_{schan}$
+WWandWZandZZ:
+    data:
+        WW13:
+        WZ13: stack
+        ZZ13: stack
+        WW8:
+        WZ8: stack
+        ZZ8: stack
+        WW:
+        WZ: stack
+        ZZ: stack
+        WW5:
+        WZ5: stack
+        ZZ5: stack
+    label: "WW\n WZ\n ZZ"
+WgandZg:
+    data:
+        Wg13:
+        Wg: stack
+        Zg8:
+        Zg: stack
+    label: $W\gamma,Z\gamma$
+ggHandVBFH:
+    data:
+        ggH13:
+        VBFH13: stack
+        ggH8:
+        VBFH8: stack
+        ggH:
+        VBFH: stack
+    label: "ggH\nVBF H"
+VBFWandW:
+    data:
+        VBFW13:
+        VBFZ13: stack
+        VBFW8:
+        VBFZ8: stack
+        VBFZ:
+    label: "VBF W\n VBF Z"
+VH:
+    data:
+        WH13:
+        tH13: stack
+        ZH13:
+        ttH13: stack
+        VH8:
+        ttH8: stack
+    label: "WH ZH VH\n  tH     ttH   "
+VVV:
+    data:
+        VVV13:
+        Wgg13: stack
+        WWW13:
+        Wgg8: stack
+        WWZ13: 
+        Zgg13: stack
+        WZZ13:
+        Zgg8: stack
+        ZZZ13:
+        WWg13: stack
+    label: $VVV,WWW,WWZ,$\n$WZZ,ZZZ$\n$~~~~W\gamma\gamma,~~~~~Z\gamma\gamma,~WW\gamma$
+ttZandWandg:
+    data:
+        ttZ13:
+        ttZ8: stack
+        ttg13: $fid~ \ell^+ \ell^-~~$
+        ttW13: stack
+        ttg8: $fid~ \ell~ jets~~$
+        ttW8: stack
+    label: $t\overline{t}Z,~~~t\overline{t}W$\n$~~~~~~~~~t\overline{t}\gamma$
+tWZandtgandtZgandtttt:
+    data:
+        tWZ13:
+        tg13:
+        tZq13:
+        tZq8: stack
+    label: $tWZ,t\gamma,tZq$
+#    label: "tWZ,tg,tZq\n             tZq"
+HH:
+    data:
+        HHComb13:
+        tttt13: stack
+    label: $HH$\n$t\overline{t}t\overline{t}$    
+EWWgandZg:
+    data:
+        EWKWg13:
+        EWKZg13: stack
+        EWKWg8:
+        EWKZg8: stack
+    label: $EW~W\gamma$\n$Z\gamma$
+ExWWandssWW:
+    data:
+        exWW8:
+        SSWW8: stack
+        SSWW13:
+    label: $Ex~WW$\n$W^\pm W^\pm $
+EWVV:
+    data:
+        EWKWW13:
+        EWKWZ13: stack
+        EWKZZ13: stack
+    label: "      EW WW\n  WZ\n  ZZ"

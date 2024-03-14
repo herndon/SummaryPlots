@@ -1,0 +1,45 @@
+HJet:
+    data:
+        H0jet13: $0j\ p_{T} > 30\,GeV, |\eta| < 2.5$
+        H1jet13: $1j$
+        H2jet13: $2j$
+        H3jet13: $3j$
+        H4jet13: $\geq 4j$
+    label: $H+jets$
+ggH:
+    data:
+        ggH13:
+        ggH8:
+        ggH:
+    label: $gg \to H$
+VBFH:
+    data:
+        VBFH13:
+        VBFH8:
+        VBFH:
+    label: $VBF~H$
+VBFH:
+    data:
+        VBFH13:
+        VBFH8:
+        VBFH:
+    label: $VBF~H$
+VH:
+    data:
+        WH13:
+        ZH13:
+        VH8:
+    label: "WH\n ZH\n VH"
+ttH:
+    data:
+        ttH13:
+        ttH8:
+    label: $t\overline{t}H$
+tH:
+    data:
+        tH13:
+    label: $tH$
+HH:
+    data:
+        HHComb13:
+    label: $HH$

@@ -309,12 +309,15 @@ for group in plot_data:
 # setup plot
 if opts.do_horizontal:
     if opts.do_ratio:
-        fig, (ax, rx) = plt.subplots(2, 1, figsize=(4+length/2., 20),
+        fig, (ax, rx) = plt.subplots(2, 1, figsize=(4+length/2., 20.0),
             sharex=True,
             gridspec_kw={"height_ratios": (4,1)})
         plt.subplots_adjust(hspace=0.01)
     else:
-        fig, ax = plt.subplots(1, 1, figsize=(4+length/2., 16))
+
+        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/2.5))
+        plt.xticks(fontsize=20)
+#        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0, 16))
 else:
     if opts.do_ratio:
         fig, (ax, rx) = plt.subplots(1, 2, figsize=(25, 4+length/2.),
@@ -336,6 +339,9 @@ for group in plot_data:
     content = plot_data[group]
     entries = content["data"]
     label = content["label"]
+    if '\\n' in label:
+       label = '"\\n"'.join([f'r"{x}"' for x in label.split('\\n')])
+       label = eval(label)
     sublabel = content.get("sublabel","")
 
     xlabels.append(label)
@@ -346,6 +352,9 @@ for group in plot_data:
         # set up data point
         p = DataPoint(entry)
 
+        if entries[entry] == "stack":
+            x -= 1+2*w
+        
         # plot theory 
         l_type, legend = p.plot_theory(x, w)
         if not l_type in legend_entries:
@@ -361,7 +370,8 @@ for group in plot_data:
             p.plot_ratio(x, w)
 
         # annotate
-        p.annotate(x, w, label=entries[entry])
+        if entries[entry] != "stack":
+            p.annotate(x, w, label=entries[entry])
 
         # get publication label
         # will be plotted later as we need to know the max x range of plot

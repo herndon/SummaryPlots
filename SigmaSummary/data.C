@@ -1990,6 +1990,7 @@ chanESystp[k_el13]  =   1.7 * scale_;
 
   scale_=1000000000.0;
   scale_=1000000.0;
+scale_=scale_*0.01;
 
   chanSigma[k_cmsin]  =   60.2 * scale_; 
   chanEStatp[k_cmsin]  =   0.2 * scale_;
@@ -2034,6 +2035,7 @@ if (exportExeFormat) chanMeasurement[k_cmsin13]     = "inelastic";
 
   scale_=1000000000.0;
   scale_=1000000.0;
+scale_=scale_*0.01;
 
   chanSigma[k_cmsin13]  =   67.5 * scale_; 
   chanEStatp[k_cmsin13]  =   0.0 * scale_;
@@ -6663,7 +6665,7 @@ chanLumi[k_WW13fid]= "35.9 fb^{-1}";
   chanETheom[k_WW13fid] =  3.2 * (1.529/117.6) * scale_;
   chanETheo[k_WW13fid] =  (chanETheop[k_WW13fid]+chanETheom[k_WW13fid])/2.0;
 // Matrix NNLO QCD + NLO EWK
-
+// Here take the matrix value since previous predcition is just NNLO
 
 
 
@@ -7106,7 +7108,7 @@ chanETheom[k_WZ13] =  1.0 * scale_;
   chanETheo[k_WZ13]   = (chanETheop[k_WZ13]+chanETheom[k_WZ13])/2.0;  
 // Matrix NLLO + NLO EWK
 
-  chanTheo[k_WZ13] =  50.7 * scale_;
+  chanTheo[k_WZ13] =  50.8 * scale_;
   chanETheop[k_WZ13] =  1.1 * scale_;
   chanETheom[k_WZ13] =  1.0 * scale_;
   chanETheo[k_WZ13] =  (chanETheop[k_WZ13]+chanETheom[k_WZ13])/2.0;
@@ -7145,12 +7147,12 @@ chanEStat[k_WZ13fid]  = ( chanEStatp[k_WZ13fid] + chanEStatm[k_WZ13fid])/2.0;
   chanETheop[k_WZ13fid] =  0.0069;
   chanETheom[k_WZ13fid] =  0.0063;
   chanETheo[k_WZ13fid]   = (chanETheop[k_WZ13fid]+chanETheom[k_WZ13fid])/2.0;  
-// Matrix NLLO + NLO EWK
+// Matrix NLLO + NLO EWK, stick with this, shoud be the same
 
-chanTheo[k_WZ13fid] =  50.7 * (0.2989/50.6) * scale_;
-  chanETheop[k_WZ13fid] =  1.1 * (0.2989/50.6) * scale_;
-  chanETheom[k_WZ13fid] =  1.0 * (0.2989/50.6) * scale_;
-  chanETheo[k_WZ13fid] =  (chanETheop[k_WZ13fid]+chanETheom[k_WZ13fid])/2.0;
+//chanTheo[k_WZ13fid] =  50.7 * (0.2989/50.6) * scale_;
+//  chanETheop[k_WZ13fid] =  1.1 * (0.2989/50.6) * scale_;
+//  chanETheom[k_WZ13fid] =  1.0 * (0.2989/50.6) * scale_;
+//  chanETheo[k_WZ13fid] =  (chanETheop[k_WZ13fid]+chanETheom[k_WZ13fid])/2.0;
 // Matrix NNLO QCD + NLO EWK from 5 TeV paper
 
 
@@ -7311,16 +7313,16 @@ chanSigma[k_ZZ13]  =  17.2 * scale_;
 
 
 
-// New NNLO Number
+// New NNLO Number, stick with original matrix  NNLO QCD + NLO EWK
 chanTheo[k_ZZ13] =  16.5 * scale_;
 chanETheop[k_ZZ13] =  sqrt(0.6*0.6)* scale_;
 chanETheom[k_ZZ13] =  sqrt(0.5*0.5)* scale_;
   chanETheo[k_ZZ13]   = (chanETheop[k_ZZ13]+chanETheom[k_ZZ13])/2.0;  
 
-  chanTheo[k_ZZ13] =  15.33 * scale_;
-  chanETheop[k_ZZ13] =  0.74 * scale_;
-  chanETheom[k_ZZ13] =  0.55 * scale_;
-  chanETheo[k_ZZ13] =  (chanETheop[k_ZZ13]+chanETheom[k_ZZ13])/2.0;
+//chanTheo[k_ZZ13] =  15.33 * scale_;
+//  chanETheop[k_ZZ13] =  0.74 * scale_;
+//  chanETheom[k_ZZ13] =  0.55 * scale_;
+//  chanETheo[k_ZZ13] =  (chanETheop[k_ZZ13]+chanETheom[k_ZZ13])/2.0;
 // Matrix NNLO QCD + NLO EWK
 
 
@@ -7333,7 +7335,7 @@ chanETheom[k_ZZ13] =  sqrt(0.5*0.5)* scale_;
 if (big13TeV) chanMeasurement[k_ZZ13fid]    =  "#splitline{  ZZ}{13Tev}";
   chanLumi[k_ZZ13fid] = "137 fb^{-1}";
 
-  chanSigma[k_ZZ13fid]  =  0.0401 * scale_; 
+  chanSigma[k_ZZ13fid]  =  0.0405 * scale_; 
   chanEStatp[k_ZZ13fid]  =   0.0007 * scale_;
   chanEStatm[k_ZZ13fid]  =   0.0007 * scale_;
   chanEStat[k_ZZ13fid]  = ( chanEStatp[k_ZZ13fid] + chanEStatm[k_ZZ13fid])/2.0;
@@ -7351,15 +7353,10 @@ if (big13TeV) chanMeasurement[k_ZZ13fid]    =  "#splitline{  ZZ}{13Tev}";
 			    );
 
 
-chanTheo[k_ZZ13fid] =  0.0393 * (0.0401/17.2)  * scale_;
-  chanETheop[k_ZZ13fid] =  0.0008 * (0.0401/17.2) * scale_;
-  chanETheom[k_ZZ13fid] =  0.0007 * (0.0401/17.2) * scale_;
+chanTheo[k_ZZ13fid] =  0.0380 * scale_;
+  chanETheop[k_ZZ13fid] =  0.0011 * scale_;
+  chanETheom[k_ZZ13fid] =  0.0010 * scale_;
   chanETheo[k_ZZ13fid] = (chanETheop[k_ZZ13fid]+chanETheom[k_ZZ13fid])/2.0;  
-
-  chanTheo[k_ZZ13fid] =  15.33 * scale_;
-  chanETheop[k_ZZ13fid] =  0.74 * scale_;
-  chanETheom[k_ZZ13fid] =  0.55 * scale_;
-  chanETheo[k_ZZ13fid] =  (chanETheop[k_ZZ13fid]+chanETheom[k_ZZ13fid])/2.0;
 // Matrix NNLO QCD + NLO EWK
 
 
@@ -8900,7 +8897,7 @@ chanETotm[k_EWKWV13]  = (chanETotp[k_EWKWV13]+chanETotm[k_EWKWV13])/2.0;
 // https://arxiv.org/abs/1812.06504 Submitted to Phys. Lett. B 792 (2019) 369
 // H + 0j
 
-scale_ = 1.0/1000.0;
+scale_ = 1.0;
 
 chanMeasurement[k_H0jet13]  = "#splitline{H}{=0j}";
  if (exportExeFormat) chanMeasurement[k_H0jet13] = "H$ = $0j";
@@ -9181,7 +9178,7 @@ chanETheom[k_ggHgg13] =  sqrt(6.7*6.7+3.9*3.8)*(chanTheo[k_ggHgg13]/100.0) * sca
   chanLumi[k_ggH13]  = "139 fb^{-1}";
   chanCadi[k_ggH13] = "HIG-22-001";
   chanPreprint[k_ggH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_ggH13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_ggH13] = "Nature 607 60 (2022)";
 
 
 
@@ -9330,7 +9327,7 @@ chanETheom[k_VBFH8] = sqrt(0.0024*0.0024+0.021*0.021+0.004*0.004+0.022*0.022) * 
   chanLumi[k_VBFH13]  = "138 fb^{-1}";
   chanCadi[k_VBFH13] = "HIG-22-001";
   chanPreprint[k_VBFH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_VBFH13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_VBFH13] = "Nature 607 60 (2022)";
 
 // cross section from https://arxiv.org/abs/1610.07922 NNLO+EW
 
@@ -9463,7 +9460,7 @@ if (newHiggs) {
 // From HIG-16-044
 // http://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-16-044/
 // https://arxiv.org/abs/1709.07497
-// Update to HIG-22-001 not yet published Nature 607, 60-68 (2022)
+// Update to HIG-22-001 not yet published Nature 607 60 (2022)
 
   chanMeasurement[k_VH13]  = "VH";
   chanLumi[k_VH13]  = "138 fb^{-1}";
@@ -9517,7 +9514,7 @@ chanESystp[k_VH13]  =   sqrt(0.157*0.157*1.373*1.373+0.121*0.121*0.8837*0.8837);
   chanLumi[k_WH13]  = "138 fb^{-1}";
   chanCadi[k_WH13] = "HIG-22-001";
   chanPreprint[k_WH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_WH13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_WH13] = "Nature 607 60 (2022)";
 
   chanTheo[k_WH13] =   (1.373 )* scale_;
 chanETheop[k_WH13] =  sqrt(1.373*0.005*1.373*0.005 + 1.373*0.019*1.373*0.019);
@@ -9567,7 +9564,7 @@ if (newHiggs) {
   chanLumi[k_ZH13]  = "138 fb^{-1}";
   chanCadi[k_ZH13] = "HIG-22-001";
   chanPreprint[k_ZH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_ZH13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_ZH13] = "Nature 607 60 (2022)";
 
   chanTheo[k_ZH13] =   (0.8837 )* scale_;
 chanETheop[k_ZH13] =  sqrt(0.8837*0.038*0.8837*0.038 + 0.8837*0.016*0.8837*0.016);
@@ -9714,7 +9711,7 @@ if (newHiggs) {
   chanLumi[k_ttH13]  = "138 fb^{-1}";
   chanCadi[k_ttH13] = "HIG-22-001";
   chanPreprint[k_ttH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_ttH13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_ttH13] = "Nature 607 60 (2022)";
 
   chanTheo[k_ttH13] =   0.5071 * scale_;
 chanETheop[k_ttH13] =  sqrt(0.058*0.058 + 0.036*0.036)*chanTheo[k_ttH13];
@@ -9765,7 +9762,7 @@ if (newHiggs) {
   chanLumi[k_tH13]  = "138 fb^{-1}";
   chanCadi[k_tH13] = "HIG-22-001";
   chanPreprint[k_tH13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_tH13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_tH13] = "Nature 607 60 (2022)";
 
 // new prediction
 chanTheo[k_tH13] =   (0.0743+0.0152) * scale_;
@@ -9997,7 +9994,7 @@ chanMeasurement[k_HHComb13]  = "HH"; // def "HH"
 if (version == 9) chanMeasurement[k_HHComb13]  = "#splitline{HH}{Comb.}"; // def "HH"
   chanCadi[k_HHComb13] = "HIG-22-001";
   chanPreprint[k_HHComb13] = "https://doi.org/10.1038/s41586-022-04892-x";
-  chanPublication[k_HHComb13] = "Nature 607 60-68 (2022)";
+  chanPublication[k_HHComb13] = "Nature 607 60 (2022)";
 
 
 chanLumi[k_HHComb13]  = "138 fb^{-1}";
