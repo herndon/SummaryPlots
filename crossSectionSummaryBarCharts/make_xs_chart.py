@@ -313,10 +313,8 @@ if opts.do_horizontal:
             sharex=True,
             gridspec_kw={"height_ratios": (4,1)})
         plt.subplots_adjust(hspace=0.01)
-        print((4+length/2.)/2.0)
     else:
         fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/2.5))
-        print((4+length/2.)/2.0)
         plt.xticks(fontsize=20)
 #        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0, 16))
 else:
