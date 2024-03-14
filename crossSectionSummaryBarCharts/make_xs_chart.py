@@ -314,6 +314,7 @@ if opts.do_horizontal:
             gridspec_kw={"height_ratios": (4,1)})
         plt.subplots_adjust(hspace=0.01)
     else:
+
         fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/2.5))
         plt.xticks(fontsize=20)
 #        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0, 16))
@@ -486,7 +487,7 @@ leg_handles = [legend_entries[e][0] for e in legend_entries]
 leg_entries = [legend_entries[e][1] for e in legend_entries]
 if opts.do_horizontal:
     l1 = ax.legend(leg_handles, leg_entries,
-                   loc="upper right", ncol=1, fontsize=27)
+        loc="upper right", ncol=1, fontsize=27)
 else:
     l1 = ax.legend(leg_handles, leg_entries,
         loc="upper left", ncol=1, fontsize=27)
