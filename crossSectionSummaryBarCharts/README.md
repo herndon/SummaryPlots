@@ -54,19 +54,25 @@ For labelling the plot the journal column of the .csv is printed next to the dat
 Some standard plots
 
 Horizontal global summary
-python3 make_xs_chart.py --horizontal --no-ratio --no-references -d all -i data_all_summary.csv -y data_all_stack_summary.yml -o . --no-date
+python3 make_xs_chart.py --brokenaxis --horizontal --no-ratio --no-references --order-legend -d all -i data_all_summary.csv -y data_all_stack_summary.yml -o . --no-date
+
+Horizontal smp sumary
+python3 make_xs_chart.py --brokenaxis --horizontal --no-ratio --no-references -d sm -i data_all_summary.csv -y data_sm_stack_summary.yml -o . --no-date
+
 
 Horizontal top summary with ratios
-python3 make_xs_chart.py --horizontal -d top -i data_all_summary.csv -y data_top_summary.yml -o . --no-date
+python3 make_xs_chart.py --horizontal --rmax 2.0 --order-legend -d top -i data_all_summary.csv -y data_top_summary.yml -o . --no-date
 
 Vertical summaries ew, ewjets, top, higgs
-python3 make_xs_chart.py -d ew -i data_all_summary.csv -y data_ew_summary.yml -o . --no-date
+python3 make_xs_chart.py --order-legend -d ew -i data_all_summary.csv -y data_ew_summary.yml -o . --no-date
 
-python3 make_xs_chart.py -d ewjet -i data_all_summary.csv -y data_ewjet_summary.yml -o . --no-date
+python3 make_xs_chart.py --order-legend -d ewjet -b 0.3 -i data_all_summary.csv -y data_ewjet_summary.yml -o . --no-date
 
-python3 make_xs_chart.py -d top -i data_all_summary.csv -y data_top_summary.yml -o . --no-date
+python3 make_xs_chart.py --order-legend -d top -b 0.06 -i data_all_summary.csv -y data_top_summary.yml -o . --no-date
 
-python3 make_xs_chart.py -d higgs -i data_all_summary.csv -y data_higgs_summary.yml -o . --no-date
+
+
+python3 make_xs_chart.py --order-legend -d higgs -i data_all_summary.csv -y data_higgs_summary.yml -o . --no-date
 
 
     

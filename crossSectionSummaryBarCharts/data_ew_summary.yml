@@ -7,7 +7,7 @@ W:
         W13:
         W8:
         W:
-#        W5:  
+        W5:  
         W276:
     label: $W$
 Z:
@@ -16,7 +16,7 @@ Z:
         Z13:
         Z8:
         Z:
-#        Z5:  
+        Z5:  
         Z276:
     label: $Z$
 WW:
@@ -63,12 +63,12 @@ VBFZ:
     label: VBF Z
 VVV:
     data:
-        VVV13: VVV
-        WWW13: WWW
-        WWZ13: WWZ
-        WZZ13: WZZ
-        ZZZ13: ZZZ
-    label: "VVV"
+        VVV13:
+        WWW13:
+        WWZ13:
+        WZZ13:
+        ZZZ13:
+    label: "VVV\n WWW\n WWZ\n WZZ\n ZZZ"
 Wgg:
     data:
         Wgg13:

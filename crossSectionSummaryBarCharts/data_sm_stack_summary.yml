@@ -1,0 +1,110 @@
+inel:
+    data:
+#        incj: $p_{T} > 133\, |\eta| < 2.0~~~$
+        cmsin13: 
+        cmsin:
+#    label: "inc.\n jet"
+    label: inel.
+incj:
+    data:
+#        incj: $p_{T} > 133\, |\eta| < 2.0~~~$
+        incj13:
+        incj: stack
+        incj8:
+        incj276: stack
+#    label: "inc.\n jet"
+    label: inc.\njet
+g:
+    data:
+        incg:
+#       gj: $\hspace{-0.8} \gamma j$
+#        incg: $p_{T}(\gamma) > 25~~~~$
+#        gj: $p_{T}(\gamma,j) > 40\, |\eta| < 2.5~~~~$
+    label: $\gamma$
+WandZ:
+    data:
+        W13:
+        Z13: stack
+        W5: stack
+        Z5: stack
+        W8:
+        Z8: stack
+        W276: stack
+        Z276: stack
+        W:
+        Z: stack
+    label: "W\nZ"
+WWandWZandZZ:
+    data:
+        WW13:
+        WZ13: stack
+        ZZ13: stack
+        WW8:
+        WZ8: stack
+        ZZ8: stack
+        WW:
+        WZ: stack
+        ZZ: stack
+        WW5:
+        WZ5: stack
+        ZZ5: stack
+    label: "WW\nWZ\nZZ"
+WgandZg:
+    data:
+        Wg13:  $\hspace{-0.8} W\gamma$
+        Wg: stack
+        Zg8:  $\hspace{-0.5} Z\gamma$
+        Zg: stack
+    label: $V\gamma$
+VBFW:
+    data:
+        VBFW13:
+        VBFW8:
+    label: "VBF\nW"
+VBFZ:
+    data:
+        VBFZ13:
+        VBFZ8:
+        VBFZ:
+    label: "VBF\nZ"
+VVV:
+    data:
+        VVV13:
+        WWW13:
+        WWZ13:
+        WZZ13:
+        ZZZ13:
+    label: $vvv,www,wwz$\n$wwz,zzz$
+Vgg:
+    data:
+        Wgg8: $\hspace{-0.8} W\gamma\gamma$ 
+        Wgg13: stack
+        Zgg13: $\hspace{-0.9} Z\gamma\gamma$ 
+        Zgg8: stack
+    label: $V\gamma\gamma$
+VVg:
+    data:
+        WWg13: 
+    label: $WW\gamma$
+ExWW:
+    data:
+        exWW8:
+    label: $ex$\n$WW$
+EWWgandZg:
+    data:
+        EWKWg13:
+        EWKZg13: stack
+        EWKWg8:
+        EWKZg8: stack
+    label: $ew$\n$V\gamma$
+EWVV:
+    data:
+        EWKWW13:
+        EWKWZ13: stack
+        EWKZZ13: stack
+    label: "ew\nVV"
+ssWW:
+    data:
+        SSWW13:
+        SSWW8:
+    label: $ew$\n${W}{^\pm}{W}{^\pm}$

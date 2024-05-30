@@ -21,7 +21,7 @@ tchannel:
         t13:
         t8:
         t:
-    label: $t_{t-chan.}$
+    label: $t_{t{-}chan.}$
 tW: 
     data:
         tW13:
@@ -31,7 +31,7 @@ tW:
 schannel:
     data:
         tschan8:
-    label: $t_{s-chan.}$
+    label: $t_{s{-}chan.}$
 ttZ:
     data:
         ttZ13:
@@ -42,6 +42,15 @@ ttW:
         ttW13:
         ttW8:
     label: $t\overline{t}W$
+ttgamma:
+    data:
+        ttg13: $fid~ \ell^+ \ell^-$
+        ttg8: $fid~ \ell~ jets$
+    label: $t\overline{t}\gamma$
+tZW:
+    data:
+        tWZ13:
+    label: $tWZ$
 ttH:
     data:
         ttH13:
@@ -51,24 +60,15 @@ tH:
     data:
         tH13:
     label: $tH$
-tZW:
-    data:
-        tWZ13:
-    label: $tWZ$
-ttgamma:
-    data:
-        ttg13: $fid~ \ell^+ \ell^-$
-        ttg8: $fid~ \ell~ jets$
-    label: $t\overline{t}\gamma$
-tgamma:
-    data:
-        tg13:
-    label: $t\gamma$
 tZq:
     data:
         tZq13:
         tZq8:
     label: $tZq$
+tgamma:
+    data:
+        tg13:
+    label: $t\gamma$
 tttt:
     data:
         tttt13:

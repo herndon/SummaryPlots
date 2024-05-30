@@ -18,7 +18,7 @@ label_style = {
     "13.0": r"13 TeV ($L \leq 138\,fb^{-1}$)",
     "8.0":  r"8 TeV ($L \leq 19.6\,fb^{-1}$)", 
     "7.0":  r"7 TeV ($L \leq 5\,fb^{-1}$)",
-    "5.02": r"5.02 TeV ($L \leq 231\,nb^{-1}$)",
+    "5.02": r"5.02 TeV ($L \leq 302\,pb^{-1}$)",
     "2.76": r"2.76 TeV ($L \leq 231\,nb^{-1}$)"
     }
 def get_style(com):
@@ -35,7 +35,7 @@ def get_legend(com, hdls, limit=False):
     tag = "exp"
     if limit: 
         tag = "limit"
-        label = f"95% CL limit at "+label
+        label = f"95% CL limit at "+"\n"+label
     return f"{tag}_{com}", (hdls, label)
 
 
@@ -69,6 +69,10 @@ parser.add_option("--no-references", dest="add_references", default=True, action
         help="Remove links to publications")
 parser.add_option("--horizontal", dest="do_horizontal", default=False, action="store_true",
         help="Make plot horizontally")
+parser.add_option("--brokenaxis", dest="do_broken_axis", default=False, action="store_true",
+        help="Broken axis for the large cross sections")
+parser.add_option("--order-legend", dest="order_legend", default=False, action="store_true",
+        help="Order legend, user needs to define order vector below")
 (opts, args) = parser.parse_args()
 
 
@@ -137,9 +141,14 @@ class DataPoint:
     def get_label(self, x, w=0):
         journal = self.data["paper"]
         cadi = self.data["cadi"]
-        cms_pub = f"https://cms-results.web.cern.ch/cms-results/public-results/publications/{cadi}/"
-        #arxiv = f"https://arxiv.org/abs/{self.data['arxiv']}"
-        return (journal, cms_pub, x+w)
+        #cms_pub = f"https://cms-results.web.cern.ch/cms-results/public-results/publications/{cadi}/"
+        arxiv = f"https://arxiv.org/abs/{self.data['arxiv']}"
+        if "cds" in arxiv:
+            arxiv = self.data['arxiv']
+            journal = self.data["cadi"]
+        if "doi" in arxiv:
+            arxiv = self.data['arxiv']
+        return (journal, arxiv, x+w)
 
     def annotate(self, x, w=0, label=None):
         '''
@@ -160,14 +169,33 @@ class DataPoint:
 
         x_max = max([up_m, up_t, xs_t, xs_m])
         x_min = min([dn_m, dn_t, xs_t, xs_m])
-        if self.horizontal:
-            ax.annotate(label, xy=(xp, x_min/1.1), rotation="vertical",
-                fontsize=20, va="top", ha="center", color="black")
+        x_min_scale = 1.0
+        if label and 't_{tchan}' in label : x_min_scale = 12.0
+        if label and 'tW~' in label : x_min_scale = 0.4
+        if label and 't_{schan}' in label : x_min_scale = 0.04
+        if label == "$\hspace{-0.7} VBF~W$" :  x_min_scale = 0.8
+        if label and 'VVV' in label :  x_min_scale = 8.0
+        if label and 'WWZ' in label :  x_min_scale = 0.4
+        if label == "$\hspace{0.5} t\overline{t}W$" :  x_min_scale = 8.0
+        if label and ('ex' in label) and ('WW' in label) :  x_min_scale = 21.0
+        if label == "$\hspace{-0.9} Z\gamma\gamma$" : x_min_scale = 16.0
+
+        if label and '\\n' in label:
+            label = '"\\n"'.join([f'r"{x}"' for x in label.split('\\n')])
+            label = eval(label)
+
+        
+        if self.horizontal and opts.do_broken_axis:
+            ax.annotate(label, xy=(xp, x_min*x_min_scale/2.0), rotation="horizontal",
+                        fontsize=20, va="top", ha="left", color="black")
+        elif self.horizontal :
+            ax.annotate(label, xy=(xp, x_min*x_min_scale/2.0), rotation="vertical",
+                        fontsize=20, va="top", ha="left", color="black")
         else:
             ax.annotate(label, xy=(x_max*1.1, xp),
                 fontsize=20, va="center", color="black")
-    
-
+     
+            
     def plot_ratio(self, x, w=0): 
         '''
         plot theory and measurement points into ratio panel
@@ -185,9 +213,10 @@ class DataPoint:
         # theory (grey band)
         p = xyPoint(1., dn_t, up_t, xp, self.buf_t)
 
-        rx.fill_between(p.x_rng, p.y_lo, p.y_hi,
-            color=self.color_t, alpha=self.alpha_t, zorder=1
-            )
+        if (self.data["theory_down"] > 0.0 ):
+            rx.fill_between(p.x_rng, p.y_lo, p.y_hi,
+                color=self.color_t, alpha=self.alpha_t, zorder=1
+                )
 
         # experiment 
         color, marker = get_style(str(self.data["com"]))
@@ -221,9 +250,16 @@ class DataPoint:
         p = xyPoint(xs, dn, up, xp, self.buf_t)
 
         # grey band
-        hdl = ax.fill_between(p.x_rng, p.y_lo, p.y_hi,
-            color=self.color_t, alpha=self.alpha_t, zorder=1
-            )
+        # deal with case where there are no theory errors
+        if (self.data["theory_down"] > 0.0 ):
+            hdl = ax.fill_between(p.x_rng, p.y_lo, p.y_hi,
+                color=self.color_t, alpha=self.alpha_t, zorder=1
+                )
+        else:
+            hdl = ax.fill_between(p.x_rng, p.y_lo, p.y_hi,
+                color='white', alpha=self.alpha_t, zorder=1
+                )
+           
         return "theory", (hdl, "Theory prediction")
 
     def plot_limit(self, xp, lim, up, color, axis):
@@ -295,7 +331,8 @@ import matplotlib.pyplot as plt
 import mplhep
 import mplhep.cms
 plt.style.use(mplhep.style.CMS)
-plt.rcParams.update({"font.size": 35})
+plt.rcParams.update({"font.size": 50})
+if opts.data_set == "sm": plt.rcParams.update({"font.size": 30})
 
 # count plot length first
 length = 0
@@ -307,16 +344,21 @@ for group in plot_data:
         length += n_entries
 
 # setup plot
+#if opts.do_horizontal and opts.do_broken_axis:
+#    fig, (ax)  = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/(2.0*16.0/9.0)))
+#    plt.xticks(fontsize=20)
 if opts.do_horizontal:
     if opts.do_ratio:
         fig, (ax, rx) = plt.subplots(2, 1, figsize=(4+length/2., 20.0),
             sharex=True,
             gridspec_kw={"height_ratios": (4,1)})
         plt.subplots_adjust(hspace=0.01)
+        plt.xticks(fontsize=35)
     else:
-
-        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/2.5))
-        plt.xticks(fontsize=20)
+        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/(2.0*16.0/9.0)))
+        if opts.data_set=="sm": plt.xticks(fontsize=20)
+        if opts.data_set=="sm": plt.yticks(fontsize=20)
+        if opts.data_set=="all": plt.xticks(fontsize=30)
 #        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0, 16))
 else:
     if opts.do_ratio:
@@ -345,7 +387,8 @@ for group in plot_data:
     sublabel = content.get("sublabel","")
 
     xlabels.append(label)
-    w = 0 if len(entries) > 1 else 0.5 # extra width for single entries
+    w = 0 if len(entries) > 1 and label != "ew\nVV" else 0.25 # extra width for single entries
+    #if (opts.do_horizontal and not opts.do_ratio): w = 0
 
     # different entries per group (usually different c.o.m.)
     for entry in entries:
@@ -355,9 +398,9 @@ for group in plot_data:
         if entries[entry] == "stack":
             x -= 1+2*w
         
-        # plot theory 
+        # plot theory, handle case where there is no theory error 
         l_type, legend = p.plot_theory(x, w)
-        if not l_type in legend_entries:
+        if (not l_type in legend_entries) and (p.data["theory_down"] > 0.0):
             legend_entries[l_type] = legend        
 
         # plot experiment
@@ -391,7 +434,8 @@ if not opts.do_ratio:
     tag += "_noratio"
 if not opts.add_references:
     tag += "_norefs"
-out_file = os.path.join(opts.out_dir, f"xs_{opts.data_set}_summary{tag}_{timestamp}.pdf")
+#out_file = os.path.join(opts.out_dir, f"xs_{opts.data_set}_summary{tag}_{timestamp}.pdf")
+out_file = os.path.join(opts.out_dir, f"xs_{opts.data_set}_summary.pdf")
 
 # make nice
 if opts.do_horizontal:
@@ -410,7 +454,9 @@ label_pos = (ticks[:-1] + ticks[1:])/2.
 rotate = 0
 if opts.rotate_label:
     rotate = 90
+#ax_upper = pickle.loads(p_ax)
 
+    
 # set axis labels
 if opts.do_ratio:
     axes = [ax, rx]
@@ -426,7 +472,7 @@ for axis in axes:
     else:
         axis.set_yticks(ticks=label_pos, minor=False)
         axis.set_yticks(ticks=ticks, minor=True)
-        axis.set_yticklabels(xlabels[::-1], minor=False, rotation=rotate)
+        axis.set_yticklabels(xlabels[::-1], minor=False, rotation=rotate, fontsize=35)
         axis.tick_params(axis="y", which="major", length=0)
         axis.grid(which="minor", axis="y", lw=1, ls=":", color="black", alpha=0.7)
 
@@ -451,22 +497,89 @@ lmax = np.log10(xmax)
 lrng = lmax - lmin
 if opts.add_references:
     new_lmax = lmin+lrng*(1.25+opts.label_buffer)
-    new_lmin = lmax-lrng*(1.2+opts.label_buffer)
+    new_lmin = lmax-lrng*(1.3+opts.label_buffer)
 else:
     new_lmax = lmin+lrng*(1.+opts.label_buffer)
     new_lmin = lmax-lrng*(1.+opts.label_buffer)
-if opts.do_horizontal:
+
+if opts.do_horizontal and opts.do_broken_axis:
+    new_lmin = -4.0
+    xmax = 1000000
+    plt.yticks([0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000,1000000])
+    newlabels = [item.get_text() for item in ax.get_yticklabels()]
+    newlabels = ['$10^{-4}$','$10^{-3}$','$10^{-2}$','$10^{-1}$','1','$10^{1}$','$10^{2}$','$10^{3}$','$10^{4}$','$10^{5}$','$10^{11}$']
+    ax.set_yticklabels(newlabels)
+    label_lx = new_lmin+lrng*0.02
+    label_x = 10**label_lx
+
+    d = 0.4 
+
+    kwargsh = dict(marker=[(0, 0), (1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([0.0, 0.0], [0.9355, 0.9355], transform=ax.transAxes, **kwargsh)
+
+    kwargsh = dict(marker=[(0, 0), (1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([0.0, 0.0], [0.925, 0.925], transform=ax.transAxes, **kwargsh)
+
+    kwargsh = dict(marker=[(0, 0), (-1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([0.0, 0.0], [0.925, 0.925], transform=ax.transAxes, **kwargsh)
+
+    
+    kwargsh = dict(marker=[(0, 0), (-1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([0.0, 0.0], [0.9148, 0.9148], transform=ax.transAxes, **kwargsh)
+
+
+    kwargsh = dict(marker=[(0, 0), (1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([1.0, 1.0], [0.9355, 0.9355], transform=ax.transAxes, **kwargsh)
+
+    kwargsh = dict(marker=[(0, 0), (1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([1.0, 1.0], [0.925, 0.925], transform=ax.transAxes, **kwargsh)
+
+    kwargsh = dict(marker=[(0, 0), (-1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([1.0, 1.0], [0.925, 0.925], transform=ax.transAxes, **kwargsh)
+
+    
+    kwargsh = dict(marker=[(0, 0), (-1, 0)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([1.0, 1.0], [0.9148, 0.9148], transform=ax.transAxes, **kwargsh)
+
+
+
+    
+    
+    kwargs = dict(marker=[(-1, -d), (1, d)], markersize=20,
+              linestyle="none", color='k', mec='k', mew=1, clip_on=False)
+    ax.plot([0.0, 0.0], [0.920, 0.930], transform=ax.transAxes, **kwargs)
+    ax.plot([1.0, 1.0], [0.920, 0.930], transform=ax.transAxes, **kwargs)
+
+
+elif opts.do_horizontal:
     ax.set_ylim([10**new_lmin, xmax])
     label_lx = new_lmin+lrng*0.02
     label_x = 10**label_lx
 else:
-    ax.set_xlim([xmin, 10**new_lmax])
+    ax.set_xlim([xmin/1.0, 11.5**new_lmax])
     label_lx = lmin+lrng*(1.+opts.label_buffer)
     label_x = 10**label_lx
-
+    # divide xmin by 10 for Higgs plot
+    
+print(new_lmin)
+print(10**new_lmin)
+print(xmax)
+    
+# ewjets plot needs xmin/10 above
+# ewjets plot needs xmin/100 above
+    
 # add axis labels and publication labels
 if opts.do_horizontal:
-    ax.set_ylabel(f"Production cross section, $\sigma$ (pb)", loc="center")
+    if opts.data_set=="all":    ax.set_ylabel(f"Production cross section, $\sigma$ (pb)", loc="center", fontsize=55)
+    if opts.data_set=="sm":     ax.set_ylabel(f"Production cross section, $\sigma$ (pb)", loc="center", fontsize=35)
     if opts.do_ratio:
         rx.set_ylabel(f"Data/Theory", loc="center")
     if opts.add_references:
@@ -485,13 +598,35 @@ else:
 # legend
 leg_handles = [legend_entries[e][0] for e in legend_entries]
 leg_entries = [legend_entries[e][1] for e in legend_entries]
+
 if opts.do_horizontal:
-    l1 = ax.legend(leg_handles, leg_entries,
-        loc="upper right", ncol=1, fontsize=27)
+    ledfontsize = 30
+    if opts.data_set=="sm": ledfontsize = 20
+    if opts.data_set=="all": ledfontsize = 30
+# reorder legend entries if necessary
+    if opts.order_legend:
+        if opts.data_set=="all": order = [6,0,3,2,5,4,7,1]
+        if opts.data_set=="sm": order = [0,3,1,5,4,6,2]
+        if opts.data_set=="top": order =  [1,2,3,4,5,0]
+        l1 = ax.legend([leg_handles[idx] for idx in order],[leg_entries[idx] for idx in order],
+           loc="upper right", ncol=1, fontsize=ledfontsize,frameon=True,edgecolor="white")
+    else:
+        l1 = ax.legend(leg_handles,leg_entries,
+           loc="upper right", ncol=1, fontsize=ledfontsize,frameon=True,edgecolor="white")
 else:
-    l1 = ax.legend(leg_handles, leg_entries,
-        loc="upper left", ncol=1, fontsize=27)
+# reorder legend entries if necessary
+    if opts.order_legend:
+        if opts.data_set=="ew": order = [2,3,1,4,5,6,0]
+        if opts.data_set=="ewjet": order = [1,2,3,4,0]
+        if opts.data_set=="top": order = [1,2,3,4,5,0]
+        if opts.data_set=="higgs": order = [1,2,3,4,0]                
+        l1 = ax.legend([leg_handles[idx] for idx in order],[leg_entries[idx] for idx in order],
+           loc="upper left", ncol=1, fontsize=35,frameon=True,edgecolor="grey")
+    else:
+        l1 = ax.legend(leg_handles,leg_entries,
+           loc="upper left", ncol=1, fontsize=35,frameon=True,edgecolor="grey")
 ax.add_artist(l1)
+#plt.legend(facecolor='white', framealpha=1)
 
 
 # cms label and time stamp

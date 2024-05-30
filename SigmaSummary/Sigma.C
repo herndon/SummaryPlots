@@ -38,14 +38,14 @@ float aspR = 1.4;
 // texts
 size_t ntxt = 1;
 
- vector<string> txt(100);
-vector<float>  txtSize(100);
-vector<float>  txtX(100);
-vector<float>  txtY(100);
-vector<int>    txtNDC(100);
-vector<int>    txtAlign(100);
-vector<int>    txtFont(100);
-vector<int>    txtColor(100);
+ vector<string> txt(200);
+vector<float>  txtSize(200);
+vector<float>  txtX(200);
+vector<float>  txtY(200);
+vector<int>    txtNDC(200);
+vector<int>    txtAlign(200);
+vector<int>    txtFont(200);
+vector<int>    txtColor(200);
 void text_init(bool PaperVersion);
 void text_reset();
 void text_write();

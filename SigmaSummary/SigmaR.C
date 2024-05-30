@@ -196,7 +196,7 @@ public:
         if (version ==5)  _e_tot =  _e_tot/2.0;
         if (version ==6)  _e_tot =  _e_tot/2.0;
 
-	if (version==5){
+	if (version==5||version==10){
 
 	TGraphErrors _dataTotPoint5Th(1);
 	_dataTotPoint5Th.SetPoint(1, _ypos*0.345, _sigma_theo-1 );
@@ -257,7 +257,7 @@ public:
 	
 
 	TGraphErrors _dataTotPoint8Th(1);
-	_dataTotPoint8Th.SetPoint(1, _ypos*0.535, _sigma_theo-1 );
+	_dataTotPoint8Th.SetPoint(1, _ypos*0.555, _sigma_theo-1 );
 	_dataTotPoint8Th.SetPointError( 1, _e_tot, 0 );
 	_dataTotPoint8Th.SetLineWidth(1);
 	_dataTotPoint8Th.SetLineColor(kBlack);
@@ -265,7 +265,7 @@ public:
 	_dataTotPoint8Th.DrawClone("e");	
 
 	TGraphErrors _dataTotPoint8(1);
-	_dataTotPoint8.SetPoint(1, _ypos*0.535, _sigma_theo-1 );
+	_dataTotPoint8.SetPoint(1, _ypos*0.555, _sigma_theo-1 );
 	_dataTotPoint8.SetPointError( 1, _e_tot/2, 0 );
 	_dataTotPoint8.SetLineWidth(1);
 	_dataTotPoint8.SetLineColor(kRed);
@@ -273,7 +273,7 @@ public:
 	_dataTotPoint8.DrawClone("e");	
 
 
- 	TMarker _dataPoint8( _ypos*0.535, _sigma_theo-1, kFullCircle );
+ 	TMarker _dataPoint8( _ypos*0.555, _sigma_theo-1, kFullCircle );
  	_dataPoint8.SetMarkerSize(markerSize);
 	_dataPoint8.SetMarkerStyle(kFullTriangleUp);
  	_dataPoint8.SetMarkerColor(kRed);
@@ -284,7 +284,7 @@ public:
 
 	
 	TGraphErrors _dataTotPoint13Th(1);
-	_dataTotPoint13Th.SetPoint(1, _ypos*0.63, _sigma_theo-1 );
+	_dataTotPoint13Th.SetPoint(1, _ypos*0.66, _sigma_theo-1 );
 	_dataTotPoint13Th.SetPointError( 1, _e_tot, 0 );
 	_dataTotPoint13Th.SetLineWidth(1);
 	_dataTotPoint13Th.SetLineColor(kBlack);
@@ -292,7 +292,7 @@ public:
 	_dataTotPoint13Th.DrawClone("e");	
 
 	TGraphErrors _dataTotPoint13(1);
-	_dataTotPoint13.SetPoint(1, _ypos*0.63, _sigma_theo-1 );
+	_dataTotPoint13.SetPoint(1, _ypos*0.66, _sigma_theo-1 );
 	_dataTotPoint13.SetPointError( 1, _e_tot/2, 0 );
 	_dataTotPoint13.SetLineWidth(1);
 	_dataTotPoint13.SetLineColor(kRed);
@@ -300,7 +300,7 @@ public:
 	_dataTotPoint13.DrawClone("e");	
 
 
- 	TMarker _dataPoint13( _ypos*0.63, _sigma_theo-1, kFullCircle );
+ 	TMarker _dataPoint13( _ypos*0.66, _sigma_theo-1, kFullCircle );
  	_dataPoint13.SetMarkerSize(markerSize);
 	_dataPoint13.SetMarkerColor(kBlack);
 	_dataPoint13.DrawClone();
@@ -310,8 +310,8 @@ public:
 
 
 	
-	txt[ntxt] = "7,          8,          13 TeV CMS measurements";
-	if (version==5) txt[ntxt] = "5.02,         7,         8,         13   TeV CMS measurements";
+	txt[ntxt] = "7,        8,       13     TeV CMS measurements";
+	if (version==5) txt[ntxt] = "5.02,       7,          8,         13     TeV CMS measurements";
 	txtSize[ntxt] = 0.03;
 	txtX[ntxt] = _ypos*0.52;
 	if (version==5) txtX[ntxt] = _ypos*0.32;
@@ -358,7 +358,8 @@ public:
 	txt[ntxt] = "stat      sys";
 	txtSize[ntxt] = 0.03;
 	txtX[ntxt] = _ypos*0.88;
-	if (version==6||version==5) txtX[ntxt] = _ypos*0.94;
+	if (version==5) txtX[ntxt] = _ypos*0.92;
+	if (version==6) txtX[ntxt] = _ypos*0.95;
 	if (version==7) txtX[ntxt] = _ypos*0.73;
 	txtY[ntxt] = _sigma_theo -2.4;
  	txtAlign[ntxt] = 12;
@@ -435,10 +436,10 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
   if (version == 6) xAxisMax = 4.9;
   if (version == 7) xAxisMax = 8.0;
-  if (PaperVersion && version == 6) xAxisMin = -0.4;
-  if (PaperVersion && version == 6) xAxisMax = 3.5;
-  if (PaperVersion && version == 5) xAxisMin = -0.4;
-  if (PaperVersion && version == 5) xAxisMax = 3.5;
+  if (PaperVersion && version == 6) xAxisMin = -1.4;
+  if (PaperVersion && version == 6) xAxisMax = 3.7;
+  if (PaperVersion && version == 5) xAxisMin = -0.8;
+  if (PaperVersion && version == 5) xAxisMax = 3.1;
  
 
   text_init(PaperVersion);
@@ -491,7 +492,9 @@ SigmaR(float ymin=0.009, float ymax=900000 )
 
       txt[ntxt] = chanMeasurement[ii];
       txtSize[ntxt] = size_*0.8;
-      txtX[ntxt] =  xAxisMin - (xAxisMax-xAxisMin)*0.065;
+      txtX[ntxt] =  xAxisMin - (xAxisMax-xAxisMin)*0.02;
+      if (version == 5) txtX[ntxt] =  xAxisMin - (xAxisMax-xAxisMin)*0.02;
+      if (version == 6) txtX[ntxt] =  xAxisMin - (xAxisMax-xAxisMin)*0.02;
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -499,14 +502,15 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       
 
 	
-      txt[ntxt] = "#splitline{"+chanLumi[ii]+"}{"+chanPublication[ii]+"}";
-
+      txt[ntxt] = chanPublication[ii];
+      //txt[ntxt] = "#splitline{"+chanLumi[ii]+"}{"+chanPublication[ii]+"}";
       //txt[ntxt] = chanMeasurement[ii]+"  "+chanPublication[ii];
       
       cout << txt[ntxt] << endl;
-      txtSize[ntxt] = size_*0.4;
-      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*(0.0);
-      if (version==6) txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*(0.04);
+      txtSize[ntxt] = size_*0.7;
+      txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*(0.04);
+      if (version==5) txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*(0.04);
+      if (version==6) txtX[ntxt] =  xAxisMin + (xAxisMax-xAxisMin)*(0.09);
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -542,6 +546,8 @@ SigmaR(float ymin=0.009, float ymax=900000 )
       txt[ntxt] = chanResult[ii];
       txtSize[ntxt] = size_*0.8;
       txtX[ntxt] = xAxisMin + (xAxisMax-xAxisMin)*0.8;
+      if (version == 5) txtX[ntxt] = xAxisMin + (xAxisMax-xAxisMin)*0.8;
+      if (version == 6) txtX[ntxt] = xAxisMin + (xAxisMax-xAxisMin)*0.82;
       txtY[ntxt] = nPlotChan - (nBin_) +1.5*DY_;
       txtAlign[ntxt] = 12;
       txtFont[ntxt] = 42;
@@ -583,11 +589,11 @@ SigmaR(float ymin=0.009, float ymax=900000 )
   c_->SetFrameLineWidth(2);
   c_->SetFrameBorderMode(0);
 
-  TH1F* h_= new TH1F( "bidon", "bidon", 30, -1.0, 8.0);
+  TH1F* h_= new TH1F( "bidon", "bidon", 30, -2.0, 8.0);
   TAxis* ax_ = h_->GetXaxis();
   TAxis* ay_ = h_->GetYaxis();
   
-  ax_->SetTitle("Production Cross Section Ratio:   #sigma_{exp} / #sigma_{theo}");
+  ax_->SetTitle("Production cross section ratio:   #sigma_{exp} / #sigma_{theo}");
   ax_->SetNdivisions(ndivx);
   ax_->SetTitleOffset(titleOffsetX);
   ax_->SetTitleSize(titleSizeX);
@@ -755,17 +761,27 @@ void text_init(bool PaperVersion)
   txtNDC[0]=true;
   txtFont[0] = 42;
 
-  if (version ==5) txt[1] = "CMS diboson measurements vs. NNLO (NLO W#gamma Z#gamma) theory";
-  if (version ==6) txt[1] = "CMS EW measurements vs. theory";
+  if (version ==5) txt[1] = "Diboson measurements vs. NNLO theory";
+  if (version ==6) txt[1] = "EW measurements vs. theory";
   if (version ==7) txt[1] = "CMS measurements";
   txtSize[1] = 0.04;
-  txtX[1] = 0.03;
+  txtX[1] = 0.04;
   txtY[1] = 0.95;
   txtAlign[1] = 11;
   txtNDC[1]=true;
   txtFont[1] = 42;
 
-  
+  if (PaperVersion) {
+
+  if (version ==5) txt[3] = "(NLO W#gamma, Z#gamma 7 TeV)";
+  txtSize[3] = 0.04;
+  txtX[3] = 0.04;
+  txtY[3] = 0.88;
+  txtAlign[3] = 11;
+  txtNDC[3]=true;
+  txtFont[3] = 42;
+
+  }
 
   
   if (!PaperVersion) {
