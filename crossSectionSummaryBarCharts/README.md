@@ -57,7 +57,7 @@ Horizontal global summary
 python3 make_xs_chart.py --brokenaxis --horizontal --no-ratio --no-references --order-legend -d all -i data_all_summary.csv -y data_all_stack_summary.yml -o . --no-date
 
 Horizontal smp sumary
-python3 make_xs_chart.py --brokenaxis --horizontal --no-ratio --no-references -d sm -i data_all_summary.csv -y data_sm_stack_summary.yml -o . --no-date
+python3 make_xs_chart.py --brokenaxis --horizontal --no-ratio --no-references --order-legend -d sm -i data_all_summary.csv -y data_sm_stack_summary.yml -o . --no-date
 
 
 Horizontal top summary with ratios
