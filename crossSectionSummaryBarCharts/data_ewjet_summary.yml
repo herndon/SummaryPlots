@@ -7,8 +7,8 @@ incj:
     label: "inclusive\n jet"
 gjet:
     data:
-        gj: $~~~p_{T}(\gamma,j) > 40\,GeV, |\eta| < 2.5$
-    label: $\gamma + jet$
+        gj: $~~~p_{T}(\mathit{\gamma},j) > 40\,GeV, |\eta| < 2.5$
+    label: $\mathit{\gamma} + jet$
 Wjet:
     data:
         W1jet13: $~~~1j\ p_{T} > 30\,GeV, |\eta| < 2.4$
@@ -67,9 +67,9 @@ Zjet:
     label: $Z+jets$
 Vgjet:
     data:
-        Wg2jet13: $~~~W\gamma~2j, \ p_{T} > 30\,GeV, |\eta| < 4.7$ 
-        Zg2jet13: $~~~Z\gamma~2j, \ p_{T} > 30\,GeV, |\eta| < 4.7$ 
-    label: $V\gamma+2jets$
+        Wg2jet13: $~~~W\mathit{\gamma}~2j, \ p_{T} > 30\,GeV, |\eta| < 4.7$ 
+        Zg2jet13: $~~~Z\mathit{\gamma}~2j, \ p_{T} > 30\,GeV, |\eta| < 4.7$ 
+    label: $V\mathit{\gamma}+2jets$
 WWjet:
     data:
         WW0jet13: $~~~0j\ p_{T} > 30\,GeV, |\eta| < 2.4$

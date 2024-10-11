@@ -11,11 +11,11 @@ incj:
     label: QCD
 g:
     data:
-        incg: $\hspace{-0.5} \gamma$
-        gj: $\hspace{-0.8} \gamma j$
-#        incg: $p_{T}(\gamma) > 25~~~~$
-#        gj: $p_{T}(\gamma,j) > 40\, |\eta| < 2.5~~~~$
-    label: $\gamma$
+        incg: $\hspace{-0.5} \mathit{\gamma}$
+        gj: $\hspace{-0.8} \mathit{\gamma} j$
+#        incg: $p_{T}(\mathit{\gamma}) > 25~~~~$
+#        gj: $p_{T}(\mathit{\gamma},j) > 40\, |\eta| < 2.5~~~~$
+    label: $\mathit{\gamma}$
 WandZ:
     data:
         W13:
@@ -73,11 +73,11 @@ ggHandVBFH:
     label: "ggH\nVBF H"
 WgandZg:
     data:
-        Wg13:  $\hspace{-0.8} W\gamma$
+        Wg13:  $\hspace{-0.8} W\mathit{\gamma}$
         Wg: stack
-        Zg8:  $\hspace{-0.5} Z\gamma$
+        Zg8:  $\hspace{-0.5} Z\mathit{\gamma}$
         Zg: stack
-    label: $V\gamma$
+    label: $V\mathit{\gamma}$
 VBFWandW:
     data:
         VBFW13: $\hspace{-0.7} VBF~W$
@@ -106,7 +106,7 @@ ttZandWandg:
         ttZ13: stack
         ttW13: $\hspace{0.5} t\overline{t}W$
         ttg13: stack
-        ttg8: $\hspace{-1.9} t\overline{t}\gamma$
+        ttg8: $\hspace{-1.9} t\overline{t}\mathit{\gamma}$
         ttW8: stack 
     label: $t\overline{t}X$
 tH:
@@ -120,7 +120,7 @@ tWZandtgandtZgandtttt:
         tWZ13: $\hspace{-0.8} tWZ$
         tZq8: $\hspace{-0.8} tZq$
         tZq13: stack
-        tg13: $\hspace{-0.7} t\gamma$
+        tg13: $\hspace{-0.7} t\mathit{\gamma}$
     label: tX
 #    label: "tWZ,tZq,tg\n             tZq"
 HH:
@@ -133,12 +133,12 @@ EWWgandZg:
         EWKZg13: stack
         EWKWg8:
         EWKZg8: stack
-    label: $ew$\n$W\gamma$\n$Z\gamma$
+    label: $ew$\n$W\mathit{\gamma}$\n$Z\mathit{\gamma}$
 ExWWandssWW:
     data:
         exWW8: $\hspace{-0.8}ex$\n$\hspace{-0.8}WW$
         SSWW13: stack
-        SSWW8: $\hspace{-2.7} W^\pm W^\pm $
+        SSWW8: $\hspace{-2.7} ew$\n$\hspace{-2.7} W^\pm W^\pm $
     label: $ex{,}{\pm}{\pm}$\n$WW$
 tttt:
     data:
@@ -146,12 +146,12 @@ tttt:
     label: $t\overline{t}$\n$t\overline{t}$    
 VVg:
     data:
-        Wgg8: $\hspace{-0.8} W\gamma\gamma$ 
+        Wgg8: $\hspace{-0.8} W\mathit{\gamma}\mathit{\gamma}$ 
         Wgg13: stack
-        Zgg13: $\hspace{-0.9} Z\gamma\gamma$ 
+        Zgg13: $\hspace{-0.9} Z\mathit{\gamma}\mathit{\gamma}$ 
         Zgg8: stack
-        WWg13: $\hspace{-2.0} WW\gamma$ 
-    label: $V\gamma\gamma$\n$WW\gamma$
+        WWg13: $\hspace{-2.0} WW\mathit{\gamma}$ 
+    label: $V\mathit{\gamma}\mathit{\gamma}$\n$WW\mathit{\gamma}$
 EWVV:
     data:
         EWKWW13:

@@ -1,7 +1,7 @@
   gROOT->LoadMacro("tdrstyle.C");
   gROOT->LoadMacro("SigmaR.C++");
   setTDRStyle();  
-  version=6; //5 diboson, 6 EW, 7 triboson, 10 W,Z 
+  version=7; //5 diboson, 6 EW, 7 triboson, 10 W,Z 
   TString str("SigmaR_v"); str+=version;
   #SigmaR()->Print(str+".png");
   SigmaR()->Print(str+".pdf");

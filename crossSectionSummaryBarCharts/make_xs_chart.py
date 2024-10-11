@@ -46,6 +46,9 @@ import time
 import yaml
 import matplotlib as mpl
 import optparse
+
+
+
 parser = optparse.OptionParser("""
     python3 make_xs_chart.py -i DATA.csv -y DATA.yml -o OUTDIR [--no-date]
     """)
@@ -73,6 +76,8 @@ parser.add_option("--brokenaxis", dest="do_broken_axis", default=False, action="
         help="Broken axis for the large cross sections")
 parser.add_option("--order-legend", dest="order_legend", default=False, action="store_true",
         help="Order legend, user needs to define order vector below")
+parser.add_option("--write-hepdata", dest="write_hepdata", default=False, action="store_true",
+        help="Write hepdata output file")
 (opts, args) = parser.parse_args()
 
 
@@ -178,23 +183,33 @@ class DataPoint:
         if label and 'WWZ' in label :  x_min_scale = 0.4
         if label == "$\hspace{0.5} t\overline{t}W$" :  x_min_scale = 8.0
         if label and ('ex' in label) and ('WW' in label) :  x_min_scale = 21.0
-        if label == "$\hspace{-0.9} Z\gamma\gamma$" : x_min_scale = 16.0
+        if label == "$\hspace{-0.9} Z\mathit{\gamma}\mathit{\gamma}$" : x_min_scale = 16.0
 
         if label and '\\n' in label:
             label = '"\\n"'.join([f'r"{x}"' for x in label.split('\\n')])
             label = eval(label)
 
-        
-        if self.horizontal and opts.do_broken_axis:
-            ax.annotate(label, xy=(xp, x_min*x_min_scale/2.0), rotation="horizontal",
+        if label and 'https' not in label[1] :
+            if self.horizontal and opts.do_broken_axis:
+                ax.annotate(label, xy=(xp, x_min*x_min_scale/2.0), rotation="horizontal",
                         fontsize=20, va="top", ha="left", color="black")
-        elif self.horizontal :
-            ax.annotate(label, xy=(xp, x_min*x_min_scale/2.0), rotation="vertical",
+            elif self.horizontal :
+                ax.annotate(label, xy=(xp, x_min*x_min_scale/2.0), rotation="vertical",
                         fontsize=20, va="top", ha="left", color="black")
-        else:
-            ax.annotate(label, xy=(x_max*1.1, xp),
+            else:
+                ax.annotate(label, xy=(x_max*1.1, xp),
                 fontsize=20, va="center", color="black")
-     
+
+        if self.horizontal and label and 'https' in label[1] :
+            ax.annotate("$\hspace{-1.5}link$", xy=(xp, xs_m), rotation="horizontal",
+                    fontsize=20, ha="center", va="center", alpha = 0.0, color="black", url=label[1])
+
+        if not self.horizontal and label and 'https' in label[1] :
+            ax.annotate("$\hspace{-1.5}link$", xy=(xs_m, xp), rotation="horizontal",
+                    fontsize=30, ha="center", va="center", alpha = 0, color="white", url=label[1])
+
+            
+            
             
     def plot_ratio(self, x, w=0): 
         '''
@@ -234,7 +249,7 @@ class DataPoint:
             rx.plot(p.x, p.y, zorder=3, ls="",
                 marker=marker, markeredgewidth=3, ms=12,
                 fillstyle="none", color="black")
-
+            
     def plot_theory(self, x, w=0):
         '''
         add theory prediction as grey band in background
@@ -318,12 +333,11 @@ class DataPoint:
 
             # filled color area
             hdl_fill = ax.fill_between(p.x_rng, p.y_lo, p.y_hi,
-                color=color, zorder=2, alpha=self.alpha_m, lw=0.
-                )
+                color=color, zorder=2, alpha=self.alpha_m, lw=0.)
             # marker
             hdl_point = ax.plot(p.x, p.y, zorder=3, ls="",
                 marker=marker, markeredgewidth=3, ms=12,
-                fillstyle="none", color="black") 
+                                fillstyle="none", color="black")
             return get_legend(self.data["com"], (hdl_fill, hdl_point[0]))
 
 # plot
@@ -332,6 +346,9 @@ import mplhep
 import mplhep.cms
 plt.style.use(mplhep.style.CMS)
 plt.rcParams.update({"font.size": 50})
+plt.rcParams.update({"mathtext.rm": 'Times'})
+mpl.rcParams['mathtext.it'] = 'Times'
+
 if opts.data_set == "sm": plt.rcParams.update({"font.size": 30})
 
 # count plot length first
@@ -356,7 +373,8 @@ if opts.do_horizontal:
         plt.xticks(fontsize=35)
     else:
         fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0,(4+length/2.)/(2.0*16.0/9.0)))
-        if opts.data_set=="sm": plt.xticks(fontsize=20)
+        #if opts.data_set=="sm": plt.xticks(fontsize=20,fontname="Times")
+        if opts.data_set=="sm": plt.xticks(fontsize=19)
         if opts.data_set=="sm": plt.yticks(fontsize=20)
         if opts.data_set=="all": plt.xticks(fontsize=30)
 #        fig, ax = plt.subplots(1, 1, figsize=((4+length/2.)/2.0, 16))
@@ -375,6 +393,9 @@ label_pos = []
 xlabels = []
 pub_labels = []
 legend_entries = {}
+hepdata_xs = []
+hepdata_labels = []
+
 
 # one group, divided by vertical line
 for group in plot_data:
@@ -387,8 +408,18 @@ for group in plot_data:
     sublabel = content.get("sublabel","")
 
     xlabels.append(label)
-    w = 0 if len(entries) > 1 and label != "ew\nVV" else 0.25 # extra width for single entries
+    w = 0 if len(entries) > 1 else 0.25 # extra width for single entries
     #if (opts.do_horizontal and not opts.do_ratio): w = 0
+
+# check if all entries stacked
+    firstEntry = True
+    allStacked = True
+    for entry in entries:
+        if firstEntry == False and entries[entry] != "stack": allStacked = False
+        firstEntry = False
+        
+    if allStacked: w = 0.25
+
 
     # different entries per group (usually different c.o.m.)
     for entry in entries:
@@ -407,6 +438,17 @@ for group in plot_data:
         l_type, legend = p.plot_measurement(x, w)
         if not l_type in legend_entries:
             legend_entries[l_type] = legend        
+        # and store hepdata_xs
+        hepdata_xs_local = []
+        hepdata_xs_local.append(p.data["xs"])
+        hepdata_xs_local.append(p.data["stat_down"])
+        hepdata_xs_local.append(p.data["stat_up"])
+        hepdata_xs_local.append(p.data["syst_down"])
+        hepdata_xs_local.append(p.data["syst_up"])
+        hepdata_xs_local.append(p.data["process"])
+        hepdata_xs_local.append(p.data["com"])
+        hepdata_xs.append(hepdata_xs_local)
+        #print(hepdata_xs)    
 
         # plot ratio
         if opts.do_ratio:
@@ -417,7 +459,10 @@ for group in plot_data:
             p.annotate(x, w, label=entries[entry])
 
         # get publication label
-        # will be plotted later as we need to know the max x range of plot
+        # pub lables on markers
+        p.annotate(x, w, label=p.get_label(x, w))
+            
+        # pub lables at bottom or side will be plotted later as we need to know the max x range of plot
         pub_labels.append(p.get_label(x, w))
 
         x += 1+2*w # move down in plot
@@ -503,11 +548,11 @@ else:
     new_lmin = lmax-lrng*(1.+opts.label_buffer)
 
 if opts.do_horizontal and opts.do_broken_axis:
-    new_lmin = -4.0
-    xmax = 1000000
-    plt.yticks([0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000,1000000])
+    new_lmin = -1.0
+    xmax = 1000000000
+    plt.yticks([0.1,1.0,10.0,100.,1000.,10000,100000,1000000,10000000,100000000,1000000000])
     newlabels = [item.get_text() for item in ax.get_yticklabels()]
-    newlabels = ['$10^{-4}$','$10^{-3}$','$10^{-2}$','$10^{-1}$','1','$10^{1}$','$10^{2}$','$10^{3}$','$10^{4}$','$10^{5}$','$10^{11}$']
+    newlabels = ['$10^{-1}$','$1$','$10^{1}$','$10^{2}$','$10^{3}$','$10^{4}$','$10^{5}$','$10^{6}$','$10^{7}$','$10^{8}$','$10^{14}$']
     ax.set_yticklabels(newlabels)
     label_lx = new_lmin+lrng*0.02
     label_x = 10**label_lx
@@ -567,7 +612,7 @@ else:
     ax.set_xlim([xmin/1.0, 11.5**new_lmax])
     label_lx = lmin+lrng*(1.+opts.label_buffer)
     label_x = 10**label_lx
-    # divide xmin by 10 for Higgs plot
+    # divide xmin by 10 for Higgs plot and change 11.5 to 10.5
     
 print(new_lmin)
 print(10**new_lmin)
@@ -578,16 +623,17 @@ print(xmax)
     
 # add axis labels and publication labels
 if opts.do_horizontal:
-    if opts.data_set=="all":    ax.set_ylabel(f"Production cross section, $\sigma$ (pb)", loc="center", fontsize=55)
-    if opts.data_set=="sm":     ax.set_ylabel(f"Production cross section, $\sigma$ (pb)", loc="center", fontsize=35)
+    if opts.data_set=="all":    ax.set_ylabel(f"Production cross section, $\sigma$ (fb)", loc="center", fontsize=55)
+    if opts.data_set=="sm":     ax.set_ylabel(f"Production cross section, $\sigma$ (fb)", loc="center", fontsize=35)
     if opts.do_ratio:
         rx.set_ylabel(f"Data/Theory", loc="center")
     if opts.add_references:
         for journal, link, y in pub_labels:
             ax.annotate(journal, xy=(y, label_x), rotation="vertical",
                 fontsize=20, ha="center", va="bottom", color="blue", url=link)
+            
 else:
-    ax.set_xlabel(f"Production cross section, $\sigma$ (pb)", loc="center")
+    ax.set_xlabel(f"Production cross section, $\sigma$ (fb)", loc="center")
     if opts.do_ratio:
         rx.set_xlabel(f"Data/Theory", loc="center")
     if opts.add_references:
@@ -641,3 +687,34 @@ mplhep.cms.label(ax=ax, data=True,
 plt.tight_layout()
 plt.savefig(out_file)
 plt.savefig(out_file.replace(".pdf",".png"))
+
+print("dependent_variables:")
+print("- header:")
+print("    name: $\sigma$")
+print("    units: fb")
+print("  values:")
+
+for entry in hepdata_xs:
+    print("  - errors:")
+    print("    - asymerror:")
+    if entry[1] > 0.0: print("        minus:",f"{-entry[1]*1e-3:.2e}")
+    elif entry[5] == 'ZZZ':  print("        minus:",f"{-.99*entry[0]*1e-3:.2e}")
+    elif entry[5] == 'HH':  print("        minus:",f"{-.99*entry[0]*1e-3:.2e}")
+    else: print("        minus:",f"{-0.99*1e-3:.2e}")
+    if entry[2] > 0.0: print("        plus:",f"{entry[2]*1e-3:.2e}")
+    else: print("        plus:",f"{0.99*1e-3:.2e}")
+    print("      label: statistical uncertainty")
+    print("    - asymerror:")
+    if entry[3] > 0.0: print("        minus:",f"{-entry[3]*1e-3:.2e}")
+    else: print("        minus:",f"{-0.99*1e-3:.2e}")
+    if entry[4] > 0.0: print("        plus:",f"{entry[4]*1e-3:.2e}")
+    else: print("        plus:",f"{0.99*1e-3:.2e}")
+    print("      label: systematic uncertainty")
+    print("    value:",f"{entry[0]*1e-3:.2e}")
+
+print("independent_variables:")
+print("- header:")
+print("    name: Process")
+print("  values:")
+for entry in hepdata_xs:
+    print("  - value:",entry[5],entry[6],"TeV")

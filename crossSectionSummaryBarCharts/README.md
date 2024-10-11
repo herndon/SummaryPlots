@@ -71,7 +71,6 @@ python3 make_xs_chart.py --order-legend -d ewjet -b 0.3 -i data_all_summary.csv 
 python3 make_xs_chart.py --order-legend -d top -b 0.06 -i data_all_summary.csv -y data_top_summary.yml -o . --no-date
 
 
-
 python3 make_xs_chart.py --order-legend -d higgs -i data_all_summary.csv -y data_higgs_summary.yml -o . --no-date
 
 

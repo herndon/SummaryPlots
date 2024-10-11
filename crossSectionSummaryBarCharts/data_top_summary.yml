@@ -46,7 +46,7 @@ ttgamma:
     data:
         ttg13: $fid~ \ell^+ \ell^-$
         ttg8: $fid~ \ell~ jets$
-    label: $t\overline{t}\gamma$
+    label: $t\overline{t}\mathit{\mathit{\gamma}}$
 tZW:
     data:
         tWZ13:
@@ -68,7 +68,7 @@ tZq:
 tgamma:
     data:
         tg13:
-    label: $t\gamma$
+    label: $t\mathit{\mathit{\gamma}}$
 tttt:
     data:
         tttt13:
